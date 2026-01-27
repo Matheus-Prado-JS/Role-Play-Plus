@@ -122,12 +122,31 @@
   <audio id="music" loop></audio>
 
 <ul class="music-list" id="music-list">
-    <li onclick="playMusic(0)">Despedida</li>
-    <li onclick="playMusic(1)">Propósito</li>
-    <li onclick="playMusic(2)">Cidade</li>
+    <li onclick="playMusic(0)">Lythael</li>
+    <li onclick="playMusic(1)">Elaris</li>
+    <li onclick="playMusic(2)">Despedida</li>
+    <li onclick="playMusic(3)">Propósito</li>
   </ul>
 
 </div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "SUA_API_KEY",
+    authDomain: "roleplayplus-f5ccf.firebaseapp.com",
+    databaseURL: "https://roleplayplus-f5ccf-default-rtdb.firebaseio.com",
+    projectId: "roleplayplus-f5ccf",
+    storageBucket: "roleplayplus-f5ccf.appspot.com",
+    messagingSenderId: "XXXX",
+    appId: "XXXX"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
 
 
   <script src="script.js" defer></script>

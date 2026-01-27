@@ -1,19 +1,63 @@
+const db = firebase.database();
+const playersRef = db.ref("players");
+const musicRef = db.ref("music");
+const logRef = db.ref("log");
+logRef.limitToLast(50).on("child_added", (snapshot) => {
+  const data = snapshot.val();
+  if (!data || !data.text) return;
+
+  renderLog(data.text);
+});
+logRef.on("value", (snapshot) => {
+  if (!snapshot.exists()) {
+    const log = document.getElementById("log");
+    if (log) log.innerHTML = "";
+  }
+});
+
+playersRef.on("child_added", (snapshot) => {
+  const data = snapshot.val();
+  if (!data || !data.name) return;
+
+  renderPlayer(data.name);
+});
+
+playersRef.on("child_removed", (snapshot) => {
+  const data = snapshot.val();
+  if (!data || !data.name) return;
+
+  removePlayer(data.name);
+});
+function removePlayer(name) {
+  const items = document.querySelectorAll("#players-list li");
+
+  items.forEach(li => {
+    if (li.textContent.includes(name)) {
+      li.remove();
+      renderedPlayers.delete(name);
+    }
+  });
+}
+
+
+
 function enterRoom() {
   window.location.href = "room1.html";
 }
 const modal = document.getElementById("name-modal");
 const input = document.getElementById("player-name-input");
 const button = document.getElementById("confirm-name");
-let players = JSON.parse(sessionStorage.getItem("players")) || [];
 
 
 const playersList = document.getElementById("players-list");
-players.forEach(player => {
-  renderPlayer(player);
-});
 
+
+const renderedPlayers = new Set();
 
 function renderPlayer(name) {
+  if (renderedPlayers.has(name)) return;
+  renderedPlayers.add(name);
+
   const li = document.createElement("li");
 
   if (name.toLowerCase().includes("moderador")) {
@@ -25,29 +69,30 @@ function renderPlayer(name) {
 
   playersList.appendChild(li);
 }
-function addPlayer(name) {
-  if (!players.includes(name)) {
-    players.push(name);
-    sessionStorage.setItem("players", JSON.stringify(players));
-  }
 
-  renderPlayer(name);
-}
+
 
 
 
 // Verifica se já tem nome
 const storedName = localStorage.getItem("playerName");
+let playerId = localStorage.getItem("playerId");
+
+if (!playerId) {
+  playerId = crypto.randomUUID();
+  localStorage.setItem("playerId", playerId);
+}
+
 
 if (!storedName) {
   modal.classList.remove("hidden");
 } else {
   window.playerName = storedName;
 }
-const isMaster = window.playerName
-  ? window.playerName.toLowerCase().includes("moderador")
-  : false;
-
+function isMaster() {
+  return window.playerName &&
+    window.playerName.toLowerCase().includes("moderador");
+}
 
 button.addEventListener("click", () => {
   const name = input.value.trim();
@@ -58,8 +103,26 @@ button.addEventListener("click", () => {
 
   modal.classList.add("hidden");
 
-  addPlayer(name);
   addLog(`🧙 ${name} entrou na mesa.`);
+
+  const playerRef = db.ref("players/" + playerId);
+
+const connectedRef = db.ref(".info/connected");
+
+connectedRef.on("value", (snap) => {
+  if (snap.val() === true) {
+    playerRef.onDisconnect().remove();
+  }
+});
+
+playerRef.set({
+  name: name,
+  joinedAt: Date.now()
+});
+
+// 🔥 PRESENÇA REAL
+playerRef.onDisconnect().remove();
+
 });
 
 input.addEventListener("keydown", (e) => {
@@ -76,6 +139,13 @@ function goHome() {
 }
 
 function addLog(text) {
+  logRef.push({
+    text: text,
+    at: Date.now()
+  });
+}
+
+function renderLog(text) {
   const log = document.getElementById("log");
   if (!log) return;
 
@@ -83,6 +153,7 @@ function addLog(text) {
   li.innerText = text;
   log.prepend(li);
 }
+
 
 // =========================
 // SISTEMA DE DADOS (NOVO)
@@ -137,16 +208,14 @@ addLog(`🎲 ${roller} rolou: ${logDetails.join(" | ")} → Total: ${total}`);
   resetDice();
 }
 function clearLog() {
-  if (!isMaster) {
+  if (!isMaster()) {
     addLog("🚫 Apenas o Moderador pode limpar o log.");
     return;
   }
 
-  const log = document.getElementById("log");
-  if (!log) return;
-
-  log.innerHTML = "";
+  logRef.remove();
 }
+
 
 
 function resetDice() {
@@ -159,6 +228,16 @@ function resetDice() {
 }
 const playlist = [
   {
+    name: "Lythael",
+    file: "assets/music/Lythael.mp3",
+    bg: "assets/Cidadela de Lythael.png"
+  },
+  {
+    name: "Elaris",
+    file: "assets/music/Elaris.mp3",
+    bg: "assets/Vilarejo de Elaris.png"
+  },
+  {
     name: "Despedida",
     file: "assets/music/Despedida.mp3",
     bg: "assets/General Barok.png"
@@ -167,11 +246,6 @@ const playlist = [
     name: "Propósito",
     file: "assets/music/Propósito.mp3",
     bg: "assets/Kaelen, A Espada.png"
-  },
-  {
-    name: "Cidade",
-    file: "assets/music/city.mp3",
-    bg: "assets/bg-city.jpg"
   }
 ];
 
@@ -179,6 +253,14 @@ let currentTrack = 0;
 
 const music = document.getElementById("music");
 music.volume = 0.2;
+setInterval(() => {
+  if (!isMaster()) return;
+  if (music.paused) return;
+
+  musicRef.update({
+    time: music.currentTime
+  });
+}, 3000);
 
 
 function togglePlaylist() {
@@ -191,12 +273,42 @@ function togglePlaylist() {
 function togglePlay() {
   if (!requireMaster("controlar a música")) return;
 
-  if (music.paused) {
+  musicRef.once("value", snap => {
+    const data = snap.val();
+    if (!data) return;
+
+    musicRef.update({
+      playing: !data.playing,
+      time: music.currentTime
+    });
+  });
+}
+musicRef.on("value", (snapshot) => {
+  const data = snapshot.val();
+  if (!data) return;
+
+  const track = playlist[data.track];
+
+  if (!track) return;
+
+  if (music.src !== track.file) {
+    music.src = track.file;
+  }
+
+  if (Math.abs(music.currentTime - data.time) > 1) {
+    music.currentTime = data.time;
+  }
+
+  if (data.playing) {
     music.play();
   } else {
     music.pause();
   }
-}
+
+  document.getElementById("music-title").innerText = track.name;
+  document.body.style.backgroundImage = `url('${track.bg}')`;
+});
+
 
 function toggleVolume() {
   if (!requireMaster("controlar o volume")) return;
@@ -207,7 +319,7 @@ function toggleVolume() {
 
 
 function setVolume(value) {
-  if (!isMaster) return;
+  if (!isMaster()) return;
 
   music.volume = parseFloat(value);
 }
@@ -218,19 +330,18 @@ function setVolume(value) {
 function playMusic(index) {
   if (!requireMaster("mudar a música")) return;
 
-  currentTrack = index;
+  musicRef.set({
+    track: index,
+    playing: true,
+    time: 0
+  });
 
-  music.src = playlist[index].file;
-  music.play();
-
-  document.getElementById("music-title").innerText = playlist[index].name;
-  document.body.style.backgroundImage = `url('${playlist[index].bg}')`;
-
-  addLog(`🎵 ${window.playerName} mudou a música para: ${playlist[index].name}`);
+  addLog(`🎵 ${window.playerName} mudou a música`);
 }
 
+
 function requireMaster(actionName = "essa ação") {
-  if (!isMaster) {
+  if (!isMaster()) {
     addLog(`🚫 Apenas o Moderador pode ${actionName}.`);
     return false;
   }
