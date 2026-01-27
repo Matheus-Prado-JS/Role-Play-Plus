@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Solarys | RolePlay+</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="room">
+
+  <!-- Top bar -->
+  <header class="top-bar">
+    <img src="assets/logo-RolePlayPlus.png" class="logo-small">
+
+    <div class="top-right">
+    <span id="player-count">3 Players</span>
+    <button onclick="goHome()">Home</button>
+  </div>
+  </header>
+
+    <!-- Dice -->
+    <div class="dice-panel">
+
+    <div class="dice-grid">
+        <div class="dice-item" data-dice="4" onclick="selectDice(4)">
+        <img src="assets/dice-4.png">
+        <span class="dice-count" id="count-d4">0</span>
+        </div>
+
+        <div class="dice-item" data-dice="6" onclick="selectDice(6)">
+        <img src="assets/dice-6.png">
+        <span class="dice-count" id="count-d6">0</span>
+        </div>
+
+        <div class="dice-item" data-dice="8" onclick="selectDice(8)">
+        <img src="assets/dice-8.png">
+        <span class="dice-count" id="count-d8">0</span>
+        </div>
+
+        <div class="dice-item" data-dice="10" onclick="selectDice(10)">
+        <img src="assets/dice-10.png">
+        <span class="dice-count" id="count-d10">0</span>
+        </div>
+
+        <div class="dice-item" data-dice="12" onclick="selectDice(12)">
+        <img src="assets/dice-12.png">
+        <span class="dice-count" id="count-d12">0</span>
+        </div>
+
+        <div class="dice-item" data-dice="20" onclick="selectDice(20)">
+        <img src="assets/dice-20.png">
+        <span class="dice-count" id="count-d20">0</span>
+        </div>
+    </div>
+
+    <button class="roll-button" onclick="rollAllDice()">
+        ROLL DICE
+    </button>
+
+    <div id="dice-result"></div>
+    </div>
+
+    <!-- Log -->
+    <div class="log-panel">
+    <div class="log-header">
+        <h3>Últimas Rolagens</h3>
+        <button class="clear-log" onclick="clearLog()">Clear</button>
+    </div>
+
+    <ul id="log"></ul>
+    </div>
+
+
+<!-- Music -->
+<div class="music-panel minimal">
+
+  <div class="music-now">
+    <span id="music-title">Ambiente</span>
+
+    <div class="music-controls">
+  <button onclick="togglePlay()">▶</button>
+
+  <div class="volume-wrapper">
+    <button onclick="toggleVolume()">🔊</button>
+
+        <input 
+    type="range"
+    min="0"
+    max="1"
+    step="0.05"
+    value="0.5"
+    class="volume-slider"
+    oninput="setVolume(this.value)"
+        >
+
+  </div>
+
+  <button onclick="togglePlaylist()">☰</button>
+</div>
+
+  </div>
+
+  <audio id="music" loop></audio>
+
+<ul class="music-list" id="music-list">
+    <li onclick="playMusic(0)">Despedida</li>
+    <li onclick="playMusic(1)">Propósito</li>
+    <li onclick="playMusic(2)">Cidade</li>
+  </ul>
+
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

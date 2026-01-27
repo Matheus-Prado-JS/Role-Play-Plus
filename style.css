@@ -1,0 +1,458 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Georgia", serif;
+}
+
+/* =========================
+   VARIÁVEIS DE TEMAS
+========================= */
+:root {
+  --gold: #d4af37;
+  --dark-bg: #0b0b0e;
+
+  --solarys-bg: #050b18;
+  --solarys-blue: #3fa9f5;
+  --solarys-silver: #cfd8e3;
+  --solarys-gold: #f5d76e;
+}
+
+/* =========================
+   BODY GERAL
+========================= */
+body {
+  height: 100vh;
+  background-color: var(--dark-bg);
+  transition: background-image 0.8s ease-in-out;
+}
+
+/* =========================
+   HOME
+========================= */
+body.home {
+  background: radial-gradient(
+    circle at top,
+    #1a1a1f,
+    var(--dark-bg)
+  );
+}
+
+.home-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+
+.logo {
+  width: 320px;
+  filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.25));
+}
+
+.enter-room {
+  padding: 18px 40px;
+  font-size: 20px;
+  background: transparent;
+  color: var(--gold);
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.enter-room:hover {
+  background: var(--gold);
+  color: #000;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   ROOM - SOLARYS
+========================= */
+body.room {
+  position: relative;
+  overflow: hidden;
+  background: var(--solarys-bg);
+}
+body.room::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: blur(35px) brightness(0.6);
+  transform: scale(1.2);
+
+  z-index: -2;
+}
+body.room::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: inherit;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: -1;
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+/* =========================
+   TOP BAR
+========================= */
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 14px 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: transparent;
+  border-bottom: none;
+  backdrop-filter: none;
+
+  pointer-events: auto;
+}
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.logo-small {
+  width: 120px;
+  opacity: 0.9;
+}
+
+.top-bar button {
+  background: transparent;
+  border: none;
+  color: var(--solarys-silver);
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.top-bar button:hover {
+  opacity: 1;
+  color: #fff;
+}
+
+
+#player-count {
+  color: var(--solarys-silver);
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   DADOS
+========================= */
+
+:root {
+  --d4:  #3cff6a;   /* verde */
+  --d6:  #9b5cff;   /* roxo */
+  --d8:  #ff5ca8;   /* rosa */
+  --d10: #ff9ad5;   /* rosa claro */
+  --d12: #ff9f3c;   /* laranja */
+  --d20: #ff3c3c;   /* vermelho */
+}
+
+/* Painel geral */
+.dice-panel {
+  position: fixed;
+  left: 25px;
+  top: 25%;
+  width: var(--dice-width);
+  text-align: center;
+  user-select: none;
+}
+
+
+/* Grade de dados */
+.dice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 70px);
+  gap: 14px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+
+/* Cada dado */
+.dice-item {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dice-item:hover {
+  transform: scale(1.1);
+}
+
+/* Hover por tipo */
+.dice-item[data-dice="4"]:hover img  { filter: drop-shadow(0 0 12px var(--d4)); }
+.dice-item[data-dice="6"]:hover img  { filter: drop-shadow(0 0 12px var(--d6)); }
+.dice-item[data-dice="8"]:hover img  { filter: drop-shadow(0 0 12px var(--d8)); }
+.dice-item[data-dice="10"]:hover img { filter: drop-shadow(0 0 12px var(--d10)); }
+.dice-item[data-dice="12"]:hover img { filter: drop-shadow(0 0 12px var(--d12)); }
+.dice-item[data-dice="20"]:hover img { filter: drop-shadow(0 0 12px var(--d20)); }
+
+
+/* Imagem do dado */
+.dice-item img {
+  width: 64px;
+  display: block;
+  transition: filter 0.2s ease, transform 0.2s ease;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.6));
+}
+
+
+/* Contador */
+.dice-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #000;
+  border-radius: 50%;
+  display: none;
+}
+
+/* Cores do contador por dado */
+.dice-item[data-dice="4"]  .dice-count { background: var(--d4); }
+.dice-item[data-dice="6"]  .dice-count { background: var(--d6); }
+.dice-item[data-dice="8"]  .dice-count { background: var(--d8); }
+.dice-item[data-dice="10"] .dice-count { background: var(--d10); }
+.dice-item[data-dice="12"] .dice-count { background: var(--d12); }
+.dice-item[data-dice="20"] .dice-count { background: var(--d20); }
+
+/* Resultado dos dados */
+#dice-result {
+  margin: 10px auto 0;
+  width: 100%;
+  max-height: 70px;
+  padding: 6px 8px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--solarys-silver);
+  overflow-y: auto;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+
+/* Botão de rolar */
+.roll-button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  background: rgba(20, 40, 80, 0.9);
+  border: 1px solid var(--solarys-blue);
+  color: var(--solarys-silver);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+
+.roll-button:hover {
+  background: var(--solarys-blue);
+  color: #000;
+}
+
+/* =========================
+   LOG DE ROLAGENS
+========================= */
+.log-panel {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 260px;
+
+  background: rgba(10, 20, 40, 0.75);
+  border: 1px solid rgba(63, 169, 245, 0.25);
+  border-radius: 12px;
+  padding: 12px;
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(63, 169, 245, 0.2);
+}
+
+.log-header h3 {
+  font-size: 13px;
+  color: var(--solarys-silver);
+}
+
+/* Botão Clear */
+.clear-log {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--solarys-silver);
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.clear-log:hover {
+  background: rgba(255, 60, 60, 0.85);
+  border-color: rgba(255, 60, 60, 0.85);
+  color: #000;
+}
+
+/* Lista */
+.log-panel ul {
+  list-style: none;
+  font-size: 12px;
+  max-height: 150px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Itens do log */
+.log-panel li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+  opacity: 0.9;
+  color: var(--solarys-silver);
+}
+
+
+/* =========================
+   MÚSICA — MINIMAL
+========================= */
+.music-panel.minimal {
+  position: fixed;
+  left: 25px;
+  bottom: 25px;
+  width: 170px;
+
+  background: rgba(10, 15, 30, 0.7);
+  border: 1px solid rgba(63, 169, 245, 0.2);
+  border-radius: 14px;
+  padding: 10px 12px;
+  backdrop-filter: blur(8px);
+  color: var(--solarys-silver);
+}
+
+/* Linha principal */
+.music-now {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Nome da música */
+#music-title {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* Botões */
+.music-controls button {
+  background: transparent;
+  border: none;
+  color: var(--solarys-blue);
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: 0.2s;
+}
+
+.music-controls button:hover {
+  color: #fff;
+}
+
+/* Playlist */
+.music-list {
+  list-style: none;
+  margin-top: 10px;
+  display: none;
+  border-top: 1px solid rgba(63, 169, 245, 0.15);
+  padding-top: 6px;
+}
+
+.music-list li {
+  font-size: 12px;
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  opacity: 0.85;
+  transition: 0.2s;
+}
+
+.music-list li:hover {
+  background: rgba(63, 169, 245, 0.25);
+  opacity: 1;
+}
+/* =========================
+   CONTROLE DE VOLUME
+========================= */
+.volume-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.volume-wrapper button {
+  background: transparent;
+  border: none;
+  color: var(--solarys-blue);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Slider escondido */
+.volume-slider {
+  position: absolute;
+  bottom: 74px;
+  left: 60%;
+
+  transform: translateX(-50%) rotate(-90deg);
+  transform-origin: center;
+
+  width: 90px;
+  display: none;
+
+  accent-color: var(--solarys-blue);
+}
+
+/* Quando ativo */
+.volume-wrapper.active .volume-slider {
+  display: block;
+}
+
