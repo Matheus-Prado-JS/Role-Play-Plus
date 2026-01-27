@@ -6,14 +6,34 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="room">
+  <!-- Modal de Nome de Entrada-->
+   <div id="name-modal" class="name-modal hidden">
+  <div class="name-box">
+    <h2>Bem-vindo a Solarys</h2>
+    <p>Como deseja ser conhecido nesta mesa?</p>
+
+    <input 
+      type="text" 
+      id="player-name-input" 
+      placeholder="Digite seu nome..."
+      maxlength="20"
+    >
+
+    <button id="confirm-name">Entrar</button>
+  </div>
+</div>
+
 
   <!-- Top bar -->
   <header class="top-bar">
     <img src="assets/logo-RolePlayPlus.png" class="logo-small">
 
     <div class="top-right">
-    <span id="player-count">3 Players</span>
     <button onclick="goHome()">Home</button>
+    <div class="players-panel">
+      <h4>Players</h4>
+      <ul id="players-list"></ul>
+    </div>
   </div>
   </header>
 
@@ -74,7 +94,7 @@
 <div class="music-panel minimal">
 
   <div class="music-now">
-    <span id="music-title">Ambiente</span>
+    <span id="music-title">Playlist</span>
 
     <div class="music-controls">
   <button onclick="togglePlay()">▶</button>
@@ -110,6 +130,6 @@
 </div>
 
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

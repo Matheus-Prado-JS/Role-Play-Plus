@@ -111,8 +111,84 @@ body.room::after {
 
 
 /* =========================
-   TOP BAR
+   MODAL DE NOME
 ========================= */
+.name-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 20, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.name-modal.hidden {
+  display: none;
+}
+
+.name-box {
+  width: 320px;
+  padding: 24px;
+  border-radius: 14px;
+
+  background: rgba(10, 20, 40, 0.9);
+  border: 1px solid rgba(63, 169, 245, 0.3);
+
+  text-align: center;
+  color: var(--solarys-silver);
+}
+
+.name-box h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.name-box p {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-bottom: 16px;
+}
+
+.name-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 14px;
+
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+
+.name-box input:focus {
+  outline: none;
+  border-color: var(--solarys-blue);
+}
+
+.name-box button {
+  width: 100%;
+  padding: 10px;
+
+  background: var(--solarys-blue);
+  border: none;
+  border-radius: 8px;
+
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.name-box button:hover {
+  filter: brightness(1.1);
+}
+
 /* =========================
    TOP BAR
 ========================= */
@@ -134,8 +210,58 @@ body.room::after {
 }
 .top-right {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+/* Painel de Players */
+.players-panel {
+  min-width: 160px;
+  padding: 10px 12px;
+
+  background: rgba(10, 20, 40, 0.55);
+  border: 1px solid rgba(63, 169, 245, 0.25);
+  border-radius: 10px;
+
+  backdrop-filter: blur(6px);
+  text-align: left;
+}
+
+/* Título */
+.players-panel h4 {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--solarys-silver);
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+
+/* Lista */
+.players-panel ul {
+  list-style: none;
+  font-size: 12px;
+}
+
+/* Player */
+.players-panel li {
+  padding: 4px 6px;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  opacity: 0.9;
+}
+
+/* Mestre */
+.players-panel li.player-master {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 215, 100, 0.25),
+    rgba(255, 215, 100, 0.05)
+  );
+  color: #ffd764;
+  font-weight: bold;
 }
 
 
@@ -291,7 +417,7 @@ body.room::after {
   position: fixed;
   right: 25px;
   bottom: 25px;
-  width: 260px;
+  width: 160px;
 
   background: rgba(10, 20, 40, 0.75);
   border: 1px solid rgba(63, 169, 245, 0.25);
