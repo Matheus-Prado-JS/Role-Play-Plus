@@ -19,25 +19,25 @@ playersRef.on("child_added", (snapshot) => {
   const data = snapshot.val();
   if (!data || !data.name) return;
 
-  renderPlayer(data.name);
+  renderPlayer(snapshot.key, data.name);
 });
+
 
 playersRef.on("child_removed", (snapshot) => {
   const data = snapshot.val();
   if (!data || !data.name) return;
 
-  removePlayer(data.name);
+  removePlayer(snapshot.key);
 });
-function removePlayer(name) {
-  const items = document.querySelectorAll("#players-list li");
+function removePlayer(playerId) {
+  const li = document.querySelector(
+    `#players-list li[data-player-id="${playerId}"]`
+  );
 
-  items.forEach(li => {
-    if (li.textContent.includes(name)) {
-      li.remove();
-      renderedPlayers.delete(name);
-    }
-  });
+  if (li) li.remove();
+  renderedPlayers.delete(playerId);
 }
+
 
 
 
@@ -54,22 +54,42 @@ const playersList = document.getElementById("players-list");
 
 const renderedPlayers = new Set();
 
-function renderPlayer(name) {
-  if (renderedPlayers.has(name)) return;
-  renderedPlayers.add(name);
+function renderPlayer(playerId, name) {
+  if (renderedPlayers.has(playerId)) return;
+
+  renderedPlayers.add(playerId);
 
   const li = document.createElement("li");
+  li.dataset.playerId = playerId;
 
   if (name.toLowerCase().includes("moderador")) {
-    li.textContent = `👑 ${name}`;
+    li.innerHTML = `<span class="player-icon master">✹</span> ${name}`;
     li.classList.add("player-master");
   } else {
-    li.textContent = name;
+    li.innerHTML = `<span class="player-icon">✦</span> ${name}`;
   }
 
   playersList.appendChild(li);
 }
+function registerPlayer(name) {
+  const playerRef = db.ref("players/" + playerId);
 
+  playerRef.once("value", snap => {
+    if (snap.exists()) return; // 👈 já registrado, sai fora
+
+    const connectedRef = db.ref(".info/connected");
+    connectedRef.on("value", (snap) => {
+      if (snap.val() === true) {
+        playerRef.onDisconnect().remove();
+      }
+    });
+
+    playerRef.set({
+      name: name,
+      joinedAt: Date.now()
+    });
+  });
+}
 
 
 
@@ -88,7 +108,9 @@ if (!storedName) {
   modal.classList.remove("hidden");
 } else {
   window.playerName = storedName;
+  registerPlayer(storedName);
 }
+
 function isMaster() {
   return window.playerName &&
     window.playerName.toLowerCase().includes("moderador");
@@ -104,26 +126,9 @@ button.addEventListener("click", () => {
   modal.classList.add("hidden");
 
   addLog(`🧙 ${name} entrou na mesa.`);
-
-  const playerRef = db.ref("players/" + playerId);
-
-const connectedRef = db.ref(".info/connected");
-
-connectedRef.on("value", (snap) => {
-  if (snap.val() === true) {
-    playerRef.onDisconnect().remove();
-  }
+  registerPlayer(name);
 });
 
-playerRef.set({
-  name: name,
-  joinedAt: Date.now()
-});
-
-// 🔥 PRESENÇA REAL
-playerRef.onDisconnect().remove();
-
-});
 
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
@@ -253,14 +258,7 @@ let currentTrack = 0;
 
 const music = document.getElementById("music");
 music.volume = 0.2;
-setInterval(() => {
-  if (!isMaster()) return;
-  if (music.paused) return;
 
-  musicRef.update({
-    time: music.currentTime
-  });
-}, 3000);
 
 
 function togglePlaylist() {
@@ -277,52 +275,75 @@ function togglePlay() {
     const data = snap.val();
     if (!data) return;
 
-    musicRef.update({
-      playing: !data.playing,
-      time: music.currentTime
-    });
+    if (data.playing) {
+      // ⏸️ Pausar — salva onde parou
+      musicRef.update({
+        playing: false,
+        pausedAt: music.currentTime
+      });
+    } else {
+      // ▶️ Retomar — continua de onde parou
+      musicRef.update({
+        playing: true,
+        startedAt: Date.now() - ((data.pausedAt || 0) * 1000)
+      });
+    }
   });
 }
+
+
 musicRef.on("value", (snapshot) => {
   const data = snapshot.val();
   if (!data) return;
 
   const track = playlist[data.track];
-
   if (!track) return;
 
   if (music.src !== track.file) {
     music.src = track.file;
   }
 
-  if (Math.abs(music.currentTime - data.time) > 1) {
-    music.currentTime = data.time;
+if (data.playing) {
+  const elapsed = (Date.now() - data.startedAt) / 1000;
+
+  if (Math.abs(music.currentTime - elapsed) > 0.5) {
+    music.currentTime = elapsed;
   }
 
-  if (data.playing) {
-    music.play();
-  } else {
-    music.pause();
+  music.play();
+} else {
+  music.pause();
+
+  if (data.pausedAt !== undefined) {
+    music.currentTime = data.pausedAt;
   }
+}
+
 
   document.getElementById("music-title").innerText = track.name;
   document.body.style.backgroundImage = `url('${track.bg}')`;
 });
 
 
-function toggleVolume() {
-  if (!requireMaster("controlar o volume")) return;
 
+function toggleVolume() {
   const wrapper = document.querySelector(".volume-wrapper");
   wrapper.classList.toggle("active");
 }
 
 
-function setVolume(value) {
-  if (!isMaster()) return;
 
+function setVolume(value) {
   music.volume = parseFloat(value);
+
+  // salva localmente
+  localStorage.setItem("musicVolume", value);
 }
+const savedVolume = localStorage.getItem("musicVolume");
+if (savedVolume !== null) {
+  music.volume = parseFloat(savedVolume);
+}
+
 
 
 
@@ -330,14 +351,17 @@ function setVolume(value) {
 function playMusic(index) {
   if (!requireMaster("mudar a música")) return;
 
-  musicRef.set({
-    track: index,
-    playing: true,
-    time: 0
-  });
+musicRef.set({
+  track: index,
+  playing: true,
+  startedAt: Date.now(),
+  pausedAt: 0
+});
+
 
   addLog(`🎵 ${window.playerName} mudou a música`);
 }
+
 
 
 function requireMaster(actionName = "essa ação") {
