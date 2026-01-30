@@ -37,6 +37,20 @@
   </div>
   </header>
 
+  <!-- BACKGROUND CENTRAL / MAPA -->
+<div class="central-background-wrapper">
+
+  <div class="central-background-frame">
+    <img 
+      src="assets/backgrounds/Capa.png" 
+      alt="Background Central"
+      class="central-background-image"
+    >
+  </div>
+
+</div>
+
+
     <!-- Dice -->
     <div class="dice-panel">
 
@@ -129,6 +143,65 @@
   </ul>
 
 </div>
+<!-- Painel de Botões - Direita Central -->
+<div class="right-center-panel">
+
+  <!-- MAPA (Mestre) -->
+  <button 
+    class="panel-btn player" 
+    data-action="map"
+    title="Mapa da Região"
+  >
+    <img src="assets/icons/Map-Player.png" alt="Mapa">
+  </button>
+
+  <!-- DOCUMENTOS (Player) -->
+  <button 
+    class="panel-btn player" 
+    data-action="documents"
+    title="Documentos"
+  >
+    <img src="assets/icons/Doc-Player.png" alt="Documentos">
+  </button>
+
+  <!-- NPCs (Player) -->
+  <button 
+    class="panel-btn player" 
+    data-action="npcs"
+    title="NPCs Conhecidos"
+  >
+    <img src="assets/icons/NPC-Player.png" alt="NPCs">
+  </button>
+
+  <!-- BACKGROUND (Mestre) -->
+  <button 
+    class="panel-btn master" 
+    data-action="background"
+    title="Plano de Fundo"
+  >
+    <img src="assets/icons/Map-Master.png" alt="Background">
+  </button>
+
+  <!-- DOCUMENTOS (Mestre) -->
+  <button 
+    class="panel-btn master locked" 
+    data-action="documents-master"
+    title="Documentos do Mestre"
+  >
+    <img src="assets/icons/Doc-Master.png" alt="Documentos do Mestre">
+  </button>
+
+  <!-- NPCs (Mestre) -->
+  <button 
+    class="panel-btn master locked" 
+    data-action="npcs-master"
+    title="Controle de NPCs"
+  >
+    <img src="assets/icons/NPC-Master.png" alt="NPCs do Mestre">
+  </button>
+
+</div>
+
 
 <!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>

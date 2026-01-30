@@ -252,7 +252,7 @@ body.room::after {
 
 /* Painel de Players */
 .players-panel {
-  min-width: 160px;
+  min-width: 260px;
   padding: 10px 12px;
 
   background: rgba(10, 20, 40, 0.55);
@@ -608,7 +608,7 @@ body.room::after {
   position: fixed;
   right: 25px;
   bottom: 25px;
-  width: 160px;
+  width: 260px;
 
   background: rgba(10, 20, 40, 0.75);
   border: 1px solid rgba(63, 169, 245, 0.25);
@@ -677,7 +677,7 @@ body.room::after {
   position: fixed;
   left: 25px;
   bottom: 25px;
-  width: 170px;
+  width: 225px;
 
   background: rgba(10, 15, 30, 0.7);
   border: 1px solid rgba(63, 169, 245, 0.2);
@@ -773,3 +773,184 @@ body.room::after {
   display: block;
 }
 
+/* =========================
+   PAINEL DE BOTÕES - DIREITA CENTRAL
+========================= */
+
+/* CONTROLE DE POSIÇÃO GERAL DO PAINEL */
+.right-center-panel {
+  position: fixed;
+
+  /* 👇 AJUSTE A POSIÇÃO AQUI */
+  right: 24px;          /* distância da borda direita */
+  top: 60%;             /* centro vertical */
+  transform: translateY(-50%);
+
+  display: grid;
+
+  /* 👇 GRID: 2 colunas x 3 linhas */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;            /* espaço entre botões */
+
+  z-index: 20;
+}
+.panel-btn {
+  /* 👇 TAMANHO DO BOTÃO (CONTROLE PRINCIPAL) */
+  width: 64px;
+  height: 64px;
+
+  border-radius: 14px;
+
+  background: transparent;
+
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.panel-btn img {
+  /* 👇 TAMANHO DO ÍCONE */
+  width: 66px;
+  height: 66px;
+
+  pointer-events: none;
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+.panel-btn.player {
+  box-shadow:
+    none;
+}
+
+.panel-btn.player:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(120, 160, 255, 0.6);
+
+}
+
+.panel-btn.player:hover img {
+  filter: drop-shadow(0 0 6px rgba(120, 160, 255, 0.8));
+  transform: scale(1.05);
+}
+.panel-btn.master {
+  box-shadow:
+    none;
+}
+
+.panel-btn.master:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(190, 130, 255, 0.65);
+
+  
+}
+
+.panel-btn.master:hover img {
+  filter: drop-shadow(0 0 8px rgba(190, 130, 255, 0.9));
+  transform: scale(1.08);
+}
+/* =========================
+   BACKGROUND CENTRAL - POSIÇÃO GERAL
+========================= */
+
+.central-background-wrapper {
+  position: fixed;
+
+  /* 👇 CONTROLES DE POSIÇÃO */
+  top: 20px;          /* distância do topo (logo fica acima) */
+  left: 50%;           /* centraliza horizontalmente */
+  transform: translateX(-50%);
+
+  z-index: 5;
+
+  pointer-events: none; /* não interfere em cliques */
+}
+/* =========================
+   TAMANHO DO BACKGROUND
+========================= */
+
+.central-background-frame {
+  width: 920px;
+  height: 620px;
+
+  padding: 4px; /* 👈 moldura BEM fina */
+
+  border-radius: 16px;
+  position: relative;
+
+  background: linear-gradient(
+    180deg,
+    rgba(245, 215, 110, 0.9),
+    rgba(180, 140, 60, 0.9)
+  );
+
+  box-shadow:
+    0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+
+/* =========================
+   IMAGEM DO BACKGROUND
+========================= */
+
+.central-background-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 12px; /* um pouco menor que a moldura */
+
+  display: block;
+  background: #000;
+}
+
+/* =========================
+   GLOW ANIMADO DA MOLDURA
+========================= */
+
+.central-background-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  border-radius: 16px;
+  pointer-events: none;
+
+  box-shadow:
+    0 0 6px rgba(245, 215, 110, 0.35),
+    0 0 12px rgba(245, 215, 110, 0.25),
+    0 0 20px rgba(245, 215, 110, 0.15);
+
+  animation: goldGlowBreath 4s ease-in-out infinite;
+}
+@keyframes goldGlowBreath {
+  0% {
+    box-shadow:
+      0 0 4px rgba(245, 215, 110, 0.25),
+      0 0 10px rgba(245, 215, 110, 0.18),
+      0 0 18px rgba(245, 215, 110, 0.12);
+  }
+
+  50% {
+    box-shadow:
+      0 0 8px rgba(245, 215, 110, 0.45),
+      0 0 16px rgba(245, 215, 110, 0.35),
+      0 0 26px rgba(245, 215, 110, 0.2);
+  }
+
+  100% {
+    box-shadow:
+      0 0 4px rgba(245, 215, 110, 0.25),
+      0 0 10px rgba(245, 215, 110, 0.18),
+      0 0 18px rgba(245, 215, 110, 0.12);
+  }
+}
