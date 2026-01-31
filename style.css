@@ -115,33 +115,35 @@ body.room::after {
   background-size: contain;
   background-position: left center;
 
-  /* glow sutil */
-  filter:
-    drop-shadow(0 0 8px rgba(120, 160, 255, 0.35))
-    drop-shadow(0 0 16px rgba(120, 160, 255, 0.2));
+/* glow sutil */
+filter:
+  drop-shadow(0 0 8px rgba(245, 215, 110, 0.35))
+  drop-shadow(0 0 16px rgba(245, 215, 110, 0.2));
 
-  animation: imageGlow 4.5s ease-in-out infinite;
+animation: imageGlow 4.5s ease-in-out infinite;
 
-  pointer-events: none;
-  z-index: -1;
+pointer-events: none;
+z-index: -1;
 }
+
 @keyframes imageGlow {
   0% {
     filter:
-      drop-shadow(0 0 6px rgba(120, 160, 255, 0.25))
-      drop-shadow(0 0 12px rgba(120, 160, 255, 0.15));
+      drop-shadow(0 0 6px rgba(245, 215, 110, 0.25))
+      drop-shadow(0 0 12px rgba(245, 215, 110, 0.15));
   }
   50% {
     filter:
-      drop-shadow(0 0 10px rgba(140, 180, 255, 0.45))
-      drop-shadow(0 0 22px rgba(140, 180, 255, 0.25));
+      drop-shadow(0 0 10px rgba(245, 215, 110, 0.45))
+      drop-shadow(0 0 22px rgba(245, 215, 110, 0.25));
   }
   100% {
     filter:
-      drop-shadow(0 0 6px rgba(120, 160, 255, 0.25))
-      drop-shadow(0 0 12px rgba(120, 160, 255, 0.15));
+      drop-shadow(0 0 6px rgba(245, 215, 110, 0.25))
+      drop-shadow(0 0 12px rgba(245, 215, 110, 0.15));
   }
 }
+
 
 
 
@@ -902,16 +904,27 @@ body.room::after {
 ========================= */
 
 .central-background-image {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 4px; /* respeita o padding da moldura */
+
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
 
   object-fit: cover;
 
-  border-radius: 12px; /* um pouco menor que a moldura */
-
-  display: block;
+  border-radius: 12px;
   background: #000;
+
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
 }
+
+/* imagem visível */
+.central-background-image.active {
+  opacity: 1;
+  z-index: 1;
+}
+
 
 /* =========================
    GLOW ANIMADO DA MOLDURA
@@ -953,4 +966,99 @@ body.room::after {
       0 0 10px rgba(245, 215, 110, 0.18),
       0 0 18px rgba(245, 215, 110, 0.12);
   }
+}
+/* =========================
+   SELETOR DE BACKGROUND (MESTRE)
+========================= */
+
+.background-selector {
+  position: fixed;
+
+  /* 👇 CONTROLES DE POSIÇÃO */
+  right: 140px;   /* distancia do painel de botões */
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 220px;   /* 👈 CONTROLE DE LARGURA */
+
+  background: rgba(10, 20, 40, 0.85);
+  border: 1px solid rgba(140, 80, 255, 0.35);
+  border-radius: 12px;
+
+  padding: 12px;
+
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 20px rgba(140, 80, 255, 0.35);
+
+  z-index: 60;
+}
+
+/* Escondido por padrão */
+.background-selector.hidden {
+  display: none;
+}
+.background-selector h4 {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: #d6c7ff;
+  opacity: 0.85;
+
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(140, 80, 255, 0.25);
+  padding-bottom: 6px;
+}
+.background-options {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.background-options li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 8px;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  color: #e2d9ff;
+  font-size: 12px;
+
+  transition: background 0.2s ease;
+}
+
+.background-options li:hover {
+  background: rgba(140, 80, 255, 0.18);
+}
+.bg-radio {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(180, 150, 255, 0.8);
+
+  box-shadow:
+    inset 0 0 0 2px rgba(0,0,0,0.6);
+
+  flex-shrink: 0;
+}
+.background-options li.active {
+  background: rgba(140, 80, 255, 0.35);
+}
+
+.background-options li.active .bg-radio {
+  background: radial-gradient(
+    circle,
+    #c9a8ff 30%,
+    #7b3fe4 60%
+  );
+
+  box-shadow:
+    0 0 6px rgba(160, 100, 255, 0.9),
+    0 0 12px rgba(160, 100, 255, 0.6);
 }

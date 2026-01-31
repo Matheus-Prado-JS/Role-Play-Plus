@@ -40,13 +40,22 @@
   <!-- BACKGROUND CENTRAL / MAPA -->
 <div class="central-background-wrapper">
 
-  <div class="central-background-frame">
-    <img 
-      src="assets/backgrounds/Capa.png" 
-      alt="Background Central"
-      class="central-background-image"
-    >
-  </div>
+<div class="central-background-frame">
+
+  <img 
+    src="assets/backgrounds/Capa.png"
+    class="central-background-image active"
+    id="bg-main"
+  >
+
+  <img 
+    src=""
+    class="central-background-image"
+    id="bg-fade"
+  >
+
+</div>
+
 
 </div>
 
@@ -56,32 +65,32 @@
 
     <div class="dice-grid">
         <div class="dice-item" data-dice="4" onclick="selectDice(4)">
-        <img src="assets/dice-4.png">
+        <img src="assets/D4.png">
         <span class="dice-count" id="count-d4">0</span>
         </div>
 
         <div class="dice-item" data-dice="6" onclick="selectDice(6)">
-        <img src="assets/dice-6.png">
+        <img src="assets/D6.png">
         <span class="dice-count" id="count-d6">0</span>
         </div>
 
         <div class="dice-item" data-dice="8" onclick="selectDice(8)">
-        <img src="assets/dice-8.png">
+        <img src="assets/D8.png">
         <span class="dice-count" id="count-d8">0</span>
         </div>
 
         <div class="dice-item" data-dice="10" onclick="selectDice(10)">
-        <img src="assets/dice-10.png">
+        <img src="assets/D10.png">
         <span class="dice-count" id="count-d10">0</span>
         </div>
 
         <div class="dice-item" data-dice="12" onclick="selectDice(12)">
-        <img src="assets/dice-12.png">
+        <img src="assets/D12.png">
         <span class="dice-count" id="count-d12">0</span>
         </div>
 
         <div class="dice-item" data-dice="20" onclick="selectDice(20)">
-        <img src="assets/dice-20.png">
+        <img src="assets/D20.png">
         <span class="dice-count" id="count-d20">0</span>
         </div>
     </div>
@@ -136,10 +145,11 @@
   <audio id="music" loop></audio>
 
 <ul class="music-list" id="music-list">
-    <li onclick="playMusic(0)">Lythael</li>
-    <li onclick="playMusic(1)">Elaris</li>
-    <li onclick="playMusic(2)">Despedida</li>
-    <li onclick="playMusic(3)">Propósito</li>
+    <li onclick="playMusic(0)">Cidadela de Ouro</li>
+    <li onclick="playMusic(1)">Salvation</li>
+    <li onclick="playMusic(2)">Julgamento</li>
+    <li onclick="playMusic(3)">Rebeldes de Aço</li>
+    <li onclick="playMusic(4)">Escudo dos Justos</li>
   </ul>
 
 </div>
@@ -181,6 +191,35 @@
   >
     <img src="assets/icons/Map-Master.png" alt="Background">
   </button>
+  <!-- SELETOR DE BACKGROUND (MESTRE) -->
+<div class="background-selector hidden" id="background-selector">
+
+  <h4>Plano de Fundo</h4>
+
+  <ul class="background-options">
+    <li data-bg="Capa.png" class="active">
+      <span class="bg-radio"></span>
+      <span class="bg-name">Capa Padrão</span>
+    </li>
+
+    <li data-bg="Cidadela de Lythael.png">
+      <span class="bg-radio"></span>
+      <span class="bg-name">Cidadela de Ouro</span>
+    </li>
+
+    <li data-bg="Vilarejo de Elaris.png">
+      <span class="bg-radio"></span>
+      <span class="bg-name">Vilarejo Elaris</span>
+    </li>
+
+    <li data-bg="Campos de Avelorn.png">
+      <span class="bg-radio"></span>
+      <span class="bg-name">Campos de Avelorn</span>
+    </li>
+  </ul>
+
+</div>
+
 
   <!-- DOCUMENTOS (Mestre) -->
   <button 

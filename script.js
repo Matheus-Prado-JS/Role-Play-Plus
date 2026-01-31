@@ -2,6 +2,7 @@ const db = firebase.database();
 const playersRef = db.ref("players");
 const musicRef = db.ref("music");
 const logRef = db.ref("log");
+const backgroundRef = db.ref("background");
 logRef.limitToLast(50).on("child_added", (snapshot) => {
   const data = snapshot.val();
   if (!data || !data.text) return;
@@ -233,24 +234,29 @@ function resetDice() {
 }
 const playlist = [
   {
-    name: "Lythael",
-    file: "assets/music/Lythael.mp3",
-    bg: "assets/Cidadela de Lythael.png"
+    name: "Cidadela de Ouro",
+    file: "assets/music/Cidadela de Ouro.mp3",
+    bg: "assets/music/Cidadela de Ouro.png"
   },
   {
-    name: "Elaris",
-    file: "assets/music/Elaris.mp3",
-    bg: "assets/Vilarejo de Elaris.png"
+    name: "Salvation",
+    file: "assets/music/Salvation.mp3",
+    bg: "assets/music/Salvation.png"
   },
   {
-    name: "Despedida",
-    file: "assets/music/Despedida.mp3",
-    bg: "assets/General Barok.png"
+    name: "Julgamento",
+    file: "assets/music/Julgamento.mp3",
+    bg: "assets/music/Julgamento.png"
   },
   {
-    name: "Propósito",
-    file: "assets/music/Propósito.mp3",
-    bg: "assets/Kaelen, A Espada.png"
+    name: "Rebeldes de Aço",
+    file: "assets/music/Rebeldes de Aço.mp3",
+    bg: "assets/music/Rebeldes de Aço.png"
+  },
+  {
+    name: "Escudo dos Justos",
+    file: "assets/music/Escudo dos Justos.mp3",
+    bg: "assets/music/Escudo dos Justos.png"
   }
 ];
 
@@ -371,5 +377,81 @@ function requireMaster(actionName = "essa ação") {
   }
   return true;
 }
+const bgButton = document.querySelector('[data-action="background"]');
+const bgPanel = document.getElementById("background-selector");
+
+if (bgButton) {
+  bgButton.addEventListener("click", () => {
+    if (!requireMaster("alterar o plano de fundo")) return;
+
+    bgPanel.classList.toggle("hidden");
+  });
+}
+document.addEventListener("click", (e) => {
+  if (!bgPanel || bgPanel.classList.contains("hidden")) return;
+
+  if (
+    !bgPanel.contains(e.target) &&
+    !bgButton.contains(e.target)
+  ) {
+    bgPanel.classList.add("hidden");
+  }
+});
+const bgOptions = document.querySelectorAll(".background-options li");
+
+bgOptions.forEach(option => {
+  option.addEventListener("click", () => {
+    if (!requireMaster("mudar o plano de fundo")) return;
+
+    const bgFile = option.dataset.bg;
+
+    backgroundRef.set({
+      current: bgFile,
+      changedBy: window.playerName || "Moderador",
+      at: Date.now()
+    });
+
+    bgPanel.classList.add("hidden");
+  });
+});
+backgroundRef.on("value", (snapshot) => {
+  const data = snapshot.val();
+  if (!data || !data.current) return;
+
+  const bgFile = data.current;
+
+  const bgMain = document.getElementById("bg-main");
+  const bgFade = document.getElementById("bg-fade");
+
+  if (!bgMain || !bgFade) return;
+
+  // evita trocar pra mesma imagem
+  if (bgMain.src.includes(bgFile)) return;
+
+  // prepara a imagem de transição
+  bgFade.src = `assets/backgrounds/${bgFile}`;
+  bgFade.classList.add("active");
+
+  // após o fade, troca os papéis
+  setTimeout(() => {
+    bgMain.src = bgFade.src;
+    bgFade.classList.remove("active");
+  }, 600);
+
+  // UI do painel
+  document.querySelectorAll(".background-options li").forEach(li => {
+    li.classList.toggle("active", li.dataset.bg === bgFile);
+  });
+});
+
+
+backgroundRef.once("value", snap => {
+  if (!snap.exists()) {
+    backgroundRef.set({
+      current: "Capa.png",
+      at: Date.now()
+    });
+  }
+});
 
 
