@@ -270,9 +270,9 @@ const playlist = [
     bg: "assets/music/Show de Desgraça.png"
   },
   {
-    name: "Putaria Descontrolada",
-    file: "assets/music/Putaria Descontrolada.mp3",
-    bg: "assets/music/Putaria Descontrolada.png"
+    name: "Descontrole",
+    file: "assets/music/Descontrole.mp3",
+    bg: "assets/music/Descontrole.png"
   },
   {
     name: "Um novo 'Eco'",
@@ -288,6 +288,16 @@ const playlist = [
     name: "O teste de Eccho",
     file: "assets/music/Um teste de Eccho.mp3",
     bg: "assets/music/O teste de Eccho.png"
+  },
+  {
+    name: "Away",
+    file: "assets/music/Away.mp3",
+    bg: "assets/music/Away.png"
+  },
+  {
+    name: "Império",
+    file: "assets/music/Império.mp3",
+    bg: "assets/music/Império.png"
   },
 ];
 
@@ -492,15 +502,71 @@ const npcDataMap = {
     name: "Capitã Elsyra",
     age: 42,
     image: "assets/persons/Elsyra.png",
-    backstory: "Capitã da guarda costeira, marcada por batalhas no mar.",
+    backstory: "Capitã da guarda imperial, lidera pelo o que considera correto.",
     personality: "Firme, estratégica e desconfiada."
+  },
+  barok: {
+    name: "General Barok",
+    age: 55,
+    image: "assets/persons/Barok.png",
+    backstory: "Um general veterano com uma reputação de ser implacável.",
+    personality: "Disciplinado, leal e determinado."
+  },
+  varok: {
+    name: "General Varok",
+    age: 58,
+    image: "assets/persons/Varok.png",
+    backstory: "General firme e respeitado, conhecido por sua estratégia militar.",
+    personality: "Rigoroso, cruel e estratégico."
+  },
+  ysvelle: {
+    name: "Magistrada Ysvelle",
+    age: 38,
+    image: "assets/persons/Ysvelle.png",
+    backstory: "Uma magistrada de renome, conhecida por sua justiça e sabedoria.",
+    personality: "Inteligente, calma e determinada."
+  },
+  valeric: {
+    name: "Rei Valeric Kaer",
+    age: 64,
+    image: "assets/persons/Valeric.png",
+    backstory: "Rei de Solarys, governa com justiça e sabedoria.",
+    personality: "Sábio, justo e protetor."
+  },
+  stilgard2: {
+    name: "Inquisidor Stilgard II",
+    age: 61,
+    image: "assets/persons/Stilgard II.png",
+    backstory: "Inquisidor e pai, conhecido por sua disciplina rígida e lealdade.",
+    personality: "Leal, disciplinado e protetor."
+  },
+  malrek: {
+    name: "Inquisidor Malrek",
+    age: 59,
+    image: "assets/persons/Malrek.png",
+    backstory: "Inquisidor brutal, conhecido por quebrar regras.",
+    personality: "Implacável, cruel e obstinado."
+  },
+  luthiel: {
+    name: "Oráculo Luthiel",
+    age: 32,
+    image: "assets/persons/Luthiel.png",
+    backstory: "Uma oráculo misterioso com conhecimento de profundos segredos.",
+    personality: "Sagaz, introspectiva e enigmática."
   },
   lyss: {
     name: "Lyss",
     age: 27,
     image: "assets/persons/Lyss.png",
-    backstory: "Uma figura enigmática ligada aos eventos do prólogo.",
-    personality: "Insuportável, sarcástica e imprevisível."
+    backstory: "Cresceu em clubes, aprendeu a sobreviver lendo pessoas e explorando fraquezas. Conheceu Eddie em uma noite turbulenta em um dos Clubes.",
+    personality: "Ácida, observadora e inteligente."
+  },
+  jax: {
+    name: "Jax",
+    age: 28,
+    image: "assets/persons/Jax.png",
+    backstory: "Viciado em jogos e golpes, conheceu Eddie após uma trapaça dar errado e a música dele salvar sua pele. Desde então, vive entre dívidas, apostas e favores mal pagos.",
+    personality: "Arrogante, trapaceiro, carismático e impulsivo."
   }
 };
 

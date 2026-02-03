@@ -1158,10 +1158,11 @@ z-index: -1;
   border-bottom: 1px solid rgba(63, 169, 245, 0.25);
 }
 .npc-meta {
-  font-size: 12px;
-  margin-bottom: 6px;
-  opacity: 0.95;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
 }
+
 
 .npc-master {
   background: rgba(10, 20, 40, 0.85);
@@ -1234,7 +1235,8 @@ z-index: -1;
   top: 50%;
   transform: translateY(-50%);
 
-  width: 260px;
+  min-width: 370px;
+  max-width: 520px;
   padding: 14px;
   color: #e6f3ff; /* cor base global */
 
@@ -1270,26 +1272,40 @@ z-index: -1;
   margin-bottom: 6px;
   opacity: 0.9;
 }
-.npc-sheet-layout {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 12px;
-  align-items: flex-start;
-}
-.npc-portrait {
-  width: 100px;
-  height: 150px;
+.npc-text {
+  padding-left: 12px;
+  padding-right: 4px;
+  white-space: normal;
 
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  overflow-y: auto;
+}
+
+.npc-sheet-layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: stretch;
+}
+
+.npc-portrait {
+  width: 200px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px 0 0 10px;
   overflow: hidden;
 
-  border: 1px solid rgba(63, 169, 245, 0.4);
-  box-shadow:
-    0 0 10px rgba(63, 169, 245, 0.35);
+  border-right: 1px solid rgba(63, 169, 245, 0.35);
 }
+
 
 .npc-portrait img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
