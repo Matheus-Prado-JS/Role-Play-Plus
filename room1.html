@@ -145,11 +145,31 @@
   <audio id="music" loop></audio>
 
 <ul class="music-list" id="music-list">
-    <li onclick="playMusic(0)">Cidadela de Ouro</li>
-    <li onclick="playMusic(1)">Salvation</li>
-    <li onclick="playMusic(2)">Julgamento</li>
-    <li onclick="playMusic(3)">Rebeldes de Aço</li>
-    <li onclick="playMusic(4)">Escudo dos Justos</li>
+  <li class="music-session">
+    <div class="session-title">
+      ▶ Sessão 1
+    </div>
+    <ul class="session-tracks hidden">
+      <li onclick="playMusic(0)">Cidadela de Ouro</li>
+      <li onclick="playMusic(1)">Salvation</li>
+      <li onclick="playMusic(2)">Julgamento</li>
+      <li onclick="playMusic(3)">Rebeldes de Aço</li>
+      <li onclick="playMusic(4)">Escudo dos Justos</li>
+    </ul>
+  </li>
+  <li class="music-session">
+    <div class="session-title">
+      ▶ Sessão 2
+    </div>
+    <ul class="session-tracks hidden">
+      <li onclick="playMusic(5)">Velário Caído</li>
+      <li onclick="playMusic(6)">Show de Desgraça</li>
+      <li onclick="playMusic(7)">Putaria Descontrolada</li>
+      <li onclick="playMusic(8)">Um novo "Eco"</li>
+      <li onclick="playMusic(9)">Aqui é o Fim?</li>
+      <li onclick="playMusic(10)">Um teste de Eccho</li>
+    </ul>
+  </li>
   </ul>
 
 </div>
@@ -182,6 +202,47 @@
   >
     <img src="assets/icons/NPC-Player.png" alt="NPCs">
   </button>
+  <!-- PAINEL DE NPCs — PLAYER -->
+<div class="npc-panel npc-player hidden" id="npc-player-panel">
+  <h4>NPCs Conhecidos</h4>
+
+  <ul class="npc-list">
+    <li class="npc-item unlocked" data-npc="elsyra">
+      <span class="npc-name">Capitã Elsyra</span>
+    </li>
+
+    <li class="npc-item unlocked" data-npc="lyss">
+      <span class="npc-name">Lyss</span>
+    </li>
+  </ul>
+</div>
+
+<!-- FICHA DO NPC (PLAYER) -->
+<div class="npc-sheet hidden" id="npc-sheet">
+  <h4 class="npc-sheet-name"></h4>
+
+  <div class="npc-sheet-content">
+
+  <div class="npc-sheet-layout">
+
+    <!-- IMAGEM DO NPC -->
+    <div class="npc-portrait">
+      <img src="" alt="NPC">
+    </div>
+
+    <!-- TEXTO DO NPC -->
+    <div class="npc-text">
+      <p class="npc-meta"><strong>Idade:</strong> 42</p>
+      <p><strong>Backstory:</strong> ...</p>
+      <p><strong>Personalidade:</strong> ...</p>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
 
   <!-- BACKGROUND (Mestre) -->
   <button 
@@ -207,14 +268,24 @@
       <span class="bg-name">Cidadela de Ouro</span>
     </li>
 
-    <li data-bg="Vilarejo de Elaris.png">
+    <li data-bg="Rebeldes de Metal.png">
       <span class="bg-radio"></span>
-      <span class="bg-name">Vilarejo Elaris</span>
+      <span class="bg-name">Rebeldes de Metal</span>
     </li>
 
-    <li data-bg="Campos de Avelorn.png">
+    <li data-bg="Velário Caído.png">
       <span class="bg-radio"></span>
-      <span class="bg-name">Campos de Avelorn</span>
+      <span class="bg-name">Velário Caído</span>
+    </li>
+
+    <li data-bg="Eccho.png">
+      <span class="bg-radio"></span>
+      <span class="bg-name">Um novo 'Eco'</span>
+    </li>
+
+        <li data-bg="O Teste de Eccho.png">
+      <span class="bg-radio"></span>
+      <span class="bg-name">O teste de Eccho</span>
     </li>
   </ul>
 
@@ -238,6 +309,23 @@
   >
     <img src="assets/icons/NPC-Master.png" alt="NPCs do Mestre">
   </button>
+  <!-- PAINEL DE NPCs — MESTRE -->
+<div class="npc-panel npc-master hidden" id="npc-master-panel">
+  <h4>Controle de NPCs</h4>
+
+  <ul class="npc-list">
+    <li class="npc-item unlocked" data-npc="elsyra">
+      <span class="npc-name">Capitã Elsyra</span>
+      <button class="npc-toggle unlock">Desbloqueado</button>
+    </li>
+
+    <li class="npc-item locked" data-npc="lyss">
+      <span class="npc-name">Lyss</span>
+      <button class="npc-toggle lock">Bloqueado</button>
+    </li>
+  </ul>
+</div>
+
 
 </div>
 

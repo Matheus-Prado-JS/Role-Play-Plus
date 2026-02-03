@@ -3,6 +3,7 @@ const playersRef = db.ref("players");
 const musicRef = db.ref("music");
 const logRef = db.ref("log");
 const backgroundRef = db.ref("background");
+const npcsRef = db.ref("npcs");
 logRef.limitToLast(50).on("child_added", (snapshot) => {
   const data = snapshot.val();
   if (!data || !data.text) return;
@@ -257,7 +258,37 @@ const playlist = [
     name: "Escudo dos Justos",
     file: "assets/music/Escudo dos Justos.mp3",
     bg: "assets/music/Escudo dos Justos.png"
-  }
+  },
+  {
+    name: "Velário Caído",
+    file: "assets/music/Velário Caído.mp3",
+    bg: "assets/music/Velário Caído.png"
+  },
+  {
+    name: "Show de Desgraça",
+    file: "assets/music/Show de Desgraça.mp3",
+    bg: "assets/music/Show de Desgraça.png"
+  },
+  {
+    name: "Putaria Descontrolada",
+    file: "assets/music/Putaria Descontrolada.mp3",
+    bg: "assets/music/Putaria Descontrolada.png"
+  },
+  {
+    name: "Um novo 'Eco'",
+    file: "assets/music/Um novo 'Eco'.mp3",
+    bg: "assets/music/Novo Eco.png"
+  },
+  {
+    name: "Aqui é o fim?",
+    file: "assets/music/Aqui é o fim.mp3",
+    bg: "assets/music/Aqui é o fim.png"
+  },
+  {
+    name: "O teste de Eccho",
+    file: "assets/music/Um teste de Eccho.mp3",
+    bg: "assets/music/O teste de Eccho.png"
+  },
 ];
 
 let currentTrack = 0;
@@ -273,6 +304,33 @@ function togglePlaylist() {
   const list = document.getElementById("music-list");
   list.style.display = list.style.display === "block" ? "none" : "block";
 }
+// =========================
+// PLAYLIST — SESSÕES
+// =========================
+
+document.querySelectorAll(".session-title").forEach(title => {
+  title.addEventListener("click", () => {
+
+    const currentTracks = title.nextElementSibling;
+    const isOpen = !currentTracks.classList.contains("hidden");
+
+    // Fecha todas as sessões
+    document.querySelectorAll(".session-tracks").forEach(list => {
+      list.classList.add("hidden");
+    });
+
+    document.querySelectorAll(".session-title").forEach(t => {
+      t.innerText = t.innerText.replace("▼", "▶");
+    });
+
+    // Se estava fechada, abre
+    if (!isOpen) {
+      currentTracks.classList.remove("hidden");
+      title.innerText = title.innerText.replace("▶", "▼");
+    }
+  });
+});
+
 
 function togglePlay() {
   if (!requireMaster("controlar a música")) return;
@@ -377,8 +435,106 @@ function requireMaster(actionName = "essa ação") {
   }
   return true;
 }
+const npcMasterPanel = document.getElementById("npc-master-panel");
+
+if (npcMasterPanel) {
+  npcMasterPanel.addEventListener("click", (e) => {
+    const toggle = e.target.closest(".npc-toggle");
+    if (!toggle) return;
+
+    if (!requireMaster("controlar NPCs")) return;
+
+    const item = toggle.closest(".npc-item");
+    const npcId = item.dataset.npc;
+
+    const isLocked = item.classList.contains("locked");
+
+    npcsRef.child(npcId).update({
+      unlocked: isLocked
+    });
+  });
+}
+
 const bgButton = document.querySelector('[data-action="background"]');
 const bgPanel = document.getElementById("background-selector");
+const npcPlayerBtn = document.querySelector('[data-action="npcs"]');
+const npcMasterBtn = document.querySelector('[data-action="npcs-master"]');
+
+const npcPlayerPanel = document.getElementById("npc-player-panel");
+const npcSheet = document.getElementById("npc-sheet");
+
+if (npcPlayerBtn) {
+  npcPlayerBtn.addEventListener("click", () => {
+    npcPlayerPanel.classList.toggle("hidden");
+    npcSheet.classList.add("hidden");
+  });
+}
+
+if (npcMasterBtn) {
+  npcMasterBtn.addEventListener("click", () => {
+    if (!requireMaster("controlar NPCs")) return;
+    npcMasterPanel.classList.toggle("hidden");
+  });
+}
+
+document.addEventListener("click", (e) => {
+  if (
+    npcPlayerPanel &&
+    !npcPlayerPanel.contains(e.target) &&
+    !npcPlayerBtn.contains(e.target)
+  ) {
+    npcPlayerPanel.classList.add("hidden");
+    npcSheet.classList.add("hidden");
+  }
+});
+const npcDataMap = {
+  elsyra: {
+    name: "Capitã Elsyra",
+    age: 42,
+    image: "assets/persons/Elsyra.png",
+    backstory: "Capitã da guarda costeira, marcada por batalhas no mar.",
+    personality: "Firme, estratégica e desconfiada."
+  },
+  lyss: {
+    name: "Lyss",
+    age: 27,
+    image: "assets/persons/Lyss.png",
+    backstory: "Uma figura enigmática ligada aos eventos do prólogo.",
+    personality: "Insuportável, sarcástica e imprevisível."
+  }
+};
+
+
+npcPlayerPanel.addEventListener("click", (e) => {
+  const item = e.target.closest(".npc-item");
+  if (!item) return;
+
+  const npcId = item.dataset.npc;
+  const npc = npcDataMap[npcId];
+  if (!npc) return;
+
+  document.querySelector(".npc-sheet-name").innerText = npc.name;
+
+document.querySelector(".npc-sheet-content").innerHTML = `
+  <div class="npc-sheet-layout">
+
+    <div class="npc-portrait">
+      <img src="${npc.image}" alt="${npc.name}">
+    </div>
+
+    <div class="npc-text">
+      <p class="npc-meta"><strong>Idade:</strong> ${npc.age}</p>
+      <p><strong>Backstory:</strong> ${npc.backstory}</p>
+      <p><strong>Personalidade:</strong> ${npc.personality}</p>
+    </div>
+
+  </div>
+`;
+
+
+  npcSheet.classList.remove("hidden");
+});
+
 
 if (bgButton) {
   bgButton.addEventListener("click", () => {
@@ -443,6 +599,40 @@ backgroundRef.on("value", (snapshot) => {
     li.classList.toggle("active", li.dataset.bg === bgFile);
   });
 });
+npcsRef.on("value", (snapshot) => {
+  const data = snapshot.val();
+  if (!data) return;
+
+  Object.entries(data).forEach(([npcId, npcData]) => {
+    const unlocked = npcData.unlocked === true;
+
+    /* ===== MESTRE ===== */
+    const masterItem = document.querySelector(
+      `#npc-master-panel .npc-item[data-npc="${npcId}"]`
+    );
+
+    if (masterItem) {
+      masterItem.classList.toggle("locked", !unlocked);
+      masterItem.classList.toggle("unlocked", unlocked);
+
+      const btn = masterItem.querySelector(".npc-toggle");
+      if (btn) {
+        btn.className = `npc-toggle ${unlocked ? "unlock" : "lock"}`;
+        btn.innerText = unlocked ? "Desbloqueado" : "Bloqueado";
+      }
+    }
+
+    /* ===== PLAYER ===== */
+    const playerItem = document.querySelector(
+      `#npc-player-panel .npc-item[data-npc="${npcId}"]`
+    );
+
+    if (playerItem) {
+      playerItem.style.display = unlocked ? "flex" : "none";
+    }
+  });
+});
+
 
 
 backgroundRef.once("value", snap => {
@@ -452,6 +642,18 @@ backgroundRef.once("value", snap => {
       at: Date.now()
     });
   }
+});
+npcsRef.once("value", snap => {
+  if (snap.exists()) return;
+
+  npcsRef.set({
+    elsyra: {
+      unlocked: true
+    },
+    lyss: {
+      unlocked: false
+    }
+  });
 });
 
 
