@@ -143,6 +143,15 @@ z-index: -1;
       drop-shadow(0 0 12px rgba(245, 215, 110, 0.15));
   }
 }
+@media (max-width: 1360px) and (max-height: 768px) {
+
+  body.room::after {
+    top: 430px;
+    left: 3%;
+  }
+
+}
+
 
 
 
@@ -1022,6 +1031,15 @@ z-index: -1;
       0 0 18px rgba(245, 215, 110, 0.12);
   }
 }
+@media (max-width: 1360px) and (max-height: 768px) {
+
+  .central-background-frame {
+    width: 760px;
+    height: 510px;
+  }
+
+}
+
 /* =========================
    SELETOR DE BACKGROUND (MESTRE)
 ========================= */
