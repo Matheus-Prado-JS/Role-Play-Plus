@@ -246,13 +246,20 @@ z-index: -1;
 
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 
   background: transparent;
   border-bottom: none;
   backdrop-filter: none;
 
   pointer-events: auto;
+}
+
+/* COLUNA ESQUERDA */
+.top-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .top-right {
   display: flex;
@@ -628,6 +635,7 @@ z-index: -1;
   backdrop-filter: blur(6px);
   display: flex;
   flex-direction: column;
+  z-index: 9999;
 }
 
 /* Header */
@@ -1327,3 +1335,402 @@ z-index: -1;
   object-fit: cover;
 }
 
+/* =========================
+   TURNO — PAINEL LATERAL
+========================= */
+
+.turn-panel {
+  margin-top: 18px;
+  margin-bottom: 22px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Base */
+.turn-box {
+  width: 230px;
+  height: 110px;
+
+  border-radius: 16px;
+  position: relative;
+  overflow: visible;
+
+  cursor: pointer;
+  transition: 
+    transform 0.25s ease,
+    filter 0.25s ease,
+    box-shadow 0.25s ease;
+  z-index: 5;
+}
+
+/* =========================
+   IMAGEM — TURNO INIMIGO
+========================= */
+
+#turn-enemy img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* =========================
+   IMAGENS — TURNO PLAYER
+========================= */
+
+#turn-player .player-img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  border-radius: inherit;
+
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+
+  pointer-events: none;
+}
+
+/* Imagem visível */
+#turn-player .player-img.active {
+  opacity: 1;
+}
+
+/* Camadas */
+#turn-player .player-img.fade {
+  z-index: 2;
+}
+
+#turn-player .player-img.main {
+  z-index: 1;
+}
+
+/* 🔴 Vermelho */
+.turn-red {
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 70, 70, 0.75),
+    0 0 18px rgba(255, 70, 70, 0.45);
+}
+
+/* 🔵 Azul */
+.turn-blue {
+  box-shadow:
+    inset 0 0 0 2px rgba(80, 160, 255, 0.75),
+    0 0 18px rgba(80, 160, 255, 0.45);
+}
+
+/* =========================
+   ESTADOS
+========================= */
+
+/* Ativo */
+.turn-box.active {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.03);
+  z-index: 20;
+}
+
+/* Inativo */
+.turn-box.inactive {
+  filter: grayscale(100%) brightness(0.55);
+  opacity: 0.45;
+  box-shadow: none;
+}
+
+/* Hover */
+.turn-box:hover {
+  transform: scale(1.06);
+}
+
+/* Hover só quando ativo */
+.turn-box.inactive:hover {
+  transform: none;
+}
+/* =========================
+   MENU DO TURNO — INIMIGO
+========================= */
+
+.enemy-menu {
+  position: absolute;
+  left: 40%;
+  top: 40%;
+
+  background: rgba(10, 15, 30, 0.95);
+  border: 1px solid rgba(255, 80, 80, 0.6);
+  border-radius: 12px;
+  padding: 8px;
+  width: 180px;
+
+  box-shadow: 0 0 18px rgba(255, 70, 70, 0.35);
+  z-index: 9999;
+}
+
+.enemy-menu.hidden {
+  display: none;
+}
+
+.enemy-option {
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: 8px;
+
+  color: rgba(255, 220, 220, 0.92);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+
+.enemy-option:hover {
+  background: rgba(255, 80, 80, 0.18);
+  color: #fff;
+}
+
+/* =========================
+   SELETOR DE FICHAS
+========================= */
+
+.hidden {
+  display: none !important;
+}
+
+.sheet-selector {
+  position: absolute;
+  right: 90px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 260px;
+  max-height: 420px;
+
+  background: rgba(10, 10, 15, 0.95);
+  border: 1px solid rgba(255, 215, 150, 0.15);
+  border-radius: 12px;
+
+  padding: 14px;
+  overflow-y: auto;
+
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  z-index: 200;
+}
+
+/* Mestre — tom mais agressivo */
+.sheet-selector.master {
+  border-color: rgba(255, 80, 80, 0.25);
+}
+
+/* Título */
+.sheet-selector h4 {
+  margin-bottom: 12px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #f0d6a0;
+}
+
+/* Lista */
+.sheet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Item */
+.sheet-item {
+  padding: 10px 12px;
+  margin-bottom: 6px;
+
+  border-radius: 8px;
+  cursor: pointer;
+
+  background: rgba(255,255,255,0.04);
+  transition: all 0.2s ease;
+}
+
+/* Hover */
+.sheet-item:hover {
+  background: rgba(255, 215, 150, 0.12);
+}
+
+/* Ativo */
+.sheet-item.active {
+  background: rgba(255, 215, 150, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(255,215,150,0.4);
+}
+
+/* Nome */
+.sheet-name {
+  font-size: 14px;
+  color: #eee;
+}
+
+/* Scroll */
+.sheet-selector::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sheet-selector::-webkit-scrollbar-thumb {
+  background: rgba(255,215,150,0.25);
+  border-radius: 4px;
+}
+
+/* =========================
+   FICHA — BASE
+========================= */
+
+.sheet-content {
+  position: absolute;
+  right: 270px;
+  top: 20%;
+  transform: translateY(-50%);
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+
+  background: rgba(10, 10, 14, 0.97);
+  border: 1px solid rgba(255, 215, 100, 0.3);
+  border-radius: 12px;
+  padding: 14px;
+
+  color: #eaeaea;
+  z-index: 50;
+}
+
+/* Nome */
+.sheet-name {
+  text-align: center;
+  margin-bottom: 12px;
+  color: #f3d98b;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   BLOCOS
+========================= */
+
+.sheet-block {
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.sheet-block h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #ffd36a;
+}
+
+/* Subcategorias */
+.sheet-sub {
+  margin-bottom: 10px;
+}
+
+.sheet-sub h5 {
+  font-size: 13px;
+  margin: 6px 0;
+  color: #ffbcbc;
+}
+
+/* =========================
+   LINHAS
+========================= */
+
+.sheet-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+.sheet-row span {
+  opacity: 0.85;
+}
+
+.sheet-row strong {
+  color: #fff;
+}
+
+/* Scroll discreto */
+.sheet-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sheet-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 100, 0.3);
+  border-radius: 6px;
+}
+/* =========================
+   FICHA — MESTRE
+========================= */
+
+.sheet-master {
+  border: 1px solid rgba(255, 80, 80, 0.45);
+  box-shadow: 0 0 28px rgba(255, 50, 50, 0.25);
+}
+
+/* Nome inimigo */
+.enemy-name {
+  color: #ff6b6b;
+  text-shadow: 0 0 6px rgba(255, 70, 70, 0.6);
+}
+
+/* Tipo */
+.enemy-type {
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.75;
+  margin-bottom: 10px;
+}
+
+/* Títulos */
+.sheet-master .sheet-block h4 {
+  color: #ff8c8c;
+}
+
+/* =========================
+   ATAQUES
+========================= */
+
+.enemy-attack {
+  background: rgba(255, 80, 80, 0.08);
+  border: 1px solid rgba(255, 80, 80, 0.25);
+  border-radius: 8px;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+
+  font-size: 13px;
+}
+
+.enemy-attack strong {
+  color: #ffd0d0;
+}
+
+/* =========================
+   HABILIDADES
+========================= */
+
+.enemy-skill {
+  padding: 5px 8px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+
+  background: rgba(255, 60, 60, 0.12);
+  color: #ffd6d6;
+  font-size: 13px;
+}
+
+/* =========================
+   NOTAS
+========================= */
+
+.enemy-notes {
+  font-size: 12px;
+  opacity: 0.85;
+  line-height: 1.4;
+}

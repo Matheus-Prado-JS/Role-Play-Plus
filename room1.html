@@ -25,17 +25,52 @@
 
 
   <!-- Top bar -->
-  <header class="top-bar">
+<header class="top-bar">
+
+  <div class="top-left">
     <img src="assets/Logotipo-Solarys.png" class="logo-small">
 
-    <div class="top-right">
+<div class="turn-panel">
+
+  <div id="turn-enemy" class="turn-box turn-red active" data-turn="enemy">
+    <img id="enemy-image" src="assets/turns/enemies/Soldados Imperiais.png">
+  <div id="enemy-menu" class="enemy-menu hidden">
+    <div class="enemy-option" data-image="Soldados Imperiais.png">Soldados Imperiais</div>
+  <div class="enemy-option" data-image="Rebeldes de Metal.png">Rebeldes de Metal</div>
+  <div class="enemy-option" data-image="General Varok.png">General Varok</div>
+  <div class="enemy-option" data-image="Eccho.png">Eccho</div>
+  <div class="enemy-option" data-image="Ustanak, Lorde da Escória.png">Ustanak</div>
+</div>
+</div>
+
+<div id="turn-player" class="turn-box turn-blue inactive" data-turn="player">
+  <img
+    class="player-img main active"
+    src="assets/turns/players/Show de Eddie.png"
+    alt="Turno do Player"
+  >
+
+  <img
+    class="player-img fade"
+    src=""
+    alt=""
+  >
+</div>
+
+</div>
+
+  </div>
+
+  <div class="top-right">
     <button onclick="goHome()">Home</button>
     <div class="players-panel">
       <h4>Players</h4>
       <ul id="players-list"></ul>
     </div>
   </div>
-  </header>
+
+</header>
+
 
   <!-- BACKGROUND CENTRAL / MAPA -->
 <div class="central-background-wrapper">
@@ -185,13 +220,119 @@
 <!-- Painel de Botões - Direita Central -->
 <div class="right-center-panel">
 
-  <!-- MAPA (Mestre) -->
+  <!-- FICHAS (Player) -->
   <button 
     class="panel-btn player" 
-    data-action="map"
-    title="Mapa da Região"
+    data-action="fichas-player"
+    title="Fichas do Jogador"
   >
-    <img src="assets/icons/Map-Player.png" alt="Mapa">
+    <img src="assets/icons/Ficha-Player.png" alt="Fichas do Jogador">
+  </button>
+  <!-- SELETOR DE PERSONAGEM (PLAYER) -->
+<div class="sheet-selector hidden" id="player-sheet-selector">
+
+  <h4>Personagens</h4>
+
+  <ul class="sheet-list">
+    <li class="sheet-item active" data-sheet="aurelion">
+      <span class="sheet-name">Aurelion</span>
+    </li>
+
+    <li class="sheet-item" data-sheet="eddie">
+      <span class="sheet-name">Eddie</span>
+    </li>
+
+    <li class="sheet-item" data-sheet="orion">
+      <span class="sheet-name">Orion</span>
+    </li>
+        <li class="sheet-item" data-sheet="stilgard">
+      <span class="sheet-name">Stilgard</span>
+    </li>
+  </ul>
+
+</div>
+
+  <div class="sheet-content hidden" id="sheet-player-content">
+
+  <!-- NOME -->
+  <h3 class="sheet-name">Nome do Personagem</h3>
+
+  <!-- 🔋 RECURSOS -->
+  <div class="sheet-block">
+    <h4>🔋 Recursos</h4>
+
+    <div class="sheet-row"><span>PV</span><strong>0</strong></div>
+    <div class="sheet-row"><span>PM</span><strong>0</strong></div>
+    <div class="sheet-row"><span>PVg</span><strong>0</strong></div>
+    <div class="sheet-row"><span>PP</span><strong>0</strong></div>
+  </div>
+
+  <!-- 🛡️ DEFESAS -->
+  <div class="sheet-block">
+    <h4>🛡️ Sistemas de Defesa</h4>
+
+    <div class="sheet-row"><span>Defesa Física</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Defesa Mágica</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Esquiva</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Contra-Ataque</span><strong>0</strong></div>
+  </div>
+
+  <!-- 📊 ATRIBUTOS -->
+  <div class="sheet-block">
+    <h4>📊 Atributos</h4>
+
+    <div class="sheet-row"><span>Força</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Agilidade</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Solar</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Vigor</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Vitalidade</span><strong>0</strong></div>
+  </div>
+
+  <!-- 🎓 TREINAMENTOS -->
+  <div class="sheet-block">
+    <h4>🎓 Treinamentos</h4>
+
+    <div class="sheet-sub">
+      <h5>⚔️ Combatentes</h5>
+      <div class="sheet-row"><span>Luta</span><strong>0</strong></div>
+      <div class="sheet-row"><span>Reflexo</span><strong>0</strong></div>
+      <div class="sheet-row"><span>Mira</span><strong>0</strong></div>
+      <div class="sheet-row"><span>Postura</span><strong>0</strong></div>
+    </div>
+
+    <div class="sheet-sub">
+      <h5>🔆 Mágicos</h5>
+      <div class="sheet-row"><span>Solar</span><strong>0</strong></div>
+      <div class="sheet-row"><span>Fé</span><strong>0</strong></div>
+      <div class="sheet-row"><span>Avanço</span><strong>0</strong></div>
+      <div class="sheet-row"><span>Piromancia</span><strong>0</strong></div>
+    </div>
+
+    <div class="sheet-sub">
+      <h5>🧭 Explorador</h5>
+      <div class="sheet-row"><span>Investigação</span><strong>0</strong></div>
+      <div class="sheet-row"><span>Intuição</span><strong>0</strong></div>
+      <div class="sheet-row"><span>Carisma</span><strong>0</strong></div>
+      <div class="sheet-row"><span>Percepção</span><strong>0</strong></div>
+    </div>
+
+    <div class="sheet-sub">
+      <h5>🏕️ Sobreviventes</h5>
+      <div class="sheet-row"><span>Foco</span><strong>0</strong></div>
+      <div class="sheet-row"><span>Cura</span><strong>0</strong></div>
+      <div class="sheet-row"><span>Resiliência</span><strong>0</strong></div>
+      <div class="sheet-row"><span>Adaptação</span><strong>0</strong></div>
+    </div>
+  </div>
+
+</div>
+
+  <button 
+    class="panel-btn player" 
+    data-action="missions"
+    title="Missões"
+  >
+    <img src="assets/icons/Quest-Player.png" alt="Missões">
   </button>
 
   <!-- DOCUMENTOS (Player) -->
@@ -359,6 +500,116 @@
   >
     <img src="assets/icons/Doc-Master.png" alt="Documentos do Mestre">
   </button>
+
+    <!-- Missions (Mestre) -->
+  <button 
+    class="panel-btn master locked" 
+    data-action="missions-master"
+    title="Missões do Mestre"
+  >
+    <img src="assets/icons/Quest-Master.png" alt="Missões do Mestre">
+  </button>
+  <!-- Fichas (Mestre) -->
+  <button 
+    class="panel-btn master locked" 
+    data-action="fichas-master"
+    title="Fichas do Mestre"
+  >
+    <img src="assets/icons/Ficha-Master.png" alt="Fichas do Mestre">
+  </button>
+  <!-- SELETOR DE CRIATURA (MESTRE) -->
+<div class="sheet-selector master hidden" id="enemy-sheet-selector">
+
+  <h4>Criaturas</h4>
+
+  <ul class="sheet-list">
+    <li class="sheet-item active" data-sheet="rebeldes-metal">
+      <span class="sheet-name">Rebeldes de Metal</span>
+    </li>
+
+    <li class="sheet-item" data-sheet="varok">
+      <span class="sheet-name">General Varok</span>
+    </li>
+
+    <li class="sheet-item" data-sheet="eccho">
+      <span class="sheet-name">Eccho</span>
+    </li>
+
+    <li class="sheet-item" data-sheet="ustanakk">
+      <span class="sheet-name">Ustanak, Lorde da Escória</span>
+    </li>
+  </ul>
+
+</div>
+
+  <div class="sheet-content sheet-master hidden" id="sheet-enemy-content">
+
+  <!-- NOME + TIPO -->
+  <h3 class="sheet-name enemy-name">Nome da Criatura</h3>
+  <div class="enemy-type">Criatura • Médio • Hostil</div>
+
+  <!-- ❤️ RECURSOS -->
+  <div class="sheet-block">
+    <h4>❤️ Recursos</h4>
+
+    <div class="sheet-row"><span>PV</span><strong>0</strong></div>
+    <div class="sheet-row"><span>PM</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Energia</span><strong>0</strong></div>
+  </div>
+
+  <!-- 🛡️ DEFESAS -->
+  <div class="sheet-block">
+    <h4>🛡️ Defesas</h4>
+
+    <div class="sheet-row"><span>Defesa Física</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Defesa Mágica</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Resistência</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Imunidades</span><strong>—</strong></div>
+  </div>
+
+  <!-- 📊 ATRIBUTOS BASE -->
+  <div class="sheet-block">
+    <h4>📊 Atributos</h4>
+
+    <div class="sheet-row"><span>Força</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Agilidade</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Vitalidade</span><strong>0</strong></div>
+    <div class="sheet-row"><span>Inteligência</span><strong>0</strong></div>
+  </div>
+
+  <!-- ⚔️ ATAQUES -->
+  <div class="sheet-block">
+    <h4>⚔️ Ataques</h4>
+
+    <div class="enemy-attack">
+      <strong>Garra</strong>
+      <span>Dano: 1d8 + 3</span>
+    </div>
+
+    <div class="enemy-attack">
+      <strong>Mordida</strong>
+      <span>Dano: 1d10 + Sangramento</span>
+    </div>
+  </div>
+
+  <!-- ☠️ HABILIDADES -->
+  <div class="sheet-block">
+    <h4>☠️ Habilidades</h4>
+
+    <div class="enemy-skill">Presença Aterradora</div>
+    <div class="enemy-skill">Ataque em Área</div>
+    <div class="enemy-skill">Regeneração Sombria</div>
+  </div>
+
+  <!-- 📝 NOTAS DO MESTRE -->
+  <div class="sheet-block">
+    <h4>📝 Notas</h4>
+    <div class="enemy-notes">
+      Ataca o alvo mais fraco primeiro. Foge se PV &lt; 20%.
+    </div>
+  </div>
+
+</div>
 
   <!-- NPCs (Mestre) -->
   <button 

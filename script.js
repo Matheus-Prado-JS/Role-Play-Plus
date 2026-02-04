@@ -4,6 +4,7 @@ const musicRef = db.ref("music");
 const logRef = db.ref("log");
 const backgroundRef = db.ref("background");
 const npcsRef = db.ref("npcs");
+const turnRef = db.ref("turn");
 logRef.limitToLast(50).on("child_added", (snapshot) => {
   const data = snapshot.val();
   if (!data || !data.text) return;
@@ -445,6 +446,283 @@ function requireMaster(actionName = "essa ação") {
   }
   return true;
 }
+const enemyBox = document.getElementById("turn-enemy");
+const playersBox = document.getElementById("turn-player");
+const enemyMenu = document.getElementById("enemy-menu");
+// =========================
+// FICHAS — PLAYER & MESTRE
+// =========================
+function closeAllSheets() {
+  document.querySelectorAll(".sheet-content").forEach(el =>
+    el.classList.add("hidden")
+  );
+}
+
+function closeAllSelectors() {
+  document.querySelectorAll(".sheet-selector").forEach(el =>
+    el.classList.add("hidden")
+  );
+}
+
+function setActiveItem(list, item) {
+  list.querySelectorAll(".sheet-item").forEach(li =>
+    li.classList.remove("active")
+  );
+  item.classList.add("active");
+}
+const playerBtn = document.querySelector('[data-action="fichas-player"]');
+const playerSelector = document.getElementById("player-sheet-selector");
+const playerSheet = document.getElementById("sheet-player-content");
+
+if (playerBtn && playerSelector && playerSheet) {
+  const playerName = playerSheet.querySelector(".sheet-name");
+
+  playerBtn.addEventListener("click", () => {
+    closeAllSelectors();
+    playerSelector.classList.toggle("hidden");
+  });
+
+  playerSelector.querySelectorAll(".sheet-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const name = item.querySelector(".sheet-name").innerText;
+
+      setActiveItem(playerSelector, item);
+      closeAllSelectors();
+      closeAllSheets();
+
+      playerName.innerText = name;
+      playerSheet.classList.remove("hidden");
+    });
+  });
+}
+const masterBtn = document.querySelector('[data-action="fichas-master"]');
+const enemySelector = document.getElementById("enemy-sheet-selector");
+const enemySheet = document.getElementById("sheet-enemy-content");
+
+if (masterBtn && enemySelector && enemySheet) {
+  const enemyName = enemySheet.querySelector(".enemy-name");
+
+  masterBtn.addEventListener("click", () => {
+    if (!requireMaster("abrir fichas do mestre")) return;
+
+    closeAllSelectors();
+    enemySelector.classList.toggle("hidden");
+  });
+
+  enemySelector.querySelectorAll(".sheet-item").forEach(item => {
+    item.addEventListener("click", () => {
+      if (!requireMaster("selecionar criaturas")) return;
+
+      const name = item.querySelector(".sheet-name").innerText;
+
+      setActiveItem(enemySelector, item);
+      closeAllSelectors();
+      closeAllSheets();
+
+      enemyName.innerText = name;
+      enemySheet.classList.remove("hidden");
+    });
+  });
+}
+document.addEventListener("click", (e) => {
+  // Fecha SELECTORS se clicar fora
+  if (
+    playerSelector &&
+    !playerSelector.contains(e.target) &&
+    !playerBtn.contains(e.target)
+  ) {
+    playerSelector.classList.add("hidden");
+  }
+
+  if (
+    enemySelector &&
+    !enemySelector.contains(e.target) &&
+    !masterBtn.contains(e.target)
+  ) {
+    enemySelector.classList.add("hidden");
+  }
+
+  // Fecha FICHAS se clicar fora
+  if (
+    playerSheet &&
+    !playerSheet.contains(e.target) &&
+    !playerBtn.contains(e.target)
+  ) {
+    playerSheet.classList.add("hidden");
+  }
+
+  if (
+    enemySheet &&
+    !enemySheet.contains(e.target) &&
+    !masterBtn.contains(e.target)
+  ) {
+    enemySheet.classList.add("hidden");
+  }
+});
+
+playerSelector.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+enemySelector.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+playerBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  closeAllSelectors();
+  playerSelector.classList.toggle("hidden");
+});
+
+masterBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  if (!requireMaster("abrir fichas do mestre")) return;
+
+  closeAllSelectors();
+  enemySelector.classList.toggle("hidden");
+});
+
+// =========================
+// TURNO PLAYER — IMAGENS
+// =========================
+
+const playerImages = [
+  "assets/turns/players/Show de Eddie.png",
+  "assets/turns/players/Stilgard.png",
+  "assets/turns/players/Orion.png",
+  "assets/turns/players/Aurelion.png"
+];
+
+let currentPlayerImageIndex = 0;
+let playerImageInterval = null;
+const playerImageMain = document.createElement("img");
+const playerImageFade = document.createElement("img");
+
+playerImageMain.className = "player-img main active";
+playerImageFade.className = "player-img fade";
+
+playerImageMain.src = playerImages[0];
+
+playersBox.innerHTML = "";
+playersBox.appendChild(playerImageMain);
+playersBox.appendChild(playerImageFade);
+function switchPlayerImage() {
+  const nextIndex =
+    (currentPlayerImageIndex + 1) % playerImages.length;
+
+  const nextSrc = playerImages[nextIndex];
+
+  playerImageFade.src = nextSrc;
+  playerImageFade.classList.add("active");
+
+  setTimeout(() => {
+    playerImageMain.src = nextSrc;
+
+    playerImageFade.classList.remove("active");
+
+    currentPlayerImageIndex = nextIndex;
+  }, 700); // mesmo tempo do CSS
+}
+function startPlayerImageCycle() {
+  if (playerImageInterval) return;
+
+  playerImageInterval = setInterval(() => {
+    switchPlayerImage();
+  }, 5000); // troca a cada 5 segundos
+}
+
+startPlayerImageCycle();
+
+
+if (enemyBox && playersBox) {
+
+enemyBox.addEventListener("click", () => {
+  if (!requireMaster("mudar o turno")) return;
+
+  turnRef.update({
+    current: "enemy",
+    at: Date.now()
+  });
+});
+enemyBox.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+
+  if (!requireMaster("abrir o menu do inimigo")) return;
+
+  enemyMenu.classList.toggle("hidden");
+});
+
+document.addEventListener("click", (e) => {
+  if (
+    enemyMenu &&
+    !enemyMenu.contains(e.target) &&
+    !enemyBox.contains(e.target)
+  ) {
+    enemyMenu.classList.add("hidden");
+  }
+});
+enemyMenu.addEventListener("click", (e) => {
+  e.stopPropagation();
+
+  const option = e.target.closest(".enemy-option");
+  if (!option) return;
+
+  if (!requireMaster("mudar o inimigo")) return;
+
+  turnRef.update({
+    enemyImage: option.dataset.image,
+    at: Date.now()
+  });
+
+  enemyMenu.classList.add("hidden");
+});
+
+
+
+playersBox.addEventListener("click", () => {
+  if (!requireMaster("mudar o turno")) return;
+
+  turnRef.update({
+    current: "player",
+    at: Date.now()
+  });
+});
+enemyMenu.addEventListener("click", (e) => {
+  e.stopPropagation();
+
+  const option = e.target.closest(".enemy-option");
+  if (!option) return;
+
+  if (!requireMaster("mudar o inimigo")) return;
+
+  turnRef.update({
+    enemyImage: option.dataset.image,
+    at: Date.now()
+  });
+
+  enemyMenu.classList.add("hidden");
+});
+
+turnRef.on("value", snap => {
+  const data = snap.val();
+  if (!data) return;
+
+  // ===== ESTADO =====
+  enemyBox.classList.toggle("active", data.current === "enemy");
+  enemyBox.classList.toggle("inactive", data.current !== "enemy");
+
+  playersBox.classList.toggle("active", data.current === "player");
+  playersBox.classList.toggle("inactive", data.current !== "player");
+
+  // ===== IMAGEM INIMIGO =====
+  if (data.enemyImage) {
+    const img = enemyBox.querySelector("img");
+    img.src = `assets/turns/enemies/${data.enemyImage}`;
+  }
+});
+}
+
+
+
 const npcMasterPanel = document.getElementById("npc-master-panel");
 
 if (npcMasterPanel) {
@@ -721,5 +999,3 @@ npcsRef.once("value", snap => {
     }
   });
 });
-
-
