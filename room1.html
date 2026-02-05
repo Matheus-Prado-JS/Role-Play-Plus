@@ -261,69 +261,291 @@
   <div class="sheet-block">
     <h4>🔋 Recursos</h4>
 
-    <div class="sheet-row"><span>PV</span><strong>0</strong></div>
-    <div class="sheet-row"><span>PM</span><strong>0</strong></div>
-    <div class="sheet-row"><span>PVg</span><strong>0</strong></div>
-    <div class="sheet-row"><span>PP</span><strong>0</strong></div>
+    <div class="sheet-row">
+    <span>PV</span>
+    <input 
+      type="number"
+      class="sheet-value"
+      data-section="recursos"
+      data-field="pv"
+      >
+    </div>
+    <div class="sheet-row">
+    <span>PM</span>
+    <input 
+      type="number"
+      class="sheet-value"
+      data-section="recursos"
+      data-field="pm"
+      >
+    </div>
+    <div class="sheet-row">
+    <span>PVg</span>
+    <input 
+      type="number"
+      class="sheet-value"
+      data-section="recursos"
+      data-field="pvg"
+      >
+    </div>
+    <div class="sheet-row">
+    <span>PP</span>
+    <input 
+      type="number"
+      class="sheet-value"
+      data-section="recursos"
+      data-field="pp"
+      >
+    </div>
   </div>
 
   <!-- 🛡️ DEFESAS -->
-  <div class="sheet-block">
-    <h4>🛡️ Sistemas de Defesa</h4>
+<div class="sheet-block">
+  <h4>🛡️ Sistemas de Defesa</h4>
 
-    <div class="sheet-row"><span>Defesa Física</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Defesa Mágica</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Esquiva</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Contra-Ataque</span><strong>0</strong></div>
+  <div class="sheet-row">
+    <span>Defesa Física</span>
+    <input type="number" class="sheet-value" data-section="defesas" data-field="defesa_fisica">
   </div>
+
+  <div class="sheet-row">
+    <span>Defesa Mágica</span>
+    <input type="number" class="sheet-value" data-section="defesas" data-field="defesa_magica">
+  </div>
+
+  <div class="sheet-row">
+    <span>Esquiva</span>
+    <input type="number" class="sheet-value" data-section="defesas" data-field="esquiva">
+  </div>
+
+  <div class="sheet-row">
+    <span>Contra-Ataque</span>
+    <input type="number" class="sheet-value" data-section="defesas" data-field="contra_ataque">
+  </div>
+</div>
+
 
   <!-- 📊 ATRIBUTOS -->
-  <div class="sheet-block">
-    <h4>📊 Atributos</h4>
+<div class="sheet-block">
+  <h4>📊 Atributos</h4>
 
-    <div class="sheet-row"><span>Força</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Agilidade</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Solar</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Vigor</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Vitalidade</span><strong>0</strong></div>
+  <div class="sheet-row">
+    <span>Força</span>
+    <input type="number" class="sheet-value" data-section="atributos" data-field="forca">
   </div>
+
+  <div class="sheet-row">
+    <span>Agilidade</span>
+    <input type="number" class="sheet-value" data-section="atributos" data-field="agilidade">
+  </div>
+
+  <div class="sheet-row">
+    <span>Solar</span>
+    <input type="number" class="sheet-value" data-section="atributos" data-field="solar">
+  </div>
+
+  <div class="sheet-row">
+    <span>Vigor</span>
+    <input type="number" class="sheet-value" data-section="atributos" data-field="vigor">
+  </div>
+
+  <div class="sheet-row">
+    <span>Vitalidade</span>
+    <input type="number" class="sheet-value" data-section="atributos" data-field="vitalidade">
+  </div>
+</div>
+
 
   <!-- 🎓 TREINAMENTOS -->
   <div class="sheet-block">
     <h4>🎓 Treinamentos</h4>
 
-    <div class="sheet-sub">
-      <h5>⚔️ Combatentes</h5>
-      <div class="sheet-row"><span>Luta</span><strong>0</strong></div>
-      <div class="sheet-row"><span>Reflexo</span><strong>0</strong></div>
-      <div class="sheet-row"><span>Mira</span><strong>0</strong></div>
-      <div class="sheet-row"><span>Postura</span><strong>0</strong></div>
-    </div>
+<div class="sheet-sub">
+  <h5>⚔️ Combatentes</h5>
 
-    <div class="sheet-sub">
-      <h5>🔆 Mágicos</h5>
-      <div class="sheet-row"><span>Solar</span><strong>0</strong></div>
-      <div class="sheet-row"><span>Fé</span><strong>0</strong></div>
-      <div class="sheet-row"><span>Avanço</span><strong>0</strong></div>
-      <div class="sheet-row"><span>Piromancia</span><strong>0</strong></div>
-    </div>
-
-    <div class="sheet-sub">
-      <h5>🧭 Explorador</h5>
-      <div class="sheet-row"><span>Investigação</span><strong>0</strong></div>
-      <div class="sheet-row"><span>Intuição</span><strong>0</strong></div>
-      <div class="sheet-row"><span>Carisma</span><strong>0</strong></div>
-      <div class="sheet-row"><span>Percepção</span><strong>0</strong></div>
-    </div>
-
-    <div class="sheet-sub">
-      <h5>🏕️ Sobreviventes</h5>
-      <div class="sheet-row"><span>Foco</span><strong>0</strong></div>
-      <div class="sheet-row"><span>Cura</span><strong>0</strong></div>
-      <div class="sheet-row"><span>Resiliência</span><strong>0</strong></div>
-      <div class="sheet-row"><span>Adaptação</span><strong>0</strong></div>
-    </div>
+  <div class="sheet-row">
+    <span>Luta</span>
+    <input type="number" class="sheet-value" data-section="combatentes" data-field="luta">
   </div>
+
+  <div class="sheet-row">
+    <span>Reflexo</span>
+    <input type="number" class="sheet-value" data-section="combatentes" data-field="reflexo">
+  </div>
+
+  <div class="sheet-row">
+    <span>Mira</span>
+    <input type="number" class="sheet-value" data-section="combatentes" data-field="mira">
+  </div>
+
+  <div class="sheet-row">
+    <span>Postura</span>
+    <input type="number" class="sheet-value" data-section="combatentes" data-field="postura">
+  </div>
+</div>
+
+
+<div class="sheet-sub">
+  <h5>🔆 Mágicos</h5>
+
+  <div class="sheet-row">
+    <span>Solar</span>
+    <input type="number" class="sheet-value" data-section="magicos" data-field="solar">
+  </div>
+
+  <div class="sheet-row">
+    <span>Fé</span>
+    <input type="number" class="sheet-value" data-section="magicos" data-field="fe">
+  </div>
+
+  <div class="sheet-row">
+    <span>Avanço</span>
+    <input type="number" class="sheet-value" data-section="magicos" data-field="avanco">
+  </div>
+
+  <div class="sheet-row">
+    <span>Piromancia</span>
+    <input type="number" class="sheet-value" data-section="magicos" data-field="piromancia">
+  </div>
+</div>
+
+
+<div class="sheet-sub">
+  <h5>🧭 Explorador</h5>
+
+  <div class="sheet-row">
+    <span>Investigação</span>
+    <input type="number" class="sheet-value" data-section="explorador" data-field="investigacao">
+  </div>
+
+  <div class="sheet-row">
+    <span>Intuição</span>
+    <input type="number" class="sheet-value" data-section="explorador" data-field="intuicao">
+  </div>
+
+  <div class="sheet-row">
+    <span>Carisma</span>
+    <input type="number" class="sheet-value" data-section="explorador" data-field="carisma">
+  </div>
+
+  <div class="sheet-row">
+    <span>Percepção</span>
+    <input type="number" class="sheet-value" data-section="explorador" data-field="percepcao">
+  </div>
+</div>
+
+<div class="sheet-sub">
+  <h5>🏕️ Sobreviventes</h5>
+
+  <div class="sheet-row">
+    <span>Foco</span>
+    <input type="number" class="sheet-value" data-section="sobreviventes" data-field="foco">
+  </div>
+
+  <div class="sheet-row">
+    <span>Cura</span>
+    <input type="number" class="sheet-value" data-section="sobreviventes" data-field="cura">
+  </div>
+
+  <div class="sheet-row">
+    <span>Resiliência</span>
+    <input type="number" class="sheet-value" data-section="sobreviventes" data-field="resiliencia">
+  </div>
+
+  <div class="sheet-row">
+    <span>Adaptação</span>
+    <input type="number" class="sheet-value" data-section="sobreviventes" data-field="adaptacao">
+  </div>
+</div>
+<!-- ⚔️ ATAQUES -->
+<div class="sheet-block sheet-attacks" data-section="attacks">
+  <h4>⚔️ Ataques</h4>
+
+  <!-- Lista de ataques (JS vai preencher aqui) -->
+  <div class="attack-list">
+    <!-- ataques renderizados dinamicamente -->
+  </div>
+
+<!-- mensagem de vazio -->
+  <div class="attack-empty hidden">
+    Nenhum ataque cadastrado
+  </div>
+
+  <!-- botão SEMPRE visível -->
+  <button class="attack-add-btn">
+    + Adicionar ataque
+  </button>
+
+  <!-- Formulário de novo ataque -->
+  <div class="attack-form hidden">
+    <input
+      type="text"
+      class="attack-input"
+      placeholder="Nome do ataque"
+      data-field="name"
+    >
+
+    <input
+      type="text"
+      class="attack-input"
+      placeholder="Dano / efeito (ex: 1d8 + Sangramento)"
+      data-field="damage"
+    >
+
+    <button class="attack-save-btn">
+      Salvar
+    </button>
+  </div>
+</div>
+<!-- ☠️ HABILIDADES -->
+<div class="sheet-block sheet-skills" data-section="skills">
+  <h4>☠️ Habilidades</h4>
+
+  <!-- Lista de habilidades -->
+  <div class="skill-list">
+    <!-- habilidades renderizadas dinamicamente -->
+  </div>
+
+  <!-- mensagem de vazio -->
+  <div class="skill-empty hidden">
+    Nenhuma habilidade cadastrada
+  </div>
+
+  <!-- botão SEMPRE visível -->
+  <button class="skill-add-btn">
+    + Adicionar habilidade
+  </button>
+
+  <!-- Formulário de nova habilidade -->
+  <div class="skill-form hidden">
+    <input
+      type="text"
+      class="skill-input"
+      placeholder="Nome da habilidade"
+      data-field="name"
+    >
+
+    <input
+      type="text"
+      class="skill-input"
+      placeholder="Efeito curto (ex: 1d8 + Sangramento)"
+      data-field="effect"
+    >
+
+    <textarea
+      class="skill-textarea"
+      placeholder="Descrição detalhada da habilidade..."
+      data-field="description"
+      rows="3"
+    ></textarea>
+
+    <button class="skill-save-btn">
+      Salvar
+    </button>
+  </div>
+</div>
+
+</div>
 
 </div>
 
@@ -549,57 +771,189 @@
   <div class="enemy-type">Criatura • Médio • Hostil</div>
 
   <!-- ❤️ RECURSOS -->
-  <div class="sheet-block">
-    <h4>❤️ Recursos</h4>
+<div class="sheet-block">
+  <h4>❤️ Recursos</h4>
 
-    <div class="sheet-row"><span>PV</span><strong>0</strong></div>
-    <div class="sheet-row"><span>PM</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Energia</span><strong>0</strong></div>
+  <div class="sheet-row">
+    <span>PV</span>
+    <input type="number" class="sheet-value"
+      data-section="recursos"
+      data-field="pv">
   </div>
+
+  <div class="sheet-row">
+    <span>PM</span>
+    <input type="number" class="sheet-value"
+      data-section="recursos"
+      data-field="pm">
+  </div>
+
+  <div class="sheet-row">
+    <span>Energia</span>
+    <input type="number" class="sheet-value"
+      data-section="recursos"
+      data-field="energia">
+  </div>
+</div>
+
 
   <!-- 🛡️ DEFESAS -->
-  <div class="sheet-block">
-    <h4>🛡️ Defesas</h4>
+<div class="sheet-block">
+  <h4>🛡️ Defesas</h4>
 
-    <div class="sheet-row"><span>Defesa Física</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Defesa Mágica</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Resistência</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Imunidades</span><strong>—</strong></div>
+  <div class="sheet-row">
+    <span>Defesa Física</span>
+    <input type="number" class="sheet-value"
+      data-section="defesas"
+      data-field="defesa_fisica">
   </div>
+
+  <div class="sheet-row">
+    <span>Defesa Mágica</span>
+    <input type="number" class="sheet-value"
+      data-section="defesas"
+      data-field="defesa_magica">
+  </div>
+
+  <div class="sheet-row">
+    <span>Resistência</span>
+    <input type="number" class="sheet-value"
+      data-section="defesas"
+      data-field="resistencia">
+  </div>
+
+  <div class="sheet-row">
+    <span>Imunidades</span>
+    <input type="text" class="sheet-value"
+      data-section="defesas"
+      data-field="imunidades">
+  </div>
+</div>
+
 
   <!-- 📊 ATRIBUTOS BASE -->
-  <div class="sheet-block">
-    <h4>📊 Atributos</h4>
+<div class="sheet-block">
+  <h4>📊 Atributos</h4>
 
-    <div class="sheet-row"><span>Força</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Agilidade</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Vitalidade</span><strong>0</strong></div>
-    <div class="sheet-row"><span>Inteligência</span><strong>0</strong></div>
+  <div class="sheet-row">
+    <span>Força</span>
+    <input type="number" class="sheet-value"
+      data-section="atributos"
+      data-field="forca">
   </div>
 
-  <!-- ⚔️ ATAQUES -->
-  <div class="sheet-block">
-    <h4>⚔️ Ataques</h4>
-
-    <div class="enemy-attack">
-      <strong>Garra</strong>
-      <span>Dano: 1d8 + 3</span>
-    </div>
-
-    <div class="enemy-attack">
-      <strong>Mordida</strong>
-      <span>Dano: 1d10 + Sangramento</span>
-    </div>
+  <div class="sheet-row">
+    <span>Agilidade</span>
+    <input type="number" class="sheet-value"
+      data-section="atributos"
+      data-field="agilidade">
   </div>
 
-  <!-- ☠️ HABILIDADES -->
-  <div class="sheet-block">
-    <h4>☠️ Habilidades</h4>
-
-    <div class="enemy-skill">Presença Aterradora</div>
-    <div class="enemy-skill">Ataque em Área</div>
-    <div class="enemy-skill">Regeneração Sombria</div>
+  <div class="sheet-row">
+    <span>Vitalidade</span>
+    <input type="number" class="sheet-value"
+      data-section="atributos"
+      data-field="vitalidade">
   </div>
+
+  <div class="sheet-row">
+    <span>Inteligência</span>
+    <input type="number" class="sheet-value"
+      data-section="atributos"
+      data-field="inteligencia">
+  </div>
+</div>
+
+
+<!-- ⚔️ ATAQUES -->
+<div class="sheet-block sheet-attacks" data-section="attacks">
+  <h4>⚔️ Ataques</h4>
+
+  <!-- Lista de ataques (JS vai preencher aqui) -->
+  <div class="attack-list">
+    <!-- ataques renderizados dinamicamente -->
+  </div>
+
+<!-- mensagem de vazio -->
+  <div class="attack-empty hidden">
+    Nenhum ataque cadastrado
+  </div>
+
+  <!-- botão SEMPRE visível -->
+  <button class="attack-add-btn">
+    + Adicionar ataque
+  </button>
+
+  <!-- Formulário de novo ataque -->
+  <div class="attack-form hidden">
+    <input
+      type="text"
+      class="attack-input"
+      placeholder="Nome do ataque"
+      data-field="name"
+    >
+
+    <input
+      type="text"
+      class="attack-input"
+      placeholder="Dano / efeito (ex: 1d8 + Sangramento)"
+      data-field="damage"
+    >
+
+    <button class="attack-save-btn">
+      Salvar
+    </button>
+  </div>
+</div>
+
+
+<!-- ☠️ HABILIDADES -->
+<div class="sheet-block sheet-skills" data-section="skills">
+  <h4>☠️ Habilidades</h4>
+
+  <!-- Lista de habilidades -->
+  <div class="skill-list">
+    <!-- habilidades renderizadas dinamicamente -->
+  </div>
+
+  <!-- mensagem de vazio -->
+  <div class="skill-empty hidden">
+    Nenhuma habilidade cadastrada
+  </div>
+
+  <!-- botão SEMPRE visível -->
+  <button class="skill-add-btn">
+    + Adicionar habilidade
+  </button>
+
+  <!-- Formulário de nova habilidade -->
+  <div class="skill-form hidden">
+    <input
+      type="text"
+      class="skill-input"
+      placeholder="Nome da habilidade"
+      data-field="name"
+    >
+
+    <input
+      type="text"
+      class="skill-input"
+      placeholder="Efeito curto (ex: 1d8 + Sangramento)"
+      data-field="effect"
+    >
+
+    <textarea
+      class="skill-textarea"
+      placeholder="Descrição detalhada da habilidade..."
+      data-field="description"
+      rows="3"
+    ></textarea>
+
+    <button class="skill-save-btn">
+      Salvar
+    </button>
+  </div>
+</div>
 
   <!-- 📝 NOTAS DO MESTRE -->
   <div class="sheet-block">

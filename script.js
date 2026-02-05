@@ -449,6 +449,13 @@ function requireMaster(actionName = "essa ação") {
 const enemyBox = document.getElementById("turn-enemy");
 const playersBox = document.getElementById("turn-player");
 const enemyMenu = document.getElementById("enemy-menu");
+
+let currentSheet = {
+  type: null,   // "player" | "enemy"
+  id: null      // aurelion | varok | etc
+};
+let editingAttackId = null; // para controlar edição de ataques
+
 // =========================
 // FICHAS — PLAYER & MESTRE
 // =========================
@@ -484,6 +491,20 @@ if (playerBtn && playerSelector && playerSheet) {
 
   playerSelector.querySelectorAll(".sheet-item").forEach(item => {
     item.addEventListener("click", () => {
+      const sheetId = item.dataset.sheet;
+
+      currentSheet.type = "player";
+      currentSheet.id = sheetId;
+      document.querySelectorAll(".sheet-value").forEach(i => i.value = "");
+      const attackList = document.querySelector(".attack-list");
+      if (attackList) attackList.innerHTML = "";
+      const skillList = document.querySelector(".skill-list");
+      if (skillList) skillList.innerHTML = "";
+      loadSheetData("player", sheetId);
+      listenSheetRealtime("player", sheetId);
+      listenAttacksRealtime();
+      listenSkillsRealtime();
+
       const name = item.querySelector(".sheet-name").innerText;
 
       setActiveItem(playerSelector, item);
@@ -512,6 +533,19 @@ if (masterBtn && enemySelector && enemySheet) {
   enemySelector.querySelectorAll(".sheet-item").forEach(item => {
     item.addEventListener("click", () => {
       if (!requireMaster("selecionar criaturas")) return;
+      const sheetId = item.dataset.sheet;
+
+      currentSheet.type = "enemy";
+      currentSheet.id = sheetId;
+      document.querySelectorAll(".sheet-value").forEach(i => i.value = "");
+      const attackList = document.querySelector(".attack-list");
+      if (attackList) attackList.innerHTML = "";
+      const skillList = document.querySelector(".skill-list");
+      if (skillList) skillList.innerHTML = "";
+      loadSheetData("enemy", sheetId);
+      listenSheetRealtime("enemy", sheetId);
+      listenAttacksRealtime();
+      listenSkillsRealtime();
 
       const name = item.querySelector(".sheet-name").innerText;
 
@@ -579,6 +613,497 @@ masterBtn.addEventListener("click", (e) => {
 
   closeAllSelectors();
   enemySelector.classList.toggle("hidden");
+});
+document.addEventListener("input", (e) => {
+  const input = e.target;
+
+  if (!input.classList.contains("sheet-value")) return;
+  if (!currentSheet.type || !currentSheet.id) return;
+
+  const section = input.dataset.section;
+  const field = input.dataset.field;
+  const value = input.type === "number"
+    ? Number(input.value)
+    : input.value;
+
+  let ref;
+
+  if (currentSheet.type === "player") {
+    ref = playersRef
+      .child(currentSheet.id)
+      .child(section)
+      .child(field);
+  } else if (currentSheet.type === "enemy") {
+    ref = npcsRef
+      .child(currentSheet.id)
+      .child(section)
+      .child(field);
+  }
+
+  ref.set(value);
+});
+function loadSheetData(type, id) {
+  const ref = type === "player"
+    ? playersRef.child(id)
+    : npcsRef.child(id);
+
+ref.once("value", snapshot => {
+  const data = snapshot.val();
+  if (!data) return;
+
+  // 1️⃣ Preenche os inputs normais
+  document.querySelectorAll(".sheet-value").forEach(input => {
+    const section = input.dataset.section;
+    const field = input.dataset.field;
+
+    if (data[section] && data[section][field] !== undefined) {
+      input.value = data[section][field];
+    } else {
+      input.value = "";
+    }
+  });
+
+  // 2️⃣ Renderiza ataques UMA ÚNICA VEZ
+  if (data.attacks) {
+    renderAttacks(data.attacks);
+  } else {
+    const list = document.querySelector(".attack-list");
+    if (list) list.innerHTML = "";
+  }
+    // 3️⃣ Renderiza habilidades UMA ÚNICA VEZ
+  if (data.skills) {
+    renderSkills(data.skills);
+  } else {
+    const list = document.querySelector(".skill-list");
+    if (list) list.innerHTML = "";
+  }
+
+});
+
+}
+
+function listenSheetRealtime(type, id) {
+  const ref = type === "player"
+    ? playersRef.child(id)
+    : npcsRef.child(id);
+
+  ref.off("value"); // 👈 remove só o value da ficha
+
+  ref.on("value", snapshot => {
+    const data = snapshot.val();
+    if (!data) return;
+
+    document.querySelectorAll(".sheet-value").forEach(input => {
+      const section = input.dataset.section;
+      const field = input.dataset.field;
+
+      if (data[section] && data[section][field] !== undefined) {
+        if (document.activeElement !== input) {
+          input.value = data[section][field];
+        }
+      }
+    });
+  });
+}
+// =========================
+// HABILIDADES — PLAYER & ENEMY
+// =========================
+
+function getSkillsRef() {
+  if (!currentSheet.type || !currentSheet.id) return null;
+
+  return currentSheet.type === "player"
+    ? playersRef.child(currentSheet.id).child("skills")
+    : npcsRef.child(currentSheet.id).child("skills");
+}
+function listenSkillsRealtime() {
+  const ref = getSkillsRef();
+  if (!ref) return;
+
+  ref.off();
+
+  // garante que o nó exista
+  ref.once("value", snap => {
+    if (!snap.exists()) {
+      ref.set({});
+    }
+  });
+
+  ref.on("value", snapshot => {
+    renderSkills(snapshot.val());
+  });
+}
+function getCurrentSkillList() {
+  if (currentSheet.type === "player") {
+    return document
+      .getElementById("sheet-player-content")
+      ?.querySelector(".skill-list");
+  }
+
+  if (currentSheet.type === "enemy") {
+    return document
+      .getElementById("sheet-enemy-content")
+      ?.querySelector(".skill-list");
+  }
+
+  return null;
+}
+function renderSkills(data) {
+  const list = getCurrentSkillList();
+  if (!list) return;
+
+  list.innerHTML = "";
+
+  const block = list.closest(".sheet-skills");
+  const empty = block.querySelector(".skill-empty");
+
+  if (!data) {
+    empty.classList.remove("hidden");
+    return;
+  }
+
+  Object.entries(data).forEach(([id, skill]) => {
+    const div = document.createElement("div");
+    div.className = "skill-item";
+    div.dataset.id = id;
+    div.setAttribute("draggable", "true");
+
+    div.innerHTML = `
+      <div class="skill-header">
+        <div>
+          <strong>${skill.name}</strong>
+          <span>${skill.effect}</span>
+        </div>
+
+        <div class="skill-actions">
+          <button class="skill-up">⬆️</button>
+          <button class="skill-down">⬇️</button>
+          <button class="skill-edit">✏️</button>
+          <button class="skill-delete">🗑️</button>
+        </div>
+      </div>
+
+      <div class="skill-description hidden">
+        ${skill.description}
+      </div>
+    `;
+
+    list.appendChild(div);
+  });
+
+  empty.classList.add("hidden");
+}
+document.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("skill-delete")) return;
+
+  if (!requireMaster("deletar habilidades")) return;
+
+  const item = e.target.closest(".skill-item");
+  if (!item) return;
+
+  const skillId = item.dataset.id;
+  const ref = getSkillsRef();
+  if (!ref) return;
+
+  ref.child(skillId).remove();
+});
+document.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("skill-edit")) return;
+
+  if (!requireMaster("editar habilidades")) return;
+
+  const item = e.target.closest(".skill-item");
+  const block = item.closest(".sheet-skills");
+
+  editingSkillId = item.dataset.id;
+
+  const name = item.querySelector("strong").innerText;
+  const effect = item.querySelector("span").innerText;
+  const description = item.querySelector(".skill-description").innerText;
+
+  block.querySelector('[data-field="name"]').value = name;
+  block.querySelector('[data-field="effect"]').value = effect;
+  block.querySelector('[data-field="description"]').value = description;
+
+  block.querySelector(".skill-form").classList.remove("hidden");
+});
+
+document.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("skill-add-btn")) return;
+
+  const block = e.target.closest(".sheet-skills");
+  if (!block) return;
+
+  block.querySelector(".skill-form").classList.remove("hidden");
+});
+let editingSkillId = null;
+document.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("skill-save-btn")) return;
+
+  const block = e.target.closest(".sheet-skills");
+  if (!block) return;
+
+  const name = block.querySelector('[data-field="name"]').value.trim();
+  const effect = block.querySelector('[data-field="effect"]').value.trim();
+  const description = block.querySelector('[data-field="description"]').value.trim();
+
+  if (!name || !effect || !description) return;
+
+  const ref = getSkillsRef();
+  if (!ref) return;
+
+  if (editingSkillId) {
+    ref.child(editingSkillId).set({ name, effect, description });
+    editingSkillId = null;
+  } else {
+    ref.push({ name, effect, description });
+  }
+
+  // reset visual
+  block.querySelectorAll(".skill-input, .skill-textarea")
+    .forEach(i => i.value = "");
+
+  block.querySelector(".skill-form").classList.add("hidden");
+});
+document.addEventListener("click", (e) => {
+  const item = e.target.closest(".skill-item");
+  if (!item) return;
+
+  const desc = item.querySelector(".skill-description");
+  if (!desc) return;
+
+  desc.classList.toggle("hidden");
+});
+document.addEventListener("click", (e) => {
+  if (
+    !e.target.classList.contains("skill-up") &&
+    !e.target.classList.contains("skill-down")
+  ) return;
+
+  if (!requireMaster("ordenar habilidades")) return;
+
+  const item = e.target.closest(".skill-item");
+  if (!item) return;
+
+  const skillId = item.dataset.id;
+  const ref = getSkillsRef();
+  if (!ref) return;
+
+  const delta = e.target.classList.contains("skill-up") ? -1 : 1;
+
+  ref.once("value", snap => {
+    const data = snap.val();
+    if (!data || !data[skillId]) return;
+
+    const currentOrder = data[skillId].order ?? 0;
+    ref.child(skillId).child("order").set(currentOrder + delta);
+  });
+});
+
+
+// =========================
+// ATAQUES — PLAYER & ENEMY
+// =========================
+
+function getAttacksRef() {
+  if (!currentSheet.type || !currentSheet.id) return null;
+
+  return currentSheet.type === "player"
+    ? playersRef.child(currentSheet.id).child("attacks")
+    : npcsRef.child(currentSheet.id).child("attacks");
+}
+function listenAttacksRealtime() {
+  const ref = getAttacksRef();
+  if (!ref) return;
+
+  ref.off();
+
+  // 👇 GARANTE QUE O NÓ EXISTA
+  ref.once("value", snap => {
+    if (!snap.exists()) {
+      ref.set({});
+    }
+  });
+
+  ref.on("value", snapshot => {
+    const data = snapshot.val();
+    renderAttacks(data);
+  });
+}
+
+
+document.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("attack-add-btn")) return;
+
+  const block = e.target.closest(".sheet-attacks");
+  if (!block) return;
+
+  block.querySelector(".attack-form").classList.remove("hidden");
+});
+document.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("attack-save-btn")) return;
+
+  const block = e.target.closest(".sheet-attacks");
+  if (!block) return;
+
+  const nameInput = block.querySelector('[data-field="name"]');
+  const damageInput = block.querySelector('[data-field="damage"]');
+
+  const name = nameInput.value.trim();
+  const damage = damageInput.value.trim();
+
+  if (!name || !damage) return;
+
+  const ref = getAttacksRef();
+if (editingAttackId) {
+  ref.child(editingAttackId).set({ name, damage });
+  editingAttackId = null;
+} else {
+ref.once("value", snap => {
+  const count = snap.exists()
+    ? Object.keys(snap.val()).length
+    : 0;
+
+  ref.push({
+    name,
+    effect,
+    description,
+    order: count
+  });
+});
+
+}
+
+
+  // reset visual
+  nameInput.value = "";
+  damageInput.value = "";
+  block.querySelector(".attack-form").classList.add("hidden");
+  block.querySelector(".attack-empty").classList.remove("hidden");
+});
+function getCurrentAttackList() {
+  if (currentSheet.type === "player") {
+    return document
+      .getElementById("sheet-player-content")
+      ?.querySelector(".attack-list");
+  }
+
+  if (currentSheet.type === "enemy") {
+    return document
+      .getElementById("sheet-enemy-content")
+      ?.querySelector(".attack-list");
+  }
+
+  return null;
+}
+
+function renderAttacks(data) {
+  const list = getCurrentAttackList();
+  if (!list) return;
+
+  list.innerHTML = "";
+
+  if (!data) {
+    list.closest(".sheet-attacks")
+      ?.querySelector(".attack-empty")
+      ?.classList.remove("hidden");
+    return;
+  }
+
+  Object.entries(data)
+    .sort((a, b) => {
+      const orderA = a[1].order ?? 0;
+      const orderB = b[1].order ?? 0;
+      return orderA - orderB;
+    })
+    .forEach(([id, attack]) => {
+      const div = document.createElement("div");
+      div.className = "attack-item";
+      div.dataset.id = id;
+
+      div.innerHTML = `
+        <div class="attack-header">
+          <strong>${attack.name}</strong>
+
+          <div class="attack-actions">
+            <button class="attack-up">⬆️</button>
+            <button class="attack-down">⬇️</button>
+            <button class="attack-edit">✏️</button>
+            <button class="attack-delete">🗑️</button>
+          </div>
+        </div>
+
+        <span>${attack.damage}</span>
+      `;
+
+      list.appendChild(div);
+    });
+
+  list.closest(".sheet-attacks")
+    ?.querySelector(".attack-empty")
+    ?.classList.add("hidden");
+}
+
+document.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("attack-delete")) return;
+
+  if (!requireMaster("deletar ataques")) return;
+
+  const item = e.target.closest(".attack-item");
+  if (!item) return;
+
+  const attackId = item.dataset.id;
+  const ref = getAttacksRef();
+  if (!ref) return;
+
+  ref.child(attackId).remove();
+});
+document.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("attack-edit")) return;
+
+  if (!requireMaster("editar ataques")) return;
+
+  const item = e.target.closest(".attack-item");
+  const block = item.closest(".sheet-attacks");
+
+  editingAttackId = item.dataset.id;
+
+  const name = item.querySelector("strong").innerText;
+  const damage = item.querySelector("span").innerText;
+
+  block.querySelector('[data-field="name"]').value = name;
+  block.querySelector('[data-field="damage"]').value = damage;
+
+  block.querySelector(".attack-empty").classList.add("hidden");
+  block.querySelector(".attack-form").classList.remove("hidden");
+});
+
+document.addEventListener("click", (e) => {
+  if (
+    !e.target.classList.contains("attack-up") &&
+    !e.target.classList.contains("attack-down")
+  ) return;
+
+  if (!requireMaster("ordenar ataques")) return;
+
+  const item = e.target.closest(".attack-item");
+  if (!item) return;
+
+  const attackId = item.dataset.id;
+  const ref = getAttacksRef();
+  if (!ref) return;
+
+  const delta = e.target.classList.contains("attack-up") ? -1 : 1;
+
+  ref.once("value", snap => {
+    const data = snap.val();
+    if (!data || !data[attackId]) return;
+
+    const currentOrder = data[attackId].order ?? 0;
+
+    ref.child(attackId).child("order")
+      .set(currentOrder + delta);
+  });
 });
 
 // =========================
