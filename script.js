@@ -180,6 +180,7 @@ function selectDice(type) {
   counter.innerText = diceSelection[type];
   counter.style.display = "block";
 }
+let diceResultTimeout = null;
 
 function rollAllDice() {
   let allResults = [];
@@ -204,13 +205,28 @@ function rollAllDice() {
   const highest = Math.max(...allResults);
 
   /* RESULTADO LIMPO */
-  document.getElementById("dice-result").innerHTML = `
-    <div>Total: <strong>${total}</strong></div>
-    <div>Maior Dado: <strong>${highest}</strong></div>
-  `;
+const diceResultEl = document.getElementById("dice-result");
+
+diceResultEl.innerHTML = `
+  <div>Total: <strong>${total}</strong></div>
+  <div>Maior Dado: <strong>${highest}</strong></div>
+`;
+
+diceResultEl.classList.add("show");
+
+// limpa timeout anterior (caso role de novo rápido)
+if (diceResultTimeout) {
+  clearTimeout(diceResultTimeout);
+}
+
+// depois de X segundos, some
+diceResultTimeout = setTimeout(() => {
+  diceResultEl.classList.remove("show");
+}, 3500); // ⏱️ tempo em ms (ajuste livre)
+
 
 const roller = window.playerName || "Alguém";
-addLog(`🎲 ${roller} rolou: ${logDetails.join(" | ")} → Total: ${total}`);
+addLog(`🎲 ${roller} rolou: ${allResults.join(", ")}`);
 
 
   resetDice();
@@ -234,6 +250,9 @@ function resetDice() {
     counter.style.display = "none";
   });
 }
+// =========================
+// PLAYLIST
+// =========================
 const playlist = [
   {
     name: "Cidadela de Ouro",
@@ -956,7 +975,7 @@ document.addEventListener("click", (e) => {
 
   const ref = getAttacksRef();
 if (editingAttackId) {
-  ref.child(editingAttackId).set({ name, damage });
+  ref.child(editingAttackId).update({ name, damage });
   editingAttackId = null;
 } else {
 ref.once("value", snap => {
@@ -966,8 +985,7 @@ ref.once("value", snap => {
 
   ref.push({
     name,
-    effect,
-    description,
+    damage,
     order: count
   });
 });
