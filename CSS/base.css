@@ -1,0 +1,32 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Georgia", serif;
+}
+
+/* =========================
+   VARIÁVEIS DE TEMAS
+========================= */
+:root {
+  --gold: #d4af37;
+  --dark-bg: #0b0b0e;
+
+  --solarys-bg: #050b18;
+  --solarys-blue: #3fa9f5;
+  --solarys-silver: #cfd8e3;
+  --solarys-gold: #f5d76e;
+}
+
+/* =========================
+   BODY GERAL
+========================= */
+body {
+  height: 100vh;
+  background-color: var(--dark-bg);
+  transition: background-image 0.8s ease-in-out;
+}
+.hidden {
+  display: none !important;
+}

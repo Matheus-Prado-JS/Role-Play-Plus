@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Solarys | RolePlay+</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="CSS/base.css">
+  <link rel="stylesheet" href="CSS/home.css">
+  <link rel="stylesheet" href="CSS/room.css">
+  <link rel="stylesheet" href="CSS/panels.css">
+  <link rel="stylesheet" href="CSS/modal.css">
+  <link rel="stylesheet" href="CSS/npc.css">
+  <link rel="stylesheet" href="CSS/sheets.css">
+  <link rel="stylesheet" href="CSS/responsive.css">
+
 </head>
 <body class="room">
   <!-- Modal de Nome de Entrada-->
@@ -544,6 +552,53 @@
     </button>
   </div>
 </div>
+<!-- 📝 NOTAS -->
+<div class="sheet-block sheet-notes" data-section="notes">
+  <h4>📝 Notas</h4>
+
+  <!-- Lista de notas -->
+  <div class="notes-list">
+    <!-- notas renderizadas dinamicamente -->
+  </div>
+
+  <!-- mensagem de vazio -->
+  <div class="notes-empty hidden">
+    Nenhuma nota cadastrada
+  </div>
+
+  <!-- botão sempre visível -->
+  <button class="notes-add-btn">
+    + Adicionar nota
+  </button>
+
+  <!-- Formulário -->
+  <div class="notes-form hidden">
+    <input
+      type="text"
+      class="notes-input"
+      placeholder="Título da nota"
+      data-field="title"
+    >
+
+    <input
+      type="text"
+      class="notes-input"
+      placeholder="Resumo curto (ex: Fogem se PV < 20%)"
+      data-field="summary"
+    >
+
+    <textarea
+      class="notes-textarea"
+      placeholder="Descrição detalhada da nota..."
+      data-field="description"
+      rows="3"
+    ></textarea>
+
+    <button class="notes-save-btn">
+      Salvar
+    </button>
+  </div>
+</div>
 
 </div>
 
@@ -964,13 +1019,54 @@
   </div>
 </div>
 
-  <!-- 📝 NOTAS DO MESTRE -->
-  <div class="sheet-block">
-    <h4>📝 Notas</h4>
-    <div class="enemy-notes">
-      Ataca o alvo mais fraco primeiro. Foge se PV &lt; 20%.
-    </div>
+<!-- 📝 NOTAS DO MESTRE -->
+<div class="sheet-block sheet-notes" data-section="notes">
+  <h4>📝 Notas</h4>
+
+  <!-- Lista de notas -->
+  <div class="notes-list">
+    <!-- notas renderizadas dinamicamente -->
   </div>
+
+  <!-- mensagem de vazio -->
+  <div class="notes-empty hidden">
+    Nenhuma nota cadastrada
+  </div>
+
+  <!-- botão sempre visível -->
+  <button class="notes-add-btn">
+    + Adicionar nota
+  </button>
+
+  <!-- Formulário -->
+  <div class="notes-form hidden">
+    <input
+      type="text"
+      class="notes-input"
+      placeholder="Título da nota"
+      data-field="title"
+    >
+
+    <input
+      type="text"
+      class="notes-input"
+      placeholder="Resumo curto (ex: Fogem se PV < 20%)"
+      data-field="summary"
+    >
+
+    <textarea
+      class="notes-textarea"
+      placeholder="Descrição detalhada da nota..."
+      data-field="description"
+      rows="3"
+    ></textarea>
+
+    <button class="notes-save-btn">
+      Salvar
+    </button>
+  </div>
+</div>
+
 
 </div>
 
@@ -1058,7 +1154,16 @@
   firebase.initializeApp(firebaseConfig);
 </script>
 
+<!-- Seus scripts -->
+<script src="Scripts/core.js" defer></script>
+<script src="Scripts/room.js" defer></script>
 
-  <script src="script.js" defer></script>
+<script src="Scripts/players-turn.js" defer></script>
+<script src="Scripts/background-ui.js" defer></script>
+<script src="Scripts/dice-log.js" defer></script>
+<script src="Scripts/music.js" defer></script>
+<script src="Scripts/npc.js" defer></script>
+<script src="Scripts/sheets.js" defer></script>
+
 </body>
 </html>

@@ -1,0 +1,191 @@
+/* =========================
+   NPCs — PAINEL FLUTUANTE
+========================= */
+
+.npc-panel {
+  position: fixed;
+  right: 140px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 230px;
+
+  padding: 12px;
+  border-radius: 12px;
+
+  backdrop-filter: blur(8px);
+  z-index: 60;
+}
+
+.npc-panel.hidden {
+  display: none;
+}
+
+.npc-panel h4 {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+}
+.npc-player {
+  background: rgba(10, 20, 40, 0.85);
+  border: 1px solid rgba(63, 169, 245, 0.35);
+  box-shadow: 0 0 20px rgba(63, 169, 245, 0.35);
+}
+
+.npc-player h4 {
+  color: #cfe9ff;
+  border-bottom: 1px solid rgba(63, 169, 245, 0.25);
+}
+.npc-meta {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+
+.npc-master {
+  background: rgba(10, 20, 40, 0.85);
+  border: 1px solid rgba(140, 80, 255, 0.35);
+  box-shadow: 0 0 20px rgba(140, 80, 255, 0.35);
+}
+
+.npc-master h4 {
+  color: #d6c7ff;
+  border-bottom: 1px solid rgba(140, 80, 255, 0.25);
+}
+.npc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.npc-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+.npc-name {
+  color: #e6f3ff;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Player vê apenas desbloqueados */
+.npc-player .npc-item:hover {
+  background: rgba(63, 169, 245, 0.18);
+}
+
+/* Mestre */
+.npc-master .npc-item:hover {
+  background: rgba(140, 80, 255, 0.18);
+}
+
+.npc-item.locked {
+  opacity: 0.45;
+}
+.npc-toggle {
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.npc-toggle.lock {
+  background: rgba(255, 80, 80, 0.25);
+  color: #ffb3b3;
+}
+
+.npc-toggle.unlock {
+  background: rgba(120, 255, 180, 0.25);
+  color: #baffd8;
+}
+.npc-sheet {
+  position: fixed;
+  right: 390px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  min-width: 370px;
+  max-width: 520px;
+  padding: 14px;
+  color: #e6f3ff; /* cor base global */
+
+  background: rgba(10, 20, 40, 0.9);
+  border: 1px solid rgba(63, 169, 245, 0.35);
+  border-radius: 14px;
+
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(63, 169, 245, 0.35);
+
+  z-index: 65;
+}
+
+.npc-sheet.hidden {
+  display: none;
+}
+
+.npc-sheet h4 {
+  margin-bottom: 10px;
+  color: #e6f3ff;
+}
+.npc-sheet p {
+  color: rgba(230, 243, 255, 0.92);
+  line-height: 1.45;
+}
+.npc-sheet strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.npc-sheet-content p {
+  font-size: 12px;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+.npc-text {
+  padding-left: 12px;
+  padding-right: 4px;
+  white-space: normal;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  overflow-y: auto;
+}
+
+.npc-sheet-layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: stretch;
+}
+
+.npc-portrait {
+  width: 200px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px 0 0 10px;
+  overflow: hidden;
+
+  border-right: 1px solid rgba(63, 169, 245, 0.35);
+}
+
+
+.npc-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
