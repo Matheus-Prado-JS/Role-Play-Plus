@@ -1,0 +1,569 @@
+/* ============================
+   MISSIONS MASTER PANEL
+============================ */
+
+.missions-master-panel {
+  position: absolute;
+  top: -210px;
+  right: 275px;
+
+  width: 340px;
+  max-height: 540px;
+
+  padding: 12px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(255, 80, 80, 0.25);
+
+  background: rgba(12, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.75);
+
+  overflow-y: auto;
+  z-index: 999;
+}
+
+/* Scroll */
+.missions-master-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.missions-master-panel::-webkit-scrollbar-thumb {
+  background: rgba(255, 100, 100, 0.25);
+  border-radius: 10px;
+}
+
+.missions-master-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 100, 100, 0.45);
+}
+
+/* ============================
+   HEADER
+============================ */
+
+.missions-master-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
+  border-bottom: 1px solid rgba(255, 80, 80, 0.18);
+}
+
+.missions-master-header h3 {
+  font-size: 14px;
+  margin: 0;
+  color: rgba(255, 170, 170, 0.95);
+}
+
+.missions-master-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+
+  transition: 0.2s ease;
+}
+
+.missions-master-close:hover {
+  color: rgba(255, 150, 150, 0.95);
+  transform: scale(1.15);
+}
+
+/* ============================
+   LISTA
+============================ */
+
+.missions-master-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Missão */
+.missions-master-item {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 80, 80, 0.18);
+
+  background: rgba(255, 80, 80, 0.06);
+
+  padding: 10px;
+
+  transition: 0.2s ease;
+}
+
+.missions-master-item:hover {
+  border-color: rgba(255, 100, 100, 0.4);
+  background: rgba(255, 80, 80, 0.10);
+}
+
+/* Linha superior */
+.missions-master-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Nome missão */
+.missions-master-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+
+  max-width: 190px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Status */
+.missions-master-status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.missions-master-status.active {
+  border-color: rgba(70, 255, 150, 0.35);
+  background: rgba(70, 255, 150, 0.08);
+  color: rgba(120, 255, 190, 0.95);
+}
+
+.missions-master-status.inactive {
+  border-color: rgba(255, 70, 70, 0.35);
+  background: rgba(255, 70, 70, 0.08);
+  color: rgba(255, 140, 140, 0.95);
+}
+
+.missions-master-status.completed {
+  border-color: rgba(70, 140, 255, 0.35);
+  background: rgba(70, 140, 255, 0.08);
+  color: rgba(140, 190, 255, 0.95);
+}
+
+/* ============================
+   ACTION BUTTONS
+============================ */
+
+.missions-master-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.missions-master-action-btn {
+  flex: 1;
+  padding: 6px 6px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background: rgba(0, 0, 0, 0.35);
+
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.missions-master-action-btn:hover {
+  transform: scale(1.03);
+  border-color: rgba(255, 150, 150, 0.5);
+  color: rgba(255, 180, 180, 0.95);
+}
+
+/* Cores específicas */
+.missions-master-action-btn.activate {
+  border-color: rgba(70, 255, 150, 0.25);
+}
+
+.missions-master-action-btn.deactivate {
+  border-color: rgba(255, 70, 70, 0.25);
+}
+
+.missions-master-action-btn.edit {
+  border-color: rgba(255, 215, 100, 0.25);
+}
+
+.missions-master-action-btn.complete {
+  border-color: rgba(70, 140, 255, 0.25);
+}
+
+/* ============================
+   EMPTY
+============================ */
+
+.missions-master-empty {
+  margin-top: 12px;
+  padding: 12px;
+
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 100, 100, 0.25);
+
+  background: rgba(255, 80, 80, 0.04);
+
+  text-align: center;
+  font-size: 12px;
+
+  color: rgba(255, 150, 150, 0.75);
+}
+
+/* ============================
+   ADD BUTTON
+============================ */
+
+.missions-master-add-btn {
+  width: 100%;
+  margin-top: 12px;
+
+  padding: 10px;
+
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 100, 100, 0.35);
+
+  background: rgba(255, 80, 80, 0.08);
+
+  color: rgba(255, 180, 180, 0.95);
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.missions-master-add-btn:hover {
+  background: rgba(255, 80, 80, 0.14);
+  border-color: rgba(255, 120, 120, 0.55);
+  transform: scale(1.02);
+}
+
+/* ============================
+   FORM
+============================ */
+
+.missions-master-form {
+  margin-top: 12px;
+  padding-top: 12px;
+
+  border-top: 1px solid rgba(255, 80, 80, 0.18);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.missions-master-input,
+.missions-master-textarea {
+  width: 100%;
+  padding: 8px 10px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255, 100, 100, 0.22);
+
+  background: rgba(0, 0, 0, 0.4);
+
+  color: #fff;
+  font-size: 12px;
+}
+
+.missions-master-input::placeholder,
+.missions-master-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.missions-master-input:focus,
+.missions-master-textarea:focus {
+  outline: none;
+  border-color: rgba(255, 140, 140, 0.6);
+}
+
+/* Form actions */
+.missions-master-form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.missions-master-cancel-btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.missions-master-cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.missions-master-save-btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+
+  border: 1px solid rgba(255, 120, 120, 0.45);
+  background: rgba(255, 80, 80, 0.18);
+
+  color: rgba(255, 190, 190, 0.95);
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.missions-master-save-btn:hover {
+  background: rgba(255, 80, 80, 0.28);
+  transform: scale(1.03);
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 600px) {
+  .missions-master-panel {
+    right: 50%;
+    transform: translateX(50%);
+    width: 92%;
+    max-height: 70vh;
+  }
+}
+/* ============================
+   MISSIONS PLAYER PANEL
+============================ */
+
+.missions-player-panel {
+  position: absolute;
+  top: -210px;
+  right: 215px;
+
+  width: 340px;
+  max-height: 540px;
+
+  padding: 12px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(120, 170, 255, 0.25);
+
+  background: rgba(12, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.75);
+
+  overflow-y: auto;
+  z-index: 999;
+}
+
+/* Scroll */
+.missions-player-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.missions-player-panel::-webkit-scrollbar-thumb {
+  background: rgba(120, 170, 255, 0.25);
+  border-radius: 10px;
+}
+
+.missions-player-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 170, 255, 0.45);
+}
+
+/* ============================
+   HEADER
+============================ */
+
+.missions-player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
+  border-bottom: 1px solid rgba(120, 170, 255, 0.18);
+}
+
+.missions-player-header h3 {
+  font-size: 14px;
+  margin: 0;
+  color: rgba(170, 200, 255, 0.95);
+}
+
+.missions-player-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+
+  transition: 0.2s ease;
+}
+
+.missions-player-close:hover {
+  color: rgba(170, 200, 255, 0.95);
+  transform: scale(1.15);
+}
+
+/* ============================
+   LISTA
+============================ */
+
+.missions-player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Missão */
+.missions-player-item {
+  border-radius: 12px;
+  border: 1px solid rgba(120, 170, 255, 0.18);
+
+  background: rgba(120, 170, 255, 0.06);
+
+  padding: 10px;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.missions-player-item:hover {
+  border-color: rgba(120, 170, 255, 0.4);
+  background: rgba(120, 170, 255, 0.10);
+}
+
+/* Linha superior */
+.missions-player-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Nome missão */
+.missions-player-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+
+  max-width: 190px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Status */
+.missions-player-status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Progresso (equivalente ao active) */
+.missions-player-status.progress {
+  border-color: rgba(70, 255, 150, 0.35);
+  background: rgba(70, 255, 150, 0.08);
+  color: rgba(120, 255, 190, 0.95);
+}
+
+/* Concluída */
+.missions-player-status.completed {
+  border-color: rgba(70, 140, 255, 0.35);
+  background: rgba(70, 140, 255, 0.08);
+  color: rgba(140, 190, 255, 0.95);
+}
+
+/* ============================
+   DETAILS EXPAND
+============================ */
+
+.missions-player-details {
+  margin-top: 10px;
+  padding-top: 10px;
+
+  border-top: 1px solid rgba(120, 170, 255, 0.15);
+
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.78);
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  animation: missionsPlayerFadeIn 0.2s ease;
+}
+
+.missions-player-details b {
+  color: rgba(180, 210, 255, 0.95);
+  font-weight: 700;
+}
+
+/* Fade animation */
+@keyframes missionsPlayerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================
+   EMPTY
+============================ */
+
+.missions-player-empty {
+  margin-top: 12px;
+  padding: 12px;
+
+  border-radius: 12px;
+  border: 1px dashed rgba(120, 170, 255, 0.25);
+
+  background: rgba(120, 170, 255, 0.04);
+
+  text-align: center;
+  font-size: 12px;
+
+  color: rgba(170, 200, 255, 0.75);
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 600px) {
+  .missions-player-panel {
+    right: 50%;
+    transform: translateX(50%);
+    width: 92%;
+    max-height: 70vh;
+  }
+}

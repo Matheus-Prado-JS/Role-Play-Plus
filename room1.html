@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="CSS/npc.css">
   <link rel="stylesheet" href="CSS/sheets.css">
   <link rel="stylesheet" href="CSS/responsive.css">
+  <link rel="stylesheet" href="CSS/missions.css">
 
 </head>
 <body class="room">
@@ -604,13 +605,36 @@
 
 </div>
 
-  <button 
-    class="panel-btn player" 
-    data-action="missions"
-    title="Missões"
-  >
-    <img src="assets/icons/Quest-Player.png" alt="Missões">
-  </button>
+<!-- MISSIONS (PLAYER) -->
+<button 
+  class="panel-btn player"
+  data-action="missions-player"
+  title="Missões"
+>
+  <img src="assets/icons/Quest-Player.png" alt="Missões">
+</button>
+
+<!-- PAINEL MISSÕES DO PLAYER -->
+<div id="missions-player-panel" class="missions-player-panel hidden">
+
+  <!-- HEADER -->
+  <div class="missions-player-header">
+    <h3>📜 Missões</h3>
+    <button class="missions-player-close" data-close="missions-player-panel">✖</button>
+  </div>
+
+  <!-- LISTA DE MISSÕES -->
+  <div id="missions-player-list" class="missions-player-list">
+    <!-- Render dinâmico via JS -->
+  </div>
+
+  <!-- EMPTY STATE -->
+  <div id="missions-player-empty" class="missions-player-empty hidden">
+    Nenhuma missão disponível no momento.
+  </div>
+
+</div>
+
 
   <!-- DOCUMENTOS (Player) -->
   <button 
@@ -787,14 +811,109 @@
     <img src="assets/icons/Doc-Master.png" alt="Documentos do Mestre">
   </button>
 
-    <!-- Missions (Mestre) -->
+<!-- MISSIONS (MESTRE) -->
+<button 
+  class="panel-btn master" 
+  data-action="missions-master"
+  title="Missões do Mestre"
+  type="button"
+>
+  <img src="assets/icons/Quest-Master.png" alt="Missões Mestre">
+</button>
+
+<!-- PAINEL MISSÕES DO MESTRE -->
+<div id="missions-master-panel" class="missions-master-panel hidden">
+
+  <!-- HEADER -->
+  <div class="missions-master-header">
+    <h3>👑 Missões do Mestre</h3>
+    <button 
+      class="missions-master-close" 
+      data-close="missions-master-panel"
+      type="button"
+    >✖</button>
+  </div>
+
+  <!-- LISTA DE MISSÕES -->
+  <div id="missions-master-list" class="missions-master-list">
+    <!-- Render dinâmico via JS -->
+  </div>
+
+  <!-- EMPTY -->
+  <div id="missions-master-empty" class="missions-master-empty hidden">
+    Nenhuma missão cadastrada.
+  </div>
+
+  <!-- BOTÃO ADD -->
   <button 
-    class="panel-btn master locked" 
-    data-action="missions-master"
-    title="Missões do Mestre"
+    id="missions-master-add-btn" 
+    class="missions-master-add-btn"
+    type="button"
   >
-    <img src="assets/icons/Quest-Master.png" alt="Missões do Mestre">
+    + Criar Missão
   </button>
+
+  <!-- FORMULÁRIO -->
+  <div id="missions-master-form" class="missions-master-form hidden">
+
+    <input 
+      type="text"
+      class="missions-master-input"
+      placeholder="Nome da missão"
+      data-field="title"
+    >
+
+    <input 
+      type="text"
+      class="missions-master-input"
+      placeholder="Objetivo (ex: Recuperar o artefato)"
+      data-field="objective"
+    >
+
+    <input 
+      type="text"
+      class="missions-master-input"
+      placeholder="Localização (ex: Floresta Negra)"
+      data-field="location"
+    >
+
+    <input 
+      type="text"
+      class="missions-master-input"
+      placeholder="Recompensa (ex: 300 ouro + Item raro)"
+      data-field="reward"
+    >
+
+    <textarea
+      class="missions-master-textarea"
+      placeholder="História / Descrição detalhada..."
+      rows="4"
+      data-field="story"
+    ></textarea>
+
+    <div class="missions-master-form-actions">
+      <button 
+        id="missions-master-cancel-btn" 
+        class="missions-master-cancel-btn"
+        type="button"
+      >
+        Cancelar
+      </button>
+
+      <button 
+        id="missions-master-save-btn" 
+        class="missions-master-save-btn"
+        type="button"
+      >
+        Salvar Missão
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+
   <!-- Fichas (Mestre) -->
   <button 
     class="panel-btn master locked" 
@@ -1164,6 +1283,7 @@
 <script src="Scripts/music.js" defer></script>
 <script src="Scripts/npc.js" defer></script>
 <script src="Scripts/sheets.js" defer></script>
+<script src="Scripts/missions.js" defer></script>
 
 </body>
 </html>
