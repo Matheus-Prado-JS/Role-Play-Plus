@@ -212,7 +212,6 @@
       <li onclick="playMusic(8)">Um novo "Eco"</li>
       <li onclick="playMusic(9)">O Fim?</li>
       <li onclick="playMusic(10)">Um teste de Eccho</li>
-      <li onclick="playMusic(11)">Away</li>
     </ul>
   </li>
   <li class="music-session">
@@ -220,7 +219,14 @@
       ▶ Sessão 3
     </div>
     <ul class="session-tracks hidden">
-      <li onclick="playMusic(12)">Império</li>
+      <li onclick="playMusic(11)">Feridas</li>
+      <li onclick="playMusic(12)">Serenna</li>
+      <li onclick="playMusic(13)">Pesadelo</li>
+      <li onclick="playMusic(14)">Avelorn</li>
+      <li onclick="playMusic(15)">Elaris</li>
+      <li onclick="playMusic(16)">Busca</li>
+      <li onclick="playMusic(17)">Sevrina</li>
+      <li onclick="playMusic(18)">Império</li>
     </ul>
   </li>
   </ul>
@@ -722,82 +728,177 @@
 
 </div>
 
+<!-- BACKGROUND (Mestre) -->
+<button 
+  class="panel-btn master" 
+  data-action="background"
+  title="Plano de Fundo"
+>
+  <img src="assets/icons/Map-Master.png" alt="Background">
+</button>
 
-  <!-- BACKGROUND (Mestre) -->
-  <button 
-    class="panel-btn master" 
-    data-action="background"
-    title="Plano de Fundo"
-  >
-    <img src="assets/icons/Map-Master.png" alt="Background">
-  </button>
-  <!-- SELETOR DE BACKGROUND (MESTRE) -->
+<!-- SELETOR DE BACKGROUND (MESTRE) -->
 <div class="background-selector hidden" id="background-selector">
 
   <h4>Plano de Fundo</h4>
 
-  <ul class="background-options">
-    <li data-bg="Capa.png" class="active">
-      <span class="bg-radio"></span>
-      <span class="bg-name">Capa Padrão</span>
-    </li>
+  <!-- =========================
+       CATEGORIA: LUGARES
+  ========================== -->
+  <div class="bg-category">
 
-    <li data-bg="Cidadela de Lythael.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">Cidadela de Ouro</span>
-    </li>
-        <li data-bg="Salvation.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">Salvation</span>
-    </li>
-        <li data-bg="Julgamento.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">Julgamento</span>
-    </li>
-    <li data-bg="Rebeldes de Metal.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">Rebeldes de Metal</span>
-    </li>
+    <button class="bg-category-title" data-bg-category="lugares">
+      🌍 Lugares
+      <span class="bg-category-arrow">▼</span>
+    </button>
 
-    <li data-bg="General Barok.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">Escudo dos Justos</span>
-    </li>
+    <ul class="background-options bg-category-content" data-bg-content="lugares">
 
-    <li data-bg="Velário Caído.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">Velário Caído</span>
-    </li>
+      <li data-bg="Capa.png" class="active">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Capa Padrão</span>
+      </li>
 
-        <li data-bg="Show de Eddie.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">Show de Eddie</span>
-    </li>
-        <li data-bg="Descontrole.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">Descontrole</span>
-    </li>
-    <li data-bg="Eccho.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">Um novo 'Eco'</span>
-    </li>
-        <li data-bg="O Fim.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">O Fim</span>
-    </li>
-    <li data-bg="O Teste de Eccho.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">O teste de Eccho</span>
-    </li>
-    <li data-bg="Away.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">Away</span>
-    </li>
-    <li data-bg="Império.png">
-      <span class="bg-radio"></span>
-      <span class="bg-name">Império</span>
-    </li>
-  </ul>
+      <li data-bg="Cidadela de Lythael.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Cidadela de Ouro</span>
+      </li>
+
+      <li data-bg="Fazenda de Serenna.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Serenna</span>
+      </li>
+
+      <li data-bg="Campos de Avelorn.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Avelorn</span>
+      </li>
+
+      <li data-bg="Vilarejo de Elaris.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Elaris</span>
+      </li>
+
+    </ul>
+  </div>
+
+
+  <!-- =========================
+       CATEGORIA: PERSONAGENS
+  ========================== -->
+  <div class="bg-category">
+
+    <button class="bg-category-title" data-bg-category="personagens">
+      🧑‍🤝‍🧑 Personagens
+      <span class="bg-category-arrow">▼</span>
+    </button>
+
+    <ul class="background-options bg-category-content hidden" data-bg-content="personagens">
+
+      <li data-bg="Sevrina.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Sevrina</span>
+      </li>
+
+    </ul>
+  </div>
+
+
+  <!-- =========================
+       CATEGORIA: CHEFES
+  ========================== -->
+  <div class="bg-category">
+
+    <button class="bg-category-title" data-bg-category="chefes">
+      👹 Chefes
+      <span class="bg-category-arrow">▼</span>
+    </button>
+
+    <ul class="background-options bg-category-content hidden" data-bg-content="chefes">
+
+      <li data-bg="Rebeldes de Metal.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Rebeldes de Metal</span>
+      </li>
+
+      <li data-bg="O Fim.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">O Fim</span>
+      </li>
+
+    </ul>
+  </div>
+
+
+  <!-- =========================
+       CATEGORIA: FUNDOS
+  ========================== -->
+  <div class="bg-category">
+
+    <button class="bg-category-title" data-bg-category="fundos">
+      🎬 Fundos
+      <span class="bg-category-arrow">▼</span>
+    </button>
+
+    <ul class="background-options bg-category-content hidden" data-bg-content="fundos">
+
+      <li data-bg="Salvation.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Salvation</span>
+      </li>
+
+      <li data-bg="Julgamento.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Julgamento</span>
+      </li>
+
+      <li data-bg="General Barok.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Escudo dos Justos</span>
+      </li>
+
+      <li data-bg="Velário Caído.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Velário Caído</span>
+      </li>
+
+      <li data-bg="Show de Eddie.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Show de Eddie</span>
+      </li>
+
+      <li data-bg="Descontrole.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Descontrole</span>
+      </li>
+
+      <li data-bg="Eccho.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Um novo 'Eco'</span>
+      </li>
+
+      <li data-bg="Feridas.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Feridas</span>
+      </li>
+
+      <li data-bg="Pesadelo.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Pesadelo</span>
+      </li>
+
+      <li data-bg="Busca.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Busca</span>
+      </li>
+
+      <li data-bg="Império.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Império</span>
+      </li>
+
+    </ul>
+  </div>
 
 </div>
 

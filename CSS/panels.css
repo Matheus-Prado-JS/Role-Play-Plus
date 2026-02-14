@@ -722,6 +722,10 @@
 
   padding: 12px;
 
+  max-height: 80vh;
+  overflow-y: auto;
+
+
   backdrop-filter: blur(8px);
   box-shadow:
     0 0 20px rgba(140, 80, 255, 0.35);
@@ -796,6 +800,127 @@
   box-shadow:
     0 0 6px rgba(160, 100, 255, 0.9),
     0 0 12px rgba(160, 100, 255, 0.6);
+}
+/* =========================
+   CATEGORIAS (DROPDOWN)
+========================= */
+
+.bg-category {
+  margin-bottom: 10px;
+}
+
+.bg-category:last-child {
+  margin-bottom: 0;
+}
+
+.bg-category-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(140, 80, 255, 0.12);
+  border: 1px solid rgba(140, 80, 255, 0.22);
+  border-radius: 10px;
+
+  padding: 7px 10px;
+
+  cursor: pointer;
+
+  color: #e8ddff;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+
+  transition: all 0.2s ease;
+}
+
+.bg-category-title:hover {
+  background: rgba(140, 80, 255, 0.22);
+  border-color: rgba(140, 80, 255, 0.35);
+  transform: scale(1.02);
+}
+
+.bg-category-arrow {
+  font-size: 11px;
+  opacity: 0.8;
+  transition: transform 0.25s ease;
+}
+
+/* Quando categoria estiver aberta, seta gira */
+.bg-category-title.open .bg-category-arrow {
+  transform: rotate(180deg);
+}
+
+
+/* =========================
+   CONTEÚDO DO DROPDOWN
+========================= */
+
+.bg-category-content {
+  margin-top: 6px;
+  padding-left: 4px;
+
+  border-left: 1px solid rgba(140, 80, 255, 0.25);
+
+  animation: bgDropdownOpen 0.2s ease;
+}
+
+.bg-category-content.hidden {
+  display: none;
+}
+
+@keyframes bgDropdownOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* =========================
+   AJUSTES NO LIST STYLE
+========================= */
+
+.background-options {
+  margin: 0;
+  padding: 0;
+}
+
+/* Itens dentro das categorias ficam mais "encaixados" */
+.bg-category-content li {
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+/* Hover mais suave e bonito */
+.bg-category-content li:hover {
+  background: rgba(140, 80, 255, 0.18);
+}
+/* =========================
+   SCROLL BACKGROUND PANEL
+========================= */
+
+.background-selector::-webkit-scrollbar {
+  width: 6px;
+}
+
+.background-selector::-webkit-scrollbar-thumb {
+  background: rgba(140, 80, 255, 0.35);
+  border-radius: 10px;
+}
+
+.background-selector::-webkit-scrollbar-thumb:hover {
+  background: rgba(140, 80, 255, 0.55);
+}
+
+.background-selector::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
 
 

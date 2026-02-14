@@ -58,9 +58,39 @@ const playlist = [
     bg: "assets/music/O teste de Eccho.png"
   },
   {
-    name: "Away",
-    file: "assets/music/Away.mp3",
-    bg: "assets/music/Away.png"
+    name: "Feridas",
+    file: "assets/music/Feridas.mp3",
+    bg: "assets/music/Feridas.png"
+  },
+  {
+    name: "Serenna",
+    file: "assets/music/Fazenda de Serenna.mp3",
+    bg: "assets/music/Fazenda de Serenna.png"
+  },
+  {
+    name: "Pesadelo",
+    file: "assets/music/Pesadelo.mp3",
+    bg: "assets/music/Pesadelo.png"
+  },
+  {
+    name: "Avelorn",
+    file: "assets/music/Avelorn.mp3",
+    bg: "assets/music/Avelorn.png"
+  },
+  {
+    name: "Elaris",
+    file: "assets/music/Elaris.mp3",
+    bg: "assets/music/Elaris.png"
+  },
+  {
+    name: "Busca",
+    file: "assets/music/Busca.mp3",
+    bg: "assets/music/Busca.png"
+  },
+  {
+    name: "Sevrina",
+    file: "assets/music/Sevrina.mp3",
+    bg: "assets/music/Sevrina.png"
   },
   {
     name: "Império",
