@@ -97,6 +97,24 @@ const playlist = [
     file: "assets/music/Império.mp3",
     bg: "assets/music/Império.png"
   },
+
+    {
+    name: "A Última Batalha",
+    file: "assets/music/A Última Batalha.mp3",
+    bg: "assets/music/A Última Batalha.png"
+  },
+
+    {
+    name: "A Última Batalha II",
+    file: "assets/music/A Última Batalha Parte II.mp3",
+    bg: "assets/music/A Última Batalha Parte II.png"
+  },
+
+    {
+    name: "A Última Batalha III",
+    file: "assets/music/A Última Batalha Parte III.mp3",
+    bg: "assets/music/A Última Batalha Parte III.png"
+  },
 ];
 
 let currentTrack = 0;
