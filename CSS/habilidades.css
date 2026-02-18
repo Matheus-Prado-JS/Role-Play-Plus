@@ -290,6 +290,7 @@
 
 .skill-tree-map {
   position: relative;
+  overflow: hidden;
   width: 100%;
   height: 100%;
 
@@ -306,13 +307,14 @@
 @keyframes treePopIn {
   from {
     opacity: 0;
-    transform: translateY(8px) scale(0.98);
+    filter: blur(2px);
   }
   to {
     opacity: 1;
-    transform: translateY(0px) scale(1);
+    filter: blur(0px);
   }
 }
+
 
 
 /* =========================
@@ -322,6 +324,11 @@
 
 .skill-node {
   position: absolute;
+
+  top: var(--y);
+  left: var(--x);
+
+  transform: translate(-50%, -50%);
 
   width: 130px;
   height: 58px;
@@ -381,7 +388,7 @@
 
 /* efeito hover */
 .skill-node:hover {
-  transform: translateY(-3px) scale(1.05);
+  transform: translate(-50%, -50%) translateY(-3px) scale(1.05);
 
   border-color: rgba(255, 240, 255, 0.65);
   background: rgba(20, 14, 32, 0.88);
@@ -455,23 +462,21 @@
 
 
 /* =========================
-   POSICIONAMENTO (NOVO LAYOUT)
-   estilo "ramificações horizontais"
+   POSICIONAMENTO (VISUAL BONITO ORIGINAL)
 ========================= */
 
-.skill-tree-map .skill-node:nth-child(1) { top: 40px; left: 50%; transform: translateX(-50%); }
+.skill-tree-map .skill-node[data-id="0"] { --x: 0%; --y: 0%; }
+.skill-tree-map .skill-node[data-id="1"] { --x: 50%; --y: 9%; }
+.skill-tree-map .skill-node[data-id="2"] { --x: 30%; --y: 30%; }
+.skill-tree-map .skill-node[data-id="3"] { --x: 50%; --y: 30%; }
+.skill-tree-map .skill-node[data-id="4"] { --x: 70%; --y: 30%; }
+.skill-tree-map .skill-node[data-id="5"] { --x: 22%; --y: 50%; }
+.skill-tree-map .skill-node[data-id="6"] { --x: 40%; --y: 50%; }
+.skill-tree-map .skill-node[data-id="7"] { --x: 60%; --y: 50%; }
+.skill-tree-map .skill-node[data-id="8"] { --x: 80%; --y: 50%; }
+.skill-tree-map .skill-node[data-id="9"] { --x: 35%; --y: 76%; }
+.skill-tree-map .skill-node[data-id="10"]{ --x: 65%; --y: 76%; }
 
-.skill-tree-map .skill-node:nth-child(2) { top: 140px; left: 18%; }
-.skill-tree-map .skill-node:nth-child(3) { top: 140px; left: 50%; transform: translateX(-50%); }
-.skill-tree-map .skill-node:nth-child(4) { top: 140px; left: 82%; transform: translateX(-100%); }
-
-.skill-tree-map .skill-node:nth-child(5) { top: 280px; left: 12%; }
-.skill-tree-map .skill-node:nth-child(6) { top: 280px; left: 35%; }
-.skill-tree-map .skill-node:nth-child(7) { top: 280px; left: 65%; transform: translateX(-100%); }
-.skill-tree-map .skill-node:nth-child(8) { top: 280px; left: 88%; transform: translateX(-100%); }
-
-.skill-tree-map .skill-node:nth-child(9) { top: 430px; left: 28%; }
-.skill-tree-map .skill-node:nth-child(10){ top: 430px; left: 72%; transform: translateX(-100%); }
 
 
 /* =========================
@@ -515,34 +520,6 @@ body.room {
   }
 }
 
-@media (max-width: 700px) {
-
-  .skill-trees-section {
-    padding: 60px 16px;
-  }
-
-  .skill-node {
-    width: 110px;
-    height: 52px;
-    font-size: 10px;
-  }
-
-  .tree-tab {
-    padding: 8px 14px;
-    font-size: 11px;
-  }
-
-  /* Ajuste layout em telas menores */
-  .skill-tree-map .skill-node:nth-child(2) { left: 10%; }
-  .skill-tree-map .skill-node:nth-child(4) { left: 90%; }
-
-  .skill-tree-map .skill-node:nth-child(5) { left: 6%; }
-  .skill-tree-map .skill-node:nth-child(8) { left: 94%; }
-
-  .skill-tree-map .skill-node:nth-child(9) { left: 20%; }
-  .skill-tree-map .skill-node:nth-child(10){ left: 80%; }
-}
-
 @media (max-width: 520px) {
 
   .skill-tree-ui {
@@ -565,4 +542,199 @@ body.room {
     font-size: 9px;
     border-radius: 12px;
   }
+}
+/* =========================
+   SKILL MODAL (SOLARYS STYLE)
+========================= */
+
+.skill-modal {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 99999;
+}
+
+.skill-modal.hidden {
+  display: none;
+}
+
+/* caixa do modal */
+.skill-modal-box {
+  position: relative;
+
+  width: 420px;
+  max-width: 92%;
+
+  padding: 22px 20px;
+  border-radius: 18px;
+
+  background: rgba(10, 10, 20, 0.92);
+  border: 1px solid rgba(200, 160, 255, 0.25);
+
+  box-shadow:
+    0 0 22px rgba(140, 80, 255, 0.25),
+    0 0 80px rgba(0, 0, 0, 0.85);
+
+  animation: modalPopIn 0.25s ease;
+}
+
+/* glow interno */
+.skill-modal-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  border-radius: 18px;
+
+  box-shadow:
+    inset 0 0 25px rgba(140, 80, 255, 0.12),
+    inset 0 0 50px rgba(0, 0, 0, 0.85);
+
+  pointer-events: none;
+}
+
+/* botão fechar */
+.skill-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(200, 160, 255, 0.18);
+
+  background: rgba(140, 80, 255, 0.08);
+  color: rgba(255, 255, 255, 0.75);
+
+  font-size: 14px;
+  font-weight: 900;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.skill-modal-close:hover {
+  background: rgba(140, 80, 255, 0.22);
+  border-color: rgba(255, 240, 255, 0.55);
+  transform: scale(1.08);
+}
+
+/* título */
+#skill-modal-title {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  margin-bottom: 10px;
+  color: rgba(245, 235, 255, 0.95);
+
+  text-shadow:
+    0 0 12px rgba(140, 80, 255, 0.35),
+    0 0 28px rgba(200, 160, 255, 0.15);
+}
+
+/* descrição */
+#skill-modal-desc {
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+
+  color: rgba(220, 210, 255, 0.78);
+
+  padding: 12px;
+  border-radius: 14px;
+
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(140, 80, 255, 0.15);
+
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.85);
+
+  margin-bottom: 14px;
+}
+
+/* custo */
+.skill-modal-cost {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 14px;
+  border-radius: 14px;
+
+  background: rgba(140, 80, 255, 0.08);
+  border: 1px solid rgba(200, 160, 255, 0.18);
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+
+  color: rgba(240, 230, 255, 0.85);
+}
+
+.skill-modal-cost b {
+  color: rgba(120, 255, 190, 0.9);
+  text-shadow: 0 0 12px rgba(120, 255, 190, 0.25);
+}
+
+/* animação */
+@keyframes modalPopIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+/* =========================
+   LINES CONTAINER
+========================= */
+
+.skill-tree-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  /* MUITO IMPORTANTE */
+  width: 100%;
+  height: 100%;
+}
+
+
+/* linha individual */
+.skill-line {
+  position: absolute;
+
+  height: 2px;
+  background: rgba(200, 160, 255, 0.14);
+
+  border-radius: 999px;
+
+  box-shadow: 0 0 10px rgba(140, 80, 255, 0.12);
+
+  transform-origin: left center;
+
+  opacity: 0.35;
+  transition: 0.25s ease;
+}
+
+/* linha ativa futuramente */
+.skill-line.active {
+  background: rgba(120, 255, 190, 0.35);
+  box-shadow: 0 0 14px rgba(120, 255, 190, 0.25);
+  opacity: 0.9;
 }
