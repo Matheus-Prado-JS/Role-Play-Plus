@@ -4,9 +4,11 @@
 ========================= */
 body.room {
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   background: var(--solarys-bg);
 }
+
 body.room::before {
   content: "";
   position: fixed;
@@ -77,6 +79,15 @@ z-index: -1;
   }
 
 }
+.world-section {
+  min-height: 100vh;
+  height: auto;
+}
+
+.page-scroll {
+  width: 100%;
+  height: auto;
+}
 
 /* =========================
    BACKGROUND CENTRAL - POSIÇÃO GERAL
@@ -90,7 +101,7 @@ z-index: -1;
   left: 50%;           /* centraliza horizontalmente */
   transform: translateX(-50%);
 
-  z-index: 5;
+  z-index: 1;
 
   pointer-events: none; /* não interfere em cliques */
 }

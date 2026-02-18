@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="CSS/sheets.css">
   <link rel="stylesheet" href="CSS/responsive.css">
   <link rel="stylesheet" href="CSS/missions.css">
+  <link rel="stylesheet" href="CSS/habilidades.css">
 
 </head>
 <body class="room">
@@ -31,6 +32,8 @@
     <button id="confirm-name">Entrar</button>
   </div>
 </div>
+<div class="page-scroll">
+  <section class="world-section">
 
 
   <!-- Top bar -->
@@ -191,7 +194,7 @@
 <ul class="music-list" id="music-list">
   <li class="music-session">
     <div class="session-title">
-      ▶ Sessão 1
+      ▶ Capítulo 1: Escudo
     </div>
     <ul class="session-tracks hidden">
       <li onclick="playMusic(0)">Cidadela de Ouro</li>
@@ -203,7 +206,7 @@
   </li>
   <li class="music-session">
     <div class="session-title">
-      ▶ Sessão 2
+      ▶ Capítulo 1: Rock
     </div>
     <ul class="session-tracks hidden">
       <li onclick="playMusic(5)">Velário Caído</li>
@@ -216,17 +219,20 @@
   </li>
   <li class="music-session">
     <div class="session-title">
-      ▶ Sessão 3
+      ▶ Capítulo 1: Império
     </div>
     <ul class="session-tracks hidden">
-      <li onclick="playMusic(11)">Feridas</li>
-      <li onclick="playMusic(12)">Serenna</li>
-      <li onclick="playMusic(13)">Pesadelo</li>
+      <li onclick="playMusic(11)">Pesadelo</li>
+      <li onclick="playMusic(12)">Feridas</li>
+      <li onclick="playMusic(13)">Serenna</li>
       <li onclick="playMusic(14)">Avelorn</li>
       <li onclick="playMusic(15)">Elaris</li>
-      <li onclick="playMusic(16)">Busca</li>
-      <li onclick="playMusic(17)">Sevrina</li>
-      <li onclick="playMusic(18)">Império</li>
+      <li onclick="playMusic(16)">Império de Ouro</li>
+      <li onclick="playMusic(17)">Intuição</li>
+      <li onclick="playMusic(18)">Busca</li>
+      <li onclick="playMusic(19)">Sevrina</li>
+      <li onclick="playMusic(20)">Acertos</li>
+      <li onclick="playMusic(21)">Império</li>
     </ul>
   </li>
 
@@ -235,9 +241,9 @@
       ▶ Sessão Final
     </div>
     <ul class="session-tracks hidden">
-      <li onclick="playMusic(19)">A Última Batalha</li>
-      <li onclick="playMusic(20)">A Última Batalha II</li>
-      <li onclick="playMusic(21)">A Última Batalha III</li>
+      <li onclick="playMusic(22)">A Última Batalha</li>
+      <li onclick="playMusic(23)">A Última Batalha II</li>
+      <li onclick="playMusic(24)">A Última Batalha III</li>
     </ul>
   </li>
   </ul>
@@ -754,12 +760,12 @@
   <h4>Plano de Fundo</h4>
 
   <!-- =========================
-       CATEGORIA: LUGARES
+       Capítulo 1: Escudo
   ========================== -->
   <div class="bg-category">
 
     <button class="bg-category-title" data-bg-category="lugares">
-      🌍 Lugares
+      Capítulo 1: Escudo
       <span class="bg-category-arrow">▼</span>
     </button>
 
@@ -775,100 +781,7 @@
         <span class="bg-name">Cidadela de Ouro</span>
       </li>
 
-      <li data-bg="Fazenda de Serenna.png">
-        <span class="bg-radio"></span>
-        <span class="bg-name">Serenna</span>
-      </li>
-
-      <li data-bg="Campos de Avelorn.png">
-        <span class="bg-radio"></span>
-        <span class="bg-name">Avelorn</span>
-      </li>
-
-      <li data-bg="Vilarejo de Elaris.png">
-        <span class="bg-radio"></span>
-        <span class="bg-name">Elaris</span>
-      </li>
-
-    </ul>
-  </div>
-
-
-  <!-- =========================
-       CATEGORIA: PERSONAGENS
-  ========================== -->
-  <div class="bg-category">
-
-    <button class="bg-category-title" data-bg-category="personagens">
-      🧑‍🤝‍🧑 Personagens
-      <span class="bg-category-arrow">▼</span>
-    </button>
-
-    <ul class="background-options bg-category-content hidden" data-bg-content="personagens">
-
-      <li data-bg="Sevrina.png">
-        <span class="bg-radio"></span>
-        <span class="bg-name">Sevrina</span>
-      </li>
-
-    </ul>
-  </div>
-
-
-  <!-- =========================
-       CATEGORIA: CHEFES
-  ========================== -->
-  <div class="bg-category">
-
-    <button class="bg-category-title" data-bg-category="chefes">
-      👹 Chefes
-      <span class="bg-category-arrow">▼</span>
-    </button>
-
-    <ul class="background-options bg-category-content hidden" data-bg-content="chefes">
-
-      <li data-bg="Rebeldes de Metal.png">
-        <span class="bg-radio"></span>
-        <span class="bg-name">Rebeldes de Metal</span>
-      </li>
-
-      <li data-bg="O Fim.png">
-        <span class="bg-radio"></span>
-        <span class="bg-name">O Fim</span>
-      </li>
-
-      <li data-bg="A Última Batalha.png">
-        <span class="bg-radio"></span>
-        <span class="bg-name">A Última Batalha</span>
-      </li>
-
-            <li data-bg="A Última Batalha 2.png">
-        <span class="bg-radio"></span>
-        <span class="bg-name">A Última Batalha 2</span>
-      </li>
-      
-            <li data-bg="A Última Batalha 3.png">
-        <span class="bg-radio"></span>
-        <span class="bg-name">A Última Batalha 3</span>
-      </li>
-
-    </ul>
-  </div>
-
-
-  <!-- =========================
-       CATEGORIA: FUNDOS
-  ========================== -->
-  <div class="bg-category">
-
-    <button class="bg-category-title" data-bg-category="fundos">
-      🎬 Fundos
-      <span class="bg-category-arrow">▼</span>
-    </button>
-
-    <ul class="background-options bg-category-content hidden" data-bg-content="fundos">
-
-      <li data-bg="Salvation.png">
+            <li data-bg="Salvation.png">
         <span class="bg-radio"></span>
         <span class="bg-name">Salvation</span>
       </li>
@@ -878,10 +791,31 @@
         <span class="bg-name">Julgamento</span>
       </li>
 
+      <li data-bg="Rebeldes de Metal.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Rebeldes de Metal</span>
+      </li>
+
       <li data-bg="General Barok.png">
         <span class="bg-radio"></span>
         <span class="bg-name">Escudo dos Justos</span>
       </li>
+
+    </ul>
+  </div>
+
+
+  <!-- =========================
+       Capítulo 1: Rock
+  ========================== -->
+  <div class="bg-category">
+
+    <button class="bg-category-title" data-bg-category="personagens">
+      Capítulo 1: Rock
+      <span class="bg-category-arrow">▼</span>
+    </button>
+
+    <ul class="background-options bg-category-content hidden" data-bg-content="personagens">
 
       <li data-bg="Velário Caído.png">
         <span class="bg-radio"></span>
@@ -903,14 +837,61 @@
         <span class="bg-name">Um novo 'Eco'</span>
       </li>
 
+      <li data-bg="O Fim.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">O Fim</span>
+      </li>
+
+    </ul>
+  </div>
+
+
+  <!-- =========================
+       Capítulo 1: Império
+  ========================== -->
+  <div class="bg-category">
+
+    <button class="bg-category-title" data-bg-category="chefes">
+      Capítulo 1: Império
+      <span class="bg-category-arrow">▼</span>
+    </button>
+
+    <ul class="background-options bg-category-content hidden" data-bg-content="chefes">
+
+
+      <li data-bg="Pesadelo.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Pesadelo</span>
+      </li>
+
       <li data-bg="Feridas.png">
         <span class="bg-radio"></span>
         <span class="bg-name">Feridas</span>
       </li>
 
-      <li data-bg="Pesadelo.png">
+      <li data-bg="Fazenda de Serenna.png">
         <span class="bg-radio"></span>
-        <span class="bg-name">Pesadelo</span>
+        <span class="bg-name">Serenna</span>
+      </li>
+
+      <li data-bg="Campos de Avelorn.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Avelorn</span>
+      </li>
+
+      <li data-bg="Vilarejo de Elaris.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Elaris</span>
+      </li>
+
+      <li data-bg="Império de Ouro.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Império de Ouro</span>
+      </li>
+
+      <li data-bg="Intuição.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Intuição</span>
       </li>
 
       <li data-bg="Busca.png">
@@ -918,9 +899,51 @@
         <span class="bg-name">Busca</span>
       </li>
 
+      <li data-bg="Sevrina.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Sevrina</span>
+      </li>
+
+      <li data-bg="Acertos.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Acertos</span>
+      </li>
+
       <li data-bg="Império.png">
         <span class="bg-radio"></span>
         <span class="bg-name">Império</span>
+      </li>
+
+    </ul>
+  </div>
+
+
+  <!-- =========================
+       Capítulo Final: Paz ou Guerra?
+  ========================== -->
+  <div class="bg-category">
+
+    <button class="bg-category-title" data-bg-category="fundos">
+      🎬 Fundos
+      <span class="bg-category-arrow">▼</span>
+    </button>
+
+    <ul class="background-options bg-category-content hidden" data-bg-content="fundos">
+
+
+      <li data-bg="A Última Batalha.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">A Última Batalha</span>
+      </li>
+
+      <li data-bg="A Última Batalha 2.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">A Última Batalha 2</span>
+      </li>
+      
+      <li data-bg="A Última Batalha 3.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">A Última Batalha 3</span>
       </li>
 
     </ul>
@@ -1377,10 +1400,109 @@
     </li>
   </ul>
 </div>
-
-
 </div>
+</section>
 
+<section class="tree-section">
+  
+<!-- =========================
+     SKILL TREES SECTION
+========================== -->
+<section id="skill-trees-section" class="skill-trees-section">
+
+  <div class="skill-tree-ui">
+
+    <div class="skill-tree-topbar">
+      <h2>🌳 Árvore de Habilidades</h2>
+      <p>Role para cima para voltar ao mapa.</p>
+    </div>
+
+    <div class="skill-tree-tabs">
+      <button class="tree-tab active" data-tree="passivas">Passivas</button>
+      <button class="tree-tab" data-tree="guerreiro">Guerreiro</button>
+      <button class="tree-tab" data-tree="tanque">Tanque</button>
+      <button class="tree-tab" data-tree="mago">Mago</button>
+      <button class="tree-tab" data-tree="bardo">Bardo</button>
+    </div>
+
+    <div class="skill-tree-display">
+
+      <!-- PASSIVAS -->
+      <div class="skill-tree-map active" id="tree-passivas">
+        <div class="skill-node">Passiva 1</div>
+        <div class="skill-node">Passiva 2</div>
+        <div class="skill-node">Passiva 3</div>
+        <div class="skill-node">Passiva 4</div>
+        <div class="skill-node">Passiva 5</div>
+        <div class="skill-node">Passiva 6</div>
+        <div class="skill-node">Passiva 7</div>
+        <div class="skill-node">Passiva 8</div>
+        <div class="skill-node">Passiva 9</div>
+        <div class="skill-node">Passiva 10</div>
+      </div>
+
+      <!-- GUERREIRO -->
+      <div class="skill-tree-map" id="tree-guerreiro">
+        <div class="skill-node">Habilidade 1</div>
+        <div class="skill-node">Habilidade 2</div>
+        <div class="skill-node">Habilidade 3</div>
+        <div class="skill-node">Habilidade 4</div>
+        <div class="skill-node">Habilidade 5</div>
+        <div class="skill-node">Habilidade 6</div>
+        <div class="skill-node">Habilidade 7</div>
+        <div class="skill-node">Habilidade 8</div>
+        <div class="skill-node">Habilidade 9</div>
+        <div class="skill-node">Habilidade 10</div>
+      </div>
+
+      <!-- TANQUE -->
+      <div class="skill-tree-map" id="tree-tanque">
+        <div class="skill-node">Habilidade 1</div>
+        <div class="skill-node">Habilidade 2</div>
+        <div class="skill-node">Habilidade 3</div>
+        <div class="skill-node">Habilidade 4</div>
+        <div class="skill-node">Habilidade 5</div>
+        <div class="skill-node">Habilidade 6</div>
+        <div class="skill-node">Habilidade 7</div>
+        <div class="skill-node">Habilidade 8</div>
+        <div class="skill-node">Habilidade 9</div>
+        <div class="skill-node">Habilidade 10</div>
+      </div>
+
+      <!-- MAGO -->
+      <div class="skill-tree-map" id="tree-mago">
+        <div class="skill-node">Habilidade 1</div>
+        <div class="skill-node">Habilidade 2</div>
+        <div class="skill-node">Habilidade 3</div>
+        <div class="skill-node">Habilidade 4</div>
+        <div class="skill-node">Habilidade 5</div>
+        <div class="skill-node">Habilidade 6</div>
+        <div class="skill-node">Habilidade 7</div>
+        <div class="skill-node">Habilidade 8</div>
+        <div class="skill-node">Habilidade 9</div>
+        <div class="skill-node">Habilidade 10</div>
+      </div>
+
+      <!-- BARDO -->
+      <div class="skill-tree-map" id="tree-bardo">
+        <div class="skill-node">Habilidade 1</div>
+        <div class="skill-node">Habilidade 2</div>
+        <div class="skill-node">Habilidade 3</div>
+        <div class="skill-node">Habilidade 4</div>
+        <div class="skill-node">Habilidade 5</div>
+        <div class="skill-node">Habilidade 6</div>
+        <div class="skill-node">Habilidade 7</div>
+        <div class="skill-node">Habilidade 8</div>
+        <div class="skill-node">Habilidade 9</div>
+        <div class="skill-node">Habilidade 10</div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+</section>
+</div>
 
 <!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -1411,6 +1533,7 @@
 <script src="Scripts/npc.js" defer></script>
 <script src="Scripts/sheets.js" defer></script>
 <script src="Scripts/missions.js" defer></script>
+<script src="Scripts/habilidades.js" defer></script>
 
 </body>
 </html>

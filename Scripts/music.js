@@ -55,7 +55,12 @@ const playlist = [
   {
     name: "O teste de Eccho",
     file: "assets/music/Um teste de Eccho.mp3",
-    bg: "assets/music/O teste de Eccho.png"
+    bg: "assets/music/O Teste de Eccho.png"
+  },
+  {
+    name: "Pesadelo",
+    file: "assets/music/Pesadelo.mp3",
+    bg: "assets/music/Pesadelo.png"
   },
   {
     name: "Feridas",
@@ -68,11 +73,6 @@ const playlist = [
     bg: "assets/music/Fazenda de Serenna.png"
   },
   {
-    name: "Pesadelo",
-    file: "assets/music/Pesadelo.mp3",
-    bg: "assets/music/Pesadelo.png"
-  },
-  {
     name: "Avelorn",
     file: "assets/music/Avelorn.mp3",
     bg: "assets/music/Avelorn.png"
@@ -81,6 +81,16 @@ const playlist = [
     name: "Elaris",
     file: "assets/music/Elaris.mp3",
     bg: "assets/music/Elaris.png"
+  },
+    {
+    name: "Império de Ouro",
+    file: "assets/music/Império de Ouro.mp3",
+    bg: "assets/music/Império de Ouro.png"
+  },
+    {
+    name: "Intuição",
+    file: "assets/music/Intuição.mp3",
+    bg: "assets/music/Intuição.png"
   },
   {
     name: "Busca",
@@ -91,6 +101,11 @@ const playlist = [
     name: "Sevrina",
     file: "assets/music/Sevrina.mp3",
     bg: "assets/music/Sevrina.png"
+  },
+    {
+    name: "Acertos",
+    file: "assets/music/Acertos.mp3",
+    bg: "assets/music/Acertos.png"
   },
   {
     name: "Império",

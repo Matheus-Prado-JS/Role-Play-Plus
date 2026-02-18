@@ -372,7 +372,7 @@
   gap: 16px;
 
   width: auto;
-  z-index: 50;
+  z-index: 1;
 }
 
 /* garante que a grid não empurre pra lado nenhum */
@@ -405,7 +405,7 @@
   backdrop-filter: blur(6px);
   display: flex;
   flex-direction: column;
-  z-index: 9999;
+  z-index: 5;
 }
 
 /* Header */
@@ -635,7 +635,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;            /* espaço entre botões */
 
-  z-index: 20;
+  z-index: 3;
 }
 .panel-btn {
   /* 👇 TAMANHO DO BOTÃO (CONTROLE PRINCIPAL) */
