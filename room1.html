@@ -52,6 +52,8 @@
   <div class="enemy-option" data-image="General Varok.png">General Varok</div>
   <div class="enemy-option" data-image="Eccho.png">Eccho</div>
   <div class="enemy-option" data-image="Ustanak, Lorde da Escória.png">Ustanak</div>
+  <div class="enemy-option" data-image="Cervo de Loren.png">Cervo de Loren</div>
+  <div class="enemy-option" data-image="Cavaleiro Kael.png">Cavaleiro Kael</div>
 </div>
 </div>
 
@@ -238,12 +240,27 @@
 
     <li class="music-session">
     <div class="session-title">
+      ▶ Capítulo 2: Jornada
+    </div>
+    <ul class="session-tracks hidden">
+      <li onclick="playMusic(22)">Caminho de Loren</li>
+      <li onclick="playMusic(23)">Filhos do Musgo</li>
+      <li onclick="playMusic(24)">Cervo de Loren</li>
+      <li onclick="playMusic(25)">Zhalem</li>
+      <li onclick="playMusic(26)">Tundra de Orphelia</li>
+      <li onclick="playMusic(27)">Ruínas de Orphelia</li>
+      <li onclick="playMusic(28)">Cavaleiro Kael, Portador da Cinza</li>
+    </ul>
+  </li>
+
+    <li class="music-session">
+    <div class="session-title">
       ▶ Sessão Final
     </div>
     <ul class="session-tracks hidden">
-      <li onclick="playMusic(22)">A Última Batalha</li>
-      <li onclick="playMusic(23)">A Última Batalha II</li>
-      <li onclick="playMusic(24)">A Última Batalha III</li>
+      <li onclick="playMusic(29)">A Última Batalha</li>
+      <li onclick="playMusic(30)">A Última Batalha II</li>
+      <li onclick="playMusic(31)">A Última Batalha III</li>
     </ul>
   </li>
   </ul>
@@ -716,6 +733,9 @@
     <li class="npc-item unlocked" data-npc="jax">
       <span class="npc-name">Jax</span>
     </li>
+        <li class="npc-item unlocked" data-npc="serenna">
+      <span class="npc-name">Serenna</span>
+    </li>
   </ul>
 </div>
 
@@ -912,6 +932,57 @@
       <li data-bg="Império.png">
         <span class="bg-radio"></span>
         <span class="bg-name">Império</span>
+      </li>
+
+    </ul>
+  </div>
+
+    <!-- =========================
+       Capítulo 2: Jornada
+  ========================== -->
+  <div class="bg-category">
+
+    <button class="bg-category-title" data-bg-category="chefes">
+      Capítulo 2: Jornada
+      <span class="bg-category-arrow">▼</span>
+    </button>
+
+    <ul class="background-options bg-category-content hidden" data-bg-content="chefes">
+
+
+      <li data-bg="Caminho de Loren.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Caminho de Loren</span>
+      </li>
+
+      <li data-bg="Filhos do Musgo.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Filhos do Musgo</span>
+      </li>
+
+      <li data-bg="Cervo Cego de Loren.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Cervo Cego de Loren</span>
+      </li>
+
+      <li data-bg="Zhalem.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Zhalem</span>
+      </li>
+
+      <li data-bg="Tundra de Orphelia.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Tundra de Orphelia</span>
+      </li>
+
+      <li data-bg="Ruínas de Orphelia.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Ruínas de Orphelia</span>
+      </li>
+
+      <li data-bg="Cavaleiro Kael, O Portador da Cinza.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Cavaleiro Kael, O Portador da Cinza</span>
       </li>
 
     </ul>
@@ -1396,6 +1467,10 @@
 
         <li class="npc-item locked" data-npc="jax">
       <span class="npc-name">Jax</span>
+      <button class="npc-toggle lock">Bloqueado</button>
+    </li>
+            <li class="npc-item locked" data-npc="serenna">
+      <span class="npc-name">Serenna</span>
       <button class="npc-toggle lock">Bloqueado</button>
     </li>
   </ul>

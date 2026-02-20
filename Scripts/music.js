@@ -113,19 +113,54 @@ const playlist = [
     bg: "assets/music/Império.png"
   },
 
+  {
+    name: "Caminho de Loren",
+    file: "assets/music/Caminho de Loren.mp3",
+    bg: "assets/music/Caminho de Loren.png"
+  },
+  {
+    name: "Filhos do Musgo",
+    file: "assets/music/Filhos do Musgo.mp3",
+    bg: "assets/music/Filhos do Musgo.png"
+  },
+  {
+    name: "Cervo Cego de Loren",
+    file: "assets/music/Cervo de Loren.mp3",
+    bg: "assets/music/Cervo de Loren.png"
+  },
+  {
+    name: "Zhalem",
+    file: "assets/music/Zhalem.mp3",
+    bg: "assets/music/Zhalem.png"
+  },
     {
+    name: "Tundra de Orphelia",
+    file: "assets/music/Tundra de Orphelia.mp3",
+    bg: "assets/music/Tundra de Orphelia.png"
+  },
+      {
+    name: "Ruínas de Orphelia",
+    file: "assets/music/Ruínas de Orphelia.mp3",
+    bg: "assets/music/Ruínas de Orphelia.png"
+  },
+      {
+    name: "Portador da Cinza",
+    file: "assets/music/Cavaleiro Kael.mp3",
+    bg: "assets/music/Cavaleiro Kael.png"
+  },
+  {
     name: "A Última Batalha",
     file: "assets/music/A Última Batalha.mp3",
     bg: "assets/music/A Última Batalha.png"
   },
 
-    {
+  {
     name: "A Última Batalha II",
     file: "assets/music/A Última Batalha Parte II.mp3",
     bg: "assets/music/A Última Batalha Parte II.png"
   },
 
-    {
+  {
     name: "A Última Batalha III",
     file: "assets/music/A Última Batalha Parte III.mp3",
     bg: "assets/music/A Última Batalha Parte III.png"

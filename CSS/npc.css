@@ -4,8 +4,8 @@
 
 .npc-panel {
   position: fixed;
-  right: 140px;
-  top: 50%;
+  right: 270px;
+  top: 30%;
   transform: translateY(-50%);
 
   width: 230px;

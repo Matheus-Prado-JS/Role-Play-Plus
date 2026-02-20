@@ -116,6 +116,13 @@ const npcDataMap = {
     image: "assets/persons/Jax.png",
     backstory: "Viciado em jogos e golpes, conheceu Eddie após uma trapaça dar errado e a música dele salvar sua pele. Desde então, vive entre dívidas, apostas e favores mal pagos.",
     personality: "Arrogante, trapaceiro, carismático e impulsivo."
+  },
+    serenna: {
+    name: "Serenna",
+    age: 0,
+    image: "assets/persons/Serenna.png",
+    backstory: "Althéa (78), Maelis (29), Liora(09) Serrena. As três integrantes da família Serenna e que cuidam da Fazenda Serenna.",
+    personality: "Tranquilas, acolhedoras e protetoras."
   }
 };
 
