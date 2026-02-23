@@ -661,8 +661,8 @@
 }
 .panel-btn img {
   /* 👇 TAMANHO DO ÍCONE */
-  width: 66px;
-  height: 66px;
+  width: 90px;
+  height: 90px;
 
   pointer-events: none;
   transition: filter 0.25s ease, transform 0.25s ease;

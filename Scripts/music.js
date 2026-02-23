@@ -143,6 +143,11 @@ const playlist = [
     file: "assets/music/Ruínas de Orphelia.mp3",
     bg: "assets/music/Ruínas de Orphelia.png"
   },
+    {
+    name: "Lyrenne, A Nefária",
+    file: "assets/music/Lyrenne.mp3",
+    bg: "assets/music/Lyrenne.png"
+  },
       {
     name: "Portador da Cinza",
     file: "assets/music/Cavaleiro Kael.mp3",

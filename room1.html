@@ -249,7 +249,8 @@
       <li onclick="playMusic(25)">Zhalem</li>
       <li onclick="playMusic(26)">Tundra de Orphelia</li>
       <li onclick="playMusic(27)">Ruínas de Orphelia</li>
-      <li onclick="playMusic(28)">Cavaleiro Kael, Portador da Cinza</li>
+      <li onclick="playMusic(28)">Lyrenne, A Nefária</li>
+      <li onclick="playMusic(29)">Cavaleiro Kael, Portador da Cinza</li>
     </ul>
   </li>
 
@@ -258,9 +259,9 @@
       ▶ Sessão Final
     </div>
     <ul class="session-tracks hidden">
-      <li onclick="playMusic(29)">A Última Batalha</li>
-      <li onclick="playMusic(30)">A Última Batalha II</li>
-      <li onclick="playMusic(31)">A Última Batalha III</li>
+      <li onclick="playMusic(30)">A Última Batalha</li>
+      <li onclick="playMusic(31)">A Última Batalha II</li>
+      <li onclick="playMusic(32)">A Última Batalha III</li>
     </ul>
   </li>
   </ul>
@@ -693,50 +694,95 @@
   >
     <img src="assets/icons/NPC-Player.png" alt="NPCs">
   </button>
-  <!-- PAINEL DE NPCs — PLAYER -->
+<!-- PAINEL DE NPCs — PLAYER -->
 <div class="npc-panel npc-player hidden" id="npc-player-panel">
-  <h4>NPCs Conhecidos</h4>
 
+  <h4>Registros</h4>
+
+  <!-- TOPO: NPC / BESTIÁRIO -->
+  <div class="npc-mode-switch">
+    <button class="npc-mode-btn active" data-mode="npc">NPC</button>
+    <button class="npc-mode-btn" data-mode="bestiario">Bestiário</button>
+  </div>
+
+  <!-- FILTROS DE CATEGORIA (APENAS PARA NPC) -->
+  <div class="npc-category-filters">
+    <button class="npc-filter-btn active" data-category="principais">Principais</button>
+    <button class="npc-filter-btn" data-category="secundarios">Secundários</button>
+    <button class="npc-filter-btn" data-category="imperio">Império</button>
+    <button class="npc-filter-btn" data-category="opcionais">Opcionais</button>
+  </div>
+
+  <!-- LISTA ÚNICA -->
   <ul class="npc-list">
-    <li class="npc-item unlocked" data-npc="elsyra">
+
+    <!-- ================= NPC - PRINCIPAIS ================= -->
+    <li class="npc-item unlocked" data-npc="elsyra" data-type="npc" data-category="principais">
       <span class="npc-name">Capitã Elsyra</span>
     </li>
 
-    <li class="npc-item unlocked" data-npc="barok">
+    <li class="npc-item unlocked" data-npc="barok" data-type="npc" data-category="principais">
       <span class="npc-name">General Barok</span>
     </li>
-    <li class="npc-item unlocked" data-npc="varok">
-      <span class="npc-name">General Varok</span>
+
+    <li class="npc-item unlocked" data-npc="lyss" data-type="npc" data-category="principais">
+      <span class="npc-name">Lyss</span>
     </li>
 
-    <li class="npc-item unlocked" data-npc="ysvelle">
-      <span class="npc-name">Magistrada Ysvelle</span>
+    <li class="npc-item unlocked" data-npc="jax" data-type="npc" data-category="principais">
+      <span class="npc-name">Jax</span>
     </li>
-    <li class="npc-item unlocked" data-npc="valeric">
+
+    <li class="npc-item unlocked" data-npc="serenna" data-type="npc" data-category="principais">
+      <span class="npc-name">Serenna</span>
+    </li>
+
+    <li class="npc-item locked" data-npc="sevrina" data-type="npc" data-category="principais">
+      <span class="npc-name">Sevrina</span>
+    </li>
+
+    <li class="npc-item locked" data-npc="lyrenne" data-type="npc" data-category="principais">
+      <span class="npc-name">Lyrenne</span>
+    </li>
+
+    <!-- ================= NPC - SECUNDÁRIOS ================= -->
+    <li class="npc-item locked" data-npc="korv" data-type="npc" data-category="secundarios">
+      <span class="npc-name">Korv</span>
+    </li>
+
+    <!-- ================= NPC - IMPÉRIO ================= -->
+    <li class="npc-item unlocked" data-npc="valeric" data-type="npc" data-category="imperio">
       <span class="npc-name">Rei Valeric Kaer</span>
     </li>
 
-    <li class="npc-item unlocked" data-npc="stilgard2">
+    <li class="npc-item unlocked" data-npc="ysvelle" data-type="npc" data-category="imperio">
+      <span class="npc-name">Magistrada Ysvelle</span>
+    </li>
+
+    <li class="npc-item unlocked" data-npc="stilgard2" data-type="npc" data-category="imperio">
       <span class="npc-name">Inquisidor Stilgard II</span>
     </li>
-    <li class="npc-item unlocked" data-npc="malrek">
+
+    <li class="npc-item unlocked" data-npc="malrek" data-type="npc" data-category="imperio">
       <span class="npc-name">Inquisidor Malrek</span>
     </li>
 
-    <li class="npc-item unlocked" data-npc="luthiel">
+    <li class="npc-item unlocked" data-npc="luthiel" data-type="npc" data-category="imperio">
       <span class="npc-name">Oráculo Luthiel</span>
     </li>
 
-    <li class="npc-item unlocked" data-npc="lyss">
-      <span class="npc-name">Lyss</span>
+    <!-- ================= NPC - OPCIONAIS ================= -->
+    <li class="npc-item locked" data-npc="horin" data-type="npc" data-category="opcionais">
+      <span class="npc-name">Horin</span>
     </li>
-    <li class="npc-item unlocked" data-npc="jax">
-      <span class="npc-name">Jax</span>
+
+    <!-- ================= BESTIÁRIO ================= -->
+    <li class="npc-item unlocked" data-npc="varok" data-type="bestiario">
+      <span class="npc-name">General Varok</span>
     </li>
-        <li class="npc-item unlocked" data-npc="serenna">
-      <span class="npc-name">Serenna</span>
-    </li>
+
   </ul>
+
 </div>
 
 <!-- FICHA DO NPC (PLAYER) -->
@@ -978,6 +1024,10 @@
       <li data-bg="Ruínas de Orphelia.png">
         <span class="bg-radio"></span>
         <span class="bg-name">Ruínas de Orphelia</span>
+      </li>
+      <li data-bg="Lyrenne.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Lyrenne</span>
       </li>
 
       <li data-bg="Cavaleiro Kael, O Portador da Cinza.png">
@@ -1460,17 +1510,33 @@
       <button class="npc-toggle lock">Bloqueado</button>
     </li>
 
-        <li class="npc-item locked" data-npc="lyss">
+    <li class="npc-item locked" data-npc="lyss">
       <span class="npc-name">Lyss</span>
       <button class="npc-toggle lock">Bloqueado</button>
     </li>
 
-        <li class="npc-item locked" data-npc="jax">
+    <li class="npc-item locked" data-npc="jax">
       <span class="npc-name">Jax</span>
       <button class="npc-toggle lock">Bloqueado</button>
     </li>
-            <li class="npc-item locked" data-npc="serenna">
+    <li class="npc-item locked" data-npc="serenna">
       <span class="npc-name">Serenna</span>
+      <button class="npc-toggle lock">Bloqueado</button>
+    </li>
+        <li class="npc-item locked" data-npc="korv">
+      <span class="npc-name">Korv</span>
+      <button class="npc-toggle lock">Bloqueado</button>
+    </li>
+        <li class="npc-item locked" data-npc="sevrina">
+      <span class="npc-name">Sevrina</span>
+      <button class="npc-toggle lock">Bloqueado</button>
+    </li>
+        <li class="npc-item locked" data-npc="lyrenne">
+      <span class="npc-name">Lyrenne</span>
+      <button class="npc-toggle lock">Bloqueado</button>
+    </li>
+        <li class="npc-item locked" data-npc="horin">
+      <span class="npc-name">Horin</span>
       <button class="npc-toggle lock">Bloqueado</button>
     </li>
   </ul>
@@ -1478,19 +1544,24 @@
 </div>
 </section>
 
+
+
 <section class="tree-section">
   
 <!-- =========================
      SKILL TREES SECTION
 ========================== -->
-<section id="skill-trees-section" class="skill-trees-section">
+<section id="skill-trees-section" class="skill-trees-section hidden">
 
   <div class="skill-tree-ui">
 
-    <div class="skill-tree-topbar">
-      <h2>🌳 Árvore de Habilidades</h2>
-      <p>Role para cima para voltar ao mapa.</p>
-    </div>
+<div class="skill-tree-topbar">
+  <div class="skill-tree-header">
+    <h2>🌳 Árvore de Habilidades</h2>
+    <button id="close-skills-btn" class="skill-back-btn">Voltar</button>
+  </div>
+  <p>Gerencie suas habilidades desbloqueadas.</p>
+</div>
 
     <div class="skill-tree-tabs">
       <button class="tree-tab active" data-tree="passivas">Passivas</button>
@@ -1505,76 +1576,76 @@
       <!-- PASSIVAS -->
       <div class="skill-tree-map active" id="tree-passivas">
         <div class="skill-tree-lines"></div>
-      <div class="skill-node" data-id="1" data-name="Passiva 1" data-desc="Descrição da Passiva 1 (exemplo)." data-cost="1">Passiva 1</div>
-      <div class="skill-node" data-id="2" data-name="Passiva 2" data-desc="Descrição da Passiva 2 (exemplo)." data-cost="1">Passiva 2</div>
-      <div class="skill-node" data-id="3" data-name="Passiva 3" data-desc="Descrição da Passiva 3 (exemplo)." data-cost="1">Passiva 3</div>
-      <div class="skill-node" data-id="4" data-name="Passiva 4" data-desc="Descrição da Passiva 4 (exemplo)." data-cost="1">Passiva 4</div>
-      <div class="skill-node" data-id="5" data-name="Passiva 5" data-desc="Descrição da Passiva 5 (exemplo)." data-cost="1">Passiva 5</div>
-      <div class="skill-node" data-id="6" data-name="Passiva 6" data-desc="Descrição da Passiva 6 (exemplo)." data-cost="1">Passiva 6</div>
-      <div class="skill-node" data-id="7" data-name="Passiva 7" data-desc="Descrição da Passiva 7 (exemplo)." data-cost="1">Passiva 7</div>
-      <div class="skill-node" data-id="8" data-name="Passiva 8" data-desc="Descrição da Passiva 8 (exemplo)." data-cost="1">Passiva 8</div>
-      <div class="skill-node" data-id="9" data-name="Passiva 9" data-desc="Descrição da Passiva 9 (exemplo)." data-cost="1">Passiva 9</div>
-      <div class="skill-node" data-id="10" data-name="Passiva 10" data-desc="Descrição da Passiva 10 (exemplo)." data-cost="1">Passiva 10</div>
+      <div class="skill-node" data-id="1" data-name="Passos entre Sombras" data-desc="Reduz drasticamente chances de ser detectado ao explorar ruínas, florestas ou áreas urbanas. Custa 1 PP." data-cost="2">Passos entre<br> Sombras</div>
+      <div class="skill-node" data-id="2" data-name="Sussurro da Natureza" data-desc="Permite sentir presença de água potável, plantas medicinais ou perigo ambiental. Custa 2 PP." data-cost="3">Sussurro da<br> Natureza</div>
+      <div class="skill-node" data-id="3" data-name="Instinto Cartográfico" data-desc="Cria mapas mentais precisos automaticamente. Sem Custo." data-cost="2">Instinto<br> Cartográfico</div>
+      <div class="skill-node" data-id="4" data-name="Olhos do Arrombador" data-desc="Recebe bônus para encontrar passagens secretas, armadilhas e mecanismos ocultos. Custa 1 PP." data-cost="3">Olhos do<br> Arrombador</div>
+      <div class="skill-node" data-id="5" data-name="Memória Ancestral" data-desc="Ao tocar um objeto antigo ou ruína, pode receber uma visão breve do passado relacionado ao local. Custa 2 PP." data-cost="4">Memória<br> Ancestral</div>
+      <div class="skill-node" data-id="6" data-name="Arquitetura Improvisada" data-desc="Permite montar acampamentos seguros rapidamente, reduzindo risco de eventos noturnos negativos. Custa 3 PP." data-cost="2">Arquitetura<br> Improvisada</div>
+      <div class="skill-node" data-id="7" data-name="Alquimia Prática" data-desc="Permite criar itens utilitários simples durante exploração (antídotos fracos, tochas especiais, repelentes). Custa 1 à 3 PP." data-cost="3">Alquimia<br> Prática</div>
+      <div class="skill-node" data-id="8" data-name="Sensibilidade Arcana" data-desc="Detecta magia residual, maldições ambientais ou objetos encantados nas proximidades. Custa 2 PP." data-cost="4">Sensibilidade<br> Arcana</div>
+      <div class="skill-node" data-id="9" data-name="Leitura de Rastros" data-desc="Identifica criaturas que passaram por uma área, direção, número aproximado e tempo decorrido. Custa 1 PP." data-cost="2">Leitura de<br> Rastros</div>
+      <div class="skill-node" data-id="10" data-name="Aura do Navegador" data-desc="Recebe bônus em barganhas, coleta de rumores e obtenção de informações durante exploração social. Custa 2 PP." data-cost="3">Aura do<br> Navegador</div>
       </div>
 
       <!-- GUERREIRO -->
       <div class="skill-tree-map" id="tree-guerreiro">
         <div class="skill-tree-lines"></div>
-        <div class="skill-node" data-id="1" data-name="Habilidade 1" data-desc="Descrição da Habilidade 1 (exemplo)." data-cost="1">Habilidade 1</div>
-        <div class="skill-node" data-id="2" data-name="Habilidade 2" data-desc="Descrição da Habilidade 2 (exemplo)." data-cost="1">Habilidade 2</div>
-        <div class="skill-node" data-id="3" data-name="Habilidade 3" data-desc="Descrição da Habilidade 3 (exemplo)." data-cost="1">Habilidade 3</div>
-        <div class="skill-node" data-id="4" data-name="Habilidade 4" data-desc="Descrição da Habilidade 4 (exemplo)." data-cost="1">Habilidade 4</div>
-        <div class="skill-node" data-id="5" data-name="Habilidade 5" data-desc="Descrição da Habilidade 5 (exemplo)." data-cost="1">Habilidade 5</div>
-        <div class="skill-node" data-id="6" data-name="Habilidade 6" data-desc="Descrição da Habilidade 6 (exemplo)." data-cost="1">Habilidade 6</div>
-        <div class="skill-node" data-id="7" data-name="Habilidade 7" data-desc="Descrição da Habilidade 7 (exemplo)." data-cost="1">Habilidade 7</div>
-        <div class="skill-node" data-id="8" data-name="Habilidade 8" data-desc="Descrição da Habilidade 8 (exemplo)." data-cost="1">Habilidade 8</div>
-        <div class="skill-node" data-id="9" data-name="Habilidade 9" data-desc="Descrição da Habilidade 9 (exemplo)." data-cost="1">Habilidade 9</div>
-        <div class="skill-node" data-id="10" data-name="Habilidade 10" data-desc="Descrição da Habilidade 10 (exemplo)." data-cost="1">Habilidade 10</div>
+        <div class="skill-node" data-id="1" data-name="Golpe Brutal" data-desc="Se o Guerreiro estiver acima de 70% de PV, causa 3D4 adicional. Custo 2 PVg." data-cost="1">Golpe Brutal</div>
+        <div class="skill-node" data-id="2" data-name="Impacto Quebrante" data-desc="O ataque ignora parte da armadura física do alvo. Se acertar estrutura ou escudo, pode danificá-lo. Custa 3 PVg." data-cost="2">Impacto<br> Quebrante</div>
+        <div class="skill-node" data-id="3" data-name="Investida Implacável" data-desc="Emite uma Luz que cria ou imbui um escudo e avança na direção do alvo. Causa 2D8 de Dano e o derruba. Custa 3 PVg." data-cost="2">Investida<br> Implacável</div>
+        <div class="skill-node" data-id="4" data-name="Sequência do Carniceiro" data-desc="Permite realizar dois ataques consecutivos. Se o primeiro eliminar o alvo, o segundo pode ser redirecionado. Custa 4PVg." data-cost="2">Sequência do<br> Carniceiro</div>
+        <div class="skill-node" data-id="5" data-name="Pele de Ferro" data-desc="Reduz dano recebido temporariamente. Enquanto ativa, o Guerreiro não pode usar habilidades que usem Mana. Custa 2 PM por turno." data-cost="3">Pele de Ferro</div>
+        <div class="skill-node" data-id="6" data-name="Grito de Guerra" data-desc="Aumenta o dano físico próprio e de aliados próximos por alguns turnos. Custa 2 PM." data-cost="3">Grito<br> de Guerra</div>
+        <div class="skill-node" data-id="7" data-name="Contra-Ataque Instintivo" data-desc="Quando bloqueia ou esquiva com sucesso, pode imediatamente contra-atacar. Custa 4 PVg." data-cost="3">Contra-Ataque<br> Instintivo</div>
+        <div class="skill-node" data-id="8" data-name="Executor da Linha de Frente" data-desc="Causa dano massivo em alvo com menos de 50% de vida, 5D8 de Dano fora arma. Custa 6 PVg ou 6 PP." data-cost="3">Executor da<br> Linha de Frente</div>
+        <div class="skill-node" data-id="9" data-name="Fúria Inquebrável" data-desc="Entra em estado de Fúria, dobrando dano e velocidade de ataque. Custa 4 PVg por Turno." data-cost="4">Fúria<br> Inquebrável</div>
+        <div class="skill-node" data-id="10" data-name="Último Bastião" data-desc="Golpe final devastador em área frontal. Total de 10D12 de Dano + 10. Custa 50% de PVg, PP ou PM." data-cost="5">Último Bastião</div>
       </div>
 
       <!-- TANQUE -->
       <div class="skill-tree-map" id="tree-tanque">
         <div class="skill-tree-lines"></div>
-        <div class="skill-node" data-id="1" data-name="Habilidade 1" data-desc="Descrição da Habilidade 1 (exemplo)." data-cost="1">Habilidade 1</div>
-        <div class="skill-node" data-id="2" data-name="Habilidade 2" data-desc="Descrição da Habilidade 2 (exemplo)." data-cost="1">Habilidade 2</div>
-        <div class="skill-node" data-id="3" data-name="Habilidade 3" data-desc="Descrição da Habilidade 3 (exemplo)." data-cost="1">Habilidade 3</div>
-        <div class="skill-node" data-id="4" data-name="Habilidade 4" data-desc="Descrição da Habilidade 4 (exemplo)." data-cost="1">Habilidade 4</div>
-        <div class="skill-node" data-id="5" data-name="Habilidade 5" data-desc="Descrição da Habilidade 5 (exemplo)." data-cost="1">Habilidade 5</div>
-        <div class="skill-node" data-id="6" data-name="Habilidade 6" data-desc="Descrição da Habilidade 6 (exemplo)." data-cost="1">Habilidade 6</div>
-        <div class="skill-node" data-id="7" data-name="Habilidade 7" data-desc="Descrição da Habilidade 7 (exemplo)." data-cost="1">Habilidade 7</div>
-        <div class="skill-node" data-id="8" data-name="Habilidade 8" data-desc="Descrição da Habilidade 8 (exemplo)." data-cost="1">Habilidade 8</div>
-        <div class="skill-node" data-id="9" data-name="Habilidade 9" data-desc="Descrição da Habilidade 9 (exemplo)." data-cost="1">Habilidade 9</div>
-        <div class="skill-node" data-id="10" data-name="Habilidade 10" data-desc="Descrição da Habilidade 10 (exemplo)." data-cost="1">Habilidade 10</div>
+        <div class="skill-node" data-id="1" data-name="Postura Defensiva" data-desc="Reduz em 4 o dano recebido. Deslocamento inativo. Custo 2 PVg." data-cost="1">Postura<br> Defensiva</div>
+        <div class="skill-node" data-id="2" data-name="Provocação Desafiadora" data-desc="Provoca um inimigo a atacar o Tanque. Custo 2 PM." data-cost="2">Provocação<br> Desafiadora</div>
+        <div class="skill-node" data-id="3" data-name="Escudo Interceptador" data-desc="O Tanque pode receber um ataque destinado a um aliado. Custa 3 PVg." data-cost="2">Escudo<br> Interceptador</div>
+        <div class="skill-node" data-id="4" data-name="Raiz Inabalável" data-desc="Fica imune a empurrões, quedas e deslocamentos forçados por 1 turno. Custa 2 PVg." data-cost="2">Raiz Inabalável</div>
+        <div class="skill-node" data-id="5" data-name="Couraça Espinhosa" data-desc="Devolve 50% do dano corpo a corpo recebido. Custa 3 PVg por uso." data-cost="3">Couraça<br> Espinhosa</div>
+        <div class="skill-node" data-id="6" data-name="Muralha Coletiva" data-desc="Expande seu escudo fazendo com que aliados recebam redução de dano. Custa 4 PM." data-cost="3">Muralha<br> Coletiva</div>
+        <div class="skill-node" data-id="7" data-name="Colosso Impassível" data-desc="Reduz em 70% o dano crítico recebido. Ganha resistência de +4 no próximo turno. Custo 4 PVg." data-cost="3">Colosso<br> Impossível</div>
+        <div class="skill-node" data-id="8" data-name="Julgamento" data-desc="Avança usando seu escudo, repelindo ataques e golpeando o chão. Custo 3 PVg ou 3 PP." data-cost="3">Julgamento</div>
+        <div class="skill-node" data-id="9" data-name="Guardião Absoluto" data-desc="Todos os aliados recebem +5 de Defesa Física. O Tanque ganha +8 de Defesa Física. Custo 5 PVg." data-cost="4">Guardião<br> Absoluto</div>
+        <div class="skill-node" data-id="10" data-name="Última Fortaleza" data-desc="Cria uma barreira massiva que dura até 3 turnos. Todos os aliados ficam imunes, o Tanque perde 99% da vida ao fim. Recupera 25% se sobreviver no próximo turno. Custa 50% dos PVg." data-cost="5">Última<br> Fortaleza</div>
       </div>
 
       <!-- MAGO -->
       <div class="skill-tree-map" id="tree-mago">
         <div class="skill-tree-lines"></div>
-        <div class="skill-node" data-id="1" data-name="Habilidade 1" data-desc="Descrição da Habilidade 1 (exemplo)." data-cost="1">Habilidade 1</div>
-        <div class="skill-node" data-id="2" data-name="Habilidade 2" data-desc="Descrição da Habilidade 2 (exemplo)." data-cost="1">Habilidade 2</div>
-        <div class="skill-node" data-id="3" data-name="Habilidade 3" data-desc="Descrição da Habilidade 3 (exemplo)." data-cost="1">Habilidade 3</div>
-        <div class="skill-node" data-id="4" data-name="Habilidade 4" data-desc="Descrição da Habilidade 4 (exemplo)." data-cost="1">Habilidade 4</div>
-        <div class="skill-node" data-id="5" data-name="Habilidade 5" data-desc="Descrição da Habilidade 5 (exemplo)." data-cost="1">Habilidade 5</div>
-        <div class="skill-node" data-id="6" data-name="Habilidade 6" data-desc="Descrição da Habilidade 6 (exemplo)." data-cost="1">Habilidade 6</div>
-        <div class="skill-node" data-id="7" data-name="Habilidade 7" data-desc="Descrição da Habilidade 7 (exemplo)." data-cost="1">Habilidade 7</div>
-        <div class="skill-node" data-id="8" data-name="Habilidade 8" data-desc="Descrição da Habilidade 8 (exemplo)." data-cost="1">Habilidade 8</div>
-        <div class="skill-node" data-id="9" data-name="Habilidade 9" data-desc="Descrição da Habilidade 9 (exemplo)." data-cost="1">Habilidade 9</div>
-        <div class="skill-node" data-id="10" data-name="Habilidade 10" data-desc="Descrição da Habilidade 10 (exemplo)." data-cost="1">Habilidade 10</div>
+        <div class="skill-node" data-id="1" data-name="Faísca Arcana" data-desc="Projétil mágico de energia. Causa 2D4 de dano mágico. Custa 1 PM." data-cost="1">Faísca Arcana</div>
+        <div class="skill-node" data-id="2" data-name="Véu de Mana" data-desc="Cria um escudo mágico temporário que absorve o 30% do dano. Custa 3 PM." data-cost="2">Véu de Mana</div>
+        <div class="skill-node" data-id="3" data-name="Marca Etérea" data-desc="Marca um alvo. Magias lançadas contra ele causam +4 de dano ou amplia em 1 turno um efeito. Custa 3 PM." data-cost="2">Marca Etérea</div>
+        <div class="skill-node" data-id="4" data-name="Explosão Prismática" data-desc="Explosão mágica em pequena área. Causa 3D6 de dano mágico. Custa 4 PM." data-cost="2">Explosão<br> Prismática</div>
+        <div class="skill-node" data-id="5" data-name="Distorção do Véu" data-desc="Teleporte curto de até 10 metros. Custo 4 PM." data-cost="3">Distorção do<br> Véu</div>
+        <div class="skill-node" data-id="6" data-name="Canalização Profunda" data-desc="Recupera PM durante o combate. Enquanto ativa, o mago fica vulnerável. Custo 2PVg por uso." data-cost="3">Canalização<br> Profunda</div>
+        <div class="skill-node" data-id="7" data-name="Chuva Astral" data-desc="Invoca fragmentos arcanos que atingem múltiplos inimigos em linha reta causando 5D8 de dano mágico. Pode se mover. Custo 6 PM." data-cost="3">Chuva Astral</div>
+        <div class="skill-node" data-id="8" data-name="Essência Perdida" data-desc="Escolhe um efeito para ativar, sendo maior alcance mágico, reduzir o custo da mágia em 50% e ignorar 50% de resistência mágica. Dura 2 turnos. Custa 4 PM e 2 PP." data-cost="3">Essência<br> Perdida</div>
+        <div class="skill-node" data-id="9" data-name="Obliteração" data-desc="Abre uma fissura arcana que causa dano massivo de 10D6 de dano em área ampla. Muda o terreno temporariamente. 8 PM + 4 PV." data-cost="4">Obliteração</div>
+        <div class="skill-node" data-id="10" data-name="Ascensão Arcana" data-desc="Por 3 Turnos magias não consomem PV, ignora-se resistência mágica e não pode ser contra-atacado. Após o efeito fica exausto, PV cai 10% e não pode conjurar por 1 turno. Custa 50% do PM." data-cost="5">Ascensão<br> Arcana</div>
       </div>
 
       <!-- BARDO -->
       <div class="skill-tree-map" id="tree-bardo">
         <div class="skill-tree-lines"></div>
-        <div class="skill-node" data-id="1" data-name="Habilidade 1" data-desc="Descrição da Habilidade 1 (exemplo)." data-cost="1">Habilidade 1</div>
-        <div class="skill-node" data-id="2" data-name="Habilidade 2" data-desc="Descrição da Habilidade 2 (exemplo)." data-cost="1">Habilidade 2</div>
-        <div class="skill-node" data-id="3" data-name="Habilidade 3" data-desc="Descrição da Habilidade 3 (exemplo)." data-cost="1">Habilidade 3</div>
-        <div class="skill-node" data-id="4" data-name="Habilidade 4" data-desc="Descrição da Habilidade 4 (exemplo)." data-cost="1">Habilidade 4</div>
-        <div class="skill-node" data-id="5" data-name="Habilidade 5" data-desc="Descrição da Habilidade 5 (exemplo)." data-cost="1">Habilidade 5</div>
-        <div class="skill-node" data-id="6" data-name="Habilidade 6" data-desc="Descrição da Habilidade 6 (exemplo)." data-cost="1">Habilidade 6</div>
-        <div class="skill-node" data-id="7" data-name="Habilidade 7" data-desc="Descrição da Habilidade 7 (exemplo)." data-cost="1">Habilidade 7</div>
-        <div class="skill-node" data-id="8" data-name="Habilidade 8" data-desc="Descrição da Habilidade 8 (exemplo)." data-cost="1">Habilidade 8</div>
-        <div class="skill-node" data-id="9" data-name="Habilidade 9" data-desc="Descrição da Habilidade 9 (exemplo)." data-cost="1">Habilidade 9</div>
-        <div class="skill-node" data-id="10" data-name="Habilidade 10" data-desc="Descrição da Habilidade 10 (exemplo)." data-cost="1">Habilidade 10</div>
+        <div class="skill-node" data-id="1" data-name="Nota Estática" data-desc="Dispara uma nota carregada que causa dano elétrico 2D6. Custo 1 PM." data-cost="1">Nota Estática</div>
+        <div class="skill-node" data-id="2" data-name="Acorde Vibrante" data-desc="O próximo ataque elétrico causa 50% do dano em mais um inimigo. 3 PM." data-cost="2">Acorde<br> Vibrante</div>
+        <div class="skill-node" data-id="3" data-name="Ritmo Condutor" data-desc="Aliados próximos causam +6 em dano elétrico adicional. Custa 2 PM." data-cost="2">Ritmo<br> Condutor</div>
+        <div class="skill-node" data-id="4" data-name="Pulso Trovejante" data-desc="Explosão sonora em área curta que atordoa inimigos por 1 turno. Custa 4 PM." data-cost="2">Pulso<br> Trovejante</div>
+        <div class="skill-node" data-id="5" data-name="Solo Tempestuoso" data-desc="Canaliza por 1 turno, e invoca um raio concentrado no próximo. Causando 5D6 de Dano. Custa 5 PM." data-cost="3">Solo<br> Tempestuoso</div>
+        <div class="skill-node" data-id="6" data-name="Harmonia" data-desc="Cria uma zona onde inimigos recebem dano elétrico e dificultam seu movimento dura 1D4 de turnos. Causa 1D6 de dano a cada turno mantido. Custo 3 PM." data-cost="3">Harmonia</div>
+        <div class="skill-node" data-id="7" data-name="Tempestade" data-desc="A cada turno ativo, o dano elétrico aumenta progressivamente. Se atacado, o dano dobra na próxima rodada e o efeito é interrompido. Custa 5 PM e 1 PP." data-cost="3">Tempestade</div>
+        <div class="skill-node" data-id="8" data-name="Orquestra dos Céus" data-desc="Invoca múltimos relâmpagos aleatórios em uma área. Cada raio causa 2D6 de dano, e é girado um total de 2D6 para raios. Custo 6 PM." data-cost="3">Orquestra dos<br> Céus</div>
+        <div class="skill-node" data-id="9" data-name="Fulguração" data-desc="Explosão elétrica massiva em área. Inimigos atingidos ficam com condição 'Charge' e recebem +1D6 de dano elétrico e aumenta progressivamente. A condição só acaba se não for atingido por nenhum golpe elétrico. Custa 8 PM + 4 PVg." data-cost="4">Fulguração</div>
+        <div class="skill-node" data-id="10" data-name="Apoteose" data-desc="Por 3 turnos, o Bardo causa X2 em todo ataque elétrico. Pode se teleportar 1 vez por turno como salto elétrico causando 1D6 se aparecer perto de um inimigo. Aliados ganham velocidade de movimento (+1 ação de movimento), no fim, o PV cai 30% e o instrumento fica inutilizado até reparo. Custa 50% do PM." data-cost="5">Apoteose</div>
       </div>
 
     </div>
@@ -1604,6 +1675,10 @@
 
 </section>
 </section>
+<!-- BOTÃO FIXO HABILIDADES -->
+<button id="open-skills-btn" class="open-skills-btn">
+ Habilidades
+</button>
 </div>
 
 <!-- Firebase SDK -->

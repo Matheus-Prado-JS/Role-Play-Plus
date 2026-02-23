@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sectionSkillTrees = document.querySelector("#skill-trees-section");
   const tabs = document.querySelectorAll(".tree-tab");
   const maps = document.querySelectorAll(".skill-tree-map");
+  let skillTreeOpen = false;
 
   // ============================
   // MODAL ELEMENTS
@@ -137,75 +138,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ============================
-  // SCROLL SUAVE PRA SKILL TREE
-  // ============================
-  function scrollToSkillTree() {
-    if (!sectionSkillTrees) return;
+// ============================
+// BOTÃO ABRIR / FECHAR SKILL TREE
+// ============================
 
-    sectionSkillTrees.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
+const btnSkillTree = document.querySelector("#open-skills-btn");
+const closeSkillsBtn = document.querySelector("#close-skills-btn");
 
-  // ============================
-  // SCROLL SUAVE PRA CIMA (MAPA)
-  // ============================
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }
+if (btnSkillTree && sectionSkillTrees) {
+  btnSkillTree.addEventListener("click", () => {
+    sectionSkillTrees.classList.remove("hidden");
+    drawActiveTreeLines();
+  });
+}
 
-  // ============================
-  // TRIGGER PRA DESCER
-  // ============================
-  const btnSkillTree = document.querySelector("#btn-skill-tree");
-
-  if (btnSkillTree) {
-    btnSkillTree.addEventListener("click", () => {
-      scrollToSkillTree();
-    });
-  }
-
-  // ============================
-  // TRIGGER PRA SUBIR (topbar)
-  // ============================
-  const skillTreeTopbar = document.querySelector(".skill-tree-topbar");
-
-  if (skillTreeTopbar) {
-    skillTreeTopbar.addEventListener("click", () => {
-      scrollToTop();
-    });
-  }
-
-  // ============================
-  // SCROLL COM RODA DO MOUSE
-  // 1 scroll desce / 1 scroll sobe
-  // ============================
-  let scrollingLocked = false;
-
-  window.addEventListener("wheel", (event) => {
-
-    if (scrollingLocked) return;
-
-    const direction = event.deltaY > 0 ? "down" : "up";
-    scrollingLocked = true;
-
-    if (direction === "down") {
-      scrollToSkillTree();
-    } else {
-      scrollToTop();
-    }
-
-    setTimeout(() => {
-      scrollingLocked = false;
-    }, 900);
-
-  }, { passive: true });
-
+if (closeSkillsBtn && sectionSkillTrees) {
+  closeSkillsBtn.addEventListener("click", () => {
+    sectionSkillTrees.classList.add("hidden");
+  });
+}
   // ============================
   // FUNÇÃO: ABRIR MODAL
   // ============================

@@ -4,8 +4,8 @@
 
 .npc-panel {
   position: fixed;
-  right: 270px;
-  top: 30%;
+  right: 150px;
+  top: 10%;
   transform: translateY(-50%);
 
   width: 230px;
@@ -60,6 +60,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  
 }
 
 .npc-item {
@@ -188,4 +189,120 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+/* =========================
+   NPC MODE SWITCH (NPC / BESTIÁRIO)
+========================= */
+
+.npc-mode-switch {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.npc-mode-btn {
+  flex: 1;
+  padding: 6px 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  background: rgba(255,255,255,0.05);
+  color: #cfe9ff;
+
+  transition: all 0.2s ease;
+}
+
+/* Azul (NPC ativo) */
+.npc-mode-btn[data-mode="npc"].active {
+  background: rgba(63, 169, 245, 0.25);
+  border: 1px solid rgba(63, 169, 245, 0.5);
+  box-shadow: 0 0 10px rgba(63, 169, 245, 0.4);
+}
+
+/* Vermelho (Bestiário ativo) */
+.npc-mode-btn[data-mode="bestiario"].active {
+  background: rgba(255, 70, 70, 0.25);
+  border: 1px solid rgba(255, 70, 70, 0.5);
+  box-shadow: 0 0 10px rgba(255, 70, 70, 0.4);
+}
+
+.npc-mode-btn:hover {
+  transform: translateY(-1px);
+}
+/* =========================
+   NPC CATEGORY FILTERS
+========================= */
+
+.npc-category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.npc-filter-btn {
+  flex: 1;
+  padding: 5px 0;
+
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+
+  border-radius: 6px;
+  border: 1px solid rgba(63, 169, 245, 0.25);
+
+  background: rgba(63, 169, 245, 0.08);
+  color: #cfe9ff;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.npc-filter-btn.active {
+  background: rgba(63, 169, 245, 0.25);
+  border: 1px solid rgba(63, 169, 245, 0.6);
+  box-shadow: 0 0 8px rgba(63, 169, 245, 0.35);
+}
+
+.npc-filter-btn:hover {
+  background: rgba(63, 169, 245, 0.18);
+}
+/* =========================
+   ANIMAÇÃO DE LISTA
+========================= */
+
+.npc-item {
+  transition: 
+    background 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.npc-item.hidden {
+  display: none;
+}
+
+.npc-player .npc-item.locked .npc-name {
+  color: rgba(230, 243, 255, 0.4);
+  font-style: italic;
+}
+
+.npc-list {
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.npc-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.npc-list::-webkit-scrollbar-thumb {
+  background: rgba(63, 169, 245, 0.4);
+  border-radius: 4px;
 }

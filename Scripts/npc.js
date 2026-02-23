@@ -22,11 +22,28 @@ const npcPlayerBtn = document.querySelector('[data-action="npcs"]');
 const npcMasterBtn = document.querySelector('[data-action="npcs-master"]');
 
 const npcPlayerPanel = document.getElementById("npc-player-panel");
+/* =========================
+   NOVO SISTEMA: MODO & FILTROS
+========================= */
+
+const modeButtons = npcPlayerPanel.querySelectorAll(".npc-mode-btn");
+const filterButtons = npcPlayerPanel.querySelectorAll(".npc-filter-btn");
+const npcItems = npcPlayerPanel.querySelectorAll(".npc-item");
+
+let currentMode = "npc";
+let currentCategory = "principais";
+
 const npcSheet = document.getElementById("npc-sheet");
+let currentOpenNpcId = null;
 if (npcPlayerBtn && npcPlayerPanel && npcSheet) {
   npcPlayerBtn.addEventListener("click", () => {
     npcPlayerPanel.classList.toggle("hidden");
     npcSheet.classList.add("hidden");
+    currentOpenNpcId = null;
+
+    if (!npcPlayerPanel.classList.contains("hidden")) {
+      applyNpcFilters();
+    }
   });
 }
 document.addEventListener("click", (e) => {
@@ -123,34 +140,136 @@ const npcDataMap = {
     image: "assets/persons/Serenna.png",
     backstory: "Althéa (78), Maelis (29), Liora(09) Serrena. As três integrantes da família Serenna e que cuidam da Fazenda Serenna.",
     personality: "Tranquilas, acolhedoras e protetoras."
-  }
+  },
+    korv: {
+    name: "Korv",
+    age: 0,
+    image: "assets/persons/Korv.png",
+    backstory: "Korv é um Minotauro bêbado que costuma arrumar confusões, criou desavenças com Jax e Eddie por causa de Poker e roubos.",
+    personality: "escandaloso, problemático e imprevisível."
+  },
+    sevrina: {
+    name: "Sevrina",
+    age: 0,
+    image: "assets/persons/Sevrina.png",
+    backstory: "Sevrina é uma bruxa antiga que vivia na parte inferior do vilarejo elaris, criando um local para os refugiados do império. Ela é conhecida por ser uma curandeira poderosa e por ter um passado misterioso, com rumores de que ela já foi uma nobre caída em desgraça.",
+    personality: "Tranquila, poderosa e enigmática."
+  },
+    lyrenne: {
+    name: "Lyrenne",
+    age: 0,
+    image: "assets/persons/Lyrenne.png",
+    backstory: "Lyrenne é uma Nefária que vive isolada nas Ruínas de Orphelia, conhecida por sua doença misteriosa, foi acolhida por Sevrina décadas atrás, mas preferiu se manter nas Ruínas de Orphelia, ficou presa lá após o ataque do Portador da Cinza.",
+    personality: "Poderosa, errática e solitária."
+  },
+      horin: {
+    name: "Horin",
+    age: 0,
+    image: "assets/persons/Horin.png",
+    backstory: "Horin é um velho lenhador que vive em Zhalem, requisitou ajuda pelo desaparecimento de seu ajudante próximo ao Caminho de Loren.",
+    personality: "Tranquilo, gentil e protetor."
+  },
+  
 };
 
-npcPlayerPanel.addEventListener("click", (e) => {
-    const item = e.target.closest(".npc-item");
-    if (!item) return;
+function applyNpcFilters() {
+  npcItems.forEach(item => {
+    const type = item.dataset.type;
+    const category = item.dataset.category;
 
-    const npcId = item.dataset.npc;
-    const npc = npcDataMap[npcId];
-    if (!npc) return;
+    // Primeiro filtra por modo
+    if (type !== currentMode) {
+      item.classList.add("hidden");
+      return;
+    }
 
-    document.querySelector(".npc-sheet-name").innerText = npc.name;
+    // Se for NPC, filtra categoria
+    if (currentMode === "npc") {
+      if (category !== currentCategory) {
+        item.classList.add("hidden");
+        return;
+      }
+    }
 
-    document.querySelector(".npc-sheet-content").innerHTML = `
-      <div class="npc-sheet-layout">
-        <div class="npc-portrait">
-          <img src="${npc.image}" alt="${npc.name}">
-        </div>
-        <div class="npc-text">
-          <p class="npc-meta"><strong>Idade:</strong> ${npc.age}</p>
-          <p><strong>Backstory:</strong> ${npc.backstory}</p>
-          <p><strong>Personalidade:</strong> ${npc.personality}</p>
-        </div>
-      </div>
-    `;
-
-    npcSheet.classList.remove("hidden");
+    // Se passou por tudo
+    item.classList.remove("hidden");
   });
+
+  // Mostrar ou esconder filtros de categoria
+  const filterContainer = npcPlayerPanel.querySelector(".npc-category-filters");
+  if (filterContainer) {
+    filterContainer.style.display = currentMode === "npc" ? "flex" : "none";
+  }
+}
+
+/* =========================
+   EVENTO: MODO NPC / BESTIÁRIO
+========================= */
+
+modeButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    modeButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    currentMode = btn.dataset.mode;
+
+    applyNpcFilters();
+  });
+});
+
+/* =========================
+   EVENTO: FILTRO DE CATEGORIA
+========================= */
+
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filterButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    currentCategory = btn.dataset.category;
+
+    applyNpcFilters();
+  });
+});
+
+npcPlayerPanel.addEventListener("click", (e) => {
+  const item = e.target.closest(".npc-item");
+  if (!item) return;
+
+  // Se estiver bloqueado, não faz nada
+  if (item.classList.contains("locked")) return;
+
+  const npcId = item.dataset.npc;
+  const npc = npcDataMap[npcId];
+  if (!npc) return;
+
+  // 🔥 SE CLICAR NO MESMO NPC → FECHA
+  if (currentOpenNpcId === npcId) {
+    npcSheet.classList.add("hidden");
+    currentOpenNpcId = null;
+    return;
+  }
+
+  // Caso contrário, abre normalmente
+  currentOpenNpcId = npcId;
+
+  document.querySelector(".npc-sheet-name").innerText = npc.name;
+
+  document.querySelector(".npc-sheet-content").innerHTML = `
+    <div class="npc-sheet-layout">
+      <div class="npc-portrait">
+        <img src="${npc.image}" alt="${npc.name}">
+      </div>
+      <div class="npc-text">
+        <p class="npc-meta"><strong>Idade:</strong> ${npc.age}</p>
+        <p><strong>Backstory:</strong> ${npc.backstory}</p>
+        <p><strong>Personalidade:</strong> ${npc.personality}</p>
+      </div>
+    </div>
+  `;
+
+  npcSheet.classList.remove("hidden");
+});
 
 
 npcsRef.on("value", (snapshot) => {
@@ -181,8 +300,15 @@ npcsRef.on("value", (snapshot) => {
       `#npc-player-panel .npc-item[data-npc="${npcId}"]`
     );
 
-    if (playerItem) {
-      playerItem.style.display = unlocked ? "flex" : "none";
-    }
+if (playerItem) {
+  playerItem.classList.toggle("locked", !unlocked);
+  playerItem.classList.toggle("unlocked", unlocked);
+
+  if (!unlocked) {
+    playerItem.classList.add("hidden");
+  } else {
+    applyNpcFilters();
+  }
+}
   });
 });

@@ -330,7 +330,7 @@
 
   transform: translate(-50%, -50%);
 
-  width: 130px;
+  width: 150px;
   height: 58px;
 
   border-radius: 14px;
@@ -737,4 +737,62 @@ body.room {
   background: rgba(120, 255, 190, 0.35);
   box-shadow: 0 0 14px rgba(120, 255, 190, 0.25);
   opacity: 0.9;
+}
+
+/* =========================
+   BOTÃO FIXO HABILIDADES
+========================= */
+
+.open-skills-btn {
+  position: fixed;
+  bottom: 28px;
+  left: 28%;
+  transform: translateX(-50%);
+  z-index: 9;
+
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: bold;
+
+  background: rgba(10, 15, 30, 0.7);
+  color: #cfe9ff;
+  border: 1px solid rgba(63, 169, 245, 0.2);
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 12px rgba(80, 160, 255, 0.15);
+}
+
+.open-skills-btn:hover {
+  transform: translateX(-50%) scale(1.08);
+}
+
+.open-skills-btn:active {
+  transform: translateX(-50%) scale(0.95);
+}
+.skill-tree-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-back-btn {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 30px;
+
+  background: rgba(255, 80, 80, 0.2);
+  color: #ffb3b3;
+  border: 1px solid rgba(255, 80, 80, 0.4);
+  border-radius: 6px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.skill-back-btn:hover {
+  background: rgba(255, 80, 80, 0.35);
+  transform: scale(1.05);
 }
