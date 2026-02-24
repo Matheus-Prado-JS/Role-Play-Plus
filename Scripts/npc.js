@@ -82,7 +82,7 @@ const npcDataMap = {
     name: "General Varok",
     age: 58,
     image: "assets/persons/Varok.png",
-    backstory: "General firme e respeitado, conhecido por sua estratégia militar.",
+    backstory: "General do exército imperial, conhecido por sua crueldade e eficiência em batalha. Traiu Stilgard e seu irmão Barok em batalha, fingindo estar lutando contra os Rebeldes, quando na verdade tentou usufruir dos poderes de Maelira para si mesmo. Ele é um estrategista frio e calculista, disposto a fazer qualquer coisa para alcançar seus objetivos, mesmo que isso signifique trair seus aliados ou cometer atos cruéis.",
     personality: "Rigoroso, cruel e estratégico."
   },
   ysvelle: {
@@ -143,31 +143,122 @@ const npcDataMap = {
   },
     korv: {
     name: "Korv",
-    age: 0,
+    age: 76,
     image: "assets/persons/Korv.png",
     backstory: "Korv é um Minotauro bêbado que costuma arrumar confusões, criou desavenças com Jax e Eddie por causa de Poker e roubos.",
     personality: "escandaloso, problemático e imprevisível."
   },
     sevrina: {
     name: "Sevrina",
-    age: 0,
+    age: 122,
     image: "assets/persons/Sevrina.png",
     backstory: "Sevrina é uma bruxa antiga que vivia na parte inferior do vilarejo elaris, criando um local para os refugiados do império. Ela é conhecida por ser uma curandeira poderosa e por ter um passado misterioso, com rumores de que ela já foi uma nobre caída em desgraça.",
     personality: "Tranquila, poderosa e enigmática."
   },
     lyrenne: {
     name: "Lyrenne",
-    age: 0,
+    age: 42,
     image: "assets/persons/Lyrenne.png",
     backstory: "Lyrenne é uma Nefária que vive isolada nas Ruínas de Orphelia, conhecida por sua doença misteriosa, foi acolhida por Sevrina décadas atrás, mas preferiu se manter nas Ruínas de Orphelia, ficou presa lá após o ataque do Portador da Cinza.",
     personality: "Poderosa, errática e solitária."
   },
-      horin: {
+  horin: {
     name: "Horin",
-    age: 0,
+    age: 56,
     image: "assets/persons/Horin.png",
     backstory: "Horin é um velho lenhador que vive em Zhalem, requisitou ajuda pelo desaparecimento de seu ajudante próximo ao Caminho de Loren.",
     personality: "Tranquilo, gentil e protetor."
+  },
+  rebeldes: {
+    name: "Rebeldes de Metal",
+    age: 0,
+    image: "assets/persons/Rebeldes.png",
+    backstory: "Um grupo de rebeldes que se opõem ao Império e lutam por liberdade. Eles são liderados por Maelira e são conhecidos por sua habilidade em combate e por sua determinação em lutar contra a opressão do Império. Suas principais armas são metálicas, e claro, os grandes Dragões Metálicos controlados por Maelira.",
+    personality: "Desafiador, determinado e rebelde."
+  },
+  maelira: {
+    name: "Maelira",
+    age: 32,
+    image: "assets/persons/Maelira.png",
+    backstory: "Maelira é uma Dominante que comanda os Rebeldes de Metal, um grupo de insurgentes que se opõem ao Império. Ela é conhecida por sua habilidade em combate e por sua determinação em lutar pela liberdade de seu povo. Descobriu seu poder dominante em uma situação de perigo, quando conseguiu controlar um grupo de inimigos para escapar de uma emboscada. Desde então, ela tem usado suas habilidades para liderar os Rebeldes de Metal em sua luta contra o Império.",
+    personality: "Séria, determinada e líder nata."
+  },
+  eccho: {
+    name: "Eccho",
+    age: 34,
+    image: "assets/persons/Eccho.png",
+    backstory: "Eccho é um Dominante, pouco se sabe a respeito dele. Mas ele diz saber muito a respeito de Eddie e Orion. Além de já ter interferido na ordem natural das coisas. Agora, é difícil dizer de onde ele vem, ou quem ele é, mas ele tem um grande interesse em tornar a vida de todos de Solarys um inferno.",
+    personality: "Caótico, misterioso e manipulador."
+  },
+    filhosdomusgo: {
+    name: "Filhos do Musgo",
+    age: 0,
+    image: "assets/persons/Filhos do Musgo.png",
+    backstory: "Um grupo de criaturas misteriosas que vivem nos bosques do Caminho de Loren. Pouco se sabe sobre eles, mas são conhecidos por serem silenciosos e perigosos, atacando qualquer um que se aproxime de seu território. Dizem que eles têm uma conexão com a natureza e podem controlar plantas e animais para proteger seu lar.",
+    personality: "Misteriosos, silenciosos e protetores da natureza."
+  },
+    cervodeloren: {
+    name: "Cervo de Loren",
+    age: 0,
+    image: "assets/persons/Cervo de Loren.png",
+    backstory: "Um Cervo misterioso que vive nos bosques do Caminho de Loren. Ele é conhecido por sua beleza e graça, mas também por sua habilidade em se esconder entre as árvores. Dizem que ele é um guardião da floresta e protege os animais selvagens que vivem lá. Quem cruza seu caminho pode sentir uma sensação de paz e tranquilidade, mas também pode ser atacado se for considerado uma ameaça para a floresta.",
+    personality: "Mágico, protetor e evasivo."
+  },
+    apodrecida: {
+    name: "Grande Madeira Apodrecida",
+    age: 236,
+    image: "assets/persons/Apodrecida.png",
+    backstory: "Uma árvore gigante que vive nos bosques do Caminho de Loren. Ela é conhecida por sua imensa presença e por sua madeira apodrecida, que é usada por alguns para criar ferramentas e armas. Dizem que ela é um guardião da floresta e protege os animais selvagens que vivem lá. A grande mão que sai do meio dela simboliza a proteção que ela oferece, mas também pode ser um aviso para aqueles que se aproximam demais.",
+    personality: "Grande, protetora e imponente."
+  },
+    omimico: {
+    name: "O Mimico",
+    age: 0,
+    image: "assets/persons/Mimico.png",
+    backstory: "Um ser misterioso que aparece em momentos de tensão e desespero. Ele é conhecido por sua habilidade de se transformar e se esconder entre as sombras. Dizem que ele é um guardião do caos, abrir sua caixa ou o que quer que ele seja pode causar um grande estrago, mas também pode trazer uma grande ajuda.",
+    personality: "Polimorfo, imprevisível e caótico."
+  },
+    kael: {
+    name: "Cavaleiro Kael",
+    age: 126,
+    image: "assets/persons/Kael.png",
+    backstory: "Cavaleiro Kael, O Portador da Cinza, foi um grande Cavaleiro Imperial que se destacou em inúmeras batalhas. No entanto, durante uma missão, ele foi gravemente ferido e acabou sendo infectado por uma doença misteriosa que o transformou em um ser cinzento e sem emoções. Ele então se isolou em uma caverna que acreditava ser inabitada, mas que na verdade era o lar de inúmeras criaturas e pessoas. Ele tentou conter a doença, mas era tarde.",
+    personality: "Corajoso, determinado e líder nato."
+  },
+    siegmar: {
+    name: "Siegmar of Catarina",
+    age: 45,
+    image: "assets/persons/Siegmar.png",
+    backstory: "Siegmar of Catarina é um Cavaleiro que se destacou em batalhas contra os rebeldes de Catarina. Ele é conhecido por sua lealdade ao povo de Catarina e por sua habilidade em combate. Siegmar é um defensor da ordem e da justiça, lutando para proteger os inocentes e combater o opressor. Ele é um líder natural, inspirando os outros com sua coragem e determinação.",
+    personality: "Corajoso, determinado e líder nato."
+  },
+    basili: {
+    name: "Basili",
+    age: 32,
+    image: "assets/persons/Basili.png",
+    backstory: "Basili é um Cartógrafo de Zhalem, conhecido por sua habilidade em criar mapas detalhados e precisos. Ele é um explorador nato, sempre em busca de novas terras para mapear e descobrir. Basili é um aventureiro corajoso, enfrentando perigos e desafios para alcançar seus objetivos.",
+    personality: "Explorador, corajoso e curioso."
+  },
+    sarin: {
+    name: "Sarin",
+    age: 28,
+    image: "assets/persons/Sarin.png",
+    backstory: "Sarin é o líder de Doran, uma cidade que fica entre Zhalem e Pedrafria. Ele é conhecido em Doran por seu carisma e hospitalidade, mas também por sua habilidade em resolver conflitos e manter a paz na cidade. Sarin é um líder sábio e justo, sempre buscando o melhor para seu povo.",
+    personality: "Líder, carismático e justo."
+  },
+    kaelen: {
+    name: "Kaelen",
+    age: 24,
+    image: "assets/persons/Kaelen.png",
+    backstory: "Kaelen é uma jovem filha de Kyra, uma herbalista que foi muito respeitada. Eventualmente, durante os invernos de Pedrafria, Kyra adoeceu, começando com tremores, depois manchas e por fim raízes. Kaelen tinha apenas 14 anos quando sua mãe morreu. Ela enterrou toda a fé e anos depois, se sentiu como a protetora de Nyssa, sua irmã mais nova.",
+    personality: "Estressada, protetora e determinada."
+  },
+    nyssa: {
+    name: "Nyssa",
+    age: 18,
+    image: "assets/persons/Nyssa.png",
+    backstory: "Nyssa é a irmã mais nova de Kaelen. Ela é uma jovem que cresceu em meio à tristeza e ao desespero de sua irmã mais velha. Nyssa é gentil, mas também corajosa, e sempre se esforça para manter a esperança viva em meio às dificuldades. Acabou por perder sua mãe quando tinha apenas 8 anos de idade, sem entender muito como aconteceu, até que a doença de sua mãe se manisfetou nela.",
+    personality: "Gentil, corajosa e esperançosa."
   },
   
 };

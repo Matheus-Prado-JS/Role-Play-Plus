@@ -133,6 +133,31 @@ const playlist = [
     file: "assets/music/Zhalem.mp3",
     bg: "assets/music/Zhalem.png"
   },
+      {
+    name: "Korv",
+    file: "assets/music/Korv.mp3",
+    bg: "assets/music/Korv.png"
+  },
+      {
+    name: "O Mimico",
+    file: "assets/music/O Mimico.mp3",
+    bg: "assets/music/O Mimico.png"
+  },
+    {
+    name: "Apodrecida",
+    file: "assets/music/Grande Madeira Apodrecida.mp3",
+    bg: "assets/music/Grande Madeira Apodrecida.png"
+  },
+    {
+    name: "Pedrafria",
+    file: "assets/music/Pedrafria.mp3",
+    bg: "assets/music/Pedrafria.png"
+  },
+    {
+    name: "Passagem",
+    file: "assets/music/Passagem.mp3",
+    bg: "assets/music/Passagem.png"
+  },
     {
     name: "Tundra de Orphelia",
     file: "assets/music/Tundra de Orphelia.mp3",
@@ -152,6 +177,11 @@ const playlist = [
     name: "Portador da Cinza",
     file: "assets/music/Cavaleiro Kael.mp3",
     bg: "assets/music/Cavaleiro Kael.png"
+  },
+    {
+    name: "Praga",
+    file: "assets/music/Praga.mp3",
+    bg: "assets/music/Praga.png"
   },
   {
     name: "A Última Batalha",

@@ -247,10 +247,16 @@
       <li onclick="playMusic(23)">Filhos do Musgo</li>
       <li onclick="playMusic(24)">Cervo de Loren</li>
       <li onclick="playMusic(25)">Zhalem</li>
-      <li onclick="playMusic(26)">Tundra de Orphelia</li>
-      <li onclick="playMusic(27)">Ruínas de Orphelia</li>
-      <li onclick="playMusic(28)">Lyrenne, A Nefária</li>
-      <li onclick="playMusic(29)">Cavaleiro Kael, Portador da Cinza</li>
+      <li onclick="playMusic(26)">Korv</li>
+      <li onclick="playMusic(27)">O Mimico</li>
+      <li onclick="playMusic(28)">Apodrecida</li>
+      <li onclick="playMusic(29)">Pedrafria</li>
+      <li onclick="playMusic(30)">Passagem</li>
+      <li onclick="playMusic(31)">Tundra de Orphelia</li>
+      <li onclick="playMusic(32)">Ruínas de Orphelia</li>
+      <li onclick="playMusic(33)">Lyrenne, A Nefária</li>
+      <li onclick="playMusic(34)">Cavaleiro Kael, Portador da Cinza</li>
+      <li onclick="playMusic(35)">Praga</li>
     </ul>
   </li>
 
@@ -259,9 +265,9 @@
       ▶ Sessão Final
     </div>
     <ul class="session-tracks hidden">
-      <li onclick="playMusic(30)">A Última Batalha</li>
-      <li onclick="playMusic(31)">A Última Batalha II</li>
-      <li onclick="playMusic(32)">A Última Batalha III</li>
+      <li onclick="playMusic(36)">A Última Batalha</li>
+      <li onclick="playMusic(37)">A Última Batalha II</li>
+      <li onclick="playMusic(38)">A Última Batalha III</li>
     </ul>
   </li>
   </ul>
@@ -749,6 +755,18 @@
     <li class="npc-item locked" data-npc="korv" data-type="npc" data-category="secundarios">
       <span class="npc-name">Korv</span>
     </li>
+      <li class="npc-item locked" data-npc="basili" data-type="npc" data-category="secundarios">
+      <span class="npc-name">Basili</span>
+    </li>
+      <li class="npc-item locked" data-npc="siegmar" data-type="npc" data-category="secundarios">
+      <span class="npc-name">Siegmar of Catarina</span>
+    </li>
+      <li class="npc-item locked" data-npc="kaelen" data-type="npc" data-category="secundarios">
+      <span class="npc-name">Kaelen</span>
+    </li>
+      <li class="npc-item locked" data-npc="nyssa" data-type="npc" data-category="secundarios">
+      <span class="npc-name">Nyssa</span>
+    </li>
 
     <!-- ================= NPC - IMPÉRIO ================= -->
     <li class="npc-item unlocked" data-npc="valeric" data-type="npc" data-category="imperio">
@@ -775,11 +793,39 @@
     <li class="npc-item locked" data-npc="horin" data-type="npc" data-category="opcionais">
       <span class="npc-name">Horin</span>
     </li>
+    <li class="npc-item locked" data-npc="sarin" data-type="npc" data-category="opcionais">
+      <span class="npc-name">Sarin</span>
+    </li>
 
     <!-- ================= BESTIÁRIO ================= -->
     <li class="npc-item unlocked" data-npc="varok" data-type="bestiario">
       <span class="npc-name">General Varok</span>
     </li>
+    <li class="npc-item unlocked" data-npc="rebeldes" data-type="bestiario">
+      <span class="npc-name">Rebeldes de Metal</span>
+    </li>
+    <li class="npc-item unlocked" data-npc="maelira" data-type="bestiario">
+      <span class="npc-name">Maelira</span>
+    </li>
+    <li class="npc-item unlocked" data-npc="eccho" data-type="bestiario">
+      <span class="npc-name">Eccho</span>
+    </li>
+    <li class="npc-item unlocked" data-npc="filhosdomusgo" data-type="bestiario">
+      <span class="npc-name">Filhos do Musgo</span>
+    </li>
+    <li class="npc-item unlocked" data-npc="cervodeloren" data-type="bestiario">
+      <span class="npc-name">Cervo de Loren</span>
+    </li>
+    <li class="npc-item unlocked" data-npc="apodrecida" data-type="bestiario">
+      <span class="npc-name">Grande Madeira Apodrecida</span>
+    </li>
+    <li class="npc-item unlocked" data-npc="omimico" data-type="bestiario">
+      <span class="npc-name">O Mimico</span>
+    </li>
+        <li class="npc-item unlocked" data-npc="kael" data-type="bestiario">
+      <span class="npc-name">Kael, O Portador da Cinza</span>
+    </li>
+
 
   </ul>
 
@@ -1016,6 +1062,56 @@
         <span class="bg-name">Zhalem</span>
       </li>
 
+      <li data-bg="Basili.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Basili</span>
+      </li>
+
+      <li data-bg="Mapa Região de Zhalem.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Mapa de Zhalem</span>
+      </li>
+
+      <li data-bg="Korv.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Korv</span>
+      </li>
+
+      <li data-bg="O Mimico.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">O Mimico</span>
+      </li>
+
+      <li data-bg="Apodrecida.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Apodrecida</span>
+      </li>
+
+      <li data-bg="Casa de Horin.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Casa de Horin</span>
+      </li>
+
+      <li data-bg="Doran.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Doran</span>
+      </li>
+
+      <li data-bg="Sarin.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Sarin</span>
+      </li>
+
+      <li data-bg="Pedrafria.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Pedrafria</span>
+      </li>
+
+      <li data-bg="Siegmar of Catarina.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Siegmar of Catarina</span>
+      </li>
+
       <li data-bg="Tundra de Orphelia.png">
         <span class="bg-radio"></span>
         <span class="bg-name">Tundra de Orphelia</span>
@@ -1033,6 +1129,11 @@
       <li data-bg="Cavaleiro Kael, O Portador da Cinza.png">
         <span class="bg-radio"></span>
         <span class="bg-name">Cavaleiro Kael, O Portador da Cinza</span>
+      </li>
+
+      <li data-bg="Praga.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Praga</span>
       </li>
 
     </ul>
@@ -1486,6 +1587,38 @@
       <span class="npc-name">General Varok</span>
       <button class="npc-toggle unlock">Desbloqueado</button>
     </li>
+    <li class="npc-item unlocked" data-npc="rebeldes">
+      <span class="npc-name">Rebeldes de Metal</span>
+      <button class="npc-toggle unlock">Desbloqueado</button>
+    </li>
+    <li class="npc-item unlocked" data-npc="maelira">
+      <span class="npc-name">Maelira</span>
+      <button class="npc-toggle unlock">Desbloqueado</button>
+    </li>
+    <li class="npc-item unlocked" data-npc="eccho">
+      <span class="npc-name">Eccho</span>
+      <button class="npc-toggle unlock">Desbloqueado</button>
+    </li>
+    <li class="npc-item unlocked" data-npc="filhosdomusgo">
+      <span class="npc-name">Filhos do Musgo</span>
+      <button class="npc-toggle unlock">Desbloqueado</button>
+    </li>
+    <li class="npc-item unlocked" data-npc="cervodeloren">
+      <span class="npc-name">Cervo de Loren</span>
+      <button class="npc-toggle unlock">Desbloqueado</button>
+    </li>
+    <li class="npc-item unlocked" data-npc="apodrecida">
+      <span class="npc-name">Grande Madeira Apodrecida</span>
+      <button class="npc-toggle unlock">Desbloqueado</button>
+    </li>
+    <li class="npc-item unlocked" data-npc="omimico">
+      <span class="npc-name">O Mímico</span>
+      <button class="npc-toggle unlock">Desbloqueado</button>
+    </li>
+    <li class="npc-item unlocked" data-npc="kael">
+      <span class="npc-name">Kael, O Portador da Cinza</span>
+      <button class="npc-toggle unlock">Desbloqueado</button>
+    </li>
 
     <li class="npc-item locked" data-npc="ysvelle">
       <span class="npc-name">Magistrada Ysvelle</span>
@@ -1537,6 +1670,26 @@
     </li>
         <li class="npc-item locked" data-npc="horin">
       <span class="npc-name">Horin</span>
+      <button class="npc-toggle lock">Bloqueado</button>
+    </li>
+        <li class="npc-item locked" data-npc="sarin">
+      <span class="npc-name">Sarin</span>
+      <button class="npc-toggle lock">Bloqueado</button>
+    </li>
+        <li class="npc-item locked" data-npc="siegmar">
+      <span class="npc-name">Siegmar of Catarina</span>
+      <button class="npc-toggle lock">Bloqueado</button>
+    </li>
+        <li class="npc-item locked" data-npc="basili">
+      <span class="npc-name">Basili</span>
+      <button class="npc-toggle lock">Bloqueado</button>
+    </li>
+        <li class="npc-item locked" data-npc="kaelen">
+      <span class="npc-name">Kaelen</span>
+      <button class="npc-toggle lock">Bloqueado</button>
+    </li>
+        <li class="npc-item locked" data-npc="nyssa">
+      <span class="npc-name">Nyssa</span>
       <button class="npc-toggle lock">Bloqueado</button>
     </li>
   </ul>
