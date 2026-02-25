@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="CSS/room.css">
   <link rel="stylesheet" href="CSS/panels.css">
   <link rel="stylesheet" href="CSS/modal.css">
+  <link rel="stylesheet" href="CSS/mecanicas.css">
   <link rel="stylesheet" href="CSS/npc.css">
   <link rel="stylesheet" href="CSS/sheets.css">
   <link rel="stylesheet" href="CSS/responsive.css">
@@ -312,6 +313,26 @@
 
   <!-- NOME -->
   <h3 class="sheet-name">Nome do Personagem</h3>
+
+  <!-- 🌟 PROGRESSÃO -->
+<div class="sheet-block sheet-mechanics">
+  <h4>🌟 Progressão</h4>
+
+  <div class="sheet-row">
+    <span>PN (Pontos de Nível)</span>
+    <input type="number" class="mechanic-input" data-mechanic="pn">
+  </div>
+
+  <div class="sheet-row">
+    <span>PE (Pontos Especiais)</span>
+    <input type="number" class="mechanic-input" data-mechanic="pe">
+  </div>
+
+  <div class="sheet-row">
+    <span>Créditos</span>
+    <input type="number" class="mechanic-input" data-mechanic="creditos">
+  </div>
+</div>
 
   <!-- 🔋 RECURSOS -->
   <div class="sheet-block">
@@ -647,6 +668,89 @@
     </button>
   </div>
 </div>
+<!-- ========================= -->
+<!-- 🧿 BLOCO DE AMULETOS -->
+<!-- ========================= -->
+<div class="sheet-block sheet-amulets">
+
+  <h4>🧿 Amuletos</h4>
+
+  <div class="amulet-container">
+
+    <!-- SLOT 1 -->
+    <button type="button" class="amulet-slot" data-slot="1">
+      <span class="amulet-placeholder">Selecionar Amuleto</span>
+    </button>
+
+    <!-- SLOT 2 -->
+    <button type="button" class="amulet-slot" data-slot="2">
+      <span class="amulet-placeholder">Selecionar Amuleto</span>
+    </button>
+
+  </div>
+</div>
+
+
+<!-- ========================= -->
+<!-- 🧿 MODAL -->
+<!-- ========================= -->
+<div class="amulet-modal hidden" id="amulet-modal">
+
+  <div class="amulet-modal-content">
+
+    <h4>Escolher Amuleto</h4>
+
+    <!-- LISTA DE AMULETOS -->
+    <div class="amulet-list">
+
+      <!-- ITEM 1 -->
+      <button type="button" class="amulet-item" data-amulet="loren">
+        Amuleto de Loren
+      </button>
+
+      <!-- ITEM 2 -->
+      <button type="button" class="amulet-item" data-amulet="balanca">
+        Amuleto da Balança
+      </button>
+
+      <!-- ITEM 3 -->
+      <button type="button" class="amulet-item" data-amulet="familia">
+        Amuleto da Família Antiga
+      </button>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- 🧿 DETALHE DO AMULETO -->
+    <!-- ========================= -->
+    <div class="amulet-detail hidden" id="amulet-detail">
+
+      <img src="" alt="" id="amulet-detail-image">
+
+      <h5 id="amulet-detail-name"></h5>
+
+      <p id="amulet-detail-desc"></p>
+
+      <div class="amulet-detail-actions">
+        <button type="button" id="amulet-equip-btn">
+          Equipar
+        </button>
+
+        <button type="button" id="amulet-unequip-btn" class="hidden">
+          Desequipar
+        </button>
+      </div>
+
+    </div>
+
+    <!-- BOTÃO FECHAR -->
+    <button type="button" class="amulet-close-btn">
+      Fechar
+    </button>
+
+  </div>
+</div>
 
 </div>
 
@@ -743,7 +847,7 @@
       <span class="npc-name">Serenna</span>
     </li>
 
-    <li class="npc-item locked" data-npc="sevrina" data-type="npc" data-category="principais">
+    <li class="npc-item unlocked" data-npc="sevrina" data-type="npc" data-category="principais">
       <span class="npc-name">Sevrina</span>
     </li>
 
@@ -752,19 +856,19 @@
     </li>
 
     <!-- ================= NPC - SECUNDÁRIOS ================= -->
-    <li class="npc-item locked" data-npc="korv" data-type="npc" data-category="secundarios">
+    <li class="npc-item unlocked" data-npc="korv" data-type="npc" data-category="secundarios">
       <span class="npc-name">Korv</span>
     </li>
-      <li class="npc-item locked" data-npc="basili" data-type="npc" data-category="secundarios">
+      <li class="npc-item unlocked" data-npc="basili" data-type="npc" data-category="secundarios">
       <span class="npc-name">Basili</span>
     </li>
-      <li class="npc-item locked" data-npc="siegmar" data-type="npc" data-category="secundarios">
+      <li class="npc-item unlocked" data-npc="siegmar" data-type="npc" data-category="secundarios">
       <span class="npc-name">Siegmar of Catarina</span>
     </li>
-      <li class="npc-item locked" data-npc="kaelen" data-type="npc" data-category="secundarios">
+      <li class="npc-item unlocked" data-npc="kaelen" data-type="npc" data-category="secundarios">
       <span class="npc-name">Kaelen</span>
     </li>
-      <li class="npc-item locked" data-npc="nyssa" data-type="npc" data-category="secundarios">
+      <li class="npc-item unlocked" data-npc="nyssa" data-type="npc" data-category="secundarios">
       <span class="npc-name">Nyssa</span>
     </li>
 
@@ -790,10 +894,10 @@
     </li>
 
     <!-- ================= NPC - OPCIONAIS ================= -->
-    <li class="npc-item locked" data-npc="horin" data-type="npc" data-category="opcionais">
+    <li class="npc-item unlocked" data-npc="horin" data-type="npc" data-category="opcionais">
       <span class="npc-name">Horin</span>
     </li>
-    <li class="npc-item locked" data-npc="sarin" data-type="npc" data-category="opcionais">
+    <li class="npc-item unlocked" data-npc="sarin" data-type="npc" data-category="opcionais">
       <span class="npc-name">Sarin</span>
     </li>
 
@@ -1571,128 +1675,219 @@
   </button>
   <!-- PAINEL DE NPCs — MESTRE -->
 <div class="npc-panel npc-master hidden" id="npc-master-panel">
-  <h4>Controle de NPCs</h4>
+  <h4>Controle Geral</h4>
 
-  <ul class="npc-list">
-    <li class="npc-item unlocked" data-npc="elsyra">
-      <span class="npc-name">Capitã Elsyra</span>
-      <button class="npc-toggle unlock">Desbloqueado</button>
-    </li>
+  <div class="master-section">
 
-    <li class="npc-item locked" data-npc="barok">
-      <span class="npc-name">General Barok</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-    <li class="npc-item unlocked" data-npc="varok">
-      <span class="npc-name">General Varok</span>
-      <button class="npc-toggle unlock">Desbloqueado</button>
-    </li>
-    <li class="npc-item unlocked" data-npc="rebeldes">
-      <span class="npc-name">Rebeldes de Metal</span>
-      <button class="npc-toggle unlock">Desbloqueado</button>
-    </li>
-    <li class="npc-item unlocked" data-npc="maelira">
-      <span class="npc-name">Maelira</span>
-      <button class="npc-toggle unlock">Desbloqueado</button>
-    </li>
-    <li class="npc-item unlocked" data-npc="eccho">
-      <span class="npc-name">Eccho</span>
-      <button class="npc-toggle unlock">Desbloqueado</button>
-    </li>
-    <li class="npc-item unlocked" data-npc="filhosdomusgo">
-      <span class="npc-name">Filhos do Musgo</span>
-      <button class="npc-toggle unlock">Desbloqueado</button>
-    </li>
-    <li class="npc-item unlocked" data-npc="cervodeloren">
-      <span class="npc-name">Cervo de Loren</span>
-      <button class="npc-toggle unlock">Desbloqueado</button>
-    </li>
-    <li class="npc-item unlocked" data-npc="apodrecida">
-      <span class="npc-name">Grande Madeira Apodrecida</span>
-      <button class="npc-toggle unlock">Desbloqueado</button>
-    </li>
-    <li class="npc-item unlocked" data-npc="omimico">
-      <span class="npc-name">O Mímico</span>
-      <button class="npc-toggle unlock">Desbloqueado</button>
-    </li>
-    <li class="npc-item unlocked" data-npc="kael">
-      <span class="npc-name">Kael, O Portador da Cinza</span>
-      <button class="npc-toggle unlock">Desbloqueado</button>
-    </li>
+    <!-- ================= NPCs ================= -->
+    <div class="master-group">
 
-    <li class="npc-item locked" data-npc="ysvelle">
-      <span class="npc-name">Magistrada Ysvelle</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-    <li class="npc-item unlocked" data-npc="valeric">
-      <span class="npc-name">Rei Valeric Kaer</span>
-      <button class="npc-toggle unlock">Desbloqueado</button>
-    </li>
+      <div class="master-group-header" data-group="npcs">
+        <span>NPCs</span>
+        <span class="master-arrow">▾</span>
+      </div>
 
-    <li class="npc-item locked" data-npc="stilgard2">
-      <span class="npc-name">Inquisidor Stilgard II</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-    <li class="npc-item unlocked" data-npc="malrek">
-      <span class="npc-name">Inquisidor Malrek</span>
-      <button class="npc-toggle unlock">Desbloqueado</button>
-    </li>
+      <div class="master-group-content">
 
-    <li class="npc-item locked" data-npc="luthiel">
-      <span class="npc-name">Oráculo Luthiel</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
+        <!-- PRINCIPAIS -->
+        <div class="master-subgroup">
+          <div class="master-subgroup-header">
+            <span>Principais</span>
+            <span class="master-arrow">▾</span>
+          </div>
+          <ul class="npc-list">
+            <li class="npc-item unlocked" data-npc="elsyra">
+              <span class="npc-name">Capitã Elsyra</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+            <li class="npc-item locked" data-npc="barok">
+              <span class="npc-name">General Barok</span>
+              <button class="npc-toggle lock">Bloqueado</button>
+            </li>
+            <li class="npc-item locked" data-npc="lyss">
+              <span class="npc-name">Lyss</span>
+              <button class="npc-toggle lock">Bloqueado</button>
+            </li>
+            <li class="npc-item locked" data-npc="jax">
+              <span class="npc-name">Jax</span>
+              <button class="npc-toggle lock">Bloqueado</button>
+            </li>
+            <li class="npc-item locked" data-npc="serenna">
+              <span class="npc-name">Serenna</span>
+              <button class="npc-toggle lock">Bloqueado</button>
+            </li>
+            <li class="npc-item locked" data-npc="sevrina">
+              <span class="npc-name">Sevrina</span>
+              <button class="npc-toggle lock">Bloqueado</button>
+            </li>
+            <li class="npc-item locked" data-npc="lyrenne">
+              <span class="npc-name">Lyrenne</span>
+              <button class="npc-toggle lock">Bloqueado</button>
+            </li>
+          </ul>
+        </div>
 
-    <li class="npc-item locked" data-npc="lyss">
-      <span class="npc-name">Lyss</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
+        <!-- SECUNDÁRIOS -->
+        <div class="master-subgroup">
+          <div class="master-subgroup-header">
+            <span>Secundários</span>
+            <span class="master-arrow">▾</span>
+          </div>
+          <ul class="npc-list">
+            <li class="npc-item locked" data-npc="korv">
+              <span class="npc-name">Korv</span>
+              <button class="npc-toggle lock">Bloqueado</button>
+            </li>
+            <li class="npc-item locked" data-npc="basili">
+              <span class="npc-name">Basili</span>
+              <button class="npc-toggle lock">Bloqueado</button>
+            </li>
+            <li class="npc-item locked" data-npc="siegmar">
+              <span class="npc-name">Siegmar of Catarina</span>
+              <button class="npc-toggle lock">Bloqueado</button>
+            </li>
+            <li class="npc-item locked" data-npc="kaelen">
+              <span class="npc-name">Kaelen</span>
+              <button class="npc-toggle lock">Bloqueado</button>
+            </li>
+            <li class="npc-item locked" data-npc="nyssa">
+              <span class="npc-name">Nyssa</span>
+              <button class="npc-toggle lock">Bloqueado</button>
+            </li>
+          </ul>
+        </div>
 
-    <li class="npc-item locked" data-npc="jax">
-      <span class="npc-name">Jax</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-    <li class="npc-item locked" data-npc="serenna">
-      <span class="npc-name">Serenna</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-        <li class="npc-item locked" data-npc="korv">
-      <span class="npc-name">Korv</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-        <li class="npc-item locked" data-npc="sevrina">
-      <span class="npc-name">Sevrina</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-        <li class="npc-item locked" data-npc="lyrenne">
-      <span class="npc-name">Lyrenne</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-        <li class="npc-item locked" data-npc="horin">
-      <span class="npc-name">Horin</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-        <li class="npc-item locked" data-npc="sarin">
-      <span class="npc-name">Sarin</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-        <li class="npc-item locked" data-npc="siegmar">
-      <span class="npc-name">Siegmar of Catarina</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-        <li class="npc-item locked" data-npc="basili">
-      <span class="npc-name">Basili</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-        <li class="npc-item locked" data-npc="kaelen">
-      <span class="npc-name">Kaelen</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-        <li class="npc-item locked" data-npc="nyssa">
-      <span class="npc-name">Nyssa</span>
-      <button class="npc-toggle lock">Bloqueado</button>
-    </li>
-  </ul>
+        <!-- IMPÉRIO -->
+        <div class="master-subgroup">
+          <div class="master-subgroup-header">
+            <span>Império</span>
+            <span class="master-arrow">▾</span>
+          </div>
+          <ul class="npc-list">
+            <li class="npc-item unlocked" data-npc="valeric">
+              <span class="npc-name">Rei Valeric Kaer</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+            <li class="npc-item unlocked" data-npc="ysvelle">
+              <span class="npc-name">Magistrada Ysvelle</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+            <li class="npc-item unlocked" data-npc="stilgard2">
+              <span class="npc-name">Inquisidor Stilgard II</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+            <li class="npc-item unlocked" data-npc="malrek">
+              <span class="npc-name">Inquisidor Malrek</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+            <li class="npc-item unlocked" data-npc="luthiel">
+              <span class="npc-name">Oráculo Luthiel</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+          </ul>
+        </div>
+
+                <!-- OPCIONAIS -->
+        <div class="master-subgroup">
+          <div class="master-subgroup-header">
+            <span>Opcionais</span>
+            <span class="master-arrow">▾</span>
+          </div>
+          <ul class="npc-list">
+            <li class="npc-item unlocked" data-npc="horin">
+              <span class="npc-name">Horin</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+            <li class="npc-item unlocked" data-npc="sarin">
+              <span class="npc-name">Sarin</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================= INIMIGOS ================= -->
+    <div class="master-group">
+
+      <div class="master-group-header" data-group="inimigos">
+        <span>Inimigos</span>
+        <span class="master-arrow">▾</span>
+      </div>
+
+      <div class="master-group-content">
+
+        <!-- CENÁRIO -->
+        <div class="master-subgroup">
+          <div class="master-subgroup-header">
+            <span>Cenário</span>
+            <span class="master-arrow">▾</span>
+          </div>
+          <ul class="npc-list">
+            <li class="npc-item unlocked" data-npc="rebeldes">
+              <span class="npc-name">Rebeldes de Metal</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+            <li class="npc-item unlocked" data-npc="filhosdomusgo">
+              <span class="npc-name">Filhos do Musgo</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CHEFES -->
+        <div class="master-subgroup">
+          <div class="master-subgroup-header">
+            <span>Chefes</span>
+            <span class="master-arrow">▾</span>
+          </div>
+          <ul class="npc-list">
+            <li class="npc-item unlocked" data-npc="varok">
+              <span class="npc-name">General Varok</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+            <li class="npc-item unlocked" data-npc="eccho">
+              <span class="npc-name">Eccho</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+            <li class="npc-item unlocked" data-npc="cervodeloren">
+              <span class="npc-name">Cervo de Loren</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+            <li class="npc-item unlocked" data-npc="apodrecida">
+              <span class="npc-name">Grande Madeira Apodrecida</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+            <li class="npc-item unlocked" data-npc="kael">
+              <span class="npc-name">Kael, O Portador da Cinza</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+            <li class="npc-item unlocked" data-npc="maelira">
+              <span class="npc-name">Maelira, A Regente do Aço</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SECRETOS -->
+        <div class="master-subgroup">
+          <div class="master-subgroup-header">
+            <span>Secretos</span>
+            <span class="master-arrow">▾</span>
+          </div>
+          <ul class="npc-list">
+            <li class="npc-item locked" data-npc="omimico">
+              <span class="npc-name">O Mimico</span>
+              <button class="npc-toggle lock">Bloqueado</button>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </div>
 </div>
 </section>
@@ -1864,6 +2059,7 @@
 <script src="Scripts/sheets.js" defer></script>
 <script src="Scripts/missions.js" defer></script>
 <script src="Scripts/habilidades.js" defer></script>
+<script src="Scripts/mecanicas.js"></script>
 
 </body>
 </html>

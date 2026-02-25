@@ -91,9 +91,7 @@
   background: rgba(140, 80, 255, 0.18);
 }
 
-.npc-item.locked {
-  opacity: 0.45;
-}
+
 .npc-toggle {
   font-size: 10px;
   padding: 3px 6px;
@@ -305,4 +303,125 @@
 .npc-list::-webkit-scrollbar-thumb {
   background: rgba(63, 169, 245, 0.4);
   border-radius: 4px;
+}
+/* =========================
+   MASTER GROUP (NPC MASTER)
+========================= */
+
+.master-group {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 10px;
+
+  border: 1px solid rgba(140, 80, 255, 0.25);
+  background: rgba(140, 80, 255, 0.05);
+}
+
+/* HEADER PRINCIPAL (Inimigos / NPCs etc) */
+.master-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 8px 10px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  background: rgba(140, 80, 255, 0.18);
+  color: #d6c7ff;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.master-group-header:hover {
+  background: rgba(140, 80, 255, 0.3);
+}
+
+/* Conteúdo principal (colapsável) */
+.master-group-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* Quando estiver aberto (JS adiciona .open) */
+.master-group.open .master-group-content {
+  max-height: 1000px;
+}
+/* =========================
+   MASTER SUBGROUP
+========================= */
+
+.master-subgroup {
+  border-top: 1px solid rgba(140, 80, 255, 0.15);
+}
+
+/* Header do Subgrupo */
+.master-subgroup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 6px 10px;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+
+  background: rgba(140, 80, 255, 0.1);
+  color: #cbb8ff;
+
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.master-subgroup-header:hover {
+  background: rgba(140, 80, 255, 0.22);
+}
+
+/* Conteúdo interno */
+.master-subgroup .npc-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+  padding: 0 6px;
+}
+
+/* Quando aberto */
+.master-subgroup.open .npc-list {
+  max-height: 600px;
+  padding: 6px;
+}
+/* =========================
+   ANIMAÇÃO DAS SETAS
+========================= */
+
+.master-arrow {
+  font-size: 11px;
+  transition: transform 0.25s ease;
+}
+
+/* Grupo principal aberto */
+.master-group.open .master-group-header .master-arrow {
+  transform: rotate(180deg);
+}
+
+/* Subgrupo aberto */
+.master-subgroup.open .master-subgroup-header .master-arrow {
+  transform: rotate(180deg);
+}
+
+.master-subgroup .npc-item {
+  background: rgba(255,255,255,0.02);
+  transition: all 0.2s ease;
+}
+
+.master-subgroup .npc-item:hover {
+  background: rgba(140, 80, 255, 0.15);
+  transform: translateX(3px);
 }

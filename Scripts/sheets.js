@@ -53,6 +53,10 @@ if (playerBtn && playerSelector && playerSheet) {
       listenAttacksRealtime();
       listenSkillsRealtime();
       listenNotesRealtime();
+      loadMechanics(sheetId);
+      loadAmulets(sheetId);
+
+
 
       const name = item.querySelector(".sheet-name").innerText;
 

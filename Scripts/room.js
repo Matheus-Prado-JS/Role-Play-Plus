@@ -75,7 +75,7 @@ if (!playerId) {
   playerId = crypto.randomUUID();
   localStorage.setItem("playerId", playerId);
 }
-
+window.playerId = playerId;
 
 if (!storedName) {
   modal.classList.remove("hidden");

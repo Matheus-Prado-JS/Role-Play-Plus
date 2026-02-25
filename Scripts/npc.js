@@ -2,19 +2,54 @@ const npcMasterPanel = document.getElementById("npc-master-panel");
 
 if (npcMasterPanel) {
   npcMasterPanel.addEventListener("click", (e) => {
+
+    /* =========================
+       TOGGLE LOCK / UNLOCK (JÁ EXISTENTE)
+    ========================== */
     const toggle = e.target.closest(".npc-toggle");
-    if (!toggle) return;
+    if (toggle) {
+      if (!requireMaster("controlar NPCs")) return;
 
-    if (!requireMaster("controlar NPCs")) return;
+      const item = toggle.closest(".npc-item");
+      const npcId = item.dataset.npc;
+      const isLocked = item.classList.contains("locked");
 
-    const item = toggle.closest(".npc-item");
-    const npcId = item.dataset.npc;
+      npcsRef.child(npcId).update({
+        unlocked: isLocked
+      });
 
-    const isLocked = item.classList.contains("locked");
+      return; // importante pra não conflitar com outros cliques
+    }
 
-    npcsRef.child(npcId).update({
-      unlocked: isLocked
-    });
+    /* =========================
+       TOGGLE MASTER GROUP
+    ========================== */
+    const groupHeader = e.target.closest(".master-group-header");
+    if (groupHeader) {
+      const group = groupHeader.closest(".master-group");
+      group.classList.toggle("open");
+      return;
+    }
+
+    /* =========================
+       TOGGLE MASTER SUBGROUP
+    ========================== */
+    const subHeader = e.target.closest(".master-subgroup-header");
+    if (subHeader) {
+      const subgroup = subHeader.closest(".master-subgroup");
+
+      // Fecha outros subgrupos do mesmo grupo (opcional elegante)
+      const siblings = subgroup.parentElement.querySelectorAll(".master-subgroup");
+      siblings.forEach(s => {
+        if (s !== subgroup) {
+          s.classList.remove("open");
+        }
+      });
+
+      subgroup.classList.toggle("open");
+      return;
+    }
+
   });
 }
 
@@ -392,13 +427,10 @@ npcsRef.on("value", (snapshot) => {
     );
 
 if (playerItem) {
-  playerItem.classList.toggle("locked", !unlocked);
-  playerItem.classList.toggle("unlocked", unlocked);
-
   if (!unlocked) {
-    playerItem.classList.add("hidden");
+    playerItem.style.display = "none";
   } else {
-    applyNpcFilters();
+    playerItem.style.display = "";
   }
 }
   });
