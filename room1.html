@@ -54,6 +54,10 @@
   <div class="enemy-option" data-image="Eccho.png">Eccho</div>
   <div class="enemy-option" data-image="Ustanak, Lorde da Escória.png">Ustanak</div>
   <div class="enemy-option" data-image="Cervo de Loren.png">Cervo de Loren</div>
+  <div class="enemy-option" data-image="Balança.png">Balança</div>
+  <div class="enemy-option" data-image="Korv.png">Korv</div>
+  <div class="enemy-option" data-image="Diamantes de Gelo.png">Diamantes de Gelo</div>
+  <div class="enemy-option" data-image="O Mimico.png">O Mimico</div>
   <div class="enemy-option" data-image="Cavaleiro Kael.png">Cavaleiro Kael</div>
 </div>
 </div>
@@ -851,7 +855,7 @@
       <span class="npc-name">Sevrina</span>
     </li>
 
-    <li class="npc-item locked" data-npc="lyrenne" data-type="npc" data-category="principais">
+    <li class="npc-item unlocked" data-npc="lyrenne" data-type="npc" data-category="principais">
       <span class="npc-name">Lyrenne</span>
     </li>
 
@@ -1175,7 +1179,10 @@
         <span class="bg-radio"></span>
         <span class="bg-name">Mapa de Zhalem</span>
       </li>
-
+      <li data-bg="Kaelen, A Espada.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Kaelen</span>
+      </li>
       <li data-bg="Korv.png">
         <span class="bg-radio"></span>
         <span class="bg-name">Korv</span>
@@ -1206,9 +1213,24 @@
         <span class="bg-name">Sarin</span>
       </li>
 
+      <li data-bg="Casa de Kyra.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Casa de Kyra</span>
+      </li>
+
+      <li data-bg="Balança.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Balança</span>
+      </li>
+
       <li data-bg="Pedrafria.png">
         <span class="bg-radio"></span>
         <span class="bg-name">Pedrafria</span>
+      </li>
+
+      <li data-bg="Diamantes de Gelo.png">
+        <span class="bg-radio"></span>
+        <span class="bg-name">Diamantes de Gelo</span>
       </li>
 
       <li data-bg="Siegmar of Catarina.png">
@@ -1398,28 +1420,66 @@
   >
     <img src="assets/icons/Ficha-Master.png" alt="Fichas do Mestre">
   </button>
-  <!-- SELETOR DE CRIATURA (MESTRE) -->
+<!-- SELETOR DE CRIATURA (MESTRE) -->
 <div class="sheet-selector master hidden" id="enemy-sheet-selector">
 
   <h4>Criaturas</h4>
 
-  <ul class="sheet-list">
-    <li class="sheet-item active" data-sheet="rebeldes-metal">
-      <span class="sheet-name">Rebeldes de Metal</span>
-    </li>
+  <div class="sheet-categories">
 
-    <li class="sheet-item" data-sheet="varok">
-      <span class="sheet-name">General Varok</span>
-    </li>
+    <!-- ========================= -->
+    <!-- 📂 CHEFES -->
+    <!-- ========================= -->
+    <div class="sheet-category" data-category="bosses">
 
-    <li class="sheet-item" data-sheet="eccho">
-      <span class="sheet-name">Eccho</span>
-    </li>
+      <button class="category-toggle">
+        <span>📂 Chefes</span>
+        <span class="category-arrow">▾</span>
+      </button>
 
-    <li class="sheet-item" data-sheet="ustanakk">
-      <span class="sheet-name">Ustanak, Lorde da Escória</span>
-    </li>
-  </ul>
+      <ul class="sheet-list">
+
+        <li class="sheet-item active" data-sheet="rebeldes-metal">
+          <span class="sheet-name">Rebeldes de Metal</span>
+        </li>
+
+        <li class="sheet-item" data-sheet="varok">
+          <span class="sheet-name">General Varok</span>
+        </li>
+
+        <li class="sheet-item" data-sheet="eccho">
+          <span class="sheet-name">Eccho</span>
+        </li>
+
+        <li class="sheet-item" data-sheet="ustanakk">
+          <span class="sheet-name">Ustanak, Lorde da Escória</span>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- 👹 INIMIGOS -->
+    <!-- ========================= -->
+    <div class="sheet-category" data-category="enemies">
+
+      <button class="category-toggle">
+        <span>👹 Inimigos</span>
+        <span class="category-arrow">▾</span>
+      </button>
+
+      <ul class="sheet-list">
+
+        <li class="sheet-item" data-sheet="filhosdomusgo">
+          <span class="sheet-name">Filhos do Musgo</span>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
 
 </div>
 
@@ -1448,7 +1508,7 @@
   </div>
 
   <div class="sheet-row">
-    <span>Energia</span>
+    <span>PR</span>
     <input type="number" class="sheet-value"
       data-section="recursos"
       data-field="energia">

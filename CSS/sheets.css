@@ -83,6 +83,82 @@
 }
 
 /* =========================
+   CATEGORIAS — FICHAS DO MESTRE
+========================= */
+
+.sheet-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Bloco da categoria */
+.sheet-category {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Botão da categoria */
+.category-toggle {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #f0d6a0;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+  padding: 6px 4px;
+
+  transition: color 0.2s ease;
+}
+
+.category-toggle:hover {
+  color: #ffd36a;
+}
+
+/* Setinha */
+.category-arrow {
+  font-size: 12px;
+  transition: transform 0.25s ease;
+  opacity: 0.7;
+}
+
+/* Lista dentro da categoria */
+.sheet-category .sheet-list {
+  margin-top: 6px;
+  overflow: hidden;
+
+  transition: 
+    max-height 0.3s ease,
+    opacity 0.25s ease;
+}
+
+/* Estado colapsado */
+.sheet-category.collapsed .sheet-list {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+}
+
+/* Estado expandido */
+.sheet-category:not(.collapsed) .sheet-list {
+  max-height: 500px; /* grande o suficiente */
+  opacity: 1;
+}
+
+/* Girar seta quando fechado */
+.sheet-category.collapsed .category-arrow {
+  transform: rotate(-90deg);
+}
+
+/* =========================
    FICHA — BASE
 ========================= */
 
