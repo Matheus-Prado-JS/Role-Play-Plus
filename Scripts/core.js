@@ -5,6 +5,7 @@ const logRef = db.ref("log");
 const backgroundRef = db.ref("background");
 const npcsRef = db.ref("npcs");
 const turnRef = db.ref("turn");
+const documentsRef = db.ref("documents");
 const missionsRef = db.ref("missions");
 
 logRef.limitToLast(50).on("child_added", (snapshot) => {

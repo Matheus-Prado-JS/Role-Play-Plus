@@ -155,6 +155,26 @@ if (playerSelector) {
 if (enemySelector) enemySelector.addEventListener("click", (e) => {
   e.stopPropagation();
 });
+// =========================
+// CATEGORIAS — FICHAS DO MESTRE
+// =========================
+
+if (enemySelector) {
+
+  const categoryToggles = enemySelector.querySelectorAll(".category-toggle");
+
+  categoryToggles.forEach(toggle => {
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation(); // impede fechar o selector
+
+      const category = toggle.closest(".sheet-category");
+      if (!category) return;
+
+      category.classList.toggle("collapsed");
+    });
+  });
+
+}
 if (playerBtn) playerBtn.addEventListener("click", (e) => {
   e.stopPropagation();
   closeAllSelectors();

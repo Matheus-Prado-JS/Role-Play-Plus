@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="CSS/npc.css">
   <link rel="stylesheet" href="CSS/sheets.css">
   <link rel="stylesheet" href="CSS/responsive.css">
+  <link rel="stylesheet" href="CSS/documentos.css">
   <link rel="stylesheet" href="CSS/missions.css">
   <link rel="stylesheet" href="CSS/habilidades.css">
 
@@ -799,6 +800,48 @@
   >
     <img src="assets/icons/Doc-Player.png" alt="Documentos">
   </button>
+  <!-- SELETOR DE DOCUMENTOS (PLAYER) -->
+<div class="documents-selector player hidden" id="documents-selector">
+
+  <h4>Documentos</h4>
+
+  <!-- PRINCIPAIS -->
+  <div class="doc-category">
+    <div class="doc-category-title">📌 Principal</div>
+    <ul class="doc-list" data-category="principal"></ul>
+  </div>
+
+  <!-- SECUNDÁRIOS -->
+  <div class="doc-category">
+    <div class="doc-category-title">📄 Secundário</div>
+    <ul class="doc-list" data-category="secundario"></ul>
+  </div>
+
+  <!-- OPCIONAIS -->
+  <div class="doc-category">
+    <div class="doc-category-title">🗒 Opcional</div>
+    <ul class="doc-list" data-category="opcional"></ul>
+  </div>
+
+</div>
+<!-- VISUALIZADOR DE DOCUMENTO -->
+<div class="document-viewer hidden" id="document-viewer">
+
+  <div class="document-content">
+
+    <h3 class="document-title">Título</h3>
+
+    <div class="document-body">
+      Conteúdo do documento...
+    </div>
+
+    <div class="document-importance">
+      Importância
+    </div>
+
+  </div>
+
+</div>
 
   <!-- NPCs (Player) -->
   <button 
@@ -1308,6 +1351,80 @@
   >
     <img src="assets/icons/Doc-Master.png" alt="Documentos do Mestre">
   </button>
+  <!-- PAINEL DOCUMENTOS (MESTRE) -->
+<div class="documents-panel master hidden" id="documents-master-panel">
+
+  <h4>Gerenciar Documentos</h4>
+
+  <ul class="documents-master-list"></ul>
+
+  <button class="doc-create-btn">
+    + Criar Documento
+  </button>
+
+  <!-- FORMULÁRIO -->
+  <div class="doc-form hidden">
+
+    <input type="text"
+      class="doc-input"
+      placeholder="Nome do Documento"
+      data-field="name"
+    >
+
+    <!-- TOM -->
+    <div class="doc-option-group">
+      <span>Tom:</span>
+
+      <label>
+        <input type="radio" name="doc-tone" value="padrao" checked>
+        Padrão
+      </label>
+
+      <label>
+        <input type="radio" name="doc-tone" value="serio">
+        Sério
+      </label>
+
+      <label>
+        <input type="radio" name="doc-tone" value="envelhecido">
+        Envelhecido
+      </label>
+    </div>
+
+    <!-- IMPORTÂNCIA -->
+    <div class="doc-option-group">
+      <span>Importância:</span>
+
+      <label>
+        <input type="radio" name="doc-importance" value="principal" checked>
+        Principal
+      </label>
+
+      <label>
+        <input type="radio" name="doc-importance" value="secundario">
+        Secundário
+      </label>
+
+      <label>
+        <input type="radio" name="doc-importance" value="opcional">
+        Opcional
+      </label>
+    </div>
+
+    <textarea
+      class="doc-textarea"
+      placeholder="Conteúdo do documento..."
+      rows="6"
+      data-field="content"
+    ></textarea>
+
+    <button class="doc-save-btn">
+      Salvar Documento
+    </button>
+
+  </div>
+
+</div>
 
 <!-- MISSIONS (MESTRE) -->
 <button 
@@ -1428,12 +1545,12 @@
   <div class="sheet-categories">
 
     <!-- ========================= -->
-    <!-- 📂 CHEFES -->
+    <!-- 🟣 CHEFES -->
     <!-- ========================= -->
     <div class="sheet-category" data-category="bosses">
 
       <button class="category-toggle">
-        <span>📂 Chefes</span>
+        <span>🟣 Chefes</span>
         <span class="category-arrow">▾</span>
       </button>
 
@@ -1460,12 +1577,12 @@
     </div>
 
     <!-- ========================= -->
-    <!-- 👹 INIMIGOS -->
+    <!-- 🔴 INIMIGOS -->
     <!-- ========================= -->
     <div class="sheet-category" data-category="enemies">
 
       <button class="category-toggle">
-        <span>👹 Inimigos</span>
+        <span>🔴 Inimigos</span>
         <span class="category-arrow">▾</span>
       </button>
 
@@ -2117,6 +2234,7 @@
 <script src="Scripts/music.js" defer></script>
 <script src="Scripts/npc.js" defer></script>
 <script src="Scripts/sheets.js" defer></script>
+<script src="Scripts/documentos.js" defer></script>
 <script src="Scripts/missions.js" defer></script>
 <script src="Scripts/habilidades.js" defer></script>
 <script src="Scripts/mecanicas.js"></script>
