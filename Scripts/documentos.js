@@ -97,12 +97,18 @@ document.addEventListener("DOMContentLoaded", () => {
       li.classList.add("doc-master-item");
 
       li.innerHTML = `
-        <span>${doc.name}</span>
-        <div>
+        <div class="doc-master-header">
+          <span class="doc-master-title">${doc.name}</span>
+        </div>
+
+        <div class="doc-master-actions">
           <button class="doc-unlock-btn">
-            ${doc.unlocked ? "Bloqueado" : "Desbloquear"}
+            ${doc.unlocked ? "Bloquear" : "Desbloquear"}
           </button>
-          <button class="doc-delete-btn">Excluir</button>
+
+          <button class="doc-delete-btn">
+            Excluir
+          </button>
         </div>
       `;
 

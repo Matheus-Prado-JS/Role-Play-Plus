@@ -310,6 +310,9 @@
         <li class="sheet-item" data-sheet="stilgard">
       <span class="sheet-name">Stilgard</span>
     </li>
+        <li class="sheet-item" data-sheet="ashen">
+      <span class="sheet-name">Ashen</span>
+    </li>
   </ul>
 
 </div>
@@ -1186,7 +1189,7 @@
   <div class="bg-category">
 
     <button class="bg-category-title" data-bg-category="chefes">
-      Capítulo 2: Jornada
+      Capítulo 2: Loren & Zhalem
       <span class="bg-category-arrow">▼</span>
     </button>
 
@@ -1246,7 +1249,21 @@
         <span class="bg-name">Casa de Horin</span>
       </li>
 
-      <li data-bg="Doran.png">
+    </ul>
+  </div>
+    <!-- =========================
+       Capítulo 2: Jornada
+  ========================== -->
+  <div class="bg-category">
+
+    <button class="bg-category-title" data-bg-category="chefes">
+      Capítulo 2: Doran & Pedrafria
+      <span class="bg-category-arrow">▼</span>
+    </button>
+
+    <ul class="background-options bg-category-content hidden" data-bg-content="chefes">
+
+            <li data-bg="Doran.png">
         <span class="bg-radio"></span>
         <span class="bg-name">Doran</span>
       </li>
@@ -1281,7 +1298,21 @@
         <span class="bg-name">Siegmar of Catarina</span>
       </li>
 
-      <li data-bg="Tundra de Orphelia.png">
+    </ul>
+  </div>
+    <!-- =========================
+       Capítulo 2: Jornada
+  ========================== -->
+  <div class="bg-category">
+
+    <button class="bg-category-title" data-bg-category="chefes">
+      Capítulo 2: Orphelia
+      <span class="bg-category-arrow">▼</span>
+    </button>
+
+    <ul class="background-options bg-category-content hidden" data-bg-content="chefes">
+
+           <li data-bg="Tundra de Orphelia.png">
         <span class="bg-radio"></span>
         <span class="bg-name">Tundra de Orphelia</span>
       </li>
@@ -1307,8 +1338,6 @@
 
     </ul>
   </div>
-
-
   <!-- =========================
        Capítulo Final: Paz ou Guerra?
   ========================== -->
@@ -2094,6 +2123,9 @@
       <button class="tree-tab" data-tree="tanque">Tanque</button>
       <button class="tree-tab" data-tree="mago">Mago</button>
       <button class="tree-tab" data-tree="bardo">Bardo</button>
+      <button class="tree-tab" data-tree="piromante">Piromante</button>
+      <button class="tree-tab" data-tree="devoto">Devoto</button>
+      <button class="tree-tab" data-tree="profanador">Profanador</button>
     </div>
 
     <div class="skill-tree-display">
@@ -2171,6 +2203,51 @@
         <div class="skill-node" data-id="8" data-name="Orquestra dos Céus" data-desc="Invoca múltimos relâmpagos aleatórios em uma área. Cada raio causa 2D6 de dano, e é girado um total de 2D6 para raios. Custo 6 PM." data-cost="3">Orquestra dos<br> Céus</div>
         <div class="skill-node" data-id="9" data-name="Fulguração" data-desc="Explosão elétrica massiva em área. Inimigos atingidos ficam com condição 'Charge' e recebem +1D6 de dano elétrico e aumenta progressivamente. A condição só acaba se não for atingido por nenhum golpe elétrico. Custa 8 PM + 4 PVg." data-cost="4">Fulguração</div>
         <div class="skill-node" data-id="10" data-name="Apoteose" data-desc="Por 3 turnos, o Bardo causa X2 em todo ataque elétrico. Pode se teleportar 1 vez por turno como salto elétrico causando 1D6 se aparecer perto de um inimigo. Aliados ganham velocidade de movimento (+1 ação de movimento), no fim, o PV cai 30% e o instrumento fica inutilizado até reparo. Custa 50% do PM." data-cost="5">Apoteose</div>
+      </div>
+
+            <!-- PIROMANTE -->
+      <div class="skill-tree-map" id="tree-piromante">
+        <div class="skill-tree-lines"></div>
+        <div class="skill-node" data-id="1" data-name="Faísca Ígnea" data-desc="Marca o alvo com uma centelha viva. No próximo turno do Piromante, a marca explode causando 1D6 de dano de fogo. Custa 1 PM." data-cost="1">Faísca Ígnea</div>
+        <div class="skill-node" data-id="2" data-name="Labareda Saltitante" data-desc="Lança uma chama instável que ricocheteia entre inimigos próximos até 3 vezes. Cada salto reduz o dano em 25%. Causa 1D8/6/4 de dano. Custa 3 PM. " data-cost="2">Labareda<br> Saltitante</div>
+        <div class="skill-node" data-id="3" data-name="Aura Incandescente" data-desc="O corpo do Piromante irradia calor intenso por 2 turnos. Aumenta em 2D4 todo dano de fogo por turno. Dura 2 Turnos. Custa 2 PM." data-cost="2">Aura<br> Incandescente</div>
+        <div class="skill-node" data-id="4" data-name="Explosão Ardente" data-desc="O Piromante colapsa o ar ao redor, criando uma detonação ígnea em área curta. Pode incendiar objetos. Causa 3D4 de dano. Custa 4 PM." data-cost="2">Explosão<br> Ardente</div>
+        <div class="skill-node" data-id="5" data-name="Coluna Vulcânica" data-desc="Abre fissuras no chão sob o alvo, liberrando magma por 1 turno. Causando 5D6 de Dano. Custa 5 PM." data-cost="3">Coluna<br> Vulcânica</div>
+        <div class="skill-node" data-id="6" data-name="Círculo das Cinzas" data-desc="Conjura um anel de cinzas giratórias ao redor de uma área escolhida. Dura 1D4 de turnos. Causa 1D6/8/10 de dano a cada turno mantido. Custo 3 PM." data-cost="3">Círculo das<br> Cinzas</div>
+        <div class="skill-node" data-id="7" data-name="Combustão Crescente" data-desc="Toda vez que o Piromante causa dano de fogo, acumula Combustão. Ao atingir 3 cargas, pode consumir o fogo. Dobrando o dano no próximo turno. Custa 5 PM e 1 PP." data-cost="3">Combustão<br> Crescente</div>
+        <div class="skill-node" data-id="8" data-name="Chuva de Meteoros" data-desc="Fragmentos Flamejantes caem em pontos aleatórios da área escolhida durante 2 turnos. Cada Fragmento causa 1D6 de dano e pode atingir até 3 vezes durante o turno. Custo 6 PM." data-cost="3">Chuva de<br> Meteoros</div>
+        <div class="skill-node" data-id="9" data-name="Inferno Carmesim" data-desc="O Piromante convoca um turbilhão carmesim que consome o ar. Causando Asfixia por calor, sofrendo dano contínuo de 2D8. O efeito persiste por 5 turnos. Custa 8PM + 4 PVg." data-cost="4">Inferno<br> Carmesim</div>
+        <div class="skill-node" data-id="10" data-name="Avatar da Fênix" data-desc="O Piromante assume uma forma flamejante ancestral por 3 turnos. Torna-se imune a dano de fogo, ao zerar o PV, renasce com 70% do PV. Cada feitiço passa a consumir 2 de PV também. Todo feitiço ganha +3D12 de dano. Custa 50% do PM total." data-cost="5">Avatar da<br> Fênix</div>
+      </div>
+
+            <!-- Devoto -->
+      <div class="skill-tree-map" id="tree-devoto">
+        <div class="skill-tree-lines"></div>
+        <div class="skill-node" data-id="1" data-name="Centelha de Fé" data-desc="Dispara um projétil de luz sagrada que causa 2D6 de dano sagrado. +2 contra mortos-vivos. Custo 1 PM." data-cost="1">Centelha de Fé</div>
+        <div class="skill-node" data-id="2" data-name="Toque Restaurador" data-desc="Cura um aliado ou a si mesmo em 2D8 + 4. Se usado fora de combate ganha x2. 3 PM." data-cost="2">Toque Restaurador</div>
+        <div class="skill-node" data-id="3" data-name="Escudo da Devoção" data-desc="Concede a si ou a um aliado um escudo divino que absorve 3D6 de dano. Dura 2 turnos. Custa 2 PM." data-cost="2">Escudo da<br> Devoção</div>
+        <div class="skill-node" data-id="4" data-name="Marca do Julgamento" data-desc="Marca um inimigo por 3 turnos. Ataques contra ele causam +1D6 de dano sagrado. Se o alvo morrer sob a marca, o Devoto recupera 1 PM. Custa 4 PM." data-cost="2">Marca do<br> Julgamento</div>
+        <div class="skill-node" data-id="5" data-name="Chama Purificadora" data-desc="Invoca fogo sagrado em área média. Causa 4D6 de dano e remove efeitos negativos na área. Custa 5 PM." data-cost="3">Chama<br> Purificadora</div>
+        <div class="skill-node" data-id="6" data-name="Voto de Sacríficio" data-desc="O Devoto transfere até 30% do próprio PV para curar um aliado em dobro do valor sacrificado.  Se ele chegar a 0, termina o efeito em 1. Custo 3 PM." data-cost="3">Voto de<br> Sacríficio</div>
+        <div class="skill-node" data-id="7" data-name="Lança Solar" data-desc="Arremessa uma lança de luz concentrada que causa 5D6 de dano. Se atingir um morto-vivo ou criatura das trevas causa +2D6. Custa 5 PM e 1 PP." data-cost="3">Lança Solar</div>
+        <div class="skill-node" data-id="8" data-name="Aura da Graça" data-desc="Cria uma aura ao redor do Devoto por 1D4 de turnos. Aliados recuperam 1D6 de PV a cada turno dentro da área. Recebem resistência contra maldição e medo. Custo 6 PM." data-cost="3">Aura da<br> Graça</div>
+        <div class="skill-node" data-id="9" data-name="Ira dos Céus" data-desc="Explosão divina ao redor do Devoto. Causa 6D6 de dano sagrado em área curta e empurra inimigos. Custa 7 PM + 2 PVg." data-cost="4">Ira dos<br> Céus</div>
+        <div class="skill-node" data-id="10" data-name="Ascensão do Mártir" data-desc="Por 3 turnos. Todo dano sagrado é dobrado. Cura aliados em 2D6 por turno. Não pode cair abaixo de 1 de PV. Ao final do Efeito perde 40% da vida e fica exausto. Custa 50% do PM." data-cost="5">Ascensão do<br> Mártir</div>
+      </div>
+
+                <!-- Profanador -->
+      <div class="skill-tree-map" id="tree-profanador">
+        <div class="skill-tree-lines"></div>
+        <div class="skill-node" data-id="1" data-name="Escarro" data-desc="Dispara um projétil de energia corrupta que causa 2D6 de dano profano. Se atingir um alvo sagrado causa 1D6 adicional. Custo 1 PM." data-cost="1">Escarro</div>
+        <div class="skill-node" data-id="2" data-name="Mancha" data-desc="Marca um inimigo por 3 turnos. Ele recebe -2 em testes de resistência e sofre 1D4 de dano por turno. 3 PM." data-cost="2">Mancha</div>
+        <div class="skill-node" data-id="3" data-name="Roubo de Essência" data-desc="Causa 2D8 de dano profano e cura o profanador em metade do dano causado. Se estiver marcado, a cura é total. Custa 2 PM." data-cost="2">Roubo de<br> Essência</div>
+        <div class="skill-node" data-id="4" data-name="Quebra de Juramento" data-desc="Dissipa efeitos sagrados ou milagres ativos em um alvo ou área curta. Alvos afetados sofrem 2D6 de dano. Custa 4 PM." data-cost="2">Quebra de<br> Juramento</div>
+        <div class="skill-node" data-id="5" data-name="Chama Negra" data-desc="Invoca fogo profano em área média. Causa 4D6 de dano profano e aplica 'Corrupção' por 2 turnos (+1D6 de dano profano) Custa 5 PM." data-cost="3">Chama<br> Negra</div>
+        <div class="skill-node" data-id="6" data-name="Pacto impuro" data-desc="O Profanador sacrifica 15% do PV para ganhar +2D6 de dano em seus ataques por 3 turnos. Custo 3 PM." data-cost="3">Pacto impuro</div>
+        <div class="skill-node" data-id="7" data-name="Corrupção" data-desc="Área de decadência ao redor do Profanador por 1D4 de turnos. Inimigos sofrem 1D6 por turno e tem redução de cura. Custa 5 PM e 1 PP." data-cost="3">Corrupção</div>
+        <div class="skill-node" data-id="8" data-name="Invocação do Abismo" data-desc="Rasga o solo e invoca tentáculos sombrios que causam 5D6 de dano e imobilizam o alvo por 1 turno. Custo 6 PM." data-cost="3">Invocação do<br> Abismo</div>
+        <div class="skill-node" data-id="9" data-name="Profanação" data-desc="Explosão profana em área curta. Causa 6D6 de dano profano. Remove todos os efeitos ativos e transforma em cura recebida por 1 turno. Custa 8 PM + 4 PVg." data-cost="4">Profanação</div>
+        <div class="skill-node" data-id="10" data-name="Profanação do Herege" data-desc="Por 3 turnos, todo dano profano é dobrado. Cura recebida se converte em dano aos inimigos próximos. Inimigos em área sofrem medo (-2 em Testes) ao fim, o Profanador perde 40% da vida e sofre 1 turno de fraqueza (-2 em tudo). Custa 50% do PM." data-cost="5">Profanação do<br> Herege</div>
       </div>
 
     </div>
