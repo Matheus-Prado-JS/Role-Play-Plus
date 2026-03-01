@@ -58,21 +58,27 @@ document.addEventListener("DOMContentLoaded", () => {
     loren: {
       id: "loren",
       name: "Amuleto de Loren",
-      desc: "Aumenta ataques de propriedade mágica em +2.",
-      image: "assets/amulets/loren.jpg"
+      desc: "Aumenta ataques de propriedade mágica em (+2).",
+      image: "assets/amulets/loren.png"
     },
     balanca: {
       id: "balanca",
       name: "Amuleto da Balança",
       desc: "Reduz penalidade de peso para qualquer equipamento (-1).",
-      image: "assets/amulets/balanca.jpg"
+      image: "assets/amulets/balanca.png"
     },
     familia: {
       id: "familia",
       name: "Amuleto da Família Antiga",
-      desc: "Aumenta resistência contra efeitos congelantes.",
-      image: "assets/amulets/familia.webp"
-    }
+      desc: "Aumenta resistência contra efeitos congelantes (+2).",
+      image: "assets/amulets/familia.png"
+    },
+    siegbrau: {
+      id: "siegbrau",
+      name: "Amuleto de Siegbrau",
+      desc: "Aumenta o dano de ataques físicos (+4).",
+      image: "assets/amulets/siegbrau.png"
+    },
   };
 
 

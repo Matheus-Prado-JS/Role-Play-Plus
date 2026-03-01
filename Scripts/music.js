@@ -143,6 +143,21 @@ const playlist = [
     file: "assets/music/O Mimico.mp3",
     bg: "assets/music/O Mimico.png"
   },
+  {
+    name: "Distrito Baixo",
+    file: "assets/music/Distrito Baixo.mp3",
+    bg: "assets/music/Distrito Baixo.png"
+  },
+  {
+    name: "Lua Negra",
+    file: "assets/music/Lua Negra.mp3",
+    bg: "assets/music/Lua Negra.png"
+  },
+  {
+    name: "Esconderijo",
+    file: "assets/music/Esconderijo.mp3",
+    bg: "assets/music/Esconderijo.png"
+  },
     {
     name: "Apodrecida",
     file: "assets/music/Grande Madeira Apodrecida.mp3",

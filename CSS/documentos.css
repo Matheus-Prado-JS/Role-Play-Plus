@@ -231,7 +231,11 @@
 /* PADRÃO */
 .tone-padrao {
   background: rgba(20, 20, 30, 0.95);
-  color: #eee;
+  color: rgb(122, 180, 255);
+  border-color: rgba(129, 186, 251, 0.941);
+}
+.tone-padrao .document-title {
+  color: rgb(58, 155, 252);
 }
 
 /* SÉRIO */

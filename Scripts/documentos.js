@@ -197,6 +197,10 @@ document.addEventListener("DOMContentLoaded", () => {
       viewerContent.classList.add("tone-envelhecido");
     }
 
+    if (doc.tone === "padrao") {
+      viewerContent.classList.add("tone-padrao");
+    }
+
   }
 
 });
