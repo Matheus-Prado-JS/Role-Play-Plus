@@ -1,7 +1,74 @@
 const enemyBox = document.getElementById("turn-enemy");
 const playersBox = document.getElementById("turn-player");
 const enemyMenu = document.getElementById("enemy-menu");
+const enemyAddOption = document.querySelector(".enemy-add-option");
+const enemyAddForm = document.getElementById("enemy-add-form");
 
+enemyTurnsRef.on("child_added", snapshot => {
+
+  const id = snapshot.key;
+  const data = snapshot.val();
+  if (!data || !data.name || !data.category || !data.image) return;
+
+  const categoryList = document.querySelector(
+    `.enemy-category[data-category="${data.category}"] .enemy-category-list`
+  );
+
+  if (!categoryList) return;
+
+  const div = document.createElement("div");
+  div.className = "enemy-option";
+  div.dataset.image = data.image;
+  div.innerText = data.name;
+
+  categoryList.appendChild(div);
+
+});
+enemyAddOption.addEventListener("click", () => {
+  enemyAddForm.classList.remove("hidden");
+  enemyMenu.classList.add("hidden");
+});
+document.getElementById("cancel-new-enemy")
+  .addEventListener("click", () => {
+
+    enemyAddForm.classList.add("hidden");
+
+  });
+  document.getElementById("save-new-enemy")
+  .addEventListener("click", () => {
+
+    const name = document.getElementById("new-enemy-name").value.trim();
+    const category = document.getElementById("new-enemy-category").value;
+    const fileInput = document.getElementById("new-enemy-image");
+
+    if (!name || !fileInput.files.length) {
+      alert("Preencha nome e imagem");
+      return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+      const imageBase64 = e.target.result;
+
+      enemyTurnsRef.push({
+        name: name,
+        category: category,
+        image: imageBase64
+      });
+
+      enemyAddForm.classList.add("hidden");
+
+      document.getElementById("new-enemy-name").value = "";
+      fileInput.value = "";
+
+    };
+
+    reader.readAsDataURL(file);
+
+  });
 // =========================
 // TURNO PLAYER — IMAGENS
 // =========================
@@ -91,10 +158,10 @@ enemyMenu.addEventListener("click", (e) => {
 
   if (!requireMaster("mudar o inimigo")) return;
 
-  turnRef.update({
-    enemyImage: option.dataset.image,
-    at: Date.now()
-  });
+turnRef.update({
+  enemyImage: option.dataset.image,
+  at: Date.now()
+});
 
   enemyMenu.classList.add("hidden");
 });
@@ -124,7 +191,7 @@ turnRef.on("value", snap => {
   // ===== IMAGEM INIMIGO =====
   if (data.enemyImage) {
     const img = enemyBox.querySelector("img");
-    img.src = `assets/turns/enemies/${data.enemyImage}`;
+    img.src = data.enemyImage;
   }
 });
 }

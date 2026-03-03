@@ -48,18 +48,62 @@
 
   <div id="turn-enemy" class="turn-box turn-red active" data-turn="enemy">
     <img id="enemy-image" src="assets/turns/enemies/Soldados Imperiais.png">
-  <div id="enemy-menu" class="enemy-menu hidden">
-    <div class="enemy-option" data-image="Soldados Imperiais.png">Soldados Imperiais</div>
-  <div class="enemy-option" data-image="Rebeldes de Metal.png">Rebeldes de Metal</div>
-  <div class="enemy-option" data-image="General Varok.png">General Varok</div>
-  <div class="enemy-option" data-image="Eccho.png">Eccho</div>
-  <div class="enemy-option" data-image="Ustanak, Lorde da Escória.png">Ustanak</div>
-  <div class="enemy-option" data-image="Cervo de Loren.png">Cervo de Loren</div>
-  <div class="enemy-option" data-image="Balança.png">Balança</div>
-  <div class="enemy-option" data-image="Korv.png">Korv</div>
-  <div class="enemy-option" data-image="Diamantes de Gelo.png">Diamantes de Gelo</div>
-  <div class="enemy-option" data-image="O Mimico.png">O Mimico</div>
-  <div class="enemy-option" data-image="Cavaleiro Kael.png">Cavaleiro Kael</div>
+<div id="enemy-menu" class="enemy-menu hidden">
+
+  <!-- ➕ ADICIONAR TURNO -->
+  <div class="enemy-add-option">
+    ➕ Adicionar Turno
+  </div>
+
+  <!-- CATEGORIAS DINÂMICAS -->
+  <div class="enemy-categories">
+
+    <div class="enemy-category" data-category="bosses">
+      <div class="enemy-category-title">🟣 Chefes</div>
+      <div class="enemy-category-list"></div>
+    </div>
+
+    <div class="enemy-category" data-category="elite">
+      <div class="enemy-category-title">🟡 Elite</div>
+      <div class="enemy-category-list"></div>
+    </div>
+
+    <div class="enemy-category" data-category="enemies">
+      <div class="enemy-category-title">🔴 Inimigos</div>
+      <div class="enemy-category-list"></div>
+    </div>
+
+  </div>
+
+</div>
+<div id="enemy-add-form" class="enemy-add-form hidden">
+
+  <input 
+    type="text"
+    id="new-enemy-name"
+    placeholder="Nome do turno"
+  >
+
+  <select id="new-enemy-category">
+    <option value="bosses">🟣 Chefe</option>
+    <option value="elite">🟡 Elite</option>
+    <option value="enemies">🔴 Inimigo</option>
+  </select>
+
+  <input 
+    type="file"
+    id="new-enemy-image"
+    accept="image/*"
+  >
+
+  <button id="save-new-enemy">
+    Criar
+  </button>
+
+  <button id="cancel-new-enemy">
+    Cancelar
+  </button>
+
 </div>
 </div>
 

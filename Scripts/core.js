@@ -5,6 +5,7 @@ const logRef = db.ref("log");
 const backgroundRef = db.ref("background");
 const npcsRef = db.ref("npcs");
 const turnRef = db.ref("turn");
+const enemyTurnsRef = db.ref("enemyTurns");
 const documentsRef = db.ref("documents");
 const missionsRef = db.ref("missions");
 

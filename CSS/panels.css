@@ -1043,40 +1043,254 @@
   transform: none;
 }
 /* =========================
-   MENU DO TURNO — INIMIGO
+   MENU DO TURNO — INIMIGO (NOVO SISTEMA)
 ========================= */
 
 .enemy-menu {
   position: absolute;
-  left: 40%;
-  top: 40%;
+  top: 50%;
+  left: 5%;
 
-  background: rgba(10, 15, 30, 0.95);
-  border: 1px solid rgba(255, 80, 80, 0.6);
-  border-radius: 12px;
-  padding: 8px;
-  width: 180px;
+  transform: translateY(-50%);
 
-  box-shadow: 0 0 18px rgba(255, 70, 70, 0.35);
-  z-index: 9999;
+  width: 260px;
+  max-height: 380px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(15, 20, 40, 0.96),
+    rgba(8, 12, 25, 0.96)
+  );
+
+  border: 1px solid rgba(255, 80, 80, 0.55);
+  border-radius: 16px;
+
+  padding: 14px;
+
+  box-shadow:
+    0 0 25px rgba(255, 60, 60, 0.35),
+    inset 0 0 0 1px rgba(255, 80, 80, 0.15);
+
+  backdrop-filter: blur(6px);
+
+  z-index: 99999999;
 }
 
 .enemy-menu.hidden {
   display: none;
 }
 
-.enemy-option {
-  padding: 8px 10px;
-  cursor: pointer;
-  border-radius: 8px;
-
-  color: rgba(255, 220, 220, 0.92);
-  font-weight: 500;
-  letter-spacing: 0.3px;
+/* Scroll estilizado */
+.enemy-menu::-webkit-scrollbar {
+  width: 6px;
 }
 
+.enemy-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 80, 80, 0.5);
+  border-radius: 10px;
+}
+
+/* =========================
+   ADICIONAR TURNO
+========================= */
+
+.enemy-add-option {
+  padding: 10px;
+  margin-bottom: 12px;
+
+  background: rgba(255, 80, 80, 0.15);
+  border: 1px solid rgba(255, 80, 80, 0.35);
+  color: #fff;
+  border-radius: 10px;
+
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.enemy-add-option:hover {
+  background: rgba(255, 80, 80, 0.3);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+.enemy-category {
+  margin-bottom: 14px;
+}
+
+.enemy-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.enemy-category-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  opacity: 0.85;
+  letter-spacing: 0.4px;
+}
+
+/* Cores por categoria */
+
+.enemy-category[data-category="bosses"] .enemy-category-title {
+  color: #c084ff;
+}
+
+.enemy-category[data-category="elite"] .enemy-category-title {
+  color: #ffd166;
+}
+
+.enemy-category[data-category="enemies"] .enemy-category-title {
+  color: #ff6b6b;
+}
+
+/* =========================
+   LISTA DE OPÇÕES
+========================= */
+
+.enemy-category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.enemy-option {
+  padding: 7px 9px;
+  border-radius: 8px;
+  color: white;
+
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
 .enemy-option:hover {
-  background: rgba(255, 80, 80, 0.18);
+  background: rgba(255, 80, 80, 0.2);
+  transform: translateX(4px);
+}
+
+/* =========================
+   FORMULÁRIO DE ADIÇÃO
+========================= */
+
+.enemy-add-form {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  height: 380px;
+  overflow-y: auto;
+
+  width: 260px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(20, 25, 45, 0.98),
+    rgba(12, 16, 30, 0.98)
+  );
+
+  border: 1px solid rgba(255, 80, 80, 0.6);
+  border-radius: 16px;
+
+  padding: 16px;
+
+  box-shadow:
+    0 0 25px rgba(255, 60, 60, 0.35);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  z-index: 99999;
+}
+
+.enemy-add-form.hidden {
+  display: none;
+}
+
+.enemy-add-form input,
+.enemy-add-form select {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 6px 8px;
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+.enemy-add-form input:focus,
+.enemy-add-form select:focus {
+  outline: none;
+  border-color: rgba(255, 80, 80, 0.8);
+  box-shadow: 0 0 8px rgba(255, 80, 80, 0.4);
+}
+
+.enemy-add-form button {
+  padding: 7px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  transition: 0.25s ease;
+}
+
+#save-new-enemy {
+  background: rgba(255, 80, 80, 0.8);
+  color: white;
+}
+
+#save-new-enemy:hover {
+  background: rgba(255, 60, 60, 1);
+  transform: translateY(-2px);
+}
+
+#cancel-new-enemy {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+}
+
+#cancel-new-enemy:hover {
+  background: rgba(255,255,255,0.2);
+}
+/* =========================
+   SELECT PERSONALIZADO
+========================= */
+
+.enemy-add-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+/* seta customizada */
+.enemy-add-form select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='10' viewBox='0 0 24 24' width='10' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 12px;
+}
+
+/* opções dropdown */
+.enemy-add-form select option {
+  background: #111827;
   color: #fff;
 }
