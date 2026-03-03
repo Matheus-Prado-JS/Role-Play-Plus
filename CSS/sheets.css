@@ -864,3 +864,239 @@
   -webkit-appearance: none;
   margin: 0;
 }
+/* ==========================================
+   ➕ BOTÃO ADICIONAR FICHA
+========================================== */
+
+.sheet-add-btn {
+  width: 100%;
+  margin: 14px 0 18px 0;
+
+  padding: 10px 16px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(120, 255, 200, 0.4);
+
+  background: linear-gradient(
+    160deg,
+    rgba(40, 90, 70, 0.85),
+    rgba(20, 40, 35, 0.95)
+  );
+
+  color: #d6ffe5;
+
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  backdrop-filter: blur(6px);
+
+  box-shadow:
+    0 0 12px rgba(80, 255, 180, 0.2),
+    inset 0 0 8px rgba(80, 255, 150, 0.2);
+}
+
+.sheet-add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 18px rgba(80, 255, 180, 0.5),
+    inset 0 0 10px rgba(120, 255, 200, 0.3);
+}
+
+.sheet-add-btn:active {
+  transform: translateY(1px);
+}
+
+
+/* ==========================================
+   📦 FORMULÁRIO
+========================================== */
+
+.sheet-add-form {
+  padding: 18px;
+  margin-bottom: 24px;
+
+  border-radius: 16px;
+
+  background: linear-gradient(
+    160deg,
+    rgba(25, 35, 40, 0.95),
+    rgba(15, 20, 25, 0.98)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  box-shadow:
+    0 0 18px rgba(0, 0, 0, 0.4),
+    inset 0 0 10px rgba(255, 255, 255, 0.03);
+
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+/* ==========================================
+   ✍ INPUT NOME
+========================================== */
+
+.sheet-add-input {
+  padding: 10px 12px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+
+  font-size: 13px;
+
+  transition: all 0.2s ease;
+}
+
+.sheet-add-input:focus {
+  outline: none;
+  border: 1px solid rgba(120,255,200,0.6);
+  box-shadow: 0 0 10px rgba(120,255,200,0.3);
+}
+
+
+/* ==========================================
+   🔘 TIPO (RADIO CUSTOM)
+========================================== */
+
+.sheet-add-type {
+  display: flex;
+  gap: 20px;
+}
+
+.sheet-add-type label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 13px;
+  cursor: pointer;
+
+  color: #ccc;
+
+  transition: color 0.2s ease;
+}
+
+.sheet-add-type input[type="radio"] {
+  appearance: none;
+
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sheet-add-type input[type="radio"]:checked {
+  border-color: rgba(120,255,200,0.9);
+  box-shadow: 0 0 8px rgba(120,255,200,0.6);
+}
+
+.sheet-add-type input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(120,255,200,1);
+  top: 2px;
+  left: 2px;
+}
+
+
+/* ==========================================
+   🎯 BOTÕES AÇÃO
+========================================== */
+
+.sheet-add-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+
+  margin-top: 6px;
+}
+
+
+/* 🔮 CRIAR */
+
+.sheet-add-save-btn {
+  padding: 8px 14px;
+
+  border-radius: 40px;
+  border: 1px solid rgba(120,255,200,0.5);
+
+  background: linear-gradient(
+    160deg,
+    rgba(40, 120, 80, 0.9),
+    rgba(20, 60, 45, 0.95)
+  );
+
+  color: #d6ffe5;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 0 10px rgba(80, 255, 180, 0.25),
+    inset 0 0 6px rgba(80, 255, 150, 0.2);
+}
+
+.sheet-add-save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 18px rgba(80, 255, 180, 0.6),
+    inset 0 0 10px rgba(120, 255, 200, 0.4);
+}
+
+
+/* 🔴 CANCELAR */
+
+.sheet-add-cancel-btn {
+  padding: 8px 14px;
+
+  border-radius: 40px;
+  border: 1px solid rgba(255,80,80,0.6);
+
+  background: linear-gradient(
+    160deg,
+    rgba(120, 30, 30, 0.9),
+    rgba(60, 15, 15, 0.95)
+  );
+
+  color: #ffd6d6;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 0 12px rgba(255, 50, 50, 0.25),
+    inset 0 0 8px rgba(255, 80, 80, 0.2);
+}
+
+.sheet-add-cancel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 18px rgba(255, 80, 80, 0.6),
+    inset 0 0 10px rgba(255, 120, 120, 0.4);
+}

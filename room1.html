@@ -1586,18 +1586,73 @@
 </div>
 
 
-  <!-- Fichas (Mestre) -->
-  <button 
-    class="panel-btn master locked" 
-    data-action="fichas-master"
-    title="Fichas do Mestre"
-  >
-    <img src="assets/icons/Ficha-Master.png" alt="Fichas do Mestre">
-  </button>
+<!-- Fichas (Mestre) -->
+<button 
+  class="panel-btn master locked" 
+  data-action="fichas-master"
+  title="Fichas do Mestre"
+>
+  <img src="assets/icons/Ficha-Master.png" alt="Fichas do Mestre">
+</button>
+
 <!-- SELETOR DE CRIATURA (MESTRE) -->
 <div class="sheet-selector master hidden" id="enemy-sheet-selector">
 
   <h4>Criaturas</h4>
+
+  <!-- ================================= -->
+  <!-- ➕ ADICIONAR FICHA (NOVO) -->
+  <!-- ================================= -->
+
+  <button class="sheet-add-btn">
+    + Adicionar Ficha
+  </button>
+
+  <div class="sheet-add-form hidden">
+
+    <input 
+      type="text" 
+      class="sheet-add-input"
+      placeholder="Nome da ficha"
+      data-field="sheet-name"
+    >
+
+    <div class="sheet-add-type">
+      <label>
+        <input 
+          type="radio" 
+          name="sheet-type" 
+          value="bosses" 
+          checked
+        >
+        🟣 Chefe
+      </label>
+
+      <label>
+        <input 
+          type="radio" 
+          name="sheet-type" 
+          value="enemies"
+        >
+        🔴 Inimigo
+      </label>
+    </div>
+
+    <div class="sheet-add-actions">
+      <button class="sheet-add-save-btn">
+        Criar
+      </button>
+
+      <button class="sheet-add-cancel-btn">
+        Cancelar
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ================================= -->
+  <!-- CATEGORIAS -->
+  <!-- ================================= -->
 
   <div class="sheet-categories">
 

@@ -1,9 +1,22 @@
+
+
 let currentSheet = {
   type: null,   // "player" | "enemy"
   id: null      // aurelion | varok | etc
 };
 let editingAttackId = null; // para controlar edição de ataques
-
+let sheetCreationFormOpen = false;
+// =========================
+// CRIAR ID SEGURO PARA FICHA
+// =========================
+function generateSheetId(name) {
+  return name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9\-]/g, "");
+}
 // =========================
 // FICHAS — PLAYER & MESTRE
 // =========================
@@ -25,169 +38,10 @@ function setActiveItem(list, item) {
   );
   item.classList.add("active");
 }
-const playerBtn = document.querySelector('[data-action="fichas-player"]');
-const playerSelector = document.getElementById("player-sheet-selector");
-const playerSheet = document.getElementById("sheet-player-content");
-
-if (playerBtn && playerSelector && playerSheet) {
-  const playerName = playerSheet.querySelector(".sheet-name");
-
-  playerBtn.addEventListener("click", () => {
-    closeAllSelectors();
-    playerSelector.classList.toggle("hidden");
-  });
-
-  playerSelector.querySelectorAll(".sheet-item").forEach(item => {
-    item.addEventListener("click", () => {
-      const sheetId = item.dataset.sheet;
-
-      currentSheet.type = "player";
-      currentSheet.id = sheetId;
-      document.querySelectorAll(".sheet-value").forEach(i => i.value = "");
-      const attackList = document.querySelector(".attack-list");
-      if (attackList) attackList.innerHTML = "";
-      const skillList = document.querySelector(".skill-list");
-      if (skillList) skillList.innerHTML = "";
-      loadSheetData("player", sheetId);
-      listenSheetRealtime("player", sheetId);
-      listenAttacksRealtime();
-      listenSkillsRealtime();
-      listenNotesRealtime();
-      loadMechanics(sheetId);
-      loadAmulets(sheetId);
-
-
-
-      const name = item.querySelector(".sheet-name").innerText;
-
-      setActiveItem(playerSelector, item);
-      closeAllSelectors();
-      closeAllSheets();
-
-      playerName.innerText = name;
-      playerSheet.classList.remove("hidden");
-    });
-  });
-}
-const masterBtn = document.querySelector('[data-action="fichas-master"]');
-const enemySelector = document.getElementById("enemy-sheet-selector");
-const enemySheet = document.getElementById("sheet-enemy-content");
-
-if (masterBtn && enemySelector && enemySheet) {
-  const enemyName = enemySheet.querySelector(".enemy-name");
-
-  masterBtn.addEventListener("click", () => {
-    if (!requireMaster("abrir fichas do mestre")) return;
-
-    closeAllSelectors();
-    enemySelector.classList.toggle("hidden");
-  });
-
-  enemySelector.querySelectorAll(".sheet-item").forEach(item => {
-    item.addEventListener("click", () => {
-      if (!requireMaster("selecionar criaturas")) return;
-      const sheetId = item.dataset.sheet;
-
-      currentSheet.type = "enemy";
-      currentSheet.id = sheetId;
-      document.querySelectorAll(".sheet-value").forEach(i => i.value = "");
-      const attackList = document.querySelector(".attack-list");
-      if (attackList) attackList.innerHTML = "";
-      const skillList = document.querySelector(".skill-list");
-      if (skillList) skillList.innerHTML = "";
-      loadSheetData("enemy", sheetId);
-      listenSheetRealtime("enemy", sheetId);
-      listenAttacksRealtime();
-      listenSkillsRealtime();
-      listenNotesRealtime();
-
-      const name = item.querySelector(".sheet-name").innerText;
-
-      setActiveItem(enemySelector, item);
-      closeAllSelectors();
-      closeAllSheets();
-
-      enemyName.innerText = name;
-      enemySheet.classList.remove("hidden");
-    });
-  });
-}
-document.addEventListener("click", (e) => {
-  // Fecha SELECTORS se clicar fora
-  if (
-    playerSelector &&
-    !playerSelector.contains(e.target) &&
-    !playerBtn.contains(e.target)
-  ) {
-    playerSelector.classList.add("hidden");
-  }
-
-  if (
-    enemySelector &&
-    !enemySelector.contains(e.target) &&
-    !masterBtn.contains(e.target)
-  ) {
-    enemySelector.classList.add("hidden");
-  }
-
-  // Fecha FICHAS se clicar fora
-  if (
-    playerSheet &&
-    !playerSheet.contains(e.target) &&
-    !playerBtn.contains(e.target)
-  ) {
-    playerSheet.classList.add("hidden");
-  }
-
-  if (
-    enemySheet &&
-    !enemySheet.contains(e.target) &&
-    !masterBtn.contains(e.target)
-  ) {
-    enemySheet.classList.add("hidden");
-  }
-});
-
-if (playerSelector) {
-  playerSelector.addEventListener("click", (e) => e.stopPropagation());
-}
-
-if (enemySelector) enemySelector.addEventListener("click", (e) => {
-  e.stopPropagation();
-});
 // =========================
 // CATEGORIAS — FICHAS DO MESTRE
 // =========================
 
-if (enemySelector) {
-
-  const categoryToggles = enemySelector.querySelectorAll(".category-toggle");
-
-  categoryToggles.forEach(toggle => {
-    toggle.addEventListener("click", (e) => {
-      e.stopPropagation(); // impede fechar o selector
-
-      const category = toggle.closest(".sheet-category");
-      if (!category) return;
-
-      category.classList.toggle("collapsed");
-    });
-  });
-
-}
-if (playerBtn) playerBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  closeAllSelectors();
-  playerSelector.classList.toggle("hidden");
-});
-
-if (masterBtn) masterBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  if (!requireMaster("abrir fichas do mestre")) return;
-
-  closeAllSelectors();
-  enemySelector.classList.toggle("hidden");
-});
 document.addEventListener("input", (e) => {
   const input = e.target;
 
@@ -928,4 +782,321 @@ document.addEventListener("click", (e) => {
     ref.child(noteId).child("order")
       .set(currentOrder + delta);
   });
+});
+// =========================
+// CRIAÇÃO DE NOVA FICHA (MESTRE)
+// =========================
+
+function createNewEnemySheet(name, category) {
+
+  if (!requireMaster("criar ficha")) return;
+
+  const id = generateSheetId(name);
+
+  npcsRef.child(id).set({
+    name: name,
+    categoria: category,
+    recursos: {
+      pv: 0,
+      pm: 0,
+      energia: 0
+    },
+    defesas: {
+      defesa_fisica: 0,
+      defesa_magica: 0,
+      resistencia: 0,
+      imunidades: ""
+    },
+    atributos: {
+      forca: 0,
+      agilidade: 0,
+      vitalidade: 0,
+      inteligencia: 0
+    },
+    attacks: {},
+    skills: {},
+    notes: {}
+  });
+
+  insertNewSheetInUI(id, name, category);
+}
+function insertNewSheetInUI(id, name, category) {
+
+  const selector = document.getElementById("enemy-sheet-selector");
+  if (!selector) return;
+
+  const categoryBlock = selector.querySelector(
+    `.sheet-category[data-category="${category}"] .sheet-list`
+  );
+
+  if (!categoryBlock) return;
+
+  const li = document.createElement("li");
+  li.className = "sheet-item";
+  li.dataset.sheet = id;
+
+  li.innerHTML = `
+    <span class="sheet-name">${name}</span>
+  `;
+
+  categoryBlock.prepend(li); // 👈 entra antes das outras
+
+  // reaproveita mesma lógica já usada nas fichas existentes
+  li.addEventListener("click", (e) => {
+        e.stopPropagation();
+    if (!requireMaster("selecionar criaturas")) return;
+
+    currentSheet.type = "enemy";
+    currentSheet.id = id;
+
+    document.querySelectorAll(".sheet-value").forEach(i => i.value = "");
+
+    loadSheetData("enemy", id);
+    listenSheetRealtime("enemy", id);
+    listenAttacksRealtime();
+    listenSkillsRealtime();
+    listenNotesRealtime();
+
+    const enemySheet = document.getElementById("sheet-enemy-content");
+    const enemyName = enemySheet.querySelector(".enemy-name");
+
+    setActiveItem(selector, li);
+    closeAllSelectors();
+    closeAllSheets();
+
+    enemyName.innerText = name;
+    enemySheet.classList.remove("hidden");
+  });
+}
+document.addEventListener("click", (e) => {
+
+  // ========================
+  // ABRIR FORMULÁRIO
+  // ========================
+
+  const addBtn = e.target.closest(".sheet-add-btn");
+  if (addBtn) {
+
+    if (!requireMaster("abrir criação de ficha")) return;
+
+    const form = document.querySelector(".sheet-add-form");
+    if (!form) return;
+
+    form.classList.toggle("hidden");
+    sheetCreationFormOpen = !form.classList.contains("hidden");
+
+    return; // 👈 impede continuar
+  }
+
+  // ========================
+  // CANCELAR
+  // ========================
+
+  const cancelBtn = e.target.closest(".sheet-add-cancel-btn");
+  if (cancelBtn) {
+
+    const form = document.querySelector(".sheet-add-form");
+    if (!form) return;
+
+    form.classList.add("hidden");
+    sheetCreationFormOpen = false;
+
+    return;
+  }
+
+  // ========================
+  // SALVAR
+  // ========================
+
+  const saveBtn = e.target.closest(".sheet-add-save-btn");
+  if (saveBtn) {
+
+    const form = document.querySelector(".sheet-add-form");
+    if (!form) return;
+
+    const nameInput = form.querySelector('[data-field="sheet-name"]');
+    const typeInput = form.querySelector('input[name="sheet-type"]:checked');
+
+    if (!nameInput || !typeInput) return;
+
+    const name = nameInput.value.trim();
+    const category = typeInput.value;
+
+    if (!name) return;
+
+    createNewEnemySheet(name, category);
+
+    nameInput.value = "";
+    form.classList.add("hidden");
+    sheetCreationFormOpen = false;
+
+    return;
+  }
+
+});
+
+// =====================================================
+// 🔥 DOM — TUDO QUE PRECISA ESTAR DENTRO
+// =====================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  // =========================
+  // ELEMENTOS PRINCIPAIS
+  // =========================
+
+  const playerBtn = document.querySelector('[data-action="fichas-player"]');
+  const playerSelector = document.getElementById("player-sheet-selector");
+  const playerSheet = document.getElementById("sheet-player-content");
+
+  const masterBtn = document.querySelector('[data-action="fichas-master"]');
+  const enemySelector = document.getElementById("enemy-sheet-selector");
+  const enemySheet = document.getElementById("sheet-enemy-content");
+
+  // =========================
+  // PLAYER
+  // =========================
+
+  if (playerBtn && playerSelector && playerSheet) {
+
+    const playerName = playerSheet.querySelector(".sheet-name");
+
+    playerBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      closeAllSelectors();
+      playerSelector.classList.toggle("hidden");
+    });
+
+    playerSelector.querySelectorAll(".sheet-item").forEach(item => {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        const sheetId = item.dataset.sheet;
+
+        currentSheet.type = "player";
+        currentSheet.id = sheetId;
+
+        document.querySelectorAll(".sheet-value").forEach(i => i.value = "");
+
+        loadSheetData("player", sheetId);
+        listenSheetRealtime("player", sheetId);
+        listenAttacksRealtime();
+        listenSkillsRealtime();
+        listenNotesRealtime();
+        loadMechanics(sheetId);
+        loadAmulets(sheetId);
+
+        const name = item.querySelector(".sheet-name").innerText;
+
+        setActiveItem(playerSelector, item);
+        closeAllSelectors();
+        closeAllSheets();
+
+        playerName.innerText = name;
+        playerSheet.classList.remove("hidden");
+      });
+    });
+  }
+
+  // =========================
+  // MESTRE
+  // =========================
+
+  if (masterBtn && enemySelector && enemySheet) {
+
+    const enemyName = enemySheet.querySelector(".enemy-name");
+
+    masterBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (!requireMaster("abrir fichas do mestre")) return;
+
+      closeAllSelectors();
+      enemySelector.classList.toggle("hidden");
+    });
+
+    enemySelector.querySelectorAll(".sheet-item").forEach(item => {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (!requireMaster("selecionar criaturas")) return;
+
+        const sheetId = item.dataset.sheet;
+
+        currentSheet.type = "enemy";
+        currentSheet.id = sheetId;
+
+        document.querySelectorAll(".sheet-value").forEach(i => i.value = "");
+
+        loadSheetData("enemy", sheetId);
+        listenSheetRealtime("enemy", sheetId);
+        listenAttacksRealtime();
+        listenSkillsRealtime();
+        listenNotesRealtime();
+
+        const name = item.querySelector(".sheet-name").innerText;
+
+        setActiveItem(enemySelector, item);
+        closeAllSelectors();
+        closeAllSheets();
+
+        enemyName.innerText = name;
+        enemySheet.classList.remove("hidden");
+      });
+    });
+
+    // categorias
+    const categoryToggles = enemySelector.querySelectorAll(".category-toggle");
+
+    categoryToggles.forEach(toggle => {
+      toggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const category = toggle.closest(".sheet-category");
+        if (!category) return;
+        category.classList.toggle("collapsed");
+      });
+    });
+  }
+  // =========================
+// 🔥 OUVIR FICHAS DO MESTRE (Firebase)
+// =========================
+
+npcsRef.on("child_added", snapshot => {
+
+  const id = snapshot.key;
+  const npc = snapshot.val();
+
+  // 🔥 IGNORA lixo estrutural
+  if (!npc || !npc.name || !npc.categoria) return;
+
+  insertNewSheetInUI(id, npc.name, npc.categoria);
+
+});
+
+  // =========================
+  // FECHAR AO CLICAR FORA
+  // =========================
+
+  document.addEventListener("click", (e) => {
+
+    if (playerSelector && !playerSelector.contains(e.target) && !playerBtn?.contains(e.target)) {
+      playerSelector.classList.add("hidden");
+    }
+
+    if (enemySelector &&
+        !enemySelector.contains(e.target) &&
+        !masterBtn?.contains(e.target) &&
+        !e.target.closest(".sheet-add-btn") &&
+        !e.target.closest(".sheet-add-form")) {
+      enemySelector.classList.add("hidden");
+    }
+
+    if (playerSheet && !playerSheet.contains(e.target) && !playerBtn?.contains(e.target)) {
+      playerSheet.classList.add("hidden");
+    }
+
+    if (enemySheet && !enemySheet.contains(e.target) && !masterBtn?.contains(e.target)) {
+      enemySheet.classList.add("hidden");
+    }
+
+  });
+
 });
