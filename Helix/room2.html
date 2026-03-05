@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>HELIX</title>
+  <link rel="stylesheet" href="Helix-CSS/room.css">
+  <link rel="stylesheet" href="Helix-CSS/helix-music.css">
+  <link rel="stylesheet" href="Helix-CSS/helix-frame.css">
+  <link rel="stylesheet" href="Helix-CSS/helix-info.css">
+  <link rel="stylesheet" href="Helix-CSS/helix-players.css">
+  <link rel="stylesheet" href="Helix-CSS/helix-master.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <button id="playersBtn" class="top-btn left">PLAYERS</button>
+
+        <div class="logo">
+        <img src="imgs/logos/logo-helix.png" alt="HELIX">
+        </div>
+
+    <button class="top-btn right" onclick="goBack()">VOLTAR</button>
+  </header>
+
+  <!-- MUSIC PLAYER -->
+<div class="helix-music-bar">
+  <div class="music-left">
+    <div class="music-title-wrapper">
+      <div class="music-title" id="musicTitle">
+        Resident Evil 9 Requiem OST - Through the Darkness
+      </div>
+    </div>
+  </div>
+
+  <div class="music-controls">
+    <button id="togglePlaylist">☰</button>
+    <button id="playPause">▶</button>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
+  </div>
+</div>
+
+<!-- PLAYLIST -->
+<div class="helix-playlist" id="playlist">
+  <ul>
+    <li data-src="music/Resident Evil 9 Requiem OST - Through the Darkness.mp3">
+      1 - Resident Evil 9 Requiem OST - Through the Darkness
+    </li>
+    <li data-src="music/Resident Evil 2 Remake - Saudade.mp3">
+      2 - Resident Evil 2 Remake - Saudade
+    </li>
+  </ul>
+</div>
+
+  <!-- PAINEL DE PLAYERS -->
+  <aside id="playersPanel" class="players-panel">
+    <h2>Players</h2>
+    <ul>
+      <li>Jogador 01</li>
+      <li>Jogador 02</li>
+      <li>Jogador 03</li>
+    </ul>
+  </aside>
+
+<!-- HELIX FRAME -->
+<section class="helix-frame-container">
+
+  <div class="helix-frame-area">
+
+    <!-- LADO ESQUERDO -->
+    <div class="helix-side left-side">
+      <button>Inventário</button>
+      <button>Fichas</button>
+      <button>Mapa</button>
+    </div>
+
+    <!-- MOLDURA -->
+    <div class="helix-frame-wrapper">
+      <div class="helix-frame">
+        <img id="helixBackground" src="imgs/backs/Padrão.png" alt="Helix Background">
+      </div>
+    </div>
+
+    <!-- LADO DIREITO -->
+    <div class="helix-side right-side">
+      <button>Background</button>
+      <button>Eventos</button>
+      <button>Controle</button>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- INFORMAÇÕES -->
+<section class="helix-info">
+  <h2>Informações</h2>
+
+  <div class="info-buttons">
+    <button class="info-tab" data-tab="documentos">Documentos</button>
+    <button class="info-tab active" data-tab="regioes">Regiões</button>
+    <button class="info-tab" data-tab="mecanicas">Mecânicas</button>
+  </div>
+
+  <div class="info-content" id="infoContent">
+    <!-- Cards serão inseridos via JS -->
+  </div>
+</section>
+<!-- MODAL DE INFORMAÇÃO -->
+<div class="helix-modal" id="helixModal">
+  <div class="helix-modal-content">
+    <button class="helix-modal-close" id="closeModal">✕</button>
+    <img id="modalImg" src="" alt="">
+    <h3 id="modalTitle"></h3>
+    <p id="modalType"></p>
+    <div class="modal-divider"></div>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<script src="Helix-JS/helix-info.js"></script>
+
+  <script src="Helix-JS/room.js"></script>
+  <script src="Helix-JS/helix-music.js"></script>
+    <script src="Helix-JS/helix-frame.js"></script>
+    <script src="Helix-JS/helix-players.js"></script>
+    <script src="Helix-JS/helix-master.js"></script>
+</body>
+</html>

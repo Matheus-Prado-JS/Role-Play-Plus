@@ -1,0 +1,45 @@
+/* ============================= */
+/* HELIX FRAME STRUCTURE */
+/* ============================= */
+
+.helix-frame-container {
+  margin-top: 80px; /* espaço da topbar + music */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+}
+
+/* Moldura externa */
+.helix-frame-wrapper {
+  width: 80%;
+  max-width: 1200px;
+  height: 520px;
+
+  background: #111; /* carvão */
+  border: 1px solid #1c1c1c;
+  padding: 18px; /* espessura da moldura */
+
+  box-shadow:
+    0 0 0 1px #0a0a0a,
+    0 0 25px rgba(0, 255, 157, 0.05);
+
+  position: relative;
+}
+
+/* Tela interna */
+.helix-frame {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Imagem */
+.helix-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}

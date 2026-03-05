@@ -1,0 +1,38 @@
+.helix-frame-area {
+  width: 80%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.helix-side {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.left-side {
+  left: 20px;
+}
+
+.right-side {
+  right: 20px;
+}
+
+.helix-side button {
+  background: linear-gradient(145deg, #1c1c1c, #111);
+  border: 1px solid #2a2a2a;
+  color: #ccc;
+  padding: 10px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.helix-side button:hover {
+  border-color: #00ff9d;
+  color: #00ff9d;
+  box-shadow: 0 0 12px rgba(0, 255, 157, 0.25);
+}
