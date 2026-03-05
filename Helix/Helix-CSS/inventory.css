@@ -1,0 +1,185 @@
+/* ========================= */
+/* INVENTORY PANEL */
+/* ========================= */
+
+.inventory-panel{
+  position: fixed;
+  left: -350px;
+  top: 110px;
+  width: 350px;
+  height: 100vh;
+
+  background: #0f0f0f;
+  border-right: 1px solid #1f1f1f;
+
+  padding: 30px;
+
+  transition: 0.35s ease;
+
+  z-index: 900;
+}
+
+.inventory-panel.open{
+  left: 0;
+}
+
+/* ========================= */
+/* PLAYERS LIST */
+/* ========================= */
+
+.inventory-players h3{
+  color: #00ff9d;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+.inventory-players ul{
+  list-style: none;
+}
+
+.inventory-players li{
+
+  padding: 12px 15px;
+  margin-bottom: 10px;
+
+  background: linear-gradient(145deg,#1a1a1a,#101010);
+  border: 1px solid #222;
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.inventory-players li:hover{
+
+  border-color:#00ff9d;
+  color:#00ff9d;
+
+  box-shadow:0 0 10px rgba(0,255,157,0.2);
+}
+
+/* ========================= */
+/* GRID INVENTORY */
+/* ========================= */
+
+.inventory-grid{
+  display:none;
+}
+
+.inventory-grid.active{
+  display:block;
+}
+
+.inventory-back{
+
+  margin-bottom:20px;
+
+  background:transparent;
+  border:1px solid #2a2a2a;
+
+  color:#aaa;
+
+  padding:6px 12px;
+  border-radius:20px;
+
+  cursor:pointer;
+}
+
+.inventory-back:hover{
+
+  border-color:#00ff9d;
+  color:#00ff9d;
+}
+
+/* GRID */
+
+.grid-slots{
+
+  display:grid;
+
+  grid-template-columns: repeat(3,1fr);
+  gap:15px;
+}
+
+/* SLOT */
+
+.slot{
+
+  width:90px;
+  height:90px;
+
+  background:#111;
+
+  border:1px solid #1f1f1f;
+
+  border-radius:14px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:.25s;
+}
+
+.slot:hover{
+
+  border-color:#00ff9d;
+
+  box-shadow:0 0 10px rgba(0,255,157,0.2);
+}
+
+/* LOCKED */
+
+.slot.locked{
+
+  color:#444;
+  font-size:20px;
+
+  border:1px dashed #333;
+
+  cursor:default;
+}
+
+.slot.locked:hover{
+
+  border-color:#333;
+  box-shadow:none;
+}
+
+/* ========================= */
+/* BOTÃO FECHAR INVENTÁRIO */
+/* ========================= */
+
+.inventory-close{
+
+  position:absolute;
+  top:27px;
+  right:15px;
+
+  width:32px;
+  height:32px;
+
+  border-radius:50%;
+
+  background:transparent;
+  border:1px solid #2a2a2a;
+
+  color:#aaa;
+
+  cursor:pointer;
+
+  transition:.25s;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.inventory-close:hover{
+
+  border-color:#00ff9d;
+  color:#00ff9d;
+
+  box-shadow:0 0 10px rgba(0,255,157,0.25);
+}

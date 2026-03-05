@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="Helix-CSS/helix-info.css">
   <link rel="stylesheet" href="Helix-CSS/helix-players.css">
   <link rel="stylesheet" href="Helix-CSS/helix-master.css">
+  <link rel="stylesheet" href="Helix-CSS/inventory.css">
+  <link rel="stylesheet" href="Helix-CSS/ficha.css">
 </head>
 <body>
 
@@ -69,8 +71,8 @@
 
     <!-- LADO ESQUERDO -->
     <div class="helix-side left-side">
-      <button>Inventário</button>
-      <button>Fichas</button>
+      <button id="inventoryBtn">Inventário</button>
+      <button id="fichaBtn">Fichas</button>
       <button>Mapa</button>
     </div>
 
@@ -118,6 +120,265 @@
   </div>
 </div>
 
+<!-- INVENTORY MENU -->
+
+<div class="inventory-panel" id="inventoryPanel">
+
+  <button class="inventory-close" id="inventoryClose">✕</button>
+  
+  <div class="inventory-players" id="inventoryPlayers">
+
+    <h3>Inventário</h3>
+
+    <ul>
+      <li data-player="1">Jogador 1</li>
+      <li data-player="2">Jogador 2</li>
+      <li data-player="3">Jogador 3</li>
+      <li data-player="4">Jogador 4</li>
+    </ul>
+
+  </div>
+
+  <div class="inventory-grid" id="inventoryGrid">
+
+    <button class="inventory-back" id="inventoryBack">← Voltar</button>
+
+    <div class="grid-slots">
+
+      <div class="slot"></div>
+      <div class="slot"></div>
+      <div class="slot"></div>
+
+      <div class="slot"></div>
+      <div class="slot"></div>
+      <div class="slot"></div>
+
+      <div class="slot locked">X</div>
+      <div class="slot locked">X</div>
+      <div class="slot locked">X</div>
+      <div class="slot locked">X</div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- MENU FICHA -->
+<div id="fichaMenu" class="ficha-menu">
+
+  <!-- ESCOLHER PLAYER -->
+  <div id="fichaPlayerSelect">
+
+    <h3>Selecionar Jogador</h3>
+
+    <button class="fichaPlayer">Jogador 1</button>
+    <button class="fichaPlayer">Jogador 2</button>
+    <button class="fichaPlayer">Jogador 3</button>
+    <button class="fichaPlayer">Jogador 4</button>
+
+    <button id="fichaClose">✕</button>
+
+  </div>
+
+
+  <!-- FICHA -->
+  <div id="fichaSheet">
+
+    <button id="fichaBack">← Voltar</button>
+
+    <h3>Ficha HELIX</h3>
+
+    <!-- ESTADOS -->
+    <div class="fichaSection">
+
+      <h4>☣️ Estados</h4>
+
+      <div class="estadoRow">
+        ❤️ CF
+        <input type="number" placeholder="Atual">
+        /
+        <input type="number" placeholder="Total">
+      </div>
+
+      <div class="estadoRow">
+        ⚡ FO
+        <input type="number">
+        /
+        <input type="number">
+      </div>
+
+      <div class="estadoRow">
+        🧠 EM
+        <input type="number">
+        /
+        <input type="number">
+      </div>
+
+      <div class="estadoRow">
+        ☣️ CO
+        <input type="number">
+        /
+        <input type="number">
+      </div>
+
+    </div>
+<!-- STATUS VIDA -->
+
+<div class="health-status">
+
+  <div class="health-monitor" id="healthMonitor">
+
+    <!-- CRT Scanlines -->
+    <div class="scanlines"></div>
+
+    <!-- ECG -->
+    <div class="ecg-container">
+      <svg class="ecg-svg" viewBox="0 0 300 60">
+        <polyline
+          class="ecg-line"
+          points="
+          0,30
+          20,30
+          30,15
+          40,45
+          50,30
+          80,30
+          95,20
+          110,40
+          125,30
+          160,30
+          175,15
+          190,45
+          205,30
+          240,30
+          260,30
+          300,30"
+        />
+      </svg>
+    </div>
+
+    <!-- Texto -->
+    <div class="health-text" id="healthText">
+      GOOD
+    </div>
+
+    <!-- Barra de vida -->
+    <div class="health-bar">
+      <div class="health-fill" id="healthFill"></div>
+    </div>
+
+  </div>
+
+</div>
+
+
+    <!-- ATRIBUTOS -->
+    <div class="fichaSection">
+
+      <h4>🧬 Atributos</h4>
+
+      <div class="grid3">
+
+        <div>Força <input type="number"></div>
+        <div>Agilidade <input type="number"></div>
+        <div>Controle <input type="number"></div>
+        <div>Vitalidade <input type="number"></div>
+        <div>Vigor <input type="number"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- DEFESAS -->
+    <div class="fichaSection">
+
+      <h4>🛡️ Defesas</h4>
+
+      <div class="grid3">
+
+        <div>Esquiva <input type="number"></div>
+        <div>Bloqueio <input type="number"></div>
+        <div>Contra-Ataque <input type="number"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- COMBATE -->
+    <div class="fichaSection">
+
+      <h4>⚔️ Combate</h4>
+
+      <div class="grid4">
+
+        <div>Mira <input type="number"></div>
+        <div>Parry <input type="number"></div>
+        <div>Defesa <input type="number"></div>
+        <div>Esquiva <input type="number"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- INVESTIGAÇÃO -->
+    <div class="fichaSection">
+
+      <h4>🧠 Investigação</h4>
+
+      <div class="grid4">
+
+        <div>Investigação <input type="number"></div>
+        <div>Percepção <input type="number"></div>
+        <div>Intuição <input type="number"></div>
+        <div>Memória <input type="number"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- TÉCNICA -->
+    <div class="fichaSection">
+
+      <h4>🛠️ Técnica</h4>
+
+      <div class="grid4">
+
+        <div>Medicina <input type="number"></div>
+        <div>Engenharia <input type="number"></div>
+        <div>Informática <input type="number"></div>
+        <div>Química <input type="number"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SOBREVIVÊNCIA -->
+    <div class="fichaSection">
+
+      <h4>🧭 Sobrevivência</h4>
+
+      <div class="grid4">
+
+        <div>Furtividade <input type="number"></div>
+        <div>Adaptação <input type="number"></div>
+        <div>Resiliência <input type="number"></div>
+        <div>Foco <input type="number"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
 <script src="Helix-JS/helix-info.js"></script>
 
   <script src="Helix-JS/room.js"></script>
@@ -125,5 +386,7 @@
     <script src="Helix-JS/helix-frame.js"></script>
     <script src="Helix-JS/helix-players.js"></script>
     <script src="Helix-JS/helix-master.js"></script>
+    <script src="Helix-JS/inventory.js"></script>
+    <script src="Helix-JS/ficha.js"></script>
 </body>
 </html>

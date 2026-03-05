@@ -1,0 +1,513 @@
+/* ========================= */
+/* FICHA PANEL */
+/* ========================= */
+
+.ficha-menu{
+
+  position: fixed;
+  left: 0;
+  top: 100px;
+
+  width: 510px;
+  height: calc(100vh - 100px);
+
+  background: #0f0f0f;
+  border-right: 1px solid #1f1f1f;
+
+  padding: 30px;
+
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
+
+  z-index: 900;
+
+  overflow-y: auto;
+
+  box-sizing: border-box;
+}
+
+.ficha-menu.open{
+  transform: translateX(0);
+}
+
+.ficha-menu.open{
+  left: 0;
+}
+
+.hidden{
+  display:none;
+}
+
+
+/* ========================= */
+/* PLAYER SELECT */
+/* ========================= */
+
+#fichaPlayerSelect h3{
+  color:#00ff9d;
+  margin-bottom:25px;
+  letter-spacing:2px;
+}
+
+#fichaPlayerSelect{
+
+  display:flex;
+  flex-direction:column;
+
+}
+
+.fichaPlayer{
+
+  padding:12px 15px;
+  margin-bottom:10px;
+
+  background: linear-gradient(145deg,#1a1a1a,#101010);
+
+  border:1px solid #222;
+  border-radius:12px;
+
+  color:#ccc;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.fichaPlayer:hover{
+
+  border-color:#00ff9d;
+  color:#00ff9d;
+
+  box-shadow:0 0 10px rgba(0,255,157,0.2);
+}
+
+
+/* ========================= */
+/* FICHA SHEET */
+/* ========================= */
+
+#fichaSheet{
+  display:none;
+}
+
+#fichaSheet.active{
+  display:block;
+}
+
+#fichaSheet h3{
+
+  color:#00ff9d;
+  margin-bottom:20px;
+  letter-spacing:2px;
+
+}
+
+/* ========================= */
+/* BOTÃO VOLTAR */
+/* ========================= */
+
+#fichaBack{
+
+  margin-bottom:20px;
+
+  background:transparent;
+  border:1px solid #2a2a2a;
+
+  color:#aaa;
+
+  padding:6px 12px;
+  border-radius:20px;
+
+  cursor:pointer;
+}
+
+#fichaBack:hover{
+
+  border-color:#00ff9d;
+  color:#00ff9d;
+}
+
+
+/* ========================= */
+/* SEÇÕES */
+/* ========================= */
+
+.fichaSection{
+
+  margin-bottom:25px;
+}
+
+.fichaSection h4{
+
+  color:#00ff9d;
+  margin-bottom:10px;
+  font-size:14px;
+  letter-spacing:1px;
+
+}
+
+
+/* ========================= */
+/* ESTADOS */
+/* ========================= */
+
+.estadoRow{
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  margin-bottom:8px;
+
+  font-size:13px;
+}
+
+.estadoRow input{
+
+  width:140px;
+
+  background:#111;
+  border:1px solid #333;
+
+  color:#ccc;
+
+  text-align:center;
+
+  border-radius:6px;
+
+  padding:4px;
+}
+
+
+/* ========================= */
+/* GRID ATRIBUTOS */
+/* ========================= */
+
+.grid3{
+
+  display:grid;
+
+  grid-template-columns: repeat(3,1fr);
+
+  gap:10px;
+}
+
+.grid4{
+
+  display:grid;
+
+  grid-template-columns: repeat(2,1fr);
+
+  gap:10px;
+}
+
+.grid3 div,
+.grid4 div{
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  background:#111;
+
+  padding:6px 8px;
+
+  border:1px solid #222;
+  border-radius:8px;
+
+  font-size:12px;
+}
+
+.grid3 input,
+.grid4 input{
+
+  width:40px;
+
+  background:#000;
+  border:1px solid #333;
+
+  color:#ccc;
+
+  text-align:center;
+
+  border-radius:4px;
+}
+
+
+/* ========================= */
+/* BOTÃO FECHAR */
+/* ========================= */
+
+#fichaClose{
+
+  position:absolute;
+  top:27px;
+  right:15px;
+
+  width:32px;
+  height:32px;
+
+  border-radius:50%;
+
+  background:transparent;
+  border:1px solid #2a2a2a;
+
+  color:#aaa;
+
+  cursor:pointer;
+
+  transition:.25s;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+#fichaClose:hover{
+
+  border-color:#00ff9d;
+  color:#00ff9d;
+
+  box-shadow:0 0 10px rgba(0,255,157,0.25);
+}
+
+/* ========================= */
+/* SCROLL PERSONALIZADO */
+/* ========================= */
+
+.ficha-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ficha-menu::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.ficha-menu::-webkit-scrollbar-thumb {
+  background: #1f1f1f;
+  border-radius: 10px;
+}
+
+.ficha-menu::-webkit-scrollbar-thumb:hover {
+  background: #00ff9d;
+}
+
+/* Firefox */
+
+.ficha-menu{
+  scrollbar-width: thin;
+  scrollbar-color: #1f1f1f #0a0a0a;
+}
+
+/* ========================= */
+/* REMOVER SETAS DO INPUT */
+/* ========================= */
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* ========================= */
+/* HELIX BIO MONITOR */
+/* ========================= */
+
+.health-status{
+
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+
+}
+
+.health-monitor{
+
+  width:260px;
+  height:90px;
+
+  background:#020202;
+
+  border:2px solid #222;
+  border-radius:10px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  box-shadow:
+  inset 0 0 20px #000,
+  0 0 8px rgba(0,0,0,0.7);
+
+  font-family:monospace;
+
+}
+
+/* ========================= */
+/* CRT SCANLINES */
+/* ========================= */
+
+.scanlines{
+
+  position:absolute;
+  inset:0;
+
+  background:
+  repeating-linear-gradient(
+  to bottom,
+  rgba(255,255,255,0.04) 0px,
+  rgba(255,255,255,0.04) 1px,
+  transparent 2px,
+  transparent 4px
+  );
+
+  pointer-events:none;
+
+}
+
+/* ========================= */
+/* ECG */
+/* ========================= */
+
+.ecg-container{
+
+  width:90%;
+  height:40px;
+
+  overflow:hidden;
+
+}
+
+.ecg-svg{
+
+  width:200%;
+  height:100%;
+
+  animation:ecgMove 3s linear infinite;
+
+}
+
+.ecg-line{
+
+  fill:none;
+  stroke-width:3;
+  stroke:currentColor;
+
+}
+
+/* ========================= */
+/* TEXT */
+/* ========================= */
+
+.health-text{
+
+  font-weight:bold;
+  letter-spacing:3px;
+
+  font-size:14px;
+
+}
+
+/* ========================= */
+/* HEALTH BAR */
+/* ========================= */
+
+.health-bar{
+
+  width:80%;
+  height:6px;
+
+  background:#111;
+
+  border:1px solid #333;
+
+  margin-top:4px;
+
+}
+
+.health-fill{
+
+  height:100%;
+  width:100%;
+
+  background:currentColor;
+
+  transition:width 0.4s ease;
+
+}
+
+/* ========================= */
+/* STATUS COLORS */
+/* ========================= */
+
+.health-good{
+
+  color:#00ff9d;
+
+  text-shadow:0 0 8px #00ff9d;
+
+}
+
+.health-fine{
+
+  color:#2bff00;
+
+  text-shadow:0 0 6px #2bff00;
+
+}
+
+.health-caution{
+
+  color:#ffd000;
+
+  text-shadow:0 0 8px #ffd000;
+
+}
+
+.health-danger{
+
+  color:#ff2b2b;
+
+  text-shadow:0 0 12px #ff0000;
+
+  animation:dangerBlink 0.8s infinite;
+
+}
+
+/* ========================= */
+/* CONTAMINATION EFFECT */
+/* ========================= */
+
+.contaminated{
+
+  filter:hue-rotate(90deg) saturate(1.5);
+
+}
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+@keyframes ecgMove{
+
+  from{
+    transform:translateX(0);
+  }
+
+  to{
+    transform:translateX(-50%);
+  }
+
+}
+
+@keyframes dangerBlink{
+
+  0%{opacity:1;}
+  50%{opacity:0.35;}
+  100%{opacity:1;}
+
+}
