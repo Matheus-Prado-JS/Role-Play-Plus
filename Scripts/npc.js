@@ -295,6 +295,27 @@ const npcDataMap = {
     backstory: "Nyssa é a irmã mais nova de Kaelen. Ela é uma jovem que cresceu em meio à tristeza e ao desespero de sua irmã mais velha. Nyssa é gentil, mas também corajosa, e sempre se esforça para manter a esperança viva em meio às dificuldades. Acabou por perder sua mãe quando tinha apenas 8 anos de idade, sem entender muito como aconteceu, até que a doença de sua mãe se manisfetou nela.",
     personality: "Gentil, corajosa e esperançosa."
   },
+      diamantes: {
+    name: "Diamantes de Gelo",
+    age: null,
+    image: "assets/persons/Diamantes.png",
+    backstory: "Os Diamantes de Gelo são criaturas geladas que habitam as regiões glaciais. Eles são conhecidos por sua força e resistência ao frio.",
+    personality: "Implacáveis e implacáveis."
+  },
+      amaldicoados: {
+    name: "Amaldiçoados de Orphelia",
+    age: null,
+    image: "assets/persons/Amaldicoados.png",
+    backstory: "Os Amaldiçoados de Orphelia são espíritos vingativos que habitam as terras destruídas por desastres mágicos. Eles são conhecidos por sua fúria e desejo de vingança.",
+    personality: "Furioso e vingativo."
+  },
+      balanca: {
+    name: "A Balança",
+    age: null,
+    image: "assets/persons/Balanca.png",
+    backstory: "A Balança é uma criatura misteriosa que habita os reinos entre a vida e a morte. Ela é conhecida por sua sabedoria e seu poder de julgamento.",
+    personality: "Sábia e imparcial."
+  },
   
 };
 
