@@ -115,8 +115,8 @@
   top: 50%;
   transform: translateY(-50%);
 
-  min-width: 370px;
-  max-width: 520px;
+  min-width: 470px;
+  max-width: 580px;
   padding: 14px;
   color: #e6f3ff; /* cor base global */
 

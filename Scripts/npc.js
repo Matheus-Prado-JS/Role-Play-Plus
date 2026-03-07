@@ -297,23 +297,23 @@ const npcDataMap = {
   },
       diamantes: {
     name: "Diamantes de Gelo",
-    age: null,
+    age: 17,
     image: "assets/persons/Diamantes.png",
-    backstory: "Os Diamantes de Gelo são criaturas geladas que habitam as regiões glaciais. Eles são conhecidos por sua força e resistência ao frio.",
+    backstory: "Os Diamantes de Gelo são criaturas que surgiram nas montanhas de Pedrafria após as grandes pragas que devastaram a região. Seu aparecimento coincidiu com o abandono da cidade, quando o frio se intensificou e estranhas formações cristalinas começaram a surgir nas encostas da montanha. Seus corpos são compostos por camadas densas de gelo cristalizado, assumindo formas humanoides ou bestiais dependendo da formação. Quando observados de perto, não há qualquer sinal de vida dentro deles. Apesar disso, movem-se com propósito.",
     personality: "Implacáveis e implacáveis."
   },
       amaldicoados: {
     name: "Amaldiçoados de Orphelia",
-    age: null,
+    age: 130,
     image: "assets/persons/Amaldicoados.png",
-    backstory: "Os Amaldiçoados de Orphelia são espíritos vingativos que habitam as terras destruídas por desastres mágicos. Eles são conhecidos por sua fúria e desejo de vingança.",
+    backstory: "Os Amaldiçoados de Orphelia, também chamados de Cinzento Errante, são criaturas deformadas pela maldição que cobre as Ruínas de Orphelia. Antigamente foram viajantes, soldados e exploradores que se aproximaram das ruínas após a catástrofe que envolveu a bruxa Orphelia e o Cavaleiro Kael. Ao respirarem a fumaça que emana das profundezas da região, seus corpos começaram a definhar lentamente. A carne apodreceu e a mente se esvaiu. O que restou foram figuras vazias que vagam pelas ruínas com movimentos lentos e erráticos, carregando armas enferrujadas ou pedaços de metal.",
     personality: "Furioso e vingativo."
   },
       balanca: {
     name: "A Balança",
-    age: null,
+    age: 30,
     image: "assets/persons/Balanca.png",
-    backstory: "A Balança é uma criatura misteriosa que habita os reinos entre a vida e a morte. Ela é conhecida por sua sabedoria e seu poder de julgamento.",
+    backstory: "A Balança Pálida é uma seita que opera nas sombras das estradas e vilarejos menores da região. Embora muitos moradores neguem sua existência, relatos dispersos indicam que o grupo já esteve presente em lugares marcados por conflitos, disputas familiares e crises econômicas. Seu líder é conhecido como Juiz. A seita costuma se apresentar como mediadora de conflitos, oferecendo soluções rápidas para disputas, dívidas ou problemas que as autoridades locais não conseguem resolver. Pessoas começam a desaparecer, investigações posteriores reveleram que muitas dessas vítimas foram levadas para trabalhar em minas clandestinas, onde são forçadas a extrair recursos raros sob vigilância constante dos membros da seita.",
     personality: "Sábia e imparcial."
   },
   
