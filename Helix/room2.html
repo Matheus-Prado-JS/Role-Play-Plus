@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="Helix-CSS/helix-master.css">
   <link rel="stylesheet" href="Helix-CSS/inventory.css">
   <link rel="stylesheet" href="Helix-CSS/ficha.css">
+  <link rel="stylesheet" href="Helix-CSS/map.css">
+  <link rel="stylesheet" href="Helix-CSS/map-markers.css">
 </head>
 <body>
 
@@ -73,7 +75,7 @@
     <div class="helix-side left-side">
       <button id="inventoryBtn">Inventário</button>
       <button id="fichaBtn">Fichas</button>
-      <button>Mapa</button>
+      <button id="mapBtn">Mapa</button>
     </div>
 
     <!-- MOLDURA -->
@@ -93,6 +95,34 @@
   </div>
 
 </section>
+<div id="mapUI" class="map-ui hidden">
+
+  <div class="map-menu">
+
+    <button class="map-location" data-map="dprt">DPRT</button>
+    <button class="map-location">Mercy Vale</button>
+    <button class="map-location">Blackflow</button>
+    <button class="map-location">Greyford</button>
+    <button class="map-location">???</button>
+
+  </div>
+
+<div class="map-view hidden">
+
+<div id="floorLabel"></div>
+
+<img id="mapImage">
+
+<div class="map-controls">
+
+<button id="floorUp">▲</button>
+<button id="floorDown">▼</button>
+
+</div>
+
+</div>
+
+</div>
 
 <!-- INFORMAÇÕES -->
 <section class="helix-info">
@@ -388,5 +418,8 @@
     <script src="Helix-JS/helix-master.js"></script>
     <script src="Helix-JS/inventory.js"></script>
     <script src="Helix-JS/ficha.js"></script>
+    <script src="Helix-JS/map-data.js"></script>
+    <script src="Helix-JS/map-render.js"></script>
+    <script src="Helix-JS/map-system.js"></script>
 </body>
 </html>

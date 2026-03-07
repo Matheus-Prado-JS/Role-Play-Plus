@@ -33,19 +33,19 @@ const regioes = [
   {
     nome: "Hospital Mercy Vale",
     tipo: "Hospital",
-    img: "imgs/regioes/mercy-vale.png",
+    img: "imgs/regioes/mercyvale.png",
     desc: "O nome do hospital carrega uma história que muitos moradores conhecem com orgulho. Ele homenageia Dra. Eleanor Mercy Vale, médica e filantropa que chegou a Rhodes Town décadas atrás, em um período marcado por violência crescente e precariedade nos atendimentos de emergência, especialmente no então decadente distrito de Blackridge. Filha de uma família tradicional, mas movida por vocação profundamente social, Eleanor abriu a primeira clínica comunitária em um prédio pequeno e improvisado, atendendo vítimas de crimes, trabalhadores feridos e famílias que não tinham condições de pagar nenhum tratamento. Sua filosofia era simples 'A cidade só é forte quando a compaixão é alta'. Com o aumento da demanda e o apoio da população, a clínica cresceu, recebeu doações e, após a morte de sua fundadora, foi oficialmente expandida e renomeada como Hospital Mercy Vale. Hoje o hospital é um complexo médico moderno, equipado com centro cirúrgico avançado, ala de trauma 24 horas e uma das emergências mais rápidas da região, funcionando em integração direta com a DPRT e o Terminal Greyford para respostas imediatas."
   },
 {
     nome: "Sistema Subterrâneo Blackflow",
     tipo: "Sistema de Esgotos",
-    img: "imgs/regioes/esgotos.png",
+    img: "imgs/regioes/blackflow.png",
     desc: "Criado para conectar e modernizar todo o sistema de esgotos e drenagem urbana, o Blackflow nasceu em um momento crucial do desenvolvimento de Rhodes Town. Com a revitalização do distrito de Blackridge e a construção de centros estratégicos como a DPRT, o Hospital Mercy Vale e o Terminal Greyford, tornou-se necessário expandir a infraestrutura subterrânea para sustentar o crescimento acelerado da região. O projeto foi financiado e executado pela poderosa corporação TAL - Tarsis Advanced Logistics, uma empresa de engenharia e infraestrutura que rapidamente se tornou uma das maiores forças industriais da cidade. À frente da empresa está seu fundador e CEO, Alistair V. Lorne, um empresário visionário conhecido por sua mente estratégica e por investir em projetos que outras companhias consideravam ousados demais. Sob sua liderança, a TAL propôs algo que ia muito além de simples redes de esgoto: o Blackflow foi projetado como um sistema integrade de drenagem, manutenção urbana e acesso técnico, com túneis largos o suficiente para veículos de serviço, estações de controle automatizadas e rotas de inspeção que percorrem quilômetros sob Rhodes Town. Oficialmente, o sistema trouxe enormes benefícios. Ele reduziu alagamentos, melhorou o saneamento da cidade e permitiu que novas construções em Blackridge fossem planejadas com muito mais eficiência. Engenheiros frequentemente chamam Blackflow de 'sucesso absoluto de Rhodes Town'."
   },
 {
     nome: "Complexo Saint Alder",
     tipo: "Complexo Corporativo",
-    img: "imgs/regioes/saint-alder.png",
+    img: "imgs/regioes/saintalder.png",
     desc: "Construído durante o grance processo de revitalização de Blackridge, o complexo foi projetado para funcionar como um centro empresarial, administrativo e estratégico, reunindo instituições públicas, representantes privados e especialistas urbanos em um único espaço. Sua localização não foi decidida por acaso, situado poucos minutos da DPRT, do Hospital Mercy Vale e do Terminal Greyford, Saint Alder possui acesso rápido a segurança, atendimentos médicos e transporte, permitindo respostas imediatas a qualquer situação crítica envolvendo a cidade. Arquitetonicamente, o complexo mistura elegância moderna com imponência institucional. Por conta dessa função central, o Saint Alder ficou conhecido como o cérebro administrativo de Rhodes Town. A liderança do complexo está nas mãos de Sebastian Alder, Urbanista e herdeiro da família que financiou parte da construção do complexo. Conhecido por sua visão estratégica de crescimento urbano, Sebastian atua como coordenador das iniciativas de desenvolvimento e planejamento da cidade. Dra. Helena Crowford, especialista em gestão pública e segurança urbana. Helena trabalhou por anos como consultora para a DPRT e diversas organizações cívicas. Dentro do Saint Alder, ela supervisiona as análises de risco, planejamento de resposta emergencial e integração entre instituições da cidade. Marcus Halberg, empresário e representante de grandes investimentos corporativos ligados à infraestrutura e tecnologia. Com uma mente pragmática e grande influência no setor privado, Marcus é responsável por intermediar projetos entre empresas como TAL e as autoridades de Rhodes Town. Juntos, os três formam o Conselho Diretor do Complexo Saint Alder."
   },
   {
@@ -57,7 +57,7 @@ const regioes = [
     {
     nome: "???",
     tipo: "Desconhecido",
-    img: "imgs/regioes/helix.png",
+    img: "imgs/regioes/padrão.png",
     desc: "Dados restritos."
   },
 ];

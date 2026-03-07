@@ -1,0 +1,32 @@
+DPRT 1° Andar 
+
+Entrada Principal -> Hall 
+Hall -> Escritório de Atendimento -> Sala de Denuncias 
+Hall -> Sala de Operações -> Sala de Registros -> Arquivos
+Hall -> Central de Rádio -> Sala de Monitoramento 
+Hall -> Laboratório Forense
+Sala de Operações -> Banheiros e Vestiários
+Central de Rádio -> Sala dos Computadores 
+
+DPRT 2° Andar
+
+Corredor Esquerdo -> Sala de Detetives -> Escritório do Capitão
+Corredor Esquerdo -> Sala de Interrogatório 1 
+Corredor Esquerdo -> Sala de Interrogatório 2
+Corredor Direito -> Sala de Evidências - Arquivo Criminal
+Corredor Direito -> Sala de Briefing -> Biblioteca 
+Reto -> Escada para 3° Andar
+
+DPRT 3° Andar 
+
+Escada Esquerda -> Arsenal - Armaria Pesada 
+Escada Esquerda -> Sala de Treino/Simulador 
+Escada Direita -> Sala Unidade Tática -> Chefe da DPRT
+
+DPRT Garagem
+
+Garagem (Maior)
+Esquerda -> Geradores 
+Esquerda -> Autópsia -> Morgue 
+Direita -> Celas de Detenção
+
