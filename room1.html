@@ -244,6 +244,18 @@
   <audio id="music" loop></audio>
 
 <ul class="music-list" id="music-list">
+  <!-- CONTROLES DINÂMICOS -->
+<li class="music-admin">
+
+  <button id="add-music-btn">
+    ➕ Adicionar Música
+  </button>
+
+  <button id="add-category-btn">
+    📁 Categoria
+  </button>
+
+</li>
   <li class="music-session">
     <div class="session-title">
       ▶ Capítulo 1: Escudo
@@ -312,18 +324,71 @@
       <li onclick="playMusic(38)">Praga</li>
     </ul>
   </li>
-
-    <li class="music-session">
-    <div class="session-title">
-      ▶ Sessão Final
-    </div>
-    <ul class="session-tracks hidden">
-      <li onclick="playMusic(39)">A Última Batalha</li>
-      <li onclick="playMusic(40)">A Última Batalha II</li>
-      <li onclick="playMusic(41)">A Última Batalha III</li>
-    </ul>
-  </li>
   </ul>
+
+  <!-- FORM CRIAR CATEGORIA -->
+<div id="category-form" class="music-form hidden">
+
+  <input 
+    type="text"
+    id="new-category-name"
+    placeholder="Nome da categoria"
+  >
+
+  <button id="save-category">
+    Criar Categoria
+  </button>
+
+  <button id="cancel-category">
+    Cancelar
+  </button>
+
+</div>
+<!-- FORM ADICIONAR MUSICA -->
+<div id="music-form" class="music-form hidden">
+
+  <input
+    type="text"
+    id="new-music-name"
+    placeholder="Nome da música"
+  >
+
+  <!-- Upload MP3 -->
+  <label class="file-label">
+    🎵 Arquivo da música
+    <input
+      type="file"
+      id="new-music-file"
+      accept=".mp3,audio/mpeg"
+    >
+  </label>
+
+  <!-- Upload imagem -->
+  <label class="file-label">
+    🖼 Capa da música (opcional)
+    <input
+      type="file"
+      id="new-music-bg-file"
+      accept="image/*"
+    >
+  </label>
+
+  <select id="music-category-select"></select>
+
+  <!-- progresso -->
+  <div id="upload-progress" class="upload-progress hidden">
+    Enviando arquivos...
+  </div>
+
+  <button id="save-music">
+    Adicionar Música
+  </button>
+
+  <button id="cancel-music">
+    Cancelar
+  </button>
+
+</div>
 
 </div>
 <!-- Painel de Botões - Direita Central -->
