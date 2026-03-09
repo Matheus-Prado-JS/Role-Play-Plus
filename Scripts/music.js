@@ -198,6 +198,11 @@ const playlist = [
     file: "assets/music/Praga.mp3",
     bg: "assets/music/Praga.png"
   },
+      {
+    name: "Naath",
+    file: "assets/music/Naath.mp3",
+    bg: "assets/music/Naath.png"
+  },
 ];
 
 let currentTrack = 0;
@@ -211,171 +216,6 @@ function togglePlaylist() {
   const list = document.getElementById("music-list");
   list.style.display = list.style.display === "block" ? "none" : "block";
 }
-
-
-// =========================
-// MUSIC SISTEMA DINÂMICO
-// =========================
-const addMusicBtn = document.getElementById("add-music-btn");
-const addCategoryBtn = document.getElementById("add-category-btn");
-
-const musicForm = document.getElementById("music-form");
-const categoryForm = document.getElementById("category-form");
-
-const categorySelect = document.getElementById("music-category-select");
-const musicFileInput = document.getElementById("new-music-file");
-const musicBgInput = document.getElementById("new-music-bg-file");
-const uploadProgress = document.getElementById("upload-progress");
-
-addMusicBtn.onclick = () => {
-  if (!requireMaster("adicionar música")) return;
-  musicForm.classList.remove("hidden");
-};
-
-addCategoryBtn.onclick = () => {
-  if (!requireMaster("criar categoria")) return;
-  categoryForm.classList.remove("hidden");
-};
-
-document.getElementById("cancel-music").onclick = () => {
-  musicForm.classList.add("hidden");
-};
-
-document.getElementById("cancel-category").onclick = () => {
-  categoryForm.classList.add("hidden");
-};
-
-document.getElementById("save-category").onclick = () => {
-
-  const name = document.getElementById("new-category-name").value.trim();
-  if (!name) return;
-
-  musicCategoriesRef.push({
-    name: name
-  });
-
-  categoryForm.classList.add("hidden");
-  document.getElementById("new-category-name").value = "";
-
-};
-
-musicCategoriesRef.on("child_added", snap => {
-
-  const data = snap.val();
-  const id = snap.key;
-
-  // adiciona no select
-  const option = document.createElement("option");
-  option.value = id;
-  option.textContent = data.name;
-
-  categorySelect.appendChild(option);
-
-  // cria categoria na playlist
-  const musicList = document.getElementById("music-list");
-
-  const li = document.createElement("li");
-  li.className = "music-session";
-
-  li.innerHTML = `
-    <div class="session-title">▶ ${data.name}</div>
-    <ul class="session-tracks hidden"></ul>
-  `;
-
-  musicList.appendChild(li);
-
-});
-
-document.getElementById("save-music").onclick = async () => {
-
-  const name = document.getElementById("new-music-name").value.trim();
-  const category = categorySelect.value;
-
-  const musicFile = musicFileInput.files[0];
-  const bgFile = musicBgInput.files[0];
-
-  if (!name || !musicFile) {
-    alert("Selecione um nome e um arquivo mp3.");
-    return;
-  }
-
-  if (!requireMaster("adicionar música")) return;
-
-  uploadProgress.classList.remove("hidden");
-
-  try {
-
-    // =========================
-    // UPLOAD DA MÚSICA
-    // =========================
-
-    const musicPath = `music/${Date.now()}_${musicFile.name}`;
-    const musicRefStorage = storage.ref().child(musicPath);
-
-    await musicRefStorage.put(musicFile);
-
-    const musicURL = await musicRefStorage.getDownloadURL();
-
-    // =========================
-    // UPLOAD DA IMAGEM
-    // =========================
-
-    let bgURL = "";
-
-    if (bgFile) {
-
-      const bgPath = `music_bg/${Date.now()}_${bgFile.name}`;
-      const bgRefStorage = storage.ref().child(bgPath);
-
-      await bgRefStorage.put(bgFile);
-
-      bgURL = await bgRefStorage.getDownloadURL();
-    }
-
-    // =========================
-    // SALVAR NO FIREBASE
-    // =========================
-
-    musicTracksRef.push({
-      name: name,
-      file: musicURL,
-      bg: bgURL,
-      category: category
-    });
-
-    // =========================
-    // RESET FORM
-    // =========================
-
-    musicForm.classList.add("hidden");
-
-    document.getElementById("new-music-name").value = "";
-    musicFileInput.value = "";
-    musicBgInput.value = "";
-
-    uploadProgress.classList.add("hidden");
-
-  } catch (error) {
-
-    console.error(error);
-    alert("Erro ao enviar música.");
-
-    uploadProgress.classList.add("hidden");
-
-  }
-
-};
-
-musicTracksRef.on("child_added", snap => {
-
-  const data = snap.val();
-
-  const session = document.querySelector(
-    `.music-session ul.session-tracks`
-  );
-
-});
-
 
 // =========================
 // PLAYLIST — SESSÕES
