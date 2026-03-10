@@ -951,7 +951,113 @@
   background: rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
+/* =========================
+   CONTROLES ADMIN (MESTRE)
+========================= */
 
+.bg-admin {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.bg-admin button {
+  flex: 1;
+
+  background: rgba(140, 80, 255, 0.15);
+  border: 1px solid rgba(140, 80, 255, 0.25);
+  border-radius: 8px;
+
+  padding: 6px;
+
+  font-size: 11px;
+  color: #e2d9ff;
+
+  cursor: pointer;
+
+  transition: 
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.bg-admin button:hover {
+  background: rgba(140, 80, 255, 0.28);
+
+  transform: scale(1.03);
+
+  box-shadow:
+    0 0 6px rgba(140, 80, 255, 0.35);
+}
+
+/* =========================
+   FORMULÁRIOS
+========================= */
+
+.bg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  margin-bottom: 12px;
+  padding: 8px;
+
+  border-radius: 10px;
+
+  background: rgba(140, 80, 255, 0.08);
+  border: 1px solid rgba(140, 80, 255, 0.25);
+
+  animation: bgFormOpen 0.2s ease;
+}
+
+.bg-form.hidden {
+  display: none;
+}
+
+/* =========================
+   BOTÕES DOS FORMULÁRIOS
+========================= */
+
+.bg-form button {
+
+  background: rgba(140, 80, 255, 0.18);
+
+  border: 1px solid rgba(140, 80, 255, 0.3);
+  border-radius: 6px;
+
+  padding: 5px;
+
+  font-size: 11px;
+  color: #e8ddff;
+
+  cursor: pointer;
+
+  transition: 
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.bg-form button:hover {
+  background: rgba(140, 80, 255, 0.35);
+
+  transform: scale(1.03);
+}
+
+/* =========================
+   ANIMAÇÃO
+========================= */
+
+@keyframes bgFormOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* =========================
    TURNO — PAINEL LATERAL

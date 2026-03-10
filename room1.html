@@ -1085,7 +1085,62 @@
 <div class="background-selector hidden" id="background-selector">
 
   <h4>Plano de Fundo</h4>
+<!-- CONTROLES DO MESTRE -->
+<div class="bg-admin">
 
+  <button id="add-bg-category-btn">
+    ➕ Categoria
+  </button>
+
+  <button id="add-bg-btn">
+    ➕ Background
+  </button>
+
+</div>
+<!-- FORM NOVA CATEGORIA -->
+<div id="bg-category-form" class="bg-form hidden">
+
+  <input 
+    type="text"
+    id="new-bg-category-name"
+    placeholder="Nome da categoria"
+  >
+
+  <button id="save-bg-category">
+    Criar Categoria
+  </button>
+
+  <button id="cancel-bg-category">
+    Cancelar
+  </button>
+
+</div>
+<!-- FORM NOVO BACKGROUND -->
+<div id="bg-form" class="bg-form hidden">
+
+  <input
+    type="text"
+    id="new-bg-name"
+    placeholder="Nome do background"
+  >
+
+  <select id="bg-category-select"></select>
+
+  <input
+    type="file"
+    id="new-bg-image"
+    accept="image/*"
+  >
+
+  <button id="save-bg">
+    Criar
+  </button>
+
+  <button id="cancel-bg">
+    Cancelar
+  </button>
+
+</div>
   <!-- =========================
        Capítulo 1: Escudo
   ========================== -->
@@ -1100,7 +1155,7 @@
 
       <li data-bg="Capa.png" class="active">
         <span class="bg-radio"></span>
-        <span class="bg-name">Capa Padrão</span>
+        <span class="bg-name">Capa.png</span>
       </li>
 
       <li data-bg="Cidadela de Lythael.png">
@@ -1432,37 +1487,6 @@
 
     </ul>
   </div>
-  <!-- =========================
-       Capítulo Final: Paz ou Guerra?
-  ========================== -->
-  <div class="bg-category">
-
-    <button class="bg-category-title" data-bg-category="fundos">
-      🎬 Fundos
-      <span class="bg-category-arrow">▼</span>
-    </button>
-
-    <ul class="background-options bg-category-content hidden" data-bg-content="fundos">
-
-
-      <li data-bg="A Última Batalha.png">
-        <span class="bg-radio"></span>
-        <span class="bg-name">A Última Batalha</span>
-      </li>
-
-      <li data-bg="A Última Batalha 2.png">
-        <span class="bg-radio"></span>
-        <span class="bg-name">A Última Batalha 2</span>
-      </li>
-      
-      <li data-bg="A Última Batalha 3.png">
-        <span class="bg-radio"></span>
-        <span class="bg-name">A Última Batalha 3</span>
-      </li>
-
-    </ul>
-  </div>
-
 </div>
 
 
