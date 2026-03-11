@@ -1058,7 +1058,116 @@
     transform: translateY(0);
   }
 }
+/* =========================
+   INPUTS DE TEXTO
+========================= */
 
+.bg-form input[type="text"] {
+
+  background: rgba(20, 15, 40, 0.6);
+  border: 1px solid rgba(140, 80, 255, 0.25);
+
+  border-radius: 6px;
+
+  padding: 6px 8px;
+
+  font-size: 11px;
+  color: #e6ddff;
+
+  outline: none;
+
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.bg-form input::placeholder {
+  color: rgba(220,210,255,0.45);
+}
+
+.bg-form input:focus {
+
+  border: 1px solid rgba(140, 80, 255, 0.6);
+
+  box-shadow:
+    0 0 6px rgba(140, 80, 255, 0.35);
+
+  background: rgba(30, 20, 60, 0.7);
+}
+/* =========================
+   SELECT DE CATEGORIA
+========================= */
+
+.bg-form select {
+
+  background: rgba(20, 15, 40, 0.6);
+  border: 1px solid rgba(140, 80, 255, 0.25);
+
+  border-radius: 6px;
+
+  padding: 6px 8px;
+
+  font-size: 11px;
+  color: #e6ddff;
+
+  outline: none;
+
+  cursor: pointer;
+
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.bg-form select:focus {
+
+  border: 1px solid rgba(140, 80, 255, 0.6);
+
+  box-shadow:
+    0 0 6px rgba(140, 80, 255, 0.35);
+}
+/* =========================
+   INPUT DE IMAGEM
+========================= */
+
+.bg-form input[type="file"] {
+
+  font-size: 11px;
+  color: #dcd3ff;
+
+  background: rgba(20,15,40,0.5);
+  border: 1px dashed rgba(140,80,255,0.3);
+
+  border-radius: 6px;
+
+  padding: 6px;
+
+  cursor: pointer;
+
+  transition:
+    border 0.2s ease,
+    background 0.2s ease;
+}
+
+.bg-form input[type="file"]:hover {
+
+  border: 1px dashed rgba(140,80,255,0.6);
+
+  background: rgba(40,25,70,0.6);
+}
+/* =========================
+   LABELS
+========================= */
+
+.bg-form label {
+
+  font-size: 10px;
+
+  color: rgba(220,210,255,0.7);
+
+  margin-bottom: -2px;
+}
 /* =========================
    TURNO — PAINEL LATERAL
 ========================= */
