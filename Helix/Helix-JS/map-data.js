@@ -22,16 +22,6 @@ name:"DPRT – 2° Andar"
 },
 
 {
-id:"DPRT-2-left",
-name:"DPRT – 2° Andar"
-},
-
-{
-id:"DPRT-2-right",
-name:"DPRT – 2° Andar"
-},
-
-{
 id:"DPRT-3",
 name:"DPRT – 3° Andar"
 }
