@@ -746,7 +746,7 @@ body.room {
 .open-skills-btn {
   position: fixed;
   bottom: 28px;
-  left: 28%;
+  left: 22%;
   transform: translateX(-50%);
   z-index: 9;
 

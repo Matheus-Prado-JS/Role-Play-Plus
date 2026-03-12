@@ -3,34 +3,9 @@
 // =========================
 const playlist = [
   {
-    name: "Cidadela de Ouro",
-    file: "assets/music/Cidadela de Ouro.mp3",
-    bg: "assets/music/Cidadela de Ouro.png"
-  },
-  {
-    name: "Salvation",
-    file: "assets/music/Salvation.mp3",
-    bg: "assets/music/Salvation.png"
-  },
-  {
-    name: "Julgamento",
-    file: "assets/music/Julgamento.mp3",
-    bg: "assets/music/Julgamento.png"
-  },
-  {
-    name: "Rebeldes de Aço",
-    file: "assets/music/Rebeldes de Aço.mp3",
-    bg: "assets/music/Rebeldes de Aço.png"
-  },
-  {
     name: "Escudo dos Justos",
     file: "assets/music/Escudo dos Justos.mp3",
     bg: "assets/music/Escudo dos Justos.png"
-  },
-  {
-    name: "Velário Caído",
-    file: "assets/music/Velário Caído.mp3",
-    bg: "assets/music/Velário Caído.png"
   },
   {
     name: "Show de Desgraça",
@@ -38,34 +13,9 @@ const playlist = [
     bg: "assets/music/Show de Desgraça.png"
   },
   {
-    name: "Descontrole",
-    file: "assets/music/Descontrole.mp3",
-    bg: "assets/music/Descontrole.png"
-  },
-  {
-    name: "Um novo 'Eco'",
-    file: "assets/music/Um novo 'Eco'.mp3",
-    bg: "assets/music/Novo Eco.png"
-  },
-  {
     name: "Aqui é o fim?",
     file: "assets/music/Aqui é o fim.mp3",
     bg: "assets/music/Aqui é o fim.png"
-  },
-  {
-    name: "O teste de Eccho",
-    file: "assets/music/Um teste de Eccho.mp3",
-    bg: "assets/music/O Teste de Eccho.png"
-  },
-  {
-    name: "Pesadelo",
-    file: "assets/music/Pesadelo.mp3",
-    bg: "assets/music/Pesadelo.png"
-  },
-  {
-    name: "Feridas",
-    file: "assets/music/Feridas.mp3",
-    bg: "assets/music/Feridas.png"
   },
   {
     name: "Serenna",
@@ -76,36 +26,6 @@ const playlist = [
     name: "Avelorn",
     file: "assets/music/Avelorn.mp3",
     bg: "assets/music/Avelorn.png"
-  },
-  {
-    name: "Elaris",
-    file: "assets/music/Elaris.mp3",
-    bg: "assets/music/Elaris.png"
-  },
-    {
-    name: "Império de Ouro",
-    file: "assets/music/Império de Ouro.mp3",
-    bg: "assets/music/Império de Ouro.png"
-  },
-    {
-    name: "Intuição",
-    file: "assets/music/Intuição.mp3",
-    bg: "assets/music/Intuição.png"
-  },
-  {
-    name: "Busca",
-    file: "assets/music/Busca.mp3",
-    bg: "assets/music/Busca.png"
-  },
-  {
-    name: "Sevrina",
-    file: "assets/music/Sevrina.mp3",
-    bg: "assets/music/Sevrina.png"
-  },
-    {
-    name: "Acertos",
-    file: "assets/music/Acertos.mp3",
-    bg: "assets/music/Acertos.png"
   },
   {
     name: "Império",

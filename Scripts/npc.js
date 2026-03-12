@@ -1,5 +1,6 @@
 const npcMasterPanel = document.getElementById("npc-master-panel");
 
+
 if (npcMasterPanel) {
   npcMasterPanel.addEventListener("click", (e) => {
 
@@ -63,7 +64,6 @@ const npcPlayerPanel = document.getElementById("npc-player-panel");
 
 const modeButtons = npcPlayerPanel.querySelectorAll(".npc-mode-btn");
 const filterButtons = npcPlayerPanel.querySelectorAll(".npc-filter-btn");
-const npcItems = npcPlayerPanel.querySelectorAll(".npc-item");
 
 let currentMode = "npc";
 let currentCategory = "principais";
@@ -320,6 +320,9 @@ const npcDataMap = {
 };
 
 function applyNpcFilters() {
+
+  const npcItems = npcPlayerPanel.querySelectorAll(".npc-item");
+
   npcItems.forEach(item => {
     const type = item.dataset.type;
     const category = item.dataset.category;
@@ -344,9 +347,11 @@ function applyNpcFilters() {
 
   // Mostrar ou esconder filtros de categoria
   const filterContainer = npcPlayerPanel.querySelector(".npc-category-filters");
+
   if (filterContainer) {
     filterContainer.style.display = currentMode === "npc" ? "flex" : "none";
   }
+
 }
 
 /* =========================

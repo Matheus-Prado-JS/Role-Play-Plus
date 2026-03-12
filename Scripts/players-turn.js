@@ -77,7 +77,8 @@ const playerImages = [
   "assets/turns/players/Show de Eddie.png",
   "assets/turns/players/Stilgard.png",
   "assets/turns/players/Orion.png",
-  "assets/turns/players/Aurelion.png"
+  "assets/turns/players/Aurelion.png",
+  "assets/turns/players/Ashen.png"
 ];
 
 let currentPlayerImageIndex = 0;
