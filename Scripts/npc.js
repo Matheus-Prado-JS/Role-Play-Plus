@@ -316,6 +316,13 @@ const npcDataMap = {
     backstory: "A Balança Pálida é uma seita que opera nas sombras das estradas e vilarejos menores da região. Embora muitos moradores neguem sua existência, relatos dispersos indicam que o grupo já esteve presente em lugares marcados por conflitos, disputas familiares e crises econômicas. Seu líder é conhecido como Juiz. A seita costuma se apresentar como mediadora de conflitos, oferecendo soluções rápidas para disputas, dívidas ou problemas que as autoridades locais não conseguem resolver. Pessoas começam a desaparecer, investigações posteriores reveleram que muitas dessas vítimas foram levadas para trabalhar em minas clandestinas, onde são forçadas a extrair recursos raros sob vigilância constante dos membros da seita.",
     personality: "Sábia e imparcial."
   },
+    gorim: {
+    name: "Gorim, o Ferreiro",
+    age: 63,
+    image: "assets/persons/Gorim.png",
+    backstory: "Poucos em Zhalem ainda se lembram como eram os tempos antes da Praga se espalhar. Mas entre os muros da cidade, um nome ainda é murmurado com respeito entre soldados veteranos: Gorim, o Ferreiro da Guarnição Imperial. Durante décadas, Gorim trabalhou nas grandes forjas abaixo do distrito militar de Zhalem. Um homem de ombros largos e mãos marcadas pelo ferro, ele se especializou naquilo que poucos ferreiros ousavam fabricar: armas de guerra colossais. Certa noite, as forjas foram fechadas sem aviso. Guardas imperiais cercaram o distrito militar e Gorim foi levado algemado diante do conselho da cidade. A acusação foi breve e absurda: Traição contra o General Varok. Nenhuma explicação foi dada. Nenhuma prova foi apresentada.",
+    personality: "Arrogante, rabugento e mal humorado."
+  },
   
 };
 

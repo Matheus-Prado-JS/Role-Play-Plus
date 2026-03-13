@@ -747,7 +747,7 @@ body.room {
   position: fixed;
   bottom: 28px;
   left: 22%;
-  transform: translateX(-50%);
+  transform: translateX(-32%);
   z-index: 9;
 
   padding: 12px 22px;

@@ -971,6 +971,9 @@
     <li class="npc-item unlocked" data-npc="sarin" data-type="npc" data-category="opcionais">
       <span class="npc-name">Sarin</span>
     </li>
+    <li class="npc-item unlocked" data-npc="gorim" data-type="npc" data-category="opcionais">
+      <span class="npc-name">Gorim</span>
+    </li>
 
     <!-- ================= BESTIÁRIO ================= -->
     <li class="npc-item unlocked" data-npc="varok" data-type="bestiario">
@@ -1804,6 +1807,10 @@
               <span class="npc-name">Sarin</span>
               <button class="npc-toggle unlock">Desbloqueado</button>
             </li>
+            <li class="npc-item unlocked" data-npc="gorim">
+              <span class="npc-name">Gorim</span>
+              <button class="npc-toggle unlock">Desbloqueado</button>
+            </li>
           </ul>
         </div>
 
@@ -1934,6 +1941,7 @@
       <button class="tree-tab" data-tree="piromante">Piromante</button>
       <button class="tree-tab" data-tree="devoto">Devoto</button>
       <button class="tree-tab" data-tree="profanador">Profanador</button>
+      <button class="tree-tab" data-tree="vagante">Vagante</button>
     </div>
 
     <div class="skill-tree-display">
@@ -2056,6 +2064,22 @@
         <div class="skill-node" data-id="8" data-name="Invocação do Abismo" data-desc="Rasga o solo e invoca tentáculos sombrios que causam 5D6 de dano e imobilizam o alvo por 1 turno. Custo 6 PM." data-cost="3">Invocação do<br> Abismo</div>
         <div class="skill-node" data-id="9" data-name="Profanação" data-desc="Explosão profana em área curta. Causa 6D6 de dano profano. Remove todos os efeitos ativos e transforma em cura recebida por 1 turno. Custa 8 PM + 4 PVg." data-cost="4">Profanação</div>
         <div class="skill-node" data-id="10" data-name="Profanação do Herege" data-desc="Por 3 turnos, todo dano profano é dobrado. Cura recebida se converte em dano aos inimigos próximos. Inimigos em área sofrem medo (-2 em Testes) ao fim, o Profanador perde 40% da vida e sofre 1 turno de fraqueza (-2 em tudo). Custa 50% do PM." data-cost="5">Profanação do<br> Herege</div>
+      </div>
+
+      <!-- Vagante -->
+<div class="skill-tree-map" id="tree-vagante">
+  <div class="skill-tree-lines"></div>
+
+        <div class="skill-node" data-id="1" data-name="Sentido da Mata" data-desc="O Vagante aguça seus sentidos naturais por 3 turnos. Ganha +2 em Percepção e pode detectar a presença de criaturas próximas, mesmo escondidas ou camufladas. Custo 1 PM." data-cost="1">Sentido da<br> Mata</div>
+        <div class="skill-node" data-id="2" data-name="Raízes Prisioneiras" data-desc="Raízes emergem do solo e prendem um inimigo por 1 turno. O alvo sofre 1D6 de dano natural e deve passar em um teste de Força para se libertar. Custo 2 PM." data-cost="2">Raízes<br> Prisioneiras</div>
+        <div class="skill-node" data-id="3" data-name="Forma da Onça" data-desc="O Vagante assume a Forma da Onça por 3 turnos. Ganha +2 em Agilidade, ataques causam 2D6 de dano natural e possui vantagem em perseguições e mobilidade. Custo 2 PM." data-cost="2">Forma da<br> Onça</div>
+        <div class="skill-node" data-id="4" data-name="Juramento Selvagem" data-desc="O Vagante reforça seu juramento com os espíritos da floresta. Por 3 turnos ganha +2 em Defesa e aliados próximos recebem +1 em testes de resistência. Custo 3 PM." data-cost="2">Juramento<br> Selvagem</div>
+        <div class="skill-node" data-id="5" data-name="Forma do Wyvern" data-desc="O Vagante assume a forma de um Wyvern Selvagem por 3 turnos. Ganha +3 em Resistência, ataques causam 3D6 de dano, recebe redução de dano e pode realizar investidas aéreas curtas. Custo 4 PM." data-cost="3">Forma do<br> Wyvern</div>
+        <div class="skill-node" data-id="6" data-name="Julgamento da Natureza" data-desc="O Vagante invoca a força sagrada da floresta contra um inimigo. Causa 3D8 de dano avançado/fé. Se o alvo tiver causado dano a um aliado no turno anterior, sofre +1D8 adicional. Custo 3 PM." data-cost="3">Julgamento da<br> Natureza</div>
+        <div class="skill-node" data-id="7" data-name="Forma do Corvo" data-desc="Transformação em Corvo Sombrio por 3 turnos. Pode voar, possui vantagem em furtividade e seus ataques causam 2D6 de dano. Custo 4 PM." data-cost="3">Forma do<br> Corvo</div>
+        <div class="skill-node" data-id="8" data-name="Guardião do Bosque" data-desc="Invoca espíritos da floresta que protegem uma área média por 2 turnos. Aliados recuperam 1D6 de vida por turno e inimigos sofrem 1D6 de dano natural por turno. Custo 5 PM." data-cost="3">Guardião do<br> Bosque</div>
+        <div class="skill-node" data-id="9" data-name="Avatar da Mata" data-desc="O Vagante assume uma forma híbrida sagrada e bestial por 3 turnos. Ganha +2 em todos os atributos físicos, ataques causam 4D6 de dano natural/sagrado e recupera 1D6 de vida por turno. Custo 7 PM." data-cost="4">Avatar da<br> Mata</div>
+        <div class="skill-node" data-id="10" data-name="Juramento da Fera Ancestral" data-desc="O Vagante invoca o poder primordial da floresta por 3 turnos. Pode alternar entre formas animais sem custo, ataques causam dano dobrado e inimigos próximos sofrem medo (-2 em testes). Ao terminar sofre exaustão: não pode agir por 1 rodada e na seguinte só pode se mover. Custo 50% do PM." data-cost="5">Juramento da<br> Fera Ancestral</div>
       </div>
 
     </div>
