@@ -11,6 +11,7 @@ const turnRef = db.ref("turn");
 const enemyTurnsRef = db.ref("enemyTurns");
 const documentsRef = db.ref("documents");
 const missionsRef = db.ref("missions");
+const amuletsRef = db.ref("amulets");
 
 logRef.limitToLast(50).on("child_added", (snapshot) => {
   const data = snapshot.val();

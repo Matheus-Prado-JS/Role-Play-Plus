@@ -126,7 +126,7 @@
   justify-content: center;
   align-items: flex-start; /* 👈 muda isso */
 
-  padding-top: 1420px; /* 👈 controla o quanto desce */
+  padding-top: 1720px; /* 👈 controla o quanto desce */
 
   z-index: 999;
 }
@@ -282,6 +282,190 @@
    UTILITÁRIO
 ===================================================== */
 
-.hidden {
-  display: none;
+.hidden{
+display:none !important;
+}
+
+/* ============================
+   AMULETS MASTER PANEL
+============================ */
+
+.amulets-master-panel {
+  position: absolute;
+  top: 320px;
+  right: 8px;
+
+  width: 310px;
+  max-height: 420px;
+
+  padding: 12px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(190, 140, 255, 0.25);
+
+  background: rgba(12, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.75);
+
+  overflow-y: auto;
+  z-index: 999;
+}
+
+/* Scroll */
+
+.amulets-master-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.amulets-master-panel::-webkit-scrollbar-thumb {
+  background: rgba(190, 140, 255, 0.25);
+  border-radius: 10px;
+}
+
+.amulets-master-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(190, 140, 255, 0.45);
+}
+
+/* ============================
+   HEADER
+============================ */
+
+.amulets-master-panel h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+
+  padding-bottom: 8px;
+
+  border-bottom: 1px solid rgba(190, 140, 255, 0.18);
+
+  color: rgba(210, 180, 255, 0.95);
+}
+
+/* ============================
+   LISTA
+============================ */
+
+.amulet-master-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ITEM */
+
+.amulet-master-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 12px;
+  border: 1px solid rgba(190, 140, 255, 0.18);
+
+  background: rgba(190, 140, 255, 0.06);
+
+  padding: 10px 12px;
+
+  font-size: 12px;
+  color: #fff;
+
+  transition: 0.2s ease;
+}
+
+.amulet-master-item:hover {
+  border-color: rgba(190, 140, 255, 0.45);
+  background: rgba(190, 140, 255, 0.12);
+}
+
+/* ============================
+   ESTADO LOCKED / UNLOCKED
+============================ */
+
+.amulet-master-item.locked {
+  opacity: 0.6;
+}
+
+.amulet-master-item.unlocked {
+  border-color: rgba(120, 255, 180, 0.35);
+  background: rgba(120, 255, 180, 0.08);
+}
+
+/* ============================
+   BOTÃO TOGGLE
+============================ */
+
+.amulet-toggle {
+  padding: 4px 10px;
+
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+/* bloqueado */
+
+.amulet-toggle.lock {
+  background: rgba(255, 70, 70, 0.12);
+  border-color: rgba(255, 70, 70, 0.35);
+
+  color: rgba(255, 160, 160, 0.95);
+}
+
+.amulet-toggle.lock:hover {
+  background: rgba(255, 70, 70, 0.22);
+}
+
+/* desbloqueado */
+
+.amulet-toggle.unlock {
+  background: rgba(70, 255, 170, 0.12);
+  border-color: rgba(70, 255, 170, 0.35);
+
+  color: rgba(150, 255, 200, 0.95);
+}
+
+.amulet-toggle.unlock:hover {
+  background: rgba(70, 255, 170, 0.22);
+}
+
+/* ============================
+   BOTÃO CONFIG
+============================ */
+
+.missions-master-config-btn {
+  margin-top: 10px;
+
+  width: 100%;
+  padding: 8px;
+
+  border-radius: 10px;
+
+  border: 1px dashed rgba(190, 140, 255, 0.35);
+  background: rgba(190, 140, 255, 0.08);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: rgba(210, 180, 255, 0.95);
+
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  position:relative;
+  z-index:1001;
+}
+
+.missions-master-config-btn:hover {
+  background: rgba(190, 140, 255, 0.18);
+  border-color: rgba(190, 140, 255, 0.55);
 }

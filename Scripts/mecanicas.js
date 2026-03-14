@@ -1,10 +1,98 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+// =========================
+// ABRIR CONFIG AMULETOS
+// =========================
+
+const amuletConfigBtn = document.querySelector(".missions-master-config-btn");
+const amuletMasterPanel = document.getElementById("amulets-master-panel");
+
+if (amuletConfigBtn && amuletMasterPanel) {
+
+  amuletConfigBtn.addEventListener("click", () => {
+
+    if (!requireMaster("controlar amuletos")) return;
+
+    amuletMasterPanel.classList.toggle("hidden");
+
+  });
+
+}
+  
   // =========================
-  // 🔐 VALIDAR PLAYER
+  // TOGGLE MESTRE
   // =========================
 
-  
+if (amuletMasterPanel) {
+
+  amuletMasterPanel.addEventListener("click", (e) => {
+
+    const toggle = e.target.closest(".amulet-toggle");
+    if (!toggle) return;
+
+    if (!requireMaster("controlar amuletos")) return;
+
+    const item = toggle.closest(".amulet-master-item");
+    const amuletId = item.dataset.amulet;
+
+    const isLocked = item.classList.contains("locked");
+
+    amuletsRef.child(amuletId).update({
+      unlocked: isLocked
+    });
+
+  });
+
+}
+
+amuletsRef.on("value", snapshot => {
+
+  const data = snapshot.val();
+  if (!data) return;
+
+  Object.entries(data).forEach(([amuletId, amuletData]) => {
+
+    const unlocked = amuletData.unlocked === true;
+
+    /* ===== MESTRE ===== */
+
+    const masterItem = document.querySelector(
+      `.amulet-master-item[data-amulet="${amuletId}"]`
+    );
+
+    if (masterItem) {
+
+      masterItem.classList.toggle("locked", !unlocked);
+      masterItem.classList.toggle("unlocked", unlocked);
+
+      const btn = masterItem.querySelector(".amulet-toggle");
+
+      if (btn) {
+        btn.className = `amulet-toggle ${unlocked ? "unlock" : "lock"}`;
+        btn.innerText = unlocked ? "Desbloqueado" : "Bloqueado";
+      }
+
+    }
+
+/* ===== PLAYER ===== */
+
+const playerItems = document.querySelectorAll(
+  `.amulet-item[data-amulet="${amuletId}"]`
+);
+
+playerItems.forEach(item => {
+
+  if (!unlocked) {
+    item.style.display = "none";
+  } else {
+    item.style.display = "flex";
+  }
+
+});
+
+  });
+
+});
 
 
   // =====================================================
@@ -115,11 +203,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  function abrirModal() {
-    selectedAmuletId = null;
-    detailBox.classList.add("hidden");
+function abrirModal() {
+
+  selectedAmuletId = null;
+  detailBox.classList.add("hidden");
+
+  // filtra amuletos desbloqueados
+  amuletsRef.once("value").then(snapshot => {
+
+    const data = snapshot.val() || {};
+
+    amuletItems.forEach(item => {
+
+      const id = item.dataset.amulet;
+      const unlocked = data[id]?.unlocked === true;
+
+      if (unlocked) {
+        item.style.display = "flex";
+      } else {
+        item.style.display = "none";
+      }
+
+    });
+
     modal.classList.remove("hidden");
-  }
+
+  });
+
+}
 
 
   // =====================================================
