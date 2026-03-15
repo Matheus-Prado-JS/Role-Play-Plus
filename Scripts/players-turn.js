@@ -78,7 +78,8 @@ const playerImages = [
   "assets/turns/players/Stilgard.png",
   "assets/turns/players/Orion.png",
   "assets/turns/players/Aurelion.png",
-  "assets/turns/players/Ashen.png"
+  "assets/turns/players/Ashen.png",
+  "assets/turns/players/Alverian.png"
 ];
 
 let currentPlayerImageIndex = 0;
