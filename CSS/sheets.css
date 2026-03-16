@@ -643,7 +643,6 @@
 .note-header strong {
   display: block;
   color: #ffd36a;
-  margin-bottom: 2px;
 }
 
 .note-header span {
@@ -653,18 +652,17 @@
 .note-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 8px;
+  align-items: center;
 }
 
 .note-header > div {
-  flex: 1;
+  flex-grow: 1;
 }
 
 /* Botões de ação */
 .note-actions {
   display: flex;
-  gap: 4px;
+  gap: 6px;
 }
 
 .note-actions button {

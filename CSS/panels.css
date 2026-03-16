@@ -169,7 +169,7 @@
 }
 
 .dice-item img {
-  width: 46px;
+  width: 40px;
   opacity: 0.95;
   transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
 }
@@ -283,7 +283,7 @@
 #dice-result {
   position: absolute;
   bottom: 100%;          /* sobe acima do painel */
-  left: -25%;
+  left: -17%;
 
   transform: translateX(-50%);
   margin-bottom: -40px;   /* espaço entre texto e dados */
