@@ -1,0 +1,154 @@
+/* =========================
+   🎵 MUSIC PLAYER
+========================= */
+
+.music-container {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 9999;
+}
+
+.music-player {
+  position: relative; /* importante */
+  right: 280px;
+  top: -5%;
+}
+
+/* BOTÃO */
+.music-toggle {
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(230, 195, 106, 0.4);
+
+  transition: 0.25s;
+}
+
+.music-toggle:hover {
+  background: rgba(230, 195, 106, 0.15);
+  box-shadow: 0 0 8px rgba(230, 195, 106, 0.3);
+}
+
+/* MENU */
+.music-menu {
+  position: absolute;
+  top: 110%;
+  right: 0; /* alinha com botão */
+
+  width: 180px;
+
+  background: #111;
+  border: 1px solid rgba(230, 195, 106, 0.5);
+  border-radius: 10px;
+
+  padding: 8px;
+
+  z-index: 9999;
+}
+
+.music-menu.hidden {
+  display: none;
+}
+
+/* OPÇÕES */
+.music-option {
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 6px;
+
+  font-size: 0.85rem;
+
+  transition: 0.2s;
+}
+
+.music-option:hover {
+  background: rgba(230, 195, 106, 0.15);
+  transform: translateX(4px);
+}
+
+/* =========================
+   🎧 NOW PLAYING
+========================= */
+
+.music-now {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* CAPA */
+.music-now img {
+  width: 120px;
+  height: 70px; /* 16:9 */
+
+  object-fit: cover;
+  border-radius: 10px;
+
+  border: 1px solid rgba(230, 195, 106, 0.4);
+
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+/* INFO */
+.music-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* NOME */
+#music-name {
+  font-size: 0.8rem;
+  color: #e6c36a;
+
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* CONTROLES */
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* BOTÃO */
+#play-pause {
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(230, 195, 106, 0.4);
+  border-radius: 6px;
+
+  color: #e6c36a;
+  cursor: pointer;
+
+  padding: 2px 6px;
+
+  transition: 0.2s;
+}
+
+#play-pause:hover {
+  background: rgba(230, 195, 106, 0.2);
+}
+
+/* SLIDER */
+#volume {
+  width: 80px;
+  cursor: pointer;
+}

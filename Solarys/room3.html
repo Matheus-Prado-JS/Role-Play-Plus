@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="Sol-CSS/Sol-Dice.css">
   <link rel="stylesheet" href="Sol-CSS/Sol-Backs.css">
   <link rel="stylesheet" href="Sol-CSS/Sol-Icons.css">
+  <link rel="stylesheet" href="Sol-CSS/Sol-Music.CSS">
   <link rel="stylesheet" href="Sol-CSS/Sol-Skills.css">
 </head>
 
@@ -16,6 +17,7 @@
   <!-- HEADER -->
   <header class="top-bar">
 
+
     <div class="logo-container" onclick="goHome()">
       <img 
         src="Sol-Assets/Logotipos/Logotipo-Solarys.png" 
@@ -23,6 +25,57 @@
         class="logo"
       >
     </div>
+<div class="music-container">
+<div class="music-player">
+
+  <!-- BOTÃO -->
+  <div id="music-toggle" class="music-toggle">
+    🎵 Músicas
+  </div>
+
+  <!-- MENU -->
+  <div id="music-menu" class="music-menu hidden">
+
+    <div class="music-option" 
+         data-src="Sol-Assets/Sol-Music/A Última Batalha.mp3"
+         data-cover="Sol-Assets/Sol-Music/A Última Batalha.png"
+         data-name="A Última Batalha">
+      A Última Batalha
+    </div>
+
+    <div class="music-option" 
+         data-src="Sol-Assets/Sol-Music/A Última Batalha Parte II.mp3"
+         data-cover="Sol-Assets/Sol-Music/A Última Batalha Parte II.png"
+         data-name="A Última Batalha II">
+      A Última Batalha II
+    </div>
+
+    <div class="music-option" 
+         data-src="Sol-Assets/Sol-Music/A Última Batalha Parte III.mp3"
+         data-cover="Sol-Assets/Sol-Music/A Última Batalha Parte III.png"
+         data-name="A Última Batalha III">
+      A Última Batalha III
+    </div>
+
+  </div>
+
+</div>
+    <!-- 🎧 NOW PLAYING -->
+<div class="music-now">
+
+  <img id="music-cover" src="Sol-Assets/Sol-Music/Capa.png" alt="cover">
+
+  <div class="music-info">
+    <span id="music-name">Nenhuma música</span>
+
+    <div class="music-controls">
+      <button id="play-pause">▶︎</button>
+      <input id="volume" type="range" min="0" max="1" step="0.01">
+    </div>
+  </div>
+
+</div>
+</div>
 
   </header>
 
@@ -141,6 +194,19 @@
     </div>
   </div>
 
+    <div class="map-section">
+    <h4>Capítulo 8: Batalha</h4>
+    <div class="map-option" data-bg="A Última Batalha.png">
+      A Última Batalha
+    </div>
+    <div class="map-option" data-bg="A Última Batalha 2.png">
+      A Última Batalha II
+    </div>
+    <div class="map-option" data-bg="A Última Batalha 3.png">
+      A Última Batalha III
+    </div>
+  </div>
+
 </div>
 </main>
 
@@ -161,6 +227,7 @@
   <script src="Sol-JS/Sol-Room.js"></script>
   <script src="Sol-JS/Sol-Dice.js"></script>
   <script src="Sol-JS/Sol-Backs.js"></script>
+  <script src="Sol-JS/Sol-Music.js"></script>
 
 </body>
 </html>
