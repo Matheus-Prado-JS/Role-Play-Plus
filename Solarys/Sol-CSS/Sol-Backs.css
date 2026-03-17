@@ -1,0 +1,58 @@
+/* =========================
+   🖼️ BACKGROUND PANEL
+========================= */
+
+.background-panel {
+  flex: 1;
+    min-width: 0;
+  height: calc(100vh - 120px);
+
+  padding: 10px 20px 20px 20px;
+}
+
+/* ÁREA VISUAL */
+.background-placeholder {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 16px;
+
+  border: 1px dashed rgba(230, 195, 106, 0.3);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* TEXTO CENTRAL */
+.background-placeholder span {
+  color: rgba(230, 195, 106, 0.4);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  text-shadow: 0 0 8px rgba(230, 195, 106, 0.2);
+}
+
+/* HOVER LEVE */
+.background-placeholder:hover {
+  border-color: rgba(230, 195, 106, 0.6);
+
+  box-shadow: 0 0 20px rgba(230, 195, 106, 0.1);
+}
+
+/* CAMADA DA IMAGEM */
+.bg-image {
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+
+  z-index: 1;
+
+  
+}

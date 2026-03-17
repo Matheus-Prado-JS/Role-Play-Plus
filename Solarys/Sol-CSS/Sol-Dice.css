@@ -1,0 +1,39 @@
+/* =========================
+   🎲 DICE PANEL
+========================= */
+
+.dice-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: -42px;
+
+  flex-shrink: 0;
+}
+
+/* IMAGENS DOS DADOS */
+.dice {
+  width: 42px;
+  height: auto;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease,
+              filter 0.2s ease;
+}
+
+/* HOVER */
+.dice:hover {
+  transform: scale(1.1);
+
+  filter: drop-shadow(0 0 6px rgba(230, 195, 106, 0.6))
+          drop-shadow(0 0 12px rgba(230, 195, 106, 0.4));
+}
+
+/* WRAPPER PLAYERS + DADOS */
+.players-dice-wrapper {
+  display: flex;
+  flex-direction: row; /* força lado a lado */
+  align-items: flex-start;
+  gap: 12px;
+}

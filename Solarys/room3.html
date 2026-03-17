@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Solarys</title>
+
+  <link rel="stylesheet" href="Sol-CSS/Sol-Room.css">
+  <link rel="stylesheet" href="Sol-CSS/Sol-Dice.css">
+  <link rel="stylesheet" href="Sol-CSS/Sol-Backs.css">
+  <link rel="stylesheet" href="Sol-CSS/Sol-Icons.css">
+  <link rel="stylesheet" href="Sol-CSS/Sol-Skills.css">
+</head>
+
+<body class="room">
+
+  <!-- HEADER -->
+  <header class="top-bar">
+
+    <div class="logo-container" onclick="goHome()">
+      <img 
+        src="Sol-Assets/Logotipos/Logotipo-Solarys.png" 
+        alt="Solarys"
+        class="logo"
+      >
+    </div>
+
+  </header>
+
+<main class="main-content">
+  
+  <div class="left-panel">
+
+    <!-- 🔴 TURNOS -->
+    <div class="turns-container">
+
+      <!-- INIMIGO -->
+      <div id="turn-enemy" class="turn-box enemy">
+        <img id="enemy-img" src="Sol-Assets/Turnos/enemies/General Varok.png">
+
+        <!-- MENU -->
+        <div id="enemy-menu" class="enemy-menu hidden">
+          <div class="enemy-option" data-img="Sol-Assets/Turnos/enemies/General Varok.png">General Varok</div>
+          <div class="enemy-option" data-img="Sol-Assets/Turnos/enemies/Eccho.png">Eccho</div>
+          <div class="enemy-option" data-img="Sol-Assets/Turnos/enemies/Cervo de Loren.png">Cervo de Loren</div>
+        </div>
+      </div>
+
+      <!-- PLAYER -->
+      <div id="turn-player" class="turn-box player">
+        <img id="player-img-main" class="active" src="">
+        <img id="player-img-fade" class="">
+      </div>
+
+    </div>
+<!-- 👥 + 🎲 -->
+<div class="players-dice-wrapper">
+
+  <!-- 👥 PLAYERS -->
+  <div class="players-box">
+    <h3>Players</h3>
+    <ul>
+      <li class="player-master">Moderador Solar</li>
+      <li class="player">Aurelion</li>
+      <li class="player">Stilgard</li>
+      <li class="player">Eddie</li>
+      <li class="player">Orion</li>
+      <li class="player">Ashen</li>
+      <li class="player">Alverian</li>
+    </ul>
+  </div>
+
+  <!-- 🎲 DADOS -->
+  <div class="dice-panel">
+    <img src="Sol-Assets/Logotipos/D4.png" class="dice" data-dice="4">
+    <img src="Sol-Assets/Logotipos/D6.png" class="dice" data-dice="6">
+    <img src="Sol-Assets/Logotipos/D8.png" class="dice" data-dice="8">
+    <img src="Sol-Assets/Logotipos/D10.png" class="dice" data-dice="10">
+    <img src="Sol-Assets/Logotipos/D12.png" class="dice" data-dice="12">
+    <img src="Sol-Assets/Logotipos/D20.png" class="dice" data-dice="20">
+  </div>
+
+</div>
+  </div>
+  <!-- 🖼️ BACKGROUND -->
+  <div class="background-panel">
+
+    <div class="background-placeholder">
+      <div class="bg-image"></div>
+      <span>Background da Cena</span>
+    </div>
+
+  </div>
+
+  <!-- 🎛️ ICONS PANEL -->
+<div class="icons-panel">
+
+  <!-- LINHA 1 -->
+  <div class="icon-row">
+    <img src="Sol-Assets/Icones/Doc-Master.png" class="icon-btn">
+    <img src="Sol-Assets/Icones/Ficha-Master.png" class="icon-btn">
+    <img src="Sol-Assets/Icones/NPC-Master.png" class="icon-btn">
+  </div>
+
+  <!-- LINHA 2 -->
+  <div class="icon-row">
+    <img src="Sol-Assets/Icones/Quest-Master.png" class="icon-btn">
+    <img src="Sol-Assets/Icones/Map-Master.png" class="icon-btn" id="map-master">
+    <img src="Sol-Assets/Icones/Doc-Player.png" class="icon-btn">
+  </div>
+
+  <!-- LINHA 3 -->
+  <div class="icon-row">
+    <img src="Sol-Assets/Icones/Ficha-Player.png" class="icon-btn">
+    <img src="Sol-Assets/Icones/NPC-Player.png" class="icon-btn">
+    <img src="Sol-Assets/Icones/Quest-Player.png" class="icon-btn">
+  </div>
+
+</div>
+
+<!-- 🗺️ MAP MENU -->
+<div id="map-menu" class="map-menu hidden">
+
+  <div class="map-section">
+    <h4>Capítulo 1: Prólogo</h4>
+    <div class="map-option" data-bg="Fazenda de Serenna.png">
+      Fazenda de Serenna
+    </div>
+  </div>
+
+  <div class="map-section">
+    <h4>Capítulo 2: Jornada</h4>
+    <div class="map-option" data-bg="Distrito Baixo de Zhalem.png">
+      Distrito Baixo de Zhalem
+    </div>
+  </div>
+
+  <div class="map-section">
+    <h4>Capítulo 3: Cordilheira</h4>
+    <div class="map-option" data-bg="Naath, Caçadora do Inverno.png">
+      Naath, Caçadora do Inverno
+    </div>
+  </div>
+
+</div>
+</main>
+
+<!-- ⚔️ SKILLS & EQUIPAMENTOS -->
+<section class="skills-equips">
+
+  <h2>Habilidades & Equipamentos</h2>
+
+  <!-- Conteúdo futuro -->
+  <!-- Aqui vai ficar:
+       - Skills
+       - Inventário
+       - Equipamentos
+       - etc -->
+       
+</section>
+
+  <script src="Sol-JS/Sol-Room.js"></script>
+  <script src="Sol-JS/Sol-Dice.js"></script>
+  <script src="Sol-JS/Sol-Backs.js"></script>
+
+</body>
+</html>

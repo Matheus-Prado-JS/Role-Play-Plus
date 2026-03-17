@@ -1,0 +1,31 @@
+/* =========================
+   SKILLS & EQUIPS
+========================= */
+
+.skills-equips {
+  margin-top: 60px;
+  padding: 40px 20px;
+
+  min-height: 500px;
+
+  border-top: 2px solid rgba(230, 195, 106, 0.2);
+
+  background: linear-gradient(
+    to bottom,
+    #0a0a0a,
+    #050505
+  );
+}
+
+/* TÍTULO */
+.skills-equips h2 {
+  color: #e6c36a;
+
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  margin-bottom: 20px;
+
+  text-shadow: 0 0 10px rgba(230, 195, 106, 0.4);
+}
