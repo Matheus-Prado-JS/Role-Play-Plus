@@ -25,57 +25,6 @@
         class="logo"
       >
     </div>
-<div class="music-container">
-<div class="music-player">
-
-  <!-- BOTÃO -->
-  <div id="music-toggle" class="music-toggle">
-    🎵 Músicas
-  </div>
-
-  <!-- MENU -->
-  <div id="music-menu" class="music-menu hidden">
-
-    <div class="music-option" 
-         data-src="Sol-Assets/Sol-Music/A Última Batalha.mp3"
-         data-cover="Sol-Assets/Sol-Music/A Última Batalha.png"
-         data-name="A Última Batalha">
-      A Última Batalha
-    </div>
-
-    <div class="music-option" 
-         data-src="Sol-Assets/Sol-Music/A Última Batalha Parte II.mp3"
-         data-cover="Sol-Assets/Sol-Music/A Última Batalha Parte II.png"
-         data-name="A Última Batalha II">
-      A Última Batalha II
-    </div>
-
-    <div class="music-option" 
-         data-src="Sol-Assets/Sol-Music/A Última Batalha Parte III.mp3"
-         data-cover="Sol-Assets/Sol-Music/A Última Batalha Parte III.png"
-         data-name="A Última Batalha III">
-      A Última Batalha III
-    </div>
-
-  </div>
-
-</div>
-    <!-- 🎧 NOW PLAYING -->
-<div class="music-now">
-
-  <img id="music-cover" src="Sol-Assets/Sol-Music/Capa.png" alt="cover">
-
-  <div class="music-info">
-    <span id="music-name">Nenhuma música</span>
-
-    <div class="music-controls">
-      <button id="play-pause">▶︎</button>
-      <input id="volume" type="range" min="0" max="1" step="0.01">
-    </div>
-  </div>
-
-</div>
-</div>
 
   </header>
 
@@ -112,24 +61,43 @@
   <div class="players-box">
     <h3>Players</h3>
     <ul>
-      <li class="player-master">Moderador Solar</li>
-      <li class="player">Aurelion</li>
-      <li class="player">Stilgard</li>
-      <li class="player">Eddie</li>
-      <li class="player">Orion</li>
-      <li class="player">Ashen</li>
-      <li class="player">Alverian</li>
+      <li class="player-master">Moderador Solar <span class="player-status"></span></li>
+      <li class="player">Aurelion <span class="player-status"></span></li></li>
+      <li class="player">Stilgard <span class="player-status"></span></li></li>
+      <li class="player">Eddie <span class="player-status"></span></li></li>
+      <li class="player">Orion <span class="player-status"></span></li></li>
+      <li class="player">Ashen <span class="player-status"></span></li></li>
+      <li class="player">Alverian <span class="player-status"></span></li></li>
     </ul>
   </div>
 
   <!-- 🎲 DADOS -->
   <div class="dice-panel">
+    <button id="roll-btn" class="roll-btn">ROLL</button>
+    <div class="dice-wrapper">
     <img src="Sol-Assets/Logotipos/D4.png" class="dice" data-dice="4">
+    <span class="dice-count">0</span>
+    </div>
+        <div class="dice-wrapper">
     <img src="Sol-Assets/Logotipos/D6.png" class="dice" data-dice="6">
+    <span class="dice-count">0</span>
+    </div>
+        <div class="dice-wrapper">
     <img src="Sol-Assets/Logotipos/D8.png" class="dice" data-dice="8">
+    <span class="dice-count">0</span>
+    </div>
+        <div class="dice-wrapper">
     <img src="Sol-Assets/Logotipos/D10.png" class="dice" data-dice="10">
+    <span class="dice-count">0</span>
+    </div>
+        <div class="dice-wrapper">
     <img src="Sol-Assets/Logotipos/D12.png" class="dice" data-dice="12">
+    <span class="dice-count">0</span>
+    </div>
+        <div class="dice-wrapper">
     <img src="Sol-Assets/Logotipos/D20.png" class="dice" data-dice="20">
+    <span class="dice-count">0</span>
+    </div>
   </div>
 
 </div>
@@ -168,6 +136,38 @@
     <img src="Sol-Assets/Icones/Quest-Player.png" class="icon-btn">
   </div>
 
+  
+<!-- 🎵 MUSIC PLAYER (NOVO) -->
+<div class="music-box">
+
+  <!-- CAPA -->
+  <div class="music-cover">
+    <img id="music-cover" src="Sol-Assets/Sol-Music/Capa.png">
+  </div>
+<div class="music-progress">
+  <div id="music-progress-bar"></div>
+</div>
+  <!-- INFO -->
+  <div class="music-body">
+
+    <div id="music-name" class="music-name">
+      Nenhuma música
+    </div>
+
+    <!-- CONTROLES -->
+    <div class="music-controls">
+      <button id="play-pause">▶</button>
+      <input id="volume" type="range" min="0" max="1" step="0.01">
+      <button id="music-toggle">☰</button>
+    </div>
+
+    <!-- LISTA -->
+    <div id="music-menu" class="music-menu hidden">
+    </div>
+
+  </div>
+
+</div>
 </div>
 
 <!-- 🗺️ MAP MENU -->
@@ -209,25 +209,71 @@
 
 </div>
 </main>
+<div id="roll-result" class="roll-result hidden"></div>
 
 <!-- ⚔️ SKILLS & EQUIPAMENTOS -->
 <section class="skills-equips">
 
   <h2>Habilidades & Equipamentos</h2>
 
-  <!-- Conteúdo futuro -->
-  <!-- Aqui vai ficar:
-       - Skills
-       - Inventário
-       - Equipamentos
-       - etc -->
-       
+  <!-- 🔘 TOGGLE -->
+  <div class="se-toggle">
+    <button id="btn-skills" class="active">Skills</button>
+    <button id="btn-storage">Storage</button>
+  </div>
+
+  <!-- 📦 CONTEÚDO -->
+  <div class="se-content">
+
+    <!-- 🧠 SKILLS -->
+<div id="skills-panel" class="panel active">
+
+  <div class="skills-list">
+    <button>Passivas</button>
+    <button>Guerreiro</button>
+    <button>Tanque</button>
+    <button>Mago</button>
+    <button>Bardo</button>
+    <button>Devoto</button>
+    <button>Profanador</button>
+    <button>Vagante</button>
+    <button>Piromante</button>
+  </div>
+
+  <!-- 🌳 SKILL TREE (AGORA NO LUGAR CERTO) -->
+  <div id="skill-tree" class="skill-tree hidden">
+
+    <div class="skill-info">
+      <h3 id="skill-title">Selecione uma habilidade</h3>
+      <p id="skill-desc">Por enquanto não tem nenhuma habilidade selecionada. Selecione sua classe ou uma habilidade/passiva e veja suas especificações e custos.</p>
+      <span id="skill-cost"></span>
+    </div>
+
+    <div class="tree-area" id="tree-area">
+    </div>
+
+  </div>
+
+</div>
+
+    <!-- 🎒 STORAGE -->
+    <div id="storage-panel" class="panel">
+      <div class="storage-list">
+        <button>Armas</button>
+        <button>Recursos</button>
+        <button>Upgrades</button>
+      </div>
+    </div>
+
+  </div>
+
 </section>
 
   <script src="Sol-JS/Sol-Room.js"></script>
   <script src="Sol-JS/Sol-Dice.js"></script>
   <script src="Sol-JS/Sol-Backs.js"></script>
   <script src="Sol-JS/Sol-Music.js"></script>
+  <script src="Sol-JS/Sol-Skills.js"></script>
 
 </body>
 </html>

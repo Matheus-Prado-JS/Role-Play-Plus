@@ -133,3 +133,14 @@ playerBox.addEventListener("click", () => {
 
 // estado inicial
 setTurn("enemy");
+
+// ==========================
+// 🔴 STATUS PLAYER
+// ==========================
+
+document.querySelectorAll(".player-status").forEach(status => {
+  status.addEventListener("click", (e) => {
+    e.stopPropagation(); // evita conflito com li
+    status.classList.toggle("active");
+  });
+});

@@ -241,6 +241,41 @@ body.room {
 
   text-shadow: 0 0 6px rgba(90, 169, 255, 0.5);
 }
+
+/* =========================
+   🔴 STATUS PLAYER
+========================= */
+
+/* estrutura do item */
+.players-box li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* bolinha */
+.player-status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  background: #ff3b3b;
+
+  box-shadow:
+    0 0 6px rgba(255, 59, 59, 0.8),
+    0 0 12px rgba(255, 59, 59, 0.4);
+
+  transition: 0.25s;
+}
+
+/* estado ativo (verde) */
+.player-status.active {
+  background: #3bff7a;
+
+  box-shadow:
+    0 0 6px rgba(59, 255, 122, 0.9),
+    0 0 12px rgba(59, 255, 122, 0.5);
+}
 /* =========================
    TURNOS VISUAIS
 ========================= */

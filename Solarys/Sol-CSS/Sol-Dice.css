@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: -42px;
+  margin-top: -98px;
 
   flex-shrink: 0;
 }
@@ -36,4 +36,133 @@
   flex-direction: row; /* força lado a lado */
   align-items: flex-start;
   gap: 12px;
+}
+
+/* =========================
+   🔢 CONTADOR NO DADO
+========================= */
+
+.dice-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.dice-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+
+  min-width: 18px;
+  height: 18px;
+
+  font-size: 0.7rem;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #111;
+  color: #e6c36a;
+
+  border-radius: 50%;
+  border: 1px solid rgba(230,195,106,0.6);
+
+  box-shadow:
+    0 0 6px rgba(230,195,106,0.6);
+
+  pointer-events: none;
+}
+
+/* =========================
+   🎲 BOTÃO ROLL
+========================= */
+
+.roll-btn {
+  padding: 6px;
+  border-radius: 8px;
+
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(230,195,106,0.5);
+
+  color: #e6c36a;
+  cursor: pointer;
+
+  font-size: 0.8rem;
+
+  transition: 0.2s;
+}
+
+.roll-btn:hover {
+  background: rgba(230,195,106,0.2);
+
+  box-shadow:
+    0 0 10px rgba(230,195,106,0.4);
+}
+
+/* =========================
+   🎲 RESULTADO
+========================= */
+
+.roll-result {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 20px 30px;
+
+  background: rgba(10,10,10,0.95);
+  border-radius: 16px;
+
+  border: 1px solid rgba(230,195,106,0.4);
+
+  text-align: center;
+
+  z-index: 999;
+
+  box-shadow:
+    0 0 20px rgba(230,195,106,0.3);
+}
+
+.roll-result.hidden {
+  display: none;
+}
+
+.roll-main {
+  font-size: 2rem;
+  color: #e6c36a;
+}
+
+.roll-others {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 6px;
+}
+
+/* =========================
+   🎯 CRÍTICO / FALHA
+========================= */
+
+.roll-critical {
+  color: #3bff7a;
+
+  text-shadow:
+    0 0 8px rgba(59,255,122,0.8),
+    0 0 16px rgba(59,255,122,0.5);
+}
+
+.roll-fail {
+  color: #ff3b3b;
+
+  text-shadow:
+    0 0 8px rgba(255,59,59,0.8),
+    0 0 16px rgba(255,59,59,0.5);
+}
+
+/* texto extra */
+.roll-status {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
 }
