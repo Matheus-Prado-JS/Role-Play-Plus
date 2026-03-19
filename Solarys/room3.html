@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="Sol-CSS/Sol-Icons.css">
   <link rel="stylesheet" href="Sol-CSS/Sol-Music.CSS">
   <link rel="stylesheet" href="Sol-CSS/Sol-Skills.css">
+  <link rel="stylesheet" href="Sol-CSS/Sol-Storage.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
 </head>
 
 <body class="room">
@@ -62,12 +65,12 @@
     <h3>Players</h3>
     <ul>
       <li class="player-master">Moderador Solar <span class="player-status"></span></li>
-      <li class="player">Aurelion <span class="player-status"></span></li></li>
-      <li class="player">Stilgard <span class="player-status"></span></li></li>
-      <li class="player">Eddie <span class="player-status"></span></li></li>
-      <li class="player">Orion <span class="player-status"></span></li></li>
-      <li class="player">Ashen <span class="player-status"></span></li></li>
-      <li class="player">Alverian <span class="player-status"></span></li></li>
+      <li class="player">Aurelion <span class="player-status"></span></li>
+      <li class="player">Stilgard <span class="player-status"></span></li>
+      <li class="player">Eddie <span class="player-status"></span></li>
+      <li class="player">Orion <span class="player-status"></span></li>
+      <li class="player">Ashen <span class="player-status"></span></li>
+      <li class="player">Alverian <span class="player-status"></span></li>
     </ul>
   </div>
 
@@ -258,14 +261,35 @@
 
     <!-- 🎒 STORAGE -->
     <div id="storage-panel" class="panel">
-      <div class="storage-list">
-        <button>Armas</button>
-        <button>Recursos</button>
-        <button>Upgrades</button>
-      </div>
+    <div class="storage-list">
+      <button data-tab="weapons" class="active">Armas</button>
+      <button data-tab="resources">Recursos</button>
+      <button data-tab="upgrades">Upgrades</button>
+      <button data-tab="effects">Efeitos</button>
+      <button data-tab="control">Controle</button>
     </div>
 
+  <!-- CONTEÚDO -->
+  <div class="storage-content">
+
+    <!-- 🗡️ ARMAS -->
+    <div id="weapons-tab" class="storage-tab active">
+      
+      <div class="weapons-grid" id="weapons-grid"></div>
+
+    </div>
+
+    <div id="resources-tab" class="storage-tab"></div>
+    <div id="upgrades-tab" class="storage-tab"></div>
+    <div id="effects-tab" class="storage-tab"></div>
+    <div id="control-tab" class="storage-tab"></div>
+
   </div>
+
+</div>
+
+      
+</div>
 
 </section>
 
@@ -274,6 +298,7 @@
   <script src="Sol-JS/Sol-Backs.js"></script>
   <script src="Sol-JS/Sol-Music.js"></script>
   <script src="Sol-JS/Sol-Skills.js"></script>
+  <script src="Sol-JS/Sol-Storage.js"></script>
 
 </body>
 </html>

@@ -194,6 +194,9 @@
     font-size: 12px;
   color: #e6c36a;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
 
   padding: 4px;
 
@@ -223,4 +226,14 @@
   box-shadow: 0 0 6px rgba(255,0,0,0.6);
 
   z-index: 1;
+}
+
+
+.node {
+  border: 2px solid var(--node-color);
+  box-shadow: 0 0 6px var(--node-color);
+}
+
+.line {
+  background: var(--node-color);
 }

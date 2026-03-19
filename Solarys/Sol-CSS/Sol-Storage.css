@@ -1,0 +1,418 @@
+/* =========================
+   🎒 STORAGE CONTENT
+========================= */
+
+.storage-content {
+  margin-top: -120px;
+  margin-left: -170px;
+
+  width: 900px;
+  height: 460px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* TABS */
+.storage-tab {
+  display: none;
+
+  position: absolute; /* 🔥 ESSENCIAL */
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.storage-tab.active {
+  display: block;
+  z-index: 2;
+}
+
+/* =========================
+   🗡️ WEAPONS GRID
+========================= */
+
+.weapons-grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+
+  gap: 10px;
+  padding: 10px;
+}
+
+/* SLOT */
+.weapon-slot {
+  width: 150px;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  border: 1px solid rgba(230,195,106,0.3);
+
+    background: radial-gradient(
+    circle,
+    rgba(30,30,30,0.8),
+    rgba(0,0,0,0.9)
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* IMG */
+.weapon-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* HOVER */
+.weapon-slot:hover {
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 10px rgba(230,195,106,0.5);
+}
+
+/* 🔒 LOCKED */
+.weapon-slot.locked {
+  filter: brightness(0.2) grayscale(1);
+  position: relative;
+}
+
+.weapon-slot.locked::after {
+  content: "🔒";
+  position: absolute;
+  font-size: 20px;
+}
+
+.weapon-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.8);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999;
+}
+
+.preview-box img {
+  width: 400px;
+  border-radius: 10px;
+
+  box-shadow:
+    0 0 20px rgba(230,195,106,0.6);
+}
+
+#control-tab {
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#control-tab.active {
+  display: flex;
+}
+
+/* COLUNA */
+.control-column {
+  min-width: 80px;
+}
+
+.control-column h4 {
+  color: #e6c36a;
+  margin-bottom: 6px;
+}
+
+/* ITEM */
+.control-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 4px 6px;
+
+  cursor: pointer;
+  color: #ccc;
+
+  gap: 8px; /* 👈 espaço entre texto e bolinha */
+}
+
+/* BOLINHA */
+.status-dot {
+  width: 10px;
+  height: 10px;
+
+  min-width: 10px; /* 🔥 impede deformar */
+  min-height: 10px;
+
+  border-radius: 50%;
+
+  background: red;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-dot.on {
+  background: lime;
+}
+
+/* LISTA */
+.upgrade-item {
+  cursor: pointer;
+  color: #ccc;
+  padding: 4px;
+}
+
+.upgrade-item:hover {
+  color: #e6c36a;
+}
+
+/* MENU */
+.upgrade-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.85);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999;
+}
+
+/* BOX */
+.upgrade-box {
+  width: 500px;
+  padding: 20px;
+
+  background: rgba(0,0,0,0.9);
+  border: 1px solid rgba(230,195,106,0.4);
+  border-radius: 10px;
+
+  color: #e6c36a;
+}
+
+/* HEADER */
+.upgrade-header,
+.upgrade-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 100px;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+/* STATUS MAIS LARGO */
+.upgrade-stats {
+  text-align: left;
+}
+
+/* EFEITO */
+.upgrade-effect {
+  margin-bottom: 10px;
+  color: gold;
+}
+
+#upgrades-tab {
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#upgrades-tab.active {
+  display: flex;
+}
+
+.skill-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(230,195,106,0.6);
+
+  background: radial-gradient(
+    circle,
+    rgba(60,50,20,0.9),
+    rgba(0,0,0,0.95)
+  );
+
+  color: #e6c36a;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Cinzel", serif; /* 👈 estilo mais RPG */
+  font-size: 16px;
+  font-weight: bold;
+
+  text-shadow:
+    0 0 6px rgba(230,195,106,0.7);
+
+  box-shadow:
+    0 0 8px rgba(230,195,106,0.4),
+    inset 0 0 6px rgba(230,195,106,0.2);
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+/* HOVER */
+.skill-toggle:hover {
+  transform: scale(1.15);
+
+  background: radial-gradient(
+    circle,
+    rgba(230,195,106,0.3),
+    rgba(0,0,0,0.95)
+  );
+
+  box-shadow:
+    0 0 14px rgba(230,195,106,0.8),
+    inset 0 0 8px rgba(230,195,106,0.4);
+}
+
+/* CLICK */
+.skill-toggle:active {
+  transform: scale(0.95);
+
+  box-shadow:
+    0 0 6px rgba(230,195,106,0.6),
+    inset 0 0 10px rgba(230,195,106,0.6);
+}
+
+#resources-tab.active {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+  padding: 10px;
+
+  overflow-y: auto;   /* 👈 libera scroll vertical */
+  max-height: 100%;   /* 👈 respeita o limite do container */
+}
+#resources-tab.active::-webkit-scrollbar {
+  width: 6px;
+}
+
+#resources-tab.active::-webkit-scrollbar-thumb {
+  background: rgba(230,195,106,0.5);
+  border-radius: 10px;
+}
+
+/* ITEM */
+.resource-item {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+  padding: 8px;
+
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(230,195,106,0.2);
+  border-radius: 8px;
+}
+
+/* IMG (vertical 9:16) */
+.resource-item img {
+  width: 100px;
+  height: 120px;
+  object-fit: contain;
+}
+
+/* TEXTO */
+.resource-info h4 {
+  color: #e6c36a;
+  font-size: 20px;
+  margin: 0;
+}
+
+.resource-info p {
+  margin: 2px 0 0;
+  font-size: 15px;
+  color: #aaa;
+}
+
+#effects-tab.active {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+  padding: 10px;
+
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+/* scrollbar igual */
+#effects-tab.active::-webkit-scrollbar {
+  width: 6px;
+}
+
+#effects-tab.active::-webkit-scrollbar-thumb {
+  background: rgba(230, 131, 106, 0.5);
+  border-radius: 10px;
+}
+
+/* ITEM */
+.effect-item {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+  padding: 8px;
+
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(230, 116, 106, 0.2);
+  border-radius: 8px;
+}
+
+/* IMG */
+.effect-item img {
+  width: 100px;
+  height: 120px;
+  object-fit: contain;
+}
+
+/* TEXTO */
+.effect-info h4 {
+  color: #e68b6a;
+  font-size: 20px;
+  margin: 0;
+}
+
+.effect-info p {
+  margin: 2px 0 0;
+  font-size: 15px;
+  color: #aaa;
+}
+
+/* 🔥 CATEGORIA */
+.effect-category {
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgb(255, 85, 0);
+  opacity: 0.8;
+}

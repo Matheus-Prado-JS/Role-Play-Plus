@@ -45,6 +45,18 @@ skillButtons.forEach(btn => {
   });
 });
 
+const classColors = {
+  "Passivas": "#d8c9a3",
+  "Guerreiro": "#e6c36a",
+  "Tanque": "#dc1937",
+  "Mago": "#ee93fc",
+  "Bardo": "#4a7bd1",
+  "Devoto": "#ffffff",
+  "Profanador": "#bb6dff",
+  "Vagante": "#2ecc71",
+  "Piromante": "#ff8c00"
+};
+
 // ==========================
 // 🌳 DADOS DAS SKILLS
 // ==========================
@@ -380,6 +392,8 @@ const treeArea = document.getElementById("tree-area");
 function loadTree(className) {
   treeArea.innerHTML = "";
 
+  const color = classColors[className] || "#e6c36a";
+
   const data = skillData[className];
   if (!data) return;
 
@@ -389,6 +403,12 @@ function loadTree(className) {
   data.nodes.forEach(skill => {
     const node = document.createElement("div");
     node.classList.add("node");
+
+    node.style.boxShadow = `
+      0 0 6px ${color},
+      inset 0 0 4px ${color}
+    `;
+    node.style.color = color;
 
     node.style.left = skill.x + "px";
     node.style.top = skill.y + "px";
@@ -428,6 +448,8 @@ requestAnimationFrame(() => {
 
     const line = document.createElement("div");
     line.classList.add("line");
+
+    line.style.background = `linear-gradient(to right, ${color}, ${color})`;
 
     line.style.width = length + "px";
     line.style.left = x1 + "px";
