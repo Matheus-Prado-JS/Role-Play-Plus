@@ -12,9 +12,25 @@ let amuletosDesbloqueados = [];
 const amuletosDB = [
   {
     nome: "Amuleto de Loren",
-    efeito: "+10 de PV máximo",
+    efeito: "Aumenta em 2 os Ataques que consomem Mana.",
     imagem: "Sol-Assets/Amulets/loren.png"
-  }
+  },
+    {
+    nome: "Amuleto da Balança",
+    efeito: "Permite agir mais uma vez a cada 4 turnos",
+    imagem: "Sol-Assets/Amulets/balanca.png"
+  },
+    {
+    nome: "Amuleto da Família",
+    efeito: "Aumenta em 2 a Resistência a Frost.",
+    imagem: "Sol-Assets/Amulets/familia.png"
+  },
+    {
+    nome: "Amuleto de Siegbrau",
+    efeito: "Aumenta o poder de Luta em 2.",
+    imagem: "Sol-Assets/Amulets/siegbrau.png"
+  },
+  
 ];
 
 // =======================
@@ -40,8 +56,6 @@ function openMasterMenu() {
             ${amuletosDB.map((a, i) => `
               
               <div class="amulet-item">
-
-                <img src="${a.imagem}">
 
                 <div class="amulet-info">
                   <strong>${a.nome}</strong>
@@ -231,24 +245,32 @@ function renderAmuletos(p) {
         ${[0,1,2,3].map(i => {
           const amuleto = slots[i];
 
-            return `
-            <div class="amulet-slot"
-                onclick="openAmuletSelector(${i})">
+          return `
+            <div class="amulet-slot">
+
+              <div class="amulet-click-area" onclick="openAmuletSelector(${i})">
 
                 ${amuleto 
-                ? `
+                  ? `
                     <img src="${amuleto.imagem}" alt="${amuleto.nome}">
 
                     <div class="amulet-tooltip">
-                    <strong>${amuleto.nome}</strong>
-                    <div>${amuleto.efeito}</div>
+                      <strong>${amuleto.nome}</strong>
+                      <div>${amuleto.efeito}</div>
                     </div>
-                `
-                : `<span>+</span>`
+
+                    <button class="amulet-remove"
+                      onclick="event.stopPropagation(); removeAmulet(${i})">
+                      ✕
+                    </button>
+                  `
+                  : `<span>+</span>`
                 }
 
+              </div>
+
             </div>
-            `;
+          `;
         }).join("")}
       </div>
 
@@ -256,7 +278,6 @@ function renderAmuletos(p) {
   </div>
   `;
 }
-
 // =======================
 // 📜 SELECTOR DE AMULETO
 // =======================
@@ -272,12 +293,16 @@ function openAmuletSelector(slotIndex) {
 
         <div class="amulet-list">
           ${amuletosDesbloqueados.map((a, i) => `
-            <div class="amulet-item" onclick="selectAmulet(${slotIndex}, ${i})">
+          <div class="amulet-item" onclick="selectAmulet(${slotIndex}, ${i})">
 
-              <img src="${a.imagem}">
-              <span>${a.nome}</span>
+            <img src="${a.imagem}">
 
+            <div class="amulet-info">
+              <strong>${a.nome}</strong>
+              <span>${a.efeito}</span>
             </div>
+
+          </div>
           `).join("")}
         </div>
 
@@ -289,7 +314,7 @@ function openAmuletSelector(slotIndex) {
 function selectAmulet(slotIndex, amuletIndex) {
   const p = playersData[currentPlayerIndex];
 
-  p.informacoes.Amuletos[slotIndex] = amuletosDB[amuletIndex];
+  p.informacoes.Amuletos[slotIndex] = amuletosDesbloqueados[amuletIndex];
 
   closeAmuletSelector();
   openPlayerSheet(currentPlayerIndex);
@@ -297,4 +322,11 @@ function selectAmulet(slotIndex, amuletIndex) {
 
 function closeAmuletSelector() {
   document.getElementById("amulet-overlay").remove();
+}
+
+function removeAmulet(slotIndex) {
+  const p = playersData[currentPlayerIndex];
+  p.informacoes.Amuletos[slotIndex] = null;
+
+  openPlayerSheet(currentPlayerIndex);
 }

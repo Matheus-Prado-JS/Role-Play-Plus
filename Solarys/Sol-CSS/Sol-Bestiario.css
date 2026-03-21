@@ -1,0 +1,152 @@
+/* LISTA */
+.bestiario-list {
+  max-height: 300px;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* SCROLL */
+.bestiario-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bestiario-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c9a44b, #e6c36a);
+  border-radius: 10px;
+}
+
+/* ITEM MASTER */
+.bestiario-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 6px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+}
+
+/* INFO */
+.bestiario-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.bestiario-info strong {
+  color: #e6c36a;
+}
+
+.bestiario-info span {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* CARD PLAYER */
+.bestiario-card {
+  display: flex;
+  gap: 10px;
+
+  padding: 8px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+}
+
+/* IMG */
+.bestiario-card img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* TEXTO */
+.bestiario-text strong {
+  color: #e6c36a;
+}
+
+.bestiario-text p {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* CATEGORIAS */
+.bestiario-category,
+.bestiario-sub {
+  border: 1px solid rgba(230,195,106,0.2);
+  border-radius: 6px;
+}
+
+/* HEADERS */
+.bestiario-header,
+.bestiario-sub-header {
+  padding: 6px;
+  cursor: pointer;
+  background: rgba(230,195,106,0.1);
+}
+
+/* CONTENT */
+.bestiario-content,
+.bestiario-sub-content {
+  display: none;
+  padding: 6px;
+
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ATIVO */
+.bestiario-category.active .bestiario-content,
+.bestiario-sub.active .bestiario-sub-content {
+  display: flex;
+}
+
+.bestiario-view-box {
+  max-width: 600px;
+
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+/* IMG menor e lateral */
+.bestiario-view-img {
+  width: 150px;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+
+  border-radius: 8px;
+}
+
+/* BLOCO DE TEXTO */
+.bestiario-view-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* TEXTO */
+.bestiario-view-text {
+  margin-top: 10px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* ITEM CLICÁVEL PLAYER */
+.bestiario-item {
+  cursor: pointer;
+}
+
+/* evita cursor de texto */
+.bestiario-item strong {
+  pointer-events: none;
+}
+
+/* feedback visual */
+.bestiario-item:hover {
+  background: #1f1a10;
+  border-color: #c9a44b;
+}

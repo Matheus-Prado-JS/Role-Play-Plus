@@ -392,3 +392,23 @@ button {
   font-size: 13px;
   line-height: 1.4;
 }
+
+/* SCROLL CUSTOM PLAYER */
+.player-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.player-box::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.6);
+  border-radius: 10px;
+}
+
+.player-box::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c9a44b, #e6c36a);
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(230,195,106,0.4);
+}
+
+.player-box::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #e6c36a, #ffd777);
+}

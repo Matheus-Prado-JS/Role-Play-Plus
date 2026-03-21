@@ -8,25 +8,61 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
 
   background: #1a1a1a;
   border: 1px solid #333;
-  padding: 8px;
+
+  padding: 6px 10px; /* menor */
+  border-radius: 6px;
+
+  transition: 0.2s;
+}
+
+.amulet-click-area {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative; /* importante pro botão */
 }
 
 .amulet-info {
   display: flex;
   flex-direction: column;
   flex: 1;
-  color: #ccc;
+
+  color: #bbb;
+  font-size: 13px;
+}
+
+.amulet-info strong {
+  color: #e6c36a;
+  font-size: 14px;
+}
+
+.amulet-info span {
+  font-size: 12px;
+  opacity: 0.8;
 }
 
 .amulet-item button {
-  background: #e6c36a;
+  background: linear-gradient(145deg, #c9a44b, #e6c36a);
   border: none;
-  padding: 5px 10px;
+
+  padding: 4px 10px;
+  border-radius: 4px;
+
+  font-size: 12px;
   cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.amulet-item button:hover {
+  filter: brightness(1.1);
 }
 
 
@@ -72,9 +108,13 @@
 
 /* IMG */
 .amulet-slot img {
-  width: 100%;
-  height: 100%;
+  width: 120%;
+  height: 120%;
   object-fit: contain;
+
+  display: block; /* remove offset estranho */
+
+  filter: drop-shadow(0 0 4px rgba(230, 195, 106, 0.4));
 }
 
 /* + */
@@ -89,14 +129,10 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
 
-/* ITEM */
-.amulet-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
+  max-height: 250px;   /* 👈 ESSENCIAL */
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 .amulet-item img {
@@ -139,4 +175,92 @@
   font-size: 13px;
   color: #ffd777;
   margin-bottom: 2px;
+}
+
+.amulet-list .amulet-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 6px;
+  border: 1px solid #333;
+  border-radius: 6px;
+
+  background: #1a1a1a;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.amulet-list .amulet-item:hover {
+  border-color: #c9a44b;
+  background: #1f1a10;
+}
+
+.amulet-list img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.amulet-remove {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+
+  width: 22px;
+  height: 22px;
+
+  background: radial-gradient(circle, #3a1f1f, #1a0f0f);
+  border: 1px solid #c94b4b;
+
+  color: #ff6b6b;
+  font-size: 13px;
+  font-weight: bold;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  opacity: 0;
+  transform: scale(0.8);
+
+  transition: all 0.2s ease;
+}
+
+.amulet-slot:hover .amulet-remove {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.amulet-remove:hover {
+  background: radial-gradient(circle, #5a2a2a, #2a1212);
+  color: #ff8a8a;
+
+  box-shadow: 0 0 6px rgba(255, 80, 80, 0.5);
+
+  transform: scale(1.15);
+}
+
+/* SCROLL AMULETOS */
+.amulet-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.amulet-list::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.5);
+  border-radius: 10px;
+}
+
+.amulet-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c9a44b, #e6c36a);
+  border-radius: 10px;
+}
+
+.amulet-list::-webkit-scrollbar-thumb:hover {
+  background: #ffd777;
 }

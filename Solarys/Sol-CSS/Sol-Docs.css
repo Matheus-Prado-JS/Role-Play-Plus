@@ -1,0 +1,190 @@
+/* LISTA */
+.doc-list {
+  height: 220px;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding-right: 4px;
+}
+
+/* SCROLL BONITO */
+.doc-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.doc-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.doc-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c9a44b, #e6c36a);
+  border-radius: 10px;
+}
+
+.doc-list::-webkit-scrollbar-thumb:hover {
+  background: #ffd777;
+}
+
+.player-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.player-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.player-box::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c9a44b, #e6c36a);
+  border-radius: 10px;
+}
+
+.player-box::-webkit-scrollbar-thumb:hover {
+  background: #ffd777;
+}
+
+/* ITEM */
+.doc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 4px;
+  border: 1px solid #333;
+  border-radius: 6px;
+
+  background: #1a1a1a;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.doc-item:hover {
+  background: #1f1a10;
+  border-color: #c9a44b;
+}
+
+/* INFO */
+.doc-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-info strong {
+  color: #e6c36a;
+}
+
+.doc-info span {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* BOTÃO */
+.doc-item button {
+  background: linear-gradient(145deg, #c9a44b, #e6c36a);
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* CONTEÚDO */
+.doc-content {
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.doc-padrao {
+  background: rgba(0,0,0,0.95);
+  color: #e6c36a;
+}
+
+.doc-intenso {
+  background: #0a0000;
+  color: #ff4d4d;
+
+  border: 1px solid #8b0000;
+  box-shadow: 0 0 15px rgba(139, 0, 0, 0.6);
+}
+
+.doc-intenso h2 {
+  color: #ff1a1a;
+}
+
+.doc-intenso small {
+  color: #aa4444;
+}
+
+.doc-intenso .doc-content {
+  color: #ffb3b3;
+}
+
+.doc-antigo {
+  background: linear-gradient(145deg, #f4e4c1, #e8d3a3);
+  color: #3b2b1a;
+
+  border: 1px solid #c2a56d;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+}
+
+.doc-antigo h2 {
+  color: #5a3e1b;
+}
+
+.doc-antigo small {
+  color: #7a5a2a;
+}
+
+.doc-antigo .doc-content {
+  font-family: "Georgia", serif;
+  line-height: 1.6;
+}
+
+/* textura fake */
+.doc-antigo {
+  background-image: 
+    linear-gradient(145deg, #f4e4c1, #e8d3a3),
+    url("https://www.transparenttextures.com/patterns/old-paper.png");
+}
+
+/* CATEGORIA */
+.doc-category {
+  border: 1px solid rgba(230,195,106,0.2);
+  border-radius: 6px;
+}
+
+/* HEADER */
+.doc-category-header {
+  padding: 8px;
+  cursor: pointer;
+
+  background: rgba(230,195,106,0.1);
+  color: #e6c36a;
+  font-size: 13px;
+
+  transition: 0.2s;
+}
+
+.doc-category-header:hover {
+  background: rgba(230,195,106,0.2);
+}
+
+/* CONTEÚDO */
+.doc-category-content {
+  display: none;
+  padding: 6px;
+
+  flex-direction: column;
+  gap: 6px;
+}
+
+.doc-category.active .doc-category-content {
+  display: flex;
+}
+
+.player-select-box {
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
