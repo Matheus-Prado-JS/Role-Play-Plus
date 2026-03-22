@@ -26,9 +26,9 @@
 /* CAPA GRANDE */
 .music-cover img {
   width: 100%;
-  height: 120px;
+  height: auto;
 
-  object-fit: cover;
+  display: block;
 }
 
 /* CORPO */

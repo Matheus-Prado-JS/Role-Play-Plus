@@ -41,11 +41,22 @@ mapOptions.forEach(option => {
     const bgName = option.getAttribute("data-bg");
     const bgPath = `Sol-Assets/Backgrounds/${bgName}`;
 
-    bgImage.style.backgroundImage = `url('${bgPath}')`;
+    bgImage.classList.add("fade-out");
+
+    setTimeout(() => {
+      bgImage.style.backgroundImage = `url('${bgPath}')`;
+      bgImage.classList.remove("fade-out");
+    }, 200);
 
     // remove texto
     const text = document.querySelector(".background-placeholder span");
     if (text) text.remove();
 
+  });
+});
+
+document.querySelectorAll(".map-section h4").forEach(header => {
+  header.addEventListener("click", () => {
+    header.parentElement.classList.toggle("collapsed");
   });
 });

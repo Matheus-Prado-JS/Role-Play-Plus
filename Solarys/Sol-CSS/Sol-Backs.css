@@ -54,5 +54,29 @@
 
   z-index: 1;
 
-  
+  opacity: 1;
+  transition: opacity 0.4s ease;
 }
+
+.bg-image.fade-out {
+  opacity: 0;
+}
+
+.map-section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.map-section.collapsed .map-section-content {
+  display: none;
+}
+
+/* cursor de botão */
+.map-section h4 {
+  cursor: pointer;
+}
+.map-section.collapsed h4 {
+  opacity: 0.6;
+}
+

@@ -7,15 +7,130 @@ const playlist = [
     chapter: "Capítulo 1: Prólogo",
     tracks: [
       {
-        name: "A Última Batalha",
-        src: "Sol-Assets/Sol-Music/A Última Batalha.mp3",
-        cover: "Sol-Assets/Sol-Music/A Última Batalha.png"
-      }
+        name: "Fazenda Serenna",
+        src: "Sol-Assets/Sol-Music/Fazenda de Serenna.mp3",
+        cover: "Sol-Assets/Sol-Music/Fazenda de Serenna.png"
+      },
+      {
+        name: "Avelorn",
+        src: "Sol-Assets/Sol-Music/Avelorn.mp3",
+        cover: "Sol-Assets/Sol-Music/Avelorn.png"
+      },
+      {
+        name: "Império",
+        src: "Sol-Assets/Sol-Music/Império.mp3",
+        cover: "Sol-Assets/Sol-Music/Império.png"
+      },
+    ]
+  },
+    {
+    chapter: "Capítulo 2: Jornada",
+    tracks: [
+      {
+        name: "Caminho de Loren",
+        src: "Sol-Assets/Sol-Music/Caminho de Loren.mp3",
+        cover: "Sol-Assets/Sol-Music/Caminho de Loren.png"
+      },
+      {
+        name: "Filhos do Musgo",
+        src: "Sol-Assets/Sol-Music/Filhos do Musgo.mp3",
+        cover: "Sol-Assets/Sol-Music/Filhos do Musgo.png"
+      },
+      {
+        name: "Cervo de Loren",
+        src: "Sol-Assets/Sol-Music/Cervo de Loren.mp3",
+        cover: "Sol-Assets/Sol-Music/Cervo de Loren.png"
+      },
+      {
+        name: "Zhalem",
+        src: "Sol-Assets/Sol-Music/Zhalem.mp3",
+        cover: "Sol-Assets/Sol-Music/Zhalem.png"
+      },
+      {
+        name: "Distrito Baixo",
+        src: "Sol-Assets/Sol-Music/Distrito Baixo.mp3",
+        cover: "Sol-Assets/Sol-Music/Distrito Baixo.png"
+      },
+      {
+        name: "Lua Negra",
+        src: "Sol-Assets/Sol-Music/Lua Negra.mp3",
+        cover: "Sol-Assets/Sol-Music/Lua Negra.png"
+      },
+      {
+        name: "Korv",
+        src: "Sol-Assets/Sol-Music/Korv.mp3",
+        cover: "Sol-Assets/Sol-Music/Korv.png"
+      },
+      {
+        name: "Esconderijo",
+        src: "Sol-Assets/Sol-Music/Esconderijo.mp3",
+        cover: "Sol-Assets/Sol-Music/Esconderijo.png"
+      },
+      {
+        name: "O Mimico",
+        src: "Sol-Assets/Sol-Music/O Mimico.mp3",
+        cover: "Sol-Assets/Sol-Music/O Mimico.png"
+      },
+      {
+        name: "Grande Madeira Apodrecida",
+        src: "Sol-Assets/Sol-Music/Grande Madeira Apodrecida.mp3",
+        cover: "Sol-Assets/Sol-Music/Grande Madeira Apodrecida.png"
+      },
+      {
+        name: "Pedrafria",
+        src: "Sol-Assets/Sol-Music/Pedrafria.mp3",
+        cover: "Sol-Assets/Sol-Music/Pedrafria.png"
+      },
+      {
+        name: "Passagem",
+        src: "Sol-Assets/Sol-Music/Passagem.mp3",
+        cover: "Sol-Assets/Sol-Music/Passagem.png"
+      },
+      {
+        name: "Tundra de Orphelia",
+        src: "Sol-Assets/Sol-Music/Tundra de Orphelia.mp3",
+        cover: "Sol-Assets/Sol-Music/Tundra de Orphelia.png"
+      },
+      {
+        name: "Ruínas de Orphelia",
+        src: "Sol-Assets/Sol-Music/Ruínas de Orphelia.mp3",
+        cover: "Sol-Assets/Sol-Music/Ruínas de Orphelia.png"
+      },
+      {
+        name: "Lyrenne",
+        src: "Sol-Assets/Sol-Music/Lyrenne.mp3",
+        cover: "Sol-Assets/Sol-Music/Lyrenne.png"
+      },
+      {
+        name: "Cavaleiro Kael",
+        src: "Sol-Assets/Sol-Music/Cavaleiro Kael.mp3",
+        cover: "Sol-Assets/Sol-Music/Cavaleiro Kael.png"
+      },
+      {
+        name: "Praga",
+        src: "Sol-Assets/Sol-Music/Praga.mp3",
+        cover: "Sol-Assets/Sol-Music/Praga.png"
+      },
+    ]
+  },
+    {
+    chapter: "Capítulo 3: Cordilheira",
+    tracks: [
+      {
+        name: "Naath, Caçadora do Inverno",
+        src: "Sol-Assets/Sol-Music/Naath.mp3",
+        cover: "Sol-Assets/Sol-Music/Naath.png"
+      },
     ]
   },
   {
-    chapter: "Capítulo 2: Jornada",
+    chapter: "Capítulo 8: Destino",
     tracks: [
+      {
+        name: "A Última Batalha",
+        src: "Sol-Assets/Sol-Music/A Última Batalha.mp3",
+        cover: "Sol-Assets/Sol-Music/A Última Batalha.png"
+      },
       {
         name: "A Última Batalha II",
         src: "Sol-Assets/Sol-Music/A Última Batalha Parte II.mp3",

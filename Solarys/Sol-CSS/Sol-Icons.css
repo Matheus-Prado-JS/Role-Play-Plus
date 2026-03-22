@@ -59,6 +59,10 @@
   right: 120px;
   top: 140px;
 
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 4px;
+
   width: 240px;
 
   background: #111;
@@ -70,6 +74,22 @@
   z-index: 99999;
 
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+.map-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.map-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.map-menu::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c9a44b, #e6c36a);
+  border-radius: 10px;
+}
+
+.map-menu::-webkit-scrollbar-thumb:hover {
+  background: #ffd777;
 }
 
 .map-menu.hidden {
