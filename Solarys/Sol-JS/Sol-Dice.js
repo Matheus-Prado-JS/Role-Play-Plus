@@ -1,3 +1,5 @@
+import { logRoll, currentUser } from "./Sol-System.js";
+
 // ==========================
 // 🎲 CONTADOR DE DADOS
 // ==========================
@@ -35,6 +37,7 @@ const rollBtn = document.getElementById("roll-btn");
 const resultBox = document.getElementById("roll-result");
 
 rollBtn.addEventListener("click", () => {
+  let diceSummary = [];
   let results = [];
   let rollDetails = [];
 
@@ -42,6 +45,10 @@ rollBtn.addEventListener("click", () => {
     const dice = wrapper.querySelector(".dice");
     const count = parseInt(wrapper.querySelector(".dice-count").textContent);
     const sides = parseInt(dice.dataset.dice);
+
+    if (count > 0) {
+      diceSummary.push(`${count}D${sides}`);
+    }
 
     for (let i = 0; i < count; i++) {
       const roll = Math.floor(Math.random() * sides) + 1;
@@ -98,4 +105,15 @@ if (mainRoll) {
   setTimeout(() => {
     resultBox.classList.add("hidden");
   }, 2000);
+
+  // ==========================
+// 📜 LOG
+// ==========================
+
+  const nome = currentUser || "Alguém";
+  const dados = diceSummary.join(" ");
+  const resultados = results;
+
+  logRoll(nome, dados, resultados);
+
 });

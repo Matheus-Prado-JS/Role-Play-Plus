@@ -1,0 +1,155 @@
+/* =========================
+   🔐 CONNECT SYSTEM
+========================= */
+
+.connect-box {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* BOTÃO */
+.connect-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+
+  background: rgba(230,195,106,0.1);
+  border: 1px solid rgba(230,195,106,0.4);
+
+  cursor: pointer;
+  font-size: 0.8rem;
+
+  transition: 0.2s;
+}
+
+.connect-btn:hover {
+  background: rgba(230,195,106,0.2);
+}
+
+/* ESCONDIDO */
+.hidden {
+  display: none;
+}
+
+/* =========================
+   🔐 CONNECT OVERLAY
+========================= */
+
+.connect-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.7);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999999; /* acima de tudo */
+}
+
+/* CAIXA CENTRAL */
+.connect-modal {
+  background: linear-gradient(
+    145deg,
+    #111,
+    #0a0a0a
+  );
+
+  border: 1px solid rgba(230,195,106,0.4);
+  border-radius: 12px;
+
+  padding: 20px;
+
+  width: 260px;
+
+  box-shadow:
+    0 0 20px rgba(0,0,0,0.8),
+    0 0 12px rgba(230,195,106,0.2);
+}
+
+/* TÍTULO */
+.connect-modal h2 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* LISTA */
+.connect-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ITEM */
+.connect-list div {
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+
+  text-align: center;
+
+  transition: 0.2s;
+}
+
+.connect-list div:hover {
+  background: rgba(230,195,106,0.2);
+  transform: scale(1.03);
+}
+
+.password-input {
+  width: 100%;
+  padding: 8px;
+
+  border-radius: 6px;
+  border: 1px solid rgba(230,195,106,0.4);
+
+  background: #111;
+  color: #e6c36a;
+
+  margin-bottom: 10px;
+}
+
+.connect-modal button {
+  width: 100%;
+  padding: 6px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: linear-gradient(145deg, #c9a44b, #e6c36a);
+  cursor: pointer;
+}
+
+/* =========================
+   🎲 ROLL LOG
+========================= */
+
+.roll-log {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  font-size: 0.75rem;
+  text-align: right;
+}
+
+.roll-log strong {
+  color: #e6c36a;
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+#roll-log-text {
+  color: #fff;
+  opacity: 0.8;
+
+  max-width: 180px;
+  word-wrap: break-word;
+}

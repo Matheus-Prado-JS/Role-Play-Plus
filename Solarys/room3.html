@@ -5,6 +5,7 @@
   <title>Solarys</title>
 
   <link rel="stylesheet" href="Sol-CSS/Sol-Room.css">
+  <link rel="stylesheet" href="Sol-CSS/Sol-System.css">
   <link rel="stylesheet" href="Sol-CSS/Sol-Dice.css">
   <link rel="stylesheet" href="Sol-CSS/Sol-Backs.css">
   <link rel="stylesheet" href="Sol-CSS/Sol-Icons.css">
@@ -13,6 +14,7 @@
   <link rel="stylesheet" href="Sol-CSS/Sol-Infos.css">
   <link rel="stylesheet" href="Sol-CSS/Sol-Docs.css">
   <link rel="stylesheet" href="Sol-CSS/Sol-Bestiario.css">
+  <link rel="stylesheet" href="Sol-CSS/Sol-Quests.css">
   <link rel="stylesheet" href="Sol-CSS/Sol-Skills.css">
   <link rel="stylesheet" href="Sol-CSS/Sol-Storage.css">
 
@@ -24,6 +26,12 @@
   <!-- HEADER -->
   <header class="top-bar">
 
+    <div class="connect-box">
+
+  <div class="connect-btn" onclick="toggleConnectMenu(event)">
+    Conectar
+  </div>
+</div>
 
     <div class="logo-container" onclick="goHome()">
       <img 
@@ -32,6 +40,11 @@
         class="logo"
       >
     </div>
+
+    <div class="roll-log">
+  <strong>LOG</strong>
+  <span id="roll-log-text">Nenhuma rolagem</span>
+</div>
 
   </header>
 
@@ -68,7 +81,7 @@
   <div class="players-box">
     <h3>Players</h3>
     <ul>
-      <li class="player-master">Moderador Solar <span class="player-status"></span></li>
+      <li class="player-master">Moderador<span class="player-status"></span></li>
       <li class="player">Aurelion <span class="player-status"></span></li>
       <li class="player">Stilgard <span class="player-status"></span></li>
       <li class="player">Eddie <span class="player-status"></span></li>
@@ -131,7 +144,7 @@
 
   <!-- LINHA 2 -->
   <div class="icon-row">
-    <img src="Sol-Assets/Icones/Quest-Master.png" class="icon-btn">
+    <img src="Sol-Assets/Icones/Quest-Master.png" class="icon-btn" id="quest-master-btn">
     <img src="Sol-Assets/Icones/Map-Master.png" class="icon-btn" id="map-master">
     <img src="Sol-Assets/Icones/Doc-Player.png" class="icon-btn" id="doc-player">
   </div>
@@ -140,7 +153,7 @@
   <div class="icon-row">
     <img src="Sol-Assets/Icones/Ficha-Player.png" class="icon-btn">
     <img src="Sol-Assets/Icones/NPC-Player.png" class="icon-btn">
-    <img src="Sol-Assets/Icones/Quest-Player.png" class="icon-btn">
+    <img src="Sol-Assets/Icones/Quest-Player.png" class="icon-btn" id="quest-player-btn">
   </div>
 
   
@@ -477,14 +490,57 @@
 
 </section>
 
-  <script src="Sol-JS/Sol-Room.js"></script>
-  <script src="Sol-JS/Sol-Dice.js"></script>
+<div id="connect-overlay" class="connect-overlay hidden" onclick="closeConnect()">
+  
+  <div class="connect-modal" onclick="event.stopPropagation()">
+
+    <h2>Conectar</h2>
+
+    <div class="connect-list">
+      <div onclick="selectUser('Moderador')">Moderador</div>
+      <div onclick="selectUser('Aurelion')">Aurelion</div>
+      <div onclick="selectUser('Stilgard')">Stilgard</div>
+      <div onclick="selectUser('Eddie')">Eddie</div>
+      <div onclick="selectUser('Orion')">Orion</div>
+      <div onclick="selectUser('Ashen')">Ashen</div>
+      <div onclick="selectUser('Alverian')">Alverian</div>
+    </div>
+
+  </div>
+
+</div>
+
+<div id="password-overlay" class="connect-overlay hidden" onclick="closePassword()">
+  
+  <div class="connect-modal" onclick="event.stopPropagation()">
+
+    <h2>Senha do Moderador</h2>
+
+    <input 
+      type="password" 
+      id="password-input" 
+      placeholder="Digite a senha..."
+      class="password-input"
+    >
+
+    <button onclick="confirmPassword()">Entrar</button>
+
+  </div>
+
+</div>
+
+  <script type="module" src="Sol-JS/Sol-Fire.js"></script>
+
+  <script type="module" src="Sol-JS/Sol-Room.js"></script>
+  <script type="module" src="Sol-JS/Sol-System.js"></script>
+  <script type="module" src="Sol-JS/Sol-Dice.js"></script>
   <script src="Sol-JS/Sol-Backs.js"></script>
   <script src="Sol-JS/Sol-Music.js"></script>
   <script src="Sol-JS/Sol-Fichas.js"></script>
   <script src="Sol-JS/Sol-Infos.js"></script>
   <script src="Sol-JS/Sol-Docs.js"></script>
   <script src="Sol-JS/Sol-Bestiario.js"></script>
+  <script src="Sol-JS/Sol-Quests.js"></script>
   <script src="Sol-JS/Sol-Skills.js"></script>
   <script src="Sol-JS/Sol-Storage.js"></script>
 

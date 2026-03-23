@@ -1,3 +1,5 @@
+import { db, ref, set, onValue, ROOM } from "./Sol-Fire.js";
+
 // BOTÃO DO LOGO → VOLTAR PRO INDEX
 function goHome() {
   window.location.href = "../index.html";
@@ -92,19 +94,30 @@ enemyMenu.addEventListener("click", (e) => {
 
   const img = option.dataset.img;
 
-  console.log("Trocando imagem para:", img); // DEBUG
-
+  // 🔥 atualiza local primeiro
   enemyImg.src = img;
+
+  // 🔥 salva no Firebase
+  set(ref(db, `rooms/${ROOM}/enemy`), {
+    img: img
+  });
 
   enemyMenu.classList.add("hidden");
 
+});
+
+onValue(ref(db, `rooms/${ROOM}/enemy`), (snapshot) => {
+  const data = snapshot.val();
+  if (!data) return;
+
+  enemyImg.src = data.img;
 });
 
 // ==========================
 // 🔁 SISTEMA DE TURNOS
 // ==========================
 
-function setTurn(active) {
+function setTurnVisual(active) {
 
   if (active === "enemy") {
     enemyBox.classList.add("active");
@@ -122,6 +135,17 @@ function setTurn(active) {
   }
 }
 
+function setTurn(active) {
+
+  // local primeiro (não quebra UI)
+  setTurnVisual(active);
+
+  // depois Firebase
+  set(ref(db, `rooms/${ROOM}/turn`), {
+    current: active
+  });
+}
+
 // clique esquerdo troca turno
 enemyBox.addEventListener("click", () => {
   setTurn("enemy");
@@ -134,6 +158,13 @@ playerBox.addEventListener("click", () => {
 // estado inicial
 setTurn("enemy");
 
+onValue(ref(db, `rooms/${ROOM}/turn`), (snapshot) => {
+  const data = snapshot.val();
+
+  if (!data || !data.current) return;
+
+  setTurnVisual(data.current);
+});
 // ==========================
 // 🔴 STATUS PLAYER
 // ==========================

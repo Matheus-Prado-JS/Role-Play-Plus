@@ -1,0 +1,117 @@
+/* LISTA */
+.quest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* ITEM MASTER */
+.quest-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 6px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+}
+
+/* INFO */
+.quest-info strong {
+  color: #e6c36a;
+}
+
+.quest-info span {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* BOTÕES */
+.quest-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.quest-buttons button {
+  background: linear-gradient(145deg, #c9a44b, #e6c36a);
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* CARD PLAYER */
+.quest-card {
+  padding: 8px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #1a1a1a;
+}
+
+.quest-card strong {
+  color: #e6c36a;
+}
+
+.quest-card p {
+  font-size: 13px;
+  opacity: 0.85;
+  margin: 6px 0;
+}
+
+/* CONCLUÍDA */
+.quest-card.done {
+  opacity: 0.6;
+  border-color: #4caf50;
+}
+
+/* HEADER CLICÁVEL */
+.quest-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+}
+/* evita cursor de texto */
+.quest-header strong {
+  pointer-events: none;
+}
+
+/* CONTEÚDO ESCONDIDO */
+.quest-content {
+  display: none;
+  margin-top: 6px;
+}
+
+/* ATIVO */
+.quest-card.active .quest-content {
+  display: block;
+}
+
+/* SCROLL GLOBAL QUEST */
+.quest-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.quest-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.quest-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c9a44b, #e6c36a);
+  border-radius: 10px;
+}
+
+.quest-list::-webkit-scrollbar-thumb:hover {
+  background: #ffd777;
+}
+
+/* Firefox */
+.quest-list {
+  scrollbar-width: thin;
+  scrollbar-color: #c9a44b transparent;
+}
