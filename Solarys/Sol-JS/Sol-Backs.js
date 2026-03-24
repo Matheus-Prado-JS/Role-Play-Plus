@@ -1,3 +1,6 @@
+import { db, ref, set, onValue, ROOM } from "./Sol-Fire.js";
+import { currentUser } from "./Sol-System.js";
+
 // ==========================
 // 🖼️ BACKGROUND SYSTEM
 // ==========================
@@ -15,6 +18,11 @@ const mapOptions = document.querySelectorAll(".map-option");
 // ABRIR / FECHAR MENU
 mapMasterBtn.addEventListener("click", (e) => {
   e.stopPropagation();
+
+  // 🔒 só moderador pode abrir
+  if (currentUser !== "Moderador") {
+    return;
+  }
 
   mapMenu.classList.toggle("hidden");
 });
@@ -38,19 +46,16 @@ const bgImage = document.querySelector(".bg-image");
 mapOptions.forEach(option => {
   option.addEventListener("click", () => {
 
+    // 🔒 só moderador pode mudar
+    if (currentUser !== "Moderador") return;
+
     const bgName = option.getAttribute("data-bg");
     const bgPath = `Sol-Assets/Backgrounds/${bgName}`;
 
-    bgImage.classList.add("fade-out");
-
-    setTimeout(() => {
-      bgImage.style.backgroundImage = `url('${bgPath}')`;
-      bgImage.classList.remove("fade-out");
-    }, 200);
-
-    // remove texto
-    const text = document.querySelector(".background-placeholder span");
-    if (text) text.remove();
+    // 🔥 salva no Firebase
+    set(ref(db, `rooms/${ROOM}/background`), {
+      bg: bgPath
+    });
 
   });
 });
@@ -59,4 +64,24 @@ document.querySelectorAll(".map-section h4").forEach(header => {
   header.addEventListener("click", () => {
     header.parentElement.classList.toggle("collapsed");
   });
+});
+
+onValue(ref(db, `rooms/${ROOM}/background`), (snapshot) => {
+
+  const data = snapshot.val();
+  if (!data || !data.bg) return;
+
+  const bgPath = data.bg;
+
+  bgImage.classList.add("fade-out");
+
+  setTimeout(() => {
+    bgImage.style.backgroundImage = `url('${bgPath}')`;
+    bgImage.classList.remove("fade-out");
+  }, 200);
+
+  // remove texto (caso ainda exista)
+  const text = document.querySelector(".background-placeholder span");
+  if (text) text.remove();
+
 });

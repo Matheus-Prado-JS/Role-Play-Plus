@@ -1,3 +1,6 @@
+import { db, ref, set, onValue, ROOM } from "./Sol-Fire.js";
+import { currentUser } from "./Sol-System.js";
+
 // ==========================
 // 🎵 PLAYLIST (CONTROLADA VIA JS)
 // ==========================
@@ -166,6 +169,11 @@ const progressBar = document.getElementById("music-progress-bar");
 const audio = new Audio();
 audio.volume = 0.5;
 
+audio.addEventListener("ended", () => {
+  audio.currentTime = 0;
+  audio.play();
+});
+
 // ==========================
 // 🎵 GERAR PLAYLIST (AUTO)
 // ==========================
@@ -226,18 +234,22 @@ loadPlaylist();
 // ==========================
 
 function playMusic(sectionIndex, trackIndex) {
+
+  // 🔒 só moderador controla música global
+  if (currentUser !== "Moderador") return;
+
   const track = playlist[sectionIndex].tracks[trackIndex];
   if (!track) return;
 
-  currentTrack = { sectionIndex, trackIndex };
+  const startTime = Date.now();
 
-  audio.src = track.src;
-  audio.currentTime = 0;
-  audio.play();
+  // 🔥 envia pro Firebase (UMA VEZ SÓ)
+  set(ref(db, `rooms/${ROOM}/music`), {
+    sectionIndex,
+    trackIndex,
+    startTime
+  });
 
-  updateUI(track);
-
-  progressBar.style.width = "0%";
 }
 
 audio.addEventListener("timeupdate", () => {
@@ -261,13 +273,21 @@ function updateUI(track) {
 // ==========================
 
 playPauseBtn.addEventListener("click", () => {
+
   if (!audio.src) return;
 
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
+  // 🔒 só moderador controla
+  if (currentUser !== "Moderador") return;
+
+  const isPaused = !audio.paused;
+
+  // 🔥 salva estado global
+  set(ref(db, `rooms/${ROOM}/musicState`), {
+    paused: isPaused,
+    time: audio.currentTime,
+    timestamp: Date.now()
+  });
+
 });
 
 // ícone dinâmico
@@ -311,3 +331,68 @@ document.addEventListener("click", () => {
 musicMenu.addEventListener("click", (e) => {
   e.stopPropagation();
 });
+
+onValue(ref(db, `rooms/${ROOM}/music`), (snapshot) => {
+
+  const data = snapshot.val();
+  if (!data) return;
+
+  const { sectionIndex, trackIndex, startTime } = data;
+
+  const track = playlist[sectionIndex]?.tracks[trackIndex];
+  if (!track) return;
+
+  // ⏱️ calcula tempo atual SEM FIREBASE
+  const now = Date.now();
+  const elapsed = (now - startTime) / 1000;
+
+  currentTrack = { sectionIndex, trackIndex };
+
+  audio.src = track.src;
+
+  // 🔥 evita glitch
+  audio.addEventListener("loadedmetadata", () => {
+  const safeTime = elapsed % audio.duration;
+  audio.currentTime = safeTime;
+  });
+
+  audio.play();
+
+  updateUI(track);
+});
+
+onValue(ref(db, `rooms/${ROOM}/musicState`), (snapshot) => {
+
+  const data = snapshot.val();
+  if (!data) return;
+
+  const { paused, time, timestamp } = data;
+
+  // calcula delay real
+  const now = Date.now();
+  const delay = (now - timestamp) / 1000;
+
+  if (paused) {
+    audio.pause();
+    audio.currentTime = time;
+  } else {
+    audio.currentTime = time + delay;
+    audio.play();
+  }
+
+});
+
+// 🔒 esconder menu para não-moderador
+function updateMusicPermissions() {
+
+  if (currentUser === "Moderador") {
+    musicToggle.style.display = "block";
+  } else {
+    musicToggle.style.display = "none";
+    musicMenu.style.display = "none";
+  }
+
+}
+
+// roda sempre
+setInterval(updateMusicPermissions, 1000);

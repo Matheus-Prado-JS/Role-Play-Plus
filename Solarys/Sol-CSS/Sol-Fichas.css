@@ -412,3 +412,29 @@ button {
 .player-box::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #e6c36a, #ffd777);
 }
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#save-btn {
+  padding: 6px 14px;
+  background-color: #e6c36a;
+  border: none;
+  border-radius: 6px;
+  color: rgb(13, 13, 13);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#save-btn:hover {
+  background-color: #deb14a;
+  transform: scale(1.05);
+}
+
+#save-btn:active {
+  transform: scale(0.95);
+}

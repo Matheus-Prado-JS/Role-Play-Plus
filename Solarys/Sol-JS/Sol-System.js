@@ -1,10 +1,22 @@
 import { db, ref, set, onValue, ROOM } from "./Sol-Fire.js";
+import { onDisconnect } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
 // ==========================
 // 🔐 CONNECT SYSTEM
 // ==========================
 
 export let currentUser = null;
+let listeners = [];
+
+export function setCurrentUser(user) {
+  currentUser = user;
+  listeners.forEach(cb => cb(user));
+}
+
+export function onUserLoaded(callback) {
+  if (currentUser) callback(currentUser);
+  listeners.push(callback);
+}
 
 let connectOverlay;
 
@@ -66,13 +78,18 @@ function confirmPassword() {
 
 function ativarStatus(nome) {
 
-  currentUser = nome;
+  setCurrentUser({
+    nome: nome,
+    role: nome === "Moderador" ? "moderador" : "player"
+  });
 
-  // 🔥 salva no Firebase
-  set(ref(db, `rooms/${ROOM}/players/${nome}`), {
+  const playerRef = ref(db, `rooms/${ROOM}/players/${nome}`);
+
+  set(playerRef, {
     online: true
   });
 
+  onDisconnect(playerRef).remove();
 }
 
 // ==========================

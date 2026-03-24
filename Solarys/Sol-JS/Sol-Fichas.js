@@ -1,3 +1,9 @@
+import { db, ref, set, onValue, ROOM } from "./Sol-Fire.js";
+import { currentUser } from "./Sol-System.js";
+import { off } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { renderInformacoes } from "./Sol-Infos.js";
+
 // =======================
 // 📦 DADOS DOS PLAYERS
 // =======================
@@ -485,6 +491,21 @@ const playersData = [
   },
 ];
 
+import { get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+async function initPlayers() {
+  for (const player of playersData) {
+    const playerRef = ref(db, `rooms/${ROOM}/fichas/${player.name}`);
+    const snapshot = await get(playerRef);
+
+    if (!snapshot.exists()) {
+      await set(playerRef, player);
+    }
+  }
+}
+
+initPlayers();
+
 // =======================
 // 🎯 ELEMENTOS DOM
 // =======================
@@ -496,7 +517,9 @@ const fichaBtn = document.querySelector('img[src*="Ficha-Player"]');
 // ⚡ EVENTOS
 // =======================
 
-fichaBtn.addEventListener("click", openPlayerMenu);
+if (fichaBtn) {
+  fichaBtn.addEventListener("click", openPlayerMenu);
+}
 
 // =======================
 // 🖥️ UI PRINCIPAL
@@ -527,9 +550,16 @@ playerMenu.innerHTML = `
     list.appendChild(item);
   });
 
-  playerMenu.addEventListener("click", (e) => {
+playerMenu.addEventListener("click", (e) => {
   if (e.target === playerMenu) {
+
     playerMenu.classList.add("hidden");
+
+    // 🔥 remove listener ao fechar
+    if (currentPlayerRef) {
+      off(currentPlayerRef);
+      currentPlayerRef = null;
+    }
   }
 });
 }
@@ -700,19 +730,53 @@ function setupCategoryToggle() {
 // =======================
 
 let currentPlayerIndex = 0;
+let currentPlayerName = null;
+
+let currentPlayerRef = null;
 
 function openPlayerSheet(index) {
-    
+
   currentPlayerIndex = index;
-
   const p = playersData[index];
+  currentPlayerName = p.name;
 
-  
+  const newRef = ref(db, `rooms/${ROOM}/fichas/${currentPlayerName}`);
+
+  // 🔥 remove listener antigo
+  if (currentPlayerRef) {
+    off(currentPlayerRef);
+  }
+
+  currentPlayerRef = newRef;
+
+  onValue(newRef, (snapshot) => {
+    const data = snapshot.val();
+    if (!data) return;
+
+    // 🔥 GARANTE estrutura
+    if (!data.informacoes) {
+      data.informacoes = {
+        Ataques: [],
+        Habilidades: [],
+        Notas: [],
+        Amuletos: [null, null, null, null]
+      };
+    }
+
+    playersData[index] = data;
+    renderPlayerSheet(data);
+  });
+}
+
+function renderPlayerSheet(p) {
 
   playerMenu.innerHTML = `
     <div class="player-box" onclick="event.stopPropagation()">
 
-      <h2>${p.name}</h2>
+      <div class="player-header">
+        <h2>${p.name}</h2>
+        <button id="save-btn">Save</button>
+      </div>
 
       ${renderIdentidade(p)}
       ${renderAtributos(p)}
@@ -722,6 +786,8 @@ function openPlayerSheet(index) {
     </div>
   `;
 
+  document.getElementById("save-btn").addEventListener("click", savePlayer);
+
   setupCategoryToggle();
 }
 
@@ -729,7 +795,11 @@ function openPlayerSheet(index) {
 // 🛠️ UTILIDADES
 // =======================
 
+
 function updateValue(path, value) {
+
+  const num = Number(value);
+
   const keys = path.split(".");
   let obj = playersData[currentPlayerIndex];
 
@@ -737,7 +807,22 @@ function updateValue(path, value) {
     obj = obj[keys.shift()];
   }
 
-  obj[keys[0]] = Number(value);
+  obj[keys[0]] = num;
+
+}
+
+function savePlayer() {
+
+  if (!currentPlayerName) return;
+
+  const player = playersData[currentPlayerIndex];
+
+  set(
+    ref(db, `rooms/${ROOM}/fichas/${currentPlayerName}`),
+    player
+  );
+
+  console.log("SALVO:", player);
 }
 
 function inputSimples(label, path, value) {
@@ -767,4 +852,12 @@ function renderStatus(nome, path, value, max) {
   `;
 }
 
+window.updateValue = updateValue;
+window.savePlayer = savePlayer;
 
+window.playersData = playersData;
+
+window.getCurrentPlayerIndex = () => currentPlayerIndex;
+
+window.openPlayerSheet = openPlayerSheet;
+window.savePlayer = savePlayer;

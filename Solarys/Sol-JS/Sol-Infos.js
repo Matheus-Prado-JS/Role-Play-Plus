@@ -1,4 +1,7 @@
-
+import { db, ROOM } from "./Sol-Fire.js";
+import { set, ref, onValue } from "./Sol-Fire.js";
+import { update } from "./Sol-Fire.js";
+import { currentUser, onUserLoaded } from "./Sol-System.js";
 // =======================
 // 🔓 AMULETOS DESBLOQUEADOS (MESTRE)
 // =======================
@@ -36,9 +39,23 @@ const amuletosDB = [
 // =======================
 // 🧿 MENU DO MESTRE
 // =======================
-const masterFichaBtn = document.getElementById("ficha-master");
 
-masterFichaBtn.addEventListener("click", openMasterMenu);
+document.addEventListener("DOMContentLoaded", () => {
+  const masterFichaBtn = document.querySelector('img[src*="Ficha-Master"]');
+
+  if (!masterFichaBtn) return;
+
+  onUserLoaded((user) => {
+    const role = (user.role || "").toLowerCase();
+
+    if (user.role === "moderador") {
+      masterFichaBtn.style.display = "block";
+      masterFichaBtn.addEventListener("click", openMasterMenu);
+    } else {
+      masterFichaBtn.style.display = "none";
+    }
+  });
+});
 
 function openMasterMenu() {
 
@@ -79,33 +96,55 @@ function openMasterMenu() {
 }
 
 function isUnlocked(amuleto) {
-  return amuletosDesbloqueados.includes(amuleto);
+  return amuletosDesbloqueados.some(a => a.nome === amuleto.nome);
 }
 
 function toggleAmuleto(index) {
   const amuleto = amuletosDB[index];
 
-  if (isUnlocked(amuleto)) {
-    amuletosDesbloqueados = amuletosDesbloqueados.filter(a => a !== amuleto);
-  } else {
-    amuletosDesbloqueados.push(amuleto);
-  }
+if (isUnlocked(amuleto)) {
+  amuletosDesbloqueados = amuletosDesbloqueados.filter(a => a.nome !== amuleto.nome);
+} else {
+  amuletosDesbloqueados = [...amuletosDesbloqueados, amuleto];
+}
 
-  // re-render
-  document.getElementById("master-overlay").remove();
+console.log("ANTES:", amuletosDesbloqueados);
+
+update(ref(db, `rooms/${ROOM}`), {
+  amuletosDesbloqueados: amuletosDesbloqueados
+});
+
+  // 🔥 força atualização visual
+  document.getElementById("master-overlay")?.remove();
   openMasterMenu();
+
+  console.log("ENVIADO PRO FIREBASE:", amuletosDesbloqueados);
 }
 
-function closeMasterMenu() {
-  document.getElementById("master-overlay").remove();
-}
+onValue(ref(db, `rooms/${ROOM}/amuletosDesbloqueados`), (snap) => {
+  const data = snap.val() || [];
 
+  // evita loop se não mudou
+  if (JSON.stringify(data) === JSON.stringify(amuletosDesbloqueados)) return;
+
+  amuletosDesbloqueados = data;
+
+  console.log("VINDO DO FIREBASE:", data);
+});
 // =======================
 // 📦 RENDER - INFORMAÇÕES
 // =======================
 
 function renderInformacoes(p) {
-  const info = p.informacoes;
+  garantirEstrutura(p);
+
+  const info = {
+    Ataques: [],
+    Habilidades: [],
+    Notas: [],
+    Amuletos: [null, null, null, null],
+    ...(p.informacoes || {})
+  };
 
   return `
   <div class="category">
@@ -123,7 +162,7 @@ function renderInformacoes(p) {
   `;
 }
 
-function renderInfoSection(titulo, tipo, lista) {
+function renderInfoSection(titulo, tipo, lista = []) {
   return `
     <div class="subcategory">
       <div class="subcategory-header">${titulo}</div>
@@ -167,7 +206,7 @@ function toggleInfo(card) {
 // =======================
 
 function openForm(tipo, index = null) {
-  const p = playersData[currentPlayerIndex];
+  const p = window.playersData[window.getCurrentPlayerIndex()];
   const isEdit = index !== null && index !== undefined;
 
   let data = {
@@ -200,9 +239,17 @@ function openForm(tipo, index = null) {
     </div>
   `);
 }
+function garantirEstrutura(p) {
+  if (!p.informacoes) p.informacoes = {};
+
+  p.informacoes.Ataques = p.informacoes.Ataques || [];
+  p.informacoes.Habilidades = p.informacoes.Habilidades || [];
+  p.informacoes.Notas = p.informacoes.Notas || [];
+  p.informacoes.Amuletos = p.informacoes.Amuletos || [null, null, null, null];
+}
 
 function saveForm(tipo, index) {
-  const p = playersData[currentPlayerIndex];
+  const p = window.playersData[window.getCurrentPlayerIndex()];
 
   const novo = {
     nome: document.getElementById("form-nome").value,
@@ -217,7 +264,10 @@ function saveForm(tipo, index) {
   }
 
   closeForm();
-  openPlayerSheet(currentPlayerIndex);
+  openPlayerSheet(window.getCurrentPlayerIndex());
+
+  garantirEstrutura(p);
+  savePlayer();
 }
 
 function editItem(tipo, index) {
@@ -233,6 +283,7 @@ function closeForm() {
 // =======================
 
 function renderAmuletos(p) {
+  garantirEstrutura(p);
   const slots = p.informacoes.Amuletos;
 
   return `
@@ -292,7 +343,7 @@ function openAmuletSelector(slotIndex) {
         <h2>Escolher Amuleto</h2>
 
         <div class="amulet-list">
-          ${amuletosDesbloqueados.map((a, i) => `
+          ${(amuletosDesbloqueados || []).map((a, i) => `
           <div class="amulet-item" onclick="selectAmulet(${slotIndex}, ${i})">
 
             <img src="${a.imagem}">
@@ -312,12 +363,15 @@ function openAmuletSelector(slotIndex) {
 }
 
 function selectAmulet(slotIndex, amuletIndex) {
-  const p = playersData[currentPlayerIndex];
+  const p = window.playersData[window.getCurrentPlayerIndex()];
 
   p.informacoes.Amuletos[slotIndex] = amuletosDesbloqueados[amuletIndex];
 
   closeAmuletSelector();
-  openPlayerSheet(currentPlayerIndex);
+  openPlayerSheet(window.getCurrentPlayerIndex());
+
+  garantirEstrutura(p);
+  savePlayer();
 }
 
 function closeAmuletSelector() {
@@ -325,8 +379,31 @@ function closeAmuletSelector() {
 }
 
 function removeAmulet(slotIndex) {
-  const p = playersData[currentPlayerIndex];
+  const p = window.playersData[window.getCurrentPlayerIndex()];
   p.informacoes.Amuletos[slotIndex] = null;
 
-  openPlayerSheet(currentPlayerIndex);
+  openPlayerSheet(window.getCurrentPlayerIndex());
+
+  garantirEstrutura(p);
+  savePlayer();
 }
+
+function closeMasterMenu() {
+  document.getElementById("master-overlay")?.remove();
+}
+
+window.openForm = openForm;
+window.editItem = editItem;
+window.toggleInfo = toggleInfo;
+window.openAmuletSelector = openAmuletSelector;
+window.toggleAmuleto = toggleAmuleto;
+window.selectAmulet = selectAmulet;
+window.removeAmulet = removeAmulet;
+window.closeMasterMenu = closeMasterMenu;
+window.closeAmuletSelector = closeAmuletSelector;
+window.saveForm = saveForm;
+window.closeForm = closeForm;
+export { renderInformacoes };
+
+console.log("ROLE:", currentUser?.role);
+console.log("USER:", currentUser);
