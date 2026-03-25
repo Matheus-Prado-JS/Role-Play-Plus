@@ -110,7 +110,7 @@ if (mainRoll) {
 // 📜 LOG
 // ==========================
 
-  const nome = currentUser || "Alguém";
+  const nome = currentUser?.nome ?? "Alguém";
   const dados = diceSummary.join(" ");
   const resultados = results;
 

@@ -1,5 +1,5 @@
 import { db, ref, set, onValue, ROOM } from "./Sol-Fire.js";
-import { currentUser } from "./Sol-System.js";
+import { currentUser, onUserLoaded } from "./Sol-System.js";
 
 // ==========================
 // 🎵 PLAYLIST (CONTROLADA VIA JS)
@@ -236,20 +236,18 @@ loadPlaylist();
 function playMusic(sectionIndex, trackIndex) {
 
   // 🔒 só moderador controla música global
-  if (currentUser !== "Moderador") return;
+  if (!currentUser || currentUser.nome !== "Moderador") return;
 
   const track = playlist[sectionIndex].tracks[trackIndex];
   if (!track) return;
 
   const startTime = Date.now();
 
-  // 🔥 envia pro Firebase (UMA VEZ SÓ)
   set(ref(db, `rooms/${ROOM}/music`), {
     sectionIndex,
     trackIndex,
     startTime
   });
-
 }
 
 audio.addEventListener("timeupdate", () => {
@@ -277,11 +275,10 @@ playPauseBtn.addEventListener("click", () => {
   if (!audio.src) return;
 
   // 🔒 só moderador controla
-  if (currentUser !== "Moderador") return;
+  if (!currentUser || currentUser.nome !== "Moderador") return;
 
   const isPaused = !audio.paused;
 
-  // 🔥 salva estado global
   set(ref(db, `rooms/${ROOM}/musicState`), {
     paused: isPaused,
     time: audio.currentTime,
@@ -351,10 +348,10 @@ onValue(ref(db, `rooms/${ROOM}/music`), (snapshot) => {
   audio.src = track.src;
 
   // 🔥 evita glitch
-  audio.addEventListener("loadedmetadata", () => {
+audio.onloadedmetadata = () => {
   const safeTime = elapsed % audio.duration;
   audio.currentTime = safeTime;
-  });
+};
 
   audio.play();
 
@@ -383,16 +380,17 @@ onValue(ref(db, `rooms/${ROOM}/musicState`), (snapshot) => {
 });
 
 // 🔒 esconder menu para não-moderador
-function updateMusicPermissions() {
 
-  if (currentUser === "Moderador") {
+onUserLoaded((user) => {
+
+  if (user.nome === "Moderador") {
     musicToggle.style.display = "block";
   } else {
     musicToggle.style.display = "none";
     musicMenu.style.display = "none";
   }
 
-}
+});
 
 // roda sempre
 setInterval(updateMusicPermissions, 1000);

@@ -1,3 +1,8 @@
+import { db, ref, set, onValue, ROOM } from "./Sol-Fire.js";
+import { currentUser, onUserLoaded } from "./Sol-System.js";
+
+const bestiarioRef = ref(db, `rooms/${ROOM}/bestiario/unlocked`);
+
 // =======================
 // 📚 DATABASE
 // =======================
@@ -238,12 +243,29 @@ const bestiarioDB = [
 
 let bestiarioDesbloqueados = [];
 
+onValue(bestiarioRef, (snapshot) => {
+  const data = snapshot.val();
+  bestiarioDesbloqueados = data || [];
+});
+
 // =======================
 // 🧿 MASTER
 // =======================
 
 const npcMasterBtn = document.querySelector('img[src*="NPC-Master"]');
-npcMasterBtn.addEventListener("click", openBestiarioMaster);
+
+// começa escondido
+npcMasterBtn.style.display = "none";
+
+onUserLoaded((user) => {
+  if (user.nome === "Moderador") {
+    npcMasterBtn.style.display = "block"; // ou flex
+  }
+});
+npcMasterBtn.addEventListener("click", () => {
+  if (!currentUser || currentUser.nome !== "Moderador") return;
+  openBestiarioMaster();
+});
 
 function openBestiarioMaster() {
   document.body.insertAdjacentHTML("beforeend", `
@@ -286,7 +308,7 @@ function renderMasterCategoria(tipo) {
             </div>
 
             <button onclick="event.stopPropagation(); toggleBestiario(${n.index})">
-              ${isBestiarioUnlocked(n) ? "Remover" : "Liberar"}
+              ${isBestiarioUnlocked(n.index) ? "Remover" : "Liberar"}
             </button>
 
           </div>
@@ -297,20 +319,26 @@ function renderMasterCategoria(tipo) {
   `;
 }
 
-function isBestiarioUnlocked(npc) {
-  return bestiarioDesbloqueados.includes(npc);
+function isBestiarioUnlocked(index) {
+  return bestiarioDesbloqueados.includes(index);
 }
 
 function toggleBestiario(index) {
-  const npc = bestiarioDB[index];
 
-  if (isBestiarioUnlocked(npc)) {
-    bestiarioDesbloqueados = bestiarioDesbloqueados.filter(n => n !== npc);
+  let novos;
+
+  if (bestiarioDesbloqueados.includes(index)) {
+    novos = bestiarioDesbloqueados.filter(i => i !== index);
   } else {
-    bestiarioDesbloqueados.push(npc);
+    novos = [...bestiarioDesbloqueados, index];
   }
 
-  atualizarBotoesMaster();
+  // 🔥 Firebase leve
+  set(bestiarioRef, novos);
+
+  // re-render simples
+  document.getElementById("bestiario-master").remove();
+  openBestiarioMaster();
 }
 function closeBestiarioMaster() {
   document.getElementById("bestiario-master").remove();
@@ -374,7 +402,9 @@ function renderBestiarioCategoria(tipo) {
 }
 
 function renderBestiarioSub(tipo, sub) {
-  const lista = bestiarioDesbloqueados.filter(n => n.tipo === tipo && n.categoria === sub);
+  const lista = bestiarioDesbloqueados
+  .map(i => bestiarioDB[i])
+  .filter(n => n.tipo === tipo && n.categoria === sub);
 
   if (!lista.length) return "";
 
@@ -410,7 +440,7 @@ function closeBestiarioPlayer() {
 }
 
 function openBestiarioView(nome) {
-  const npc = bestiarioDesbloqueados.find(n => n.nome === nome);
+  const npc = bestiarioDB.find(n => n.nome === nome);
 
   document.body.insertAdjacentHTML("beforeend", `
     <div class="player-menu" id="bestiario-view" onclick="closeBestiarioView()">
@@ -433,3 +463,10 @@ function openBestiarioView(nome) {
 function closeBestiarioView() {
   document.getElementById("bestiario-view").remove();
 }
+
+window.toggleBestiario = toggleBestiario;
+window.closeBestiarioMaster = closeBestiarioMaster;
+window.closeBestiarioPlayer = closeBestiarioPlayer;
+window.openBestiarioView = openBestiarioView;
+window.closeBestiarioView = closeBestiarioView;
+window.toggleBestiarioCat = toggleBestiarioCat;

@@ -1,3 +1,8 @@
+import { db, ref, set, onValue, ROOM } from "./Sol-Fire.js";
+import { currentUser, onUserLoaded } from "./Sol-System.js";
+
+const storageRef = ref(db, `rooms/${ROOM}/storage`);
+
 // =========================
 // 🎒 STORAGE SYSTEM
 // =========================
@@ -19,7 +24,38 @@ storageButtons.forEach(btn => {
   });
 });
 
+let storageState = {
+  weapons: [],
+  resources: []
+};
+onValue(storageRef, (snapshot) => {
+  const data = snapshot.val();
 
+  storageState = {
+  weapons: data?.weapons || [],
+  resources: data?.resources || []
+};
+
+  applyStorageState();
+});
+
+function applyStorageState() {
+
+  // armas
+  weaponsData.forEach((w, i) => {
+    w.unlocked = storageState.weapons.includes(i);
+  });
+
+  // recursos
+  resourcesData.forEach((r, i) => {
+    r.unlocked = storageState.resources.includes(i);
+  });
+
+  renderWeapons();
+  renderUpgrades();
+  renderResources();
+  renderControl();
+}
 // =========================
 // 🗡️ SISTEMA DE ARMAS
 // =========================
@@ -263,6 +299,12 @@ const categories = [
 ];
 
 function renderControl() {
+
+  if (!currentUser || currentUser.nome !== "Moderador") {
+    controlTab.innerHTML = "<p>Acesso restrito</p>";
+    return;
+  }
+
   controlTab.innerHTML = "";
 
   categories.forEach(cat => {
@@ -293,14 +335,40 @@ function renderControl() {
             <div class="status-dot ${itemData.unlocked ? "on" : ""}"></div>
         `;
 
-        item.addEventListener("click", () => {
-            itemData.unlocked = !itemData.unlocked;
+item.addEventListener("click", () => {
+if (!currentUser || currentUser.nome !== "Moderador") return;
 
-            renderControl();
-            renderWeapons();
-            renderUpgrades();
-            renderResources(); // 👈 IMPORTANTE
-        });
+  let newState = {
+  weapons: [...storageState.weapons],
+  resources: [...storageState.resources]
+};
+
+  if (cat === "Recursos") {
+
+    const index = resourcesData.indexOf(itemData);
+
+    if (newState.resources.includes(index)) {
+      newState.resources = newState.resources.filter(i => i !== index);
+    } else {
+      newState.resources.push(index);
+    }
+
+  } else {
+
+    const index = weaponsData.indexOf(itemData);
+
+    if (newState.weapons.includes(index)) {
+      newState.weapons = newState.weapons.filter(i => i !== index);
+    } else {
+      newState.weapons.push(index);
+    }
+
+  }
+
+  // 🔥 UMA ESCRITA LEVE
+  set(storageRef, newState);
+
+});
 
         column.appendChild(item);
         });
@@ -599,8 +667,14 @@ function renderEffects() {
 }
 
 // 🚀 INICIAR
-renderWeapons();
-renderControl();
-renderUpgrades();
-renderResources();
-renderEffects();
+onUserLoaded(() => {
+  renderWeapons();
+  renderControl();
+  renderUpgrades();
+  renderResources();
+  renderEffects();
+});
+
+window.openWeaponPreview = openWeaponPreview;
+
+console.log(currentUser);

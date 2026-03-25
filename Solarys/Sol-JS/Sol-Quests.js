@@ -1,3 +1,8 @@
+import { db, ref, set, onValue, ROOM } from "./Sol-Fire.js";
+import { currentUser, onUserLoaded } from "./Sol-System.js";
+
+const questRef = ref(db, `rooms/${ROOM}/quests/active`);
+
 // =======================
 // 📚 DATABASE
 // =======================
@@ -15,14 +20,32 @@ const questsDB = [
 // 🔓 ESTADO
 // =======================
 
-let questsAtivas = [];
+let questsAtivas = []; 
+
+onValue(questRef, (snapshot) => {
+  const data = snapshot.val();
+  questsAtivas = data || [];
+});
 
 // =======================
 // 🧿 MASTER
 // =======================
 
 const questMasterBtn = document.getElementById("quest-master-btn");
-questMasterBtn.addEventListener("click", openQuestMaster);
+
+// começa escondido
+questMasterBtn.style.display = "none";
+
+onUserLoaded((user) => {
+  if (user.nome === "Moderador") {
+    questMasterBtn.style.display = "block";
+  }
+});
+
+questMasterBtn.addEventListener("click", () => {
+  if (!currentUser || currentUser.nome !== "Moderador") return;
+  openQuestMaster();
+});
 
 function openQuestMaster() {
   document.body.insertAdjacentHTML("beforeend", `
@@ -42,11 +65,11 @@ function openQuestMaster() {
 
               <div class="quest-buttons">
                 <button onclick="toggleQuest(${i})">
-                  ${isQuestActive(q) ? "Remover" : "Liberar"}
+                  ${isQuestActive(i) ? "Remover" : "Liberar"}
                 </button>
 
                 <button onclick="toggleConcluida(${i})">
-                  ${isQuestDone(q) ? "Desfazer" : "Concluída"}
+                 ${isQuestDone(i) ? "Desfazer" : "Concluída"}
                 </button>
               </div>
 
@@ -59,33 +82,39 @@ function openQuestMaster() {
   `);
 }
 
-function isQuestActive(q) {
-  return questsAtivas.includes(q);
+function isQuestActive(index) {
+  return questsAtivas.some(q => q.id === index);
 }
 
-function isQuestDone(q) {
-  return q.concluida === true;
+function isQuestDone(index) {
+  return questsAtivas.find(q => q.id === index)?.done === true;
 }
 
 function toggleQuest(index) {
-  const q = questsDB[index];
 
-  if (isQuestActive(q)) {
-    questsAtivas = questsAtivas.filter(x => x !== q);
-    q.concluida = false;
+  let novos;
+
+  if (isQuestActive(index)) {
+    novos = questsAtivas.filter(q => q.id !== index);
   } else {
-    questsAtivas.push(q);
+    novos = [...questsAtivas, { id: index, done: false }];
   }
+
+  set(questRef, novos);
 
   refreshQuestMaster();
 }
 
 function toggleConcluida(index) {
-  const q = questsDB[index];
 
-  if (!isQuestActive(q)) return; // só pode concluir se estiver ativa
+  let novos = questsAtivas.map(q => {
+    if (q.id === index) {
+      return { ...q, done: !q.done };
+    }
+    return q;
+  });
 
-  q.concluida = !q.concluida;
+  set(questRef, novos);
 
   refreshQuestMaster();
 }
@@ -114,24 +143,28 @@ function openQuestPlayer() {
         <h2>Quests</h2>
 
         <div class="quest-list">
-        ${questsAtivas.map(q => `
-        <div class="quest-card ${q.concluida ? "done" : ""}">
+        ${questsAtivas.map(q => {
+          const data = questsDB[q.id];
+
+          return `
+          <div class="quest-card ${q.done ? "done" : ""}">
 
             <div class="quest-header" onclick="toggleQuestPlayer(this)">
-            <strong>${q.nome}</strong>
-            <span>${q.concluida ? "Concluída" : "Ativa"}</span>
+              <strong>${data.nome}</strong>
+              <span>${q.done ? "Concluída" : "Ativa"}</span>
             </div>
 
             <div class="quest-content">
-            <span>${q.local}</span>
+              <span>${data.local}</span>
 
-            <p>${q.descricao}</p>
+              <p>${data.descricao}</p>
 
-            <small>Recompensa: ${q.recompensa}</small>
+              <small>Recompensa: ${data.recompensa}</small>
             </div>
 
-        </div>
-        `).join("")}
+          </div>
+          `;
+        }).join("")}
         </div>
 
       </div>
@@ -146,3 +179,9 @@ function toggleQuestPlayer(el) {
 function closeQuestPlayer() {
   document.getElementById("quest-player").remove();
 }
+
+window.toggleQuest = toggleQuest;
+window.toggleConcluida = toggleConcluida;
+window.closeQuestMaster = closeQuestMaster;
+window.closeQuestPlayer = closeQuestPlayer;
+window.toggleQuestPlayer = toggleQuestPlayer;

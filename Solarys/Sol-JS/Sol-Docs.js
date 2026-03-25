@@ -1,3 +1,7 @@
+import { db, ref, set, onValue, ROOM } from "./Sol-Fire.js";
+import { currentUser, onUserLoaded } from "./Sol-System.js";
+const docsRef = ref(db, `rooms/${ROOM}/docs/unlocked`);
+
 // =======================
 // 📚 DATABASE DE DOCUMENTOS
 // =======================
@@ -39,10 +43,34 @@ const docsDB = [
 // 🔓 DOCUMENTOS DESBLOQUEADOS
 // =======================
 
-let docsDesbloqueados = [];
+let docsDesbloqueados = []; 
+
+onValue(docsRef, (snapshot) => {
+  const data = snapshot.val();
+
+  docsDesbloqueados = data || [];
+});
 
 const docMasterBtn = document.getElementById("doc-master");
-docMasterBtn.addEventListener("click", openDocMaster);
+
+// começa escondido
+docMasterBtn.style.display = "none";
+onUserLoaded((user) => {
+
+  if (user.nome === "Moderador") {
+    docMasterBtn.style.display = "block"; // ou "flex" dependendo do CSS
+  }
+
+});
+
+docMasterBtn.addEventListener("click", () => {
+
+  if (!currentUser || currentUser.nome !== "Moderador") {
+    return;
+  }
+
+  openDocMaster();
+});
 
 function openDocMaster() {
   document.body.insertAdjacentHTML("beforeend", `
@@ -61,7 +89,7 @@ function openDocMaster() {
               </div>
 
               <button onclick="toggleDoc(${i})">
-                ${isDocUnlocked(doc) ? "Remover" : "Liberar"}
+                ${isDocUnlocked(i) ? "Remover" : "Liberar"}
               </button>
 
             </div>
@@ -73,18 +101,22 @@ function openDocMaster() {
   `);
 }
 
-function isDocUnlocked(doc) {
-  return docsDesbloqueados.includes(doc);
+function isDocUnlocked(index) {
+  return docsDesbloqueados.includes(index);
 }
 
 function toggleDoc(index) {
-  const doc = docsDB[index];
 
-  if (isDocUnlocked(doc)) {
-    docsDesbloqueados = docsDesbloqueados.filter(d => d !== doc);
+  let novos;
+
+  if (docsDesbloqueados.includes(index)) {
+    novos = docsDesbloqueados.filter(i => i !== index);
   } else {
-    docsDesbloqueados.push(doc);
+    novos = [...docsDesbloqueados, index];
   }
+
+  // 🔥 envia pro Firebase (UMA escrita leve)
+  set(docsRef, novos);
 
   document.getElementById("doc-master-overlay").remove();
   openDocMaster();
@@ -118,7 +150,7 @@ function openDocPlayer() {
 
 function renderDocCategoria(tipo) {
   const docsFiltrados = docsDesbloqueados
-    .map((doc, i) => ({ ...doc, index: i }))
+    .map(i => ({ ...docsDB[i], index: i }))
     .filter(doc => doc.categoria === tipo);
 
   if (docsFiltrados.length === 0) return "";
@@ -155,7 +187,7 @@ function closeDocPlayer() {
 }
 
 function openDocView(index) {
-  const doc = docsDesbloqueados[index];
+  const doc = docsDB[index];
 
   document.body.insertAdjacentHTML("beforeend", `
     <div class="player-menu" id="doc-view-overlay" onclick="closeDocView()">
@@ -176,3 +208,10 @@ function openDocView(index) {
 function closeDocView() {
   document.getElementById("doc-view-overlay").remove();
 }
+
+window.toggleDoc = toggleDoc;
+window.closeDocMaster = closeDocMaster;
+window.closeDocPlayer = closeDocPlayer;
+window.openDocView = openDocView;
+window.closeDocView = closeDocView;
+window.toggleDocCategoria = toggleDocCategoria;

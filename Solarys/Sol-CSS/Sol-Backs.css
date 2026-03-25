@@ -80,3 +80,6 @@
   opacity: 0.6;
 }
 
+#map-master {
+  display: none;
+}

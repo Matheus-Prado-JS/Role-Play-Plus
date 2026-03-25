@@ -43,6 +43,10 @@ const amuletosDB = [
 document.addEventListener("DOMContentLoaded", () => {
   const masterFichaBtn = document.querySelector('img[src*="Ficha-Master"]');
 
+  if (masterFichaBtn) {
+    masterFichaBtn.style.display = "none";
+  }
+
   if (!masterFichaBtn) return;
 
   onUserLoaded((user) => {

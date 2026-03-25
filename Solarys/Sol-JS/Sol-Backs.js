@@ -1,5 +1,5 @@
 import { db, ref, set, onValue, ROOM } from "./Sol-Fire.js";
-import { currentUser } from "./Sol-System.js";
+import { currentUser, onUserLoaded } from "./Sol-System.js";
 
 // ==========================
 // 🖼️ BACKGROUND SYSTEM
@@ -12,6 +12,11 @@ const backgroundPanel = document.querySelector(".background-placeholder");
 // ==========================
 
 const mapMasterBtn = document.getElementById("map-master");
+onUserLoaded(() => {
+  if (currentUser && currentUser.nome === "Moderador") {
+    mapMasterBtn.style.display = "block";
+  }
+});
 const mapMenu = document.getElementById("map-menu");
 const mapOptions = document.querySelectorAll(".map-option");
 
@@ -20,7 +25,7 @@ mapMasterBtn.addEventListener("click", (e) => {
   e.stopPropagation();
 
   // 🔒 só moderador pode abrir
-  if (currentUser !== "Moderador") {
+  if (!currentUser || currentUser.nome !== "Moderador") {
     return;
   }
 
@@ -47,7 +52,7 @@ mapOptions.forEach(option => {
   option.addEventListener("click", () => {
 
     // 🔒 só moderador pode mudar
-    if (currentUser !== "Moderador") return;
+    if (!currentUser || currentUser.nome !== "Moderador") return;
 
     const bgName = option.getAttribute("data-bg");
     const bgPath = `Sol-Assets/Backgrounds/${bgName}`;
