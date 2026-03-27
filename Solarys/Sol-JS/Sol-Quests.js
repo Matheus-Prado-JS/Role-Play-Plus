@@ -11,8 +11,32 @@ const questsDB = [
   {
     nome: "Sob a Casca",
     local: "Caminho de Loren",
-    recompensa: "Amuleto de Loren",
-    descricao: "Algo antigo se esconde sob as raízes da floresta. Investigue antes que desperte.",
+    recompensa: "+1 Ponto Especial, +2 Pontos de Ficha & Amuleto de Loren",
+    descricao: "Encontramos um morador local chamado Horin em sua casa. Ele comentou sobre o desaparecimento de um lenhador chamado Edrik após a abertura de uma nova área na floresta de Loren. Segundo ele, o local está… estranho. Silencioso demais. Como se algo ali não estivesse certo.",
+  },
+    {
+    nome: "Doença sem Nome",
+    local: "Distrito Baixo de Zhalem",
+    recompensa: "+2 Pontos de Ficha & 500 Créditos",
+    descricao: "Encontramos uma mulher chamada Kaelen em Zhalem, conhecida de Ashen. Nos guiou até uma estalagem. Visivelmente irritada e fora de controle. Ela diz procurar um alquimista chamado Hal.",
+  },
+     {
+    nome: "Marcas de Fogo",
+    local: "Distrito Baixo de Zhalem",
+    recompensa: "+1 Ponto Especial, +2 Pontos de Ficha & Item Opcional",
+    descricao: "Encontramos uma costureira chamada Elara no Mercado Central. Desesperada, ela contou que crianças do bairro Pedra Baixa estão tendo sonhos com uma figura luminosa, e algumas estão acordando com marcas estranhas no corpo. Segundo ela, tudo começou após um movimento sutil no santuário abandonado.",
+  },
+    {
+    nome: "Sombras Sobre Doran",
+    local: "Doran",
+    recompensa: "350 créditos, Documento secreto, Amuleto da Balança",
+    descricao: "Encontramos Sarin na praça de Doran, observando a cidade como de costume. Ele comentou sobre desaparecimentos estranhos envolvendo comerciantes, artesãos e até crianças influentes. Pessoas respeitadas simplesmente somem sem deixar nenhum sinal de luta. Segundo ele, há algo errado.",
+  },
+    {
+    nome: "Ecos da Neve",
+    local: "Pedrafria",
+    recompensa: "2 Lasca de Pedra & Relíquia da Família",
+    descricao: "Explorando Pedrafria, encontramos sinais de que o inverno extremo pode não ser natural. Casas congeladas, rastros que desaparecem e um antigo túnel de mineração chamam atenção. Algo foi descoberto nas profundezas.",
   },
 ];
 

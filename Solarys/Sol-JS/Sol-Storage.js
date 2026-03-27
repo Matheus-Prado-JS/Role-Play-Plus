@@ -84,6 +84,46 @@ const weaponsData = [
       { level: 6, stats: "+12 Dano & Skill", cost: "1 Pedra Magma" },
     ]
   },
+  {
+    name: "Espada Acharn",
+    img: "Espada de Acharn.png",
+    type: "Espadas",
+    unlocked: false,
+    hasEffect: true,
+      skill: {
+    name: "Noite Eterna",
+    desc: "A Espada de Acharn rasga o véu entre o mundo e algo profano. O rasgo acompanha Ashen durante a batalha por 3 rodadas. A Zona das Trevas causa dano sombrio contínuo e redução de cura. Nível 5: 1D8 de dano Contínuo e -3 em cura. 30% de chance (1D10). Nível 6 2D8 e -5 em cura. 40% de chance."
+                },
+    upgrades: [
+      { level: 0, stats: "2D6", cost: "1 Lasca de Pedra" },
+      { level: 1, stats: "+3 Dano", cost: "2 Lasca de Pedra" },
+      { level: 2, stats: "+4 Dano", cost: "3 Lasca de Pedra" },
+      { level: 3, stats: "+6 Dano", cost: "4 Lasca de Pedra" },
+      { level: 4, stats: "+7 Dano", cost: "5 Lasca de Pedra" },
+      { level: 5, stats: "+8 Dano & Skill", cost: "1 Pedra Cintilante" },
+      { level: 6, stats: "+10 Dano & Skill", cost: "1 Pedra Magma" },
+    ]
+  },
+    {
+    name: "Sino de Luminaris",
+    img: "Sino de Luminaris.png",
+    type: "Sinos",
+    unlocked: false,
+    hasEffect: true,
+      skill: {
+    name: "Julgamento Divino",
+    desc: "Orion toca Luminaris, invocando a presença divina no campo. Uma onde sagrada se espalha pela área. Todos os ALIADOS recebem cura com base no poder sagrado de Orion e ganham Resistência Sagrada por 2 turnos. O inimigo recebe a Marca do Julgamento. Quando qualquer inimigo marcado morre, o Aliado mais próximo se cura no valor de dano causado contra ele. Nível 6: Marca 2 inimigos."
+                },
+    upgrades: [
+      { level: 0, stats: "2D6", cost: "1 Lasca de Pedra" },
+      { level: 1, stats: "+1 Cura & +2 Dano", cost: "2 Lasca de Pedra" },
+      { level: 2, stats: "+2 Cura & +4 Dano", cost: "3 Lasca de Pedra" },
+      { level: 3, stats: "+3 Cura & +5 Dano", cost: "4 Lasca de Pedra" },
+      { level: 4, stats: "+4 Cura & +6 Dano", cost: "5 Lasca de Pedra" },
+      { level: 5, stats: "+5 Cura & +8 Dano & Skill", cost: "1 Pedra Cintilante" },
+      { level: 6, stats: "+6 Cura & +9 Dano & Skill", cost: "1 Pedra Magma" },
+    ]
+  },
 {
     name: "Escudo Vespera",
     img: "Escudo Vespera.png",
@@ -98,6 +138,96 @@ const weaponsData = [
       { level: 4, stats: "+6 Defesa Física", cost: "5 Lasca de Pedra" },
       { level: 5, stats: "+7 Defesa Física", cost: "1 Pedra Cintilante" },
       { level: 6, stats: "+8 Defesa Física", cost: "1 Pedra Magma" },
+    ]
+  },
+    {
+    name: "Espada Igris",
+    img: "Espada Igris.png",
+    type: "Espadas",
+    unlocked: false,
+    hasEffect: false,
+    upgrades: [
+      { level: 0, stats: "1D8", cost: "1 Sucata" },
+      { level: 1, stats: "+1 Dano", cost: "1 Sucata" },
+      { level: 2, stats: "+2 Dano", cost: "2 Sucata" },
+      { level: 3, stats: "+4 Dano", cost: "2 Sucata" },
+      { level: 4, stats: "+5 Dano", cost: "3 Sucata" },
+      { level: 5, stats: "+6 Dano", cost: "1 Metal" },
+    ]
+  },
+      {
+    name: "Guitarra Gertrudes",
+    img: "Guitarra Gertrudes.png",
+    type: "Sinos",
+    unlocked: false,
+    hasEffect: true,
+      skill: {
+    name: "Mosh Pit",
+    desc: "Eddie toca um riff extremamente pesado, liberando descargas rítmicas que fazem o chão vibrar como um Mosh Pit de show de metal. Inimigos na área são puxados para o centro e atingidos por raios sincronizados. Nível 5 dura 1 turno e cada raio causa 1D8 de dano, sendo 1D6 de Raios. No nível 6 são 2 turnos e cada raio causa 2D8 em 1D8 de raios. Ataque crítico da habilidade dobra a quantidade de raios."
+                },
+    upgrades: [
+      { level: 0, stats: "2D6", cost: "1 Lasca de Pedra" },
+      { level: 1, stats: "+3 Dano", cost: "2 Lasca de Pedra" },
+      { level: 2, stats: "+6 Dano", cost: "3 Lasca de Pedra" },
+      { level: 3, stats: "+9 Dano", cost: "4 Lasca de Pedra" },
+      { level: 4, stats: "+12 Dano", cost: "5 Lasca de Pedra" },
+      { level: 5, stats: "+15 Dano & Skill", cost: "1 Pedra Cintilante" },
+      { level: 6, stats: "+18 Dano & Skill", cost: "1 Pedra Magma" },
+    ]
+  },
+        {
+    name: "Lâmina de Leda",
+    img: "Lâmina de Leda.png",
+    type: "Katanas",
+    unlocked: false,
+    hasEffect: true,
+      skill: {
+    name: "Bruma de Leda",
+    desc: "Ao girar seu braço, a Lâmina de Leda cria uma névoa espiritual que cobra a área ao seu redor. Dentro da névoa: +4 em Furtividade, +3 em Dano Furtivo. Se transformado ganha +1 Ação de Ataque e o +3 em Dano Furtivo vira +5. Aliados dentro da névoa conseguem ver a silhueta dos inimigos. A Névoa dura 1 Rodada no Nível 5 e 2 Rodadas no Nível 6."
+                },
+    upgrades: [
+      { level: 0, stats: "2D6", cost: "1 Lasca de Pedra" },
+      { level: 1, stats: "+3 Dano", cost: "2 Lasca de Pedra" },
+      { level: 2, stats: "+4 Dano", cost: "3 Lasca de Pedra" },
+      { level: 3, stats: "+6 Dano", cost: "4 Lasca de Pedra" },
+      { level: 4, stats: "+7 Dano", cost: "5 Lasca de Pedra" },
+      { level: 5, stats: "+9 Dano & Skill", cost: "1 Pedra Cintilante" },
+      { level: 6, stats: "+10 Dano & Skill", cost: "1 Pedra Magma" },
+    ]
+  },
+        {
+    name: "Dardo de Leda",
+    img: "Dardo de Leda.png",
+    type: "Adagas",
+    unlocked: false,
+    hasEffect: true,
+      skill: {
+    name: "Bruma de Leda",
+    desc: "Ao disparar um dardo especial, o Dardo de Leda libera uma névoa espiritual no ponto de impacto, se espalhando pela área. Dentro da névoa: +4 em Furtividade e +3 em Dano Furtivo. Ataques com dardo dentro da névoa tem mais precisão (ignora 2 de defesa adversária). Aliados dentro da névoa conseguem ver a silhueta dos inimigos. Caso escolha se transformar, não poderá usar o Dardo, mas ganha os efeitos da Bruma de Leda da lâmina."
+                },
+    upgrades: [
+      { level: 0, stats: "1D6", cost: "1 Lasca de Pedra" },
+      { level: 1, stats: "+2 Dano", cost: "2 Lasca de Pedra" },
+      { level: 2, stats: "+3 Dano + Effect: Bleed, Poison ou Frost", cost: "3 Lasca de Pedra" },
+      { level: 3, stats: "+5 Dano + Effect: Bleed, Poison ou Frost", cost: "4 Lasca de Pedra" },
+      { level: 4, stats: "+6 Dano + Effect: Bleed, Poison ou Frost", cost: "5 Lasca de Pedra" },
+      { level: 5, stats: "+8 Dano & Skill + Effect: Bleed, Poison ou Frost", cost: "1 Pedra Cintilante" },
+      { level: 6, stats: "+9 Dano & Skill + Effect: Bleed, Poison ou Frost", cost: "1 Pedra Magma" },
+    ]
+  },
+      {
+    name: "Espada de Barok",
+    img: "Espada de Barok.png",
+    type: "Espadas",
+    unlocked: false,
+    hasEffect: false,
+    upgrades: [
+      { level: 0, stats: "2D8", cost: "1 Lasca de Pedra" },
+      { level: 1, stats: "+1 Dano", cost: "2 Lasca de Pedra" },
+      { level: 2, stats: "+2 Dano", cost: "2 Lasca de Pedra" },
+      { level: 3, stats: "+4 Dano", cost: "3 Lasca de Pedra" },
+      { level: 4, stats: "+5 Dano", cost: "4 Lasca de Pedra" },
+      { level: 5, stats: "+6 Dano", cost: "1 Placa de Pedra" },
     ]
   },
 {
@@ -295,6 +425,7 @@ const categories = [
   "Martelos",
   "Lanças",
   "Escudos",
+  "Sinos",
   "Recursos"
 ];
 
@@ -393,7 +524,8 @@ function renderUpgrades() {
     "Machados",
     "Martelos",
     "Lanças",
-    "Escudos"
+    "Escudos",
+    "Sinos"
   ];
 
   categories.forEach(cat => {

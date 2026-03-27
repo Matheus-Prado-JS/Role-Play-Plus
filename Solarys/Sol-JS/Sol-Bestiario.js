@@ -14,28 +14,28 @@ const bestiarioDB = [
     tipo: "NPC",
     categoria: "Principal",
     imagem: "Sol-Assets/Persons/elsyra.png",
-    historia: "Líder firme e implacável da guarda costeira."
+    historia: "Desde jovem, subiu nas fileiras do Império com disciplina implacável e uma presença que fazia até veteranos hesitarem. Ao lado de figuras como Aurelion e Stilgard, construiu uma reputação como Capitã que não recuava, nem em decisões difíceis. Elsyra nunca foi apenas uma soldado, ela foi forjada para Comandar. Hoje, com sua filha, Lyssa. Durante anos, seu nome significou ordem e disciplina, até a chegada de Varok. Suas ordens passaram a ser questionadas, missões reduzidas e influência lentamente drenada. Durante a queda de Elaris, reencontrou Stilgard, sem tempo para nostalgia, apenas reconhecimento."
   },
     {
     nome: "General Barok",
     tipo: "NPC",
     categoria: "Principal",
     imagem: "Sol-Assets/Persons/Barok.png",
-    historia: "Um general veterano com uma reputação de ser implacável."
+    historia: "Barok foi tudo o que o Império dizia valorizar. E tudo aquilo foi deixado a mercê. General respeitado, estrategista brilhante e líder admirado por seus soldados, Barok não comandava pelo medo, mas pelo exemplo. Lutava na linha de frente, sangrava ao lado de seus homens e acreditava acima de tudo, em Honra. Seu irmão, Varok, era o oposto. Durante a invasão Rebelde havia o momento perfeito para um golpe, e Varok sabia disso. No meio da luta, Varok assassinou o próprio irmão, por puro controle, e isso marcou o início de um novo Império. Stilgard estava lá, e viu seu amigo morrer. 'Viva com Honra, e morra com Glória' foram as últimas palavras proferidas entre eles."
   },
     {
     nome: "Lyss",
     tipo: "NPC",
     categoria: "Principal",
     imagem: "Sol-Assets/Persons/Lyss.png",
-    historia: "Cresceu em clubes, aprendeu a sobreviver lendo pessoas e explorando fraquezas. Conheceu Eddie em uma noite turbulenta em um dos Clubes."
+    historia: "Lyss aprendeu a sobreviver no meio do caos. Cresceu em tavernas, clubes e becos onde a música alta escondia conversas irreais. Enquanto outros se perdiam, Lyss observava. Sempre observando. Aprendeu cedo que sobreviver não era sobre força, e sim sobre entender os idiotas. Se existe algo que define Lyss, é o fato de ela ainda estar viva ao lado de dois completos idiotas. Eddie, um Bardo guitarrista brilhante, e Jax, seu irmão e provavelmente metade dos problemas dela. Ela não lidera nada, mas sem ela talvez esse trio não sobreviva uma semana. Sarcástica na medida certa, perceptiva e sabe exatamente quando sair de uma situação."
   },
     {
     nome: "Jax",
     tipo: "NPC",
     categoria: "Principal",
     imagem: "Sol-Assets/Persons/Jax.png",
-    historia: "Viciado em jogos e golpes, conheceu Eddie após uma trapaça dar errado e a música dele salvar sua pele. Desde então, vive entre dívidas, apostas e favores mal pagos."
+    historia: "Enquanto Lyss aprendia a observar, Jax aprendia a manipular. Cartas marcadas, dados viciados, promessas com zero intenção de cumprir. Ele não joga para se divertir, joga para sair por cima, todas as vezes. Jax é o tipo de pessoa que entra devendo, sai lucrando e ainda deixa algum idiota pedindo desculpa. Ele não só engana, faz pessoas acreditarem que foi justo. Se ele sozinho é ruim, pior ainda é quando se junta a Eddie. Os dois juntos são um desastre perfeitamente sincronizado, planejam golpes absurdos, mentiras e sempre apostam mais do que deveriam. Se entendem sem falar uma palavra. Jax provavelmente tem mais inimigos do que o dicionário tem de palavras, e ainda assim, continua jogando."
   },
     {
     nome: "Althéa Serenna",
@@ -119,35 +119,35 @@ const bestiarioDB = [
     tipo: "NPC",
     categoria: "Império",
     imagem: "Sol-Assets/Persons/Valeric.png",
-    historia: "Rei de Solarys, governa com justiça e sabedoria."
+    historia: "Valeric não herdou o trono, se tornou digno dele. Conhecido como Rei de Aço, Valeric construiu sua imagem não com carisma ou inspiração, mas com estabilidade. Onde outros reis falharam, ele teve sucesso. O Império sob seu comando nunca foi mais forte. Valeric acredita que a Ordem está acima de tudo, quando Varok tomou o controle das forças imperiais, muitos esperavam conflito, mas Valeric não resistiu. Ele observou, analisou e aprovou. As ideias de Varok, duras, eficientes e impiedosas se encaixavam perfeitamente na visão do império. A morte de Barok nunca foi discutida publicamente. "
   },
     {
     nome: "Magistrada Ysvelle",
     tipo: "NPC",
     categoria: "Império",
     imagem: "Sol-Assets/Persons/Ysvelle.png",
-    historia: "Uma magistrada de renome, conhecida por sua justiça e sabedoria."
+    historia: "Havia uma época onde o nome de Ysvelle representava justiça verdadeira. Não julgava, não cedia e não se curvava ao poder. Era conhecida por equilibrar lei e sabedoria, algo que poucos podiam fazer. Até o dia em que o Império mudou. Durante e antes do ataque rebelde que culminou na morte de Barok, Ysvelle já esteve presenta nas decisões que moldariam o futuro, viu o que aconteceu, entendeu e concedeu. Naquele momento, algo dentro dela se ajustou, não que tenha deixado de acreditar na justiça, mas redefiniu o que ela significava. Acima de tudo, está o trono. Se tornou cada vez mais próxima do Rei, concordando com suas ideias, compartilhando clareza, frieza e ausência de duvida."
   },
     {
     nome: "Inquisidor Stilgard II",
     tipo: "NPC",
     categoria: "Império",
     imagem: "Sol-Assets/Persons/Stilgard II.png",
-    historia: "Inquisidor e pai, conhecido por sua disciplina rígida e lealdade."
+    historia: "Ele nunca foi um homem gentil. Como inquisidor, sua função nunca foi confortar, foi corrigir, purgar e manter o que considerava ordem. Acreditava no Império, na disciplina, na força, e acredita que seu filho deveria ser o mesmo. Mas antes havia um equilíbrio entre eles, Eva. Quando ela morreu, algo quebrou, e tudo o que restou foi o Inquisidor. Ele não criou Stilgard, ele treinou ele. Sem espaço para fraquezas. Mas havia um problema, o garoto não queria a espada, escolheu apenas o escudo. Para ele, isso era incompreensível, a espada resolve tudo, e o escudo só o protege. Ele nunca soube interpretar isso, nunca soube se via aquilo como Fraqueza ou algo maior. Quando seu filho se foi, sem confronto e sem despedida, Stilgard II continuou vivendo. Mas não como antes, tornou-se mais silencioso, mais vazio. Ele ainda serve o Império."
   },
     {
     nome: "Inquisidor Malrek",
     tipo: "NPC",
     categoria: "Império",
     imagem: "Sol-Assets/Persons/Malrek.png",
-    historia: "Inquisidor brutal, conhecido por quebrar regras."
+    historia: "Malrek nunca foi o melhor Inquisidor, sempre foi um problema. Não por falta de habilidade ou disciplina, mas porque ele fazia algo que os outros não queriam, ele pensava, não se curvava as ordens da Magistrada. Antes da ascensão de Varok, Malrek já questionava, não desobedecia, mas perguntava sempre o 'por quê?' enquanto outros só executavam as ordens. Quando Varok assumiu, as perguntas deixaram de ser toleradas, e passaram a ser observadas, Malrek não parou, na verdade piorou, perguntou mais e mais. Dentro do Império poucos compartilhavam dessa ideia, e Elsyra era uma delas, e vimos o que aconteceu. Valeric não puniu Malrek diretamente, mas sim todos os Inquisidores, reduziu o poder deles, dando menos autoridade, autonomia e alcance."
   },
   {
     nome: "Oráculo Luthiel",
     tipo: "NPC",
     categoria: "Império",
     imagem: "Sol-Assets/Persons/luthiel.png",
-    historia: "Uma oráculo misterioso com conhecimento de profundos segredos."
+    historia: "Luthiel nunca enxergou o mundo como os outros. E talvez, esse tenha sido o problema. Desde jovem, foi diagnosticada com uma doença rara na visão. Sua percepção falhava, borrava e distorcia. Os médicos diziam que ela perderia completamente sua visão, e estavam certos, mas incompletos. Conforme sua visão desaparecia, outra coisa surgia. Seu dom. Luthiel começou a ver, antes de acontecer. Fragmentos de decisões, possíveis caminhos, consequências inevitáveis, não previa o futuro, via o que levaria a ele. Antes da Ascensão de Varok, ela era próxima ao poder, consultada, observada e até temida, falava muito, dizia o que aconteceria, quem cairia, quais decisões levariam à ruína. Depois, o Império não queria mais previsões, e sim controle. Pouco a pouco, foi sendo afastada, sua condição não parou, piorou, não era mais apenas sua visão, seu corpo começou a falhar. Músculos não respondiam, movimentos se tornavam lentos, às vezes, inexistentes. Como se algo estivesse tomando espaço. Quando Elsyra foi embora, não havia mais notícias dela."
   },
 
   // INIMIGOS

@@ -106,7 +106,7 @@
 }
 
 .bestiario-view-box {
-  max-width: 600px;
+  max-width: 100%;
 
   display: flex;
   gap: 15px;
@@ -126,6 +126,7 @@
 .bestiario-view-info {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 /* TEXTO */
@@ -133,6 +134,8 @@
   margin-top: 10px;
   line-height: 1.5;
   opacity: 0.9;
+
+  word-break: break-word;
 }
 
 /* ITEM CLICÁVEL PLAYER */
