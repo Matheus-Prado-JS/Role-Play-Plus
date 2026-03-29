@@ -85,6 +85,26 @@ const weaponsData = [
     ]
   },
   {
+    name: "Espada Eva",
+    img: "Espada Eva.png",
+    type: "Espadas",
+    unlocked: false,
+    hasEffect: true,
+      skill: {
+    name: "Sangria de Eva",
+    desc: "A Espada Eva apresenta os poderes de seus antigos portadores, se manisfetando com uma habilidade única e maravilhosa. Ao levantar a Espada, ela cura todos os Aliados em volta de Stilgard, curando uma quantidade de vida igual a 1D8 + 8. Além disso, por 3 rodadas, os ataques de Stilgard drenam a vida dos inimigos, curando ele em 50% do dano causado. Nível 5: Cura 1D8 + 8 e dura 4 rodadas. Nível 6: Cura 2D8 + 9 e dura 5 rodadas. Só pode ser ativada 1 vez por combate. Causa exaustão ao portador atual que não consegue agir no próximo turno."
+                },
+    upgrades: [
+      { level: 0, stats: "1D6", cost: "1 Lasca de Pedra" },
+      { level: 1, stats: "+2 Cura", cost: "2 Lasca de Pedra" },
+      { level: 2, stats: "+4 Cura", cost: "3 Lasca de Pedra" },
+      { level: 3, stats: "+6 Cura", cost: "4 Lasca de Pedra" },
+      { level: 4, stats: "+8 Cura", cost: "5 Lasca de Pedra" },
+      { level: 5, stats: "+9 Cura & Skill", cost: "1 Pedra Cintilante" },
+      { level: 6, stats: "+10 Cura & Skill", cost: "1 Pedra Magma" },
+    ]
+  },
+  {
     name: "Espada Acharn",
     img: "Espada de Acharn.png",
     type: "Espadas",
@@ -113,6 +133,26 @@ const weaponsData = [
       skill: {
     name: "Julgamento Divino",
     desc: "Orion toca Luminaris, invocando a presença divina no campo. Uma onde sagrada se espalha pela área. Todos os ALIADOS recebem cura com base no poder sagrado de Orion e ganham Resistência Sagrada por 2 turnos. O inimigo recebe a Marca do Julgamento. Quando qualquer inimigo marcado morre, o Aliado mais próximo se cura no valor de dano causado contra ele. Nível 6: Marca 2 inimigos."
+                },
+    upgrades: [
+      { level: 0, stats: "2D6", cost: "1 Lasca de Pedra" },
+      { level: 1, stats: "+1 Cura & +2 Dano", cost: "2 Lasca de Pedra" },
+      { level: 2, stats: "+2 Cura & +4 Dano", cost: "3 Lasca de Pedra" },
+      { level: 3, stats: "+3 Cura & +5 Dano", cost: "4 Lasca de Pedra" },
+      { level: 4, stats: "+4 Cura & +6 Dano", cost: "5 Lasca de Pedra" },
+      { level: 5, stats: "+5 Cura & +8 Dano & Skill", cost: "1 Pedra Cintilante" },
+      { level: 6, stats: "+6 Cura & +9 Dano & Skill", cost: "1 Pedra Magma" },
+    ]
+  },
+    {
+    name: "Escudo Eclipse",
+    img: "Escudo Eclipse.png",
+    type: "Escudos",
+    unlocked: false,
+    hasEffect: true,
+      skill: {
+    name: "O Eclipse",
+    desc: "Um Escudo tão grande que não apenas protege... ele praticamente cria um mundo ao redor de quem está em sua sombra. Stilgard finca o Escudo Eclipse no chão com força colossal. Ao fazer isso, o Escudo se expande em projeção, criando um domo massivo. Todos os aliados dentro da área reduzem o dano recebido em -5 e ganham fator de cura contínua, 2 de vida por rodada. Ganham resistência a efeitos de Interrupção. Nível 5: -5 em dano recebido e +2 em cura contínua. Nível 6: -7 em dano recebido e +3 em cura contínua. Dura 3 rodadas e só pode ser usado uma vez por combate."
                 },
     upgrades: [
       { level: 0, stats: "2D6", cost: "1 Lasca de Pedra" },

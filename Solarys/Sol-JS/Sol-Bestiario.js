@@ -13,7 +13,7 @@ const bestiarioDB = [
     nome: "Capitã Elsyra",
     tipo: "NPC",
     categoria: "Principal",
-    imagem: "Sol-Assets/Persons/elsyra.png",
+    imagem: "Sol-Assets/Persons/Capitã Elsyra.png",
     historia: "Desde jovem, subiu nas fileiras do Império com disciplina implacável e uma presença que fazia até veteranos hesitarem. Ao lado de figuras como Aurelion e Stilgard, construiu uma reputação como Capitã que não recuava, nem em decisões difíceis. Elsyra nunca foi apenas uma soldado, ela foi forjada para Comandar. Hoje, com sua filha, Lyssa. Durante anos, seu nome significou ordem e disciplina, até a chegada de Varok. Suas ordens passaram a ser questionadas, missões reduzidas e influência lentamente drenada. Durante a queda de Elaris, reencontrou Stilgard, sem tempo para nostalgia, apenas reconhecimento."
   },
     {
@@ -69,7 +69,7 @@ const bestiarioDB = [
     nome: "Basili",
     tipo: "NPC",
     categoria: "Secundário",
-    imagem: "Sol-Assets/Persons/basili.png",
+    imagem: "Sol-Assets/Persons/O Basili.png",
     historia: "Basili é um Cartógrafo de Zhalem, conhecido por sua habilidade em criar mapas detalhados e precisos. Ele é um explorador nato, sempre em busca de novas terras para mapear e descobrir. Basili é um aventureiro corajoso, enfrentando perigos e desafios para alcançar seus objetivos."
   },
     {
@@ -146,7 +146,7 @@ const bestiarioDB = [
     nome: "Oráculo Luthiel",
     tipo: "NPC",
     categoria: "Império",
-    imagem: "Sol-Assets/Persons/luthiel.png",
+    imagem: "Sol-Assets/Persons/Oráculo Luthiel.png",
     historia: "Luthiel nunca enxergou o mundo como os outros. E talvez, esse tenha sido o problema. Desde jovem, foi diagnosticada com uma doença rara na visão. Sua percepção falhava, borrava e distorcia. Os médicos diziam que ela perderia completamente sua visão, e estavam certos, mas incompletos. Conforme sua visão desaparecia, outra coisa surgia. Seu dom. Luthiel começou a ver, antes de acontecer. Fragmentos de decisões, possíveis caminhos, consequências inevitáveis, não previa o futuro, via o que levaria a ele. Antes da Ascensão de Varok, ela era próxima ao poder, consultada, observada e até temida, falava muito, dizia o que aconteceria, quem cairia, quais decisões levariam à ruína. Depois, o Império não queria mais previsões, e sim controle. Pouco a pouco, foi sendo afastada, sua condição não parou, piorou, não era mais apenas sua visão, seu corpo começou a falhar. Músculos não respondiam, movimentos se tornavam lentos, às vezes, inexistentes. Como se algo estivesse tomando espaço. Quando Elsyra foi embora, não havia mais notícias dela."
   },
 
