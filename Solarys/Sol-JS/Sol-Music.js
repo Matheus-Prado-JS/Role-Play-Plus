@@ -80,6 +80,11 @@ const playlist = [
         cover: "Sol-Assets/Sol-Music/Grande Madeira Apodrecida.png"
       },
       {
+        name: "Balança",
+        src: "Sol-Assets/Sol-Music/Balança.mp3",
+        cover: "Sol-Assets/Sol-Music/Balança.png"
+      },
+      {
         name: "Pedrafria",
         src: "Sol-Assets/Sol-Music/Pedrafria.mp3",
         cover: "Sol-Assets/Sol-Music/Pedrafria.png"
@@ -123,6 +128,11 @@ const playlist = [
         name: "Naath, Caçadora do Inverno",
         src: "Sol-Assets/Sol-Music/Naath.mp3",
         cover: "Sol-Assets/Sol-Music/Naath.png"
+      },
+      {
+        name: "Drenfall",
+        src: "Sol-Assets/Sol-Music/Drenfall.mp3",
+        cover: "Sol-Assets/Sol-Music/Drenfall.png"
       },
     ]
   },
