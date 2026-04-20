@@ -134,6 +134,46 @@ const playlist = [
         src: "Sol-Assets/Sol-Music/Drenfall.mp3",
         cover: "Sol-Assets/Sol-Music/Drenfall.png"
       },
+      {
+        name: "Reino de Drenfall",
+        src: "Sol-Assets/Sol-Music/Reino de Drenfall.mp3",
+        cover: "Sol-Assets/Sol-Music/Reino de Drenfall.png"
+      },
+      {
+        name: "Cárcere Privado",
+        src: "Sol-Assets/Sol-Music/Cárcere Privado.mp3",
+        cover: "Sol-Assets/Sol-Music/Cárcere Privado.png"
+      },
+      {
+        name: "A Doença",
+        src: "Sol-Assets/Sol-Music/A Doença.mp3",
+        cover: "Sol-Assets/Sol-Music/A Doença.png"
+      },
+    ]
+  },
+    {
+    chapter: "Capítulo 4: Fantasmas",
+    tracks: [
+      {
+        name: "Pantano Inospito",
+        src: "Sol-Assets/Sol-Music/Pântano Inóspito.mp3",
+        cover: "Sol-Assets/Sol-Music/Pantano Inospito.png"
+      },
+      {
+        name: "Cais dos Perdidos",
+        src: "Sol-Assets/Sol-Music/Cais dos Perdidos.mp3",
+        cover: "Sol-Assets/Sol-Music/Cais dos Perdidos.png"
+      },
+      {
+        name: "Catedral Afundada",
+        src: "Sol-Assets/Sol-Music/Catedral Afundada.mp3",
+        cover: "Sol-Assets/Sol-Music/Catedral Afundada.png"
+      },
+      {
+        name: "Terras Veladas",
+        src: "Sol-Assets/Sol-Music/Terras Veladas.mp3",
+        cover: "Sol-Assets/Sol-Music/Terras Veladas.png"
+      },
     ]
   },
   {
