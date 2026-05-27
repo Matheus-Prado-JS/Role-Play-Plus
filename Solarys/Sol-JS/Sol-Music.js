@@ -135,6 +135,11 @@ const playlist = [
         cover: "Sol-Assets/Sol-Music/Drenfall.png"
       },
       {
+        name: "Os Vigias",
+        src: "Sol-Assets/Sol-Music/Os Vigias.m4a",
+        cover: "Sol-Assets/Sol-Music/Reino de Drenfall.png"
+      },
+      {
         name: "Reino de Drenfall",
         src: "Sol-Assets/Sol-Music/Reino de Drenfall.mp3",
         cover: "Sol-Assets/Sol-Music/Reino de Drenfall.png"
@@ -143,6 +148,11 @@ const playlist = [
         name: "Cárcere Privado",
         src: "Sol-Assets/Sol-Music/Cárcere Privado.mp3",
         cover: "Sol-Assets/Sol-Music/Cárcere Privado.png"
+      },
+      {
+        name: "Nivor, o Flagelo do Inverno",
+        src: "Sol-Assets/Sol-Music/Nivor.m4a",
+        cover: "Sol-Assets/Sol-Music/Reino de Drenfall.png"
       },
       {
         name: "A Doença",
@@ -170,9 +180,94 @@ const playlist = [
         cover: "Sol-Assets/Sol-Music/Catedral Afundada.png"
       },
       {
+        name: "Filhas da Cinza Tecelã",
+        src: "Sol-Assets/Sol-Music/Filhas da Cinza Tecelã.m4a",
+        cover: "Sol-Assets/Sol-Music/Reino de Drenfall.png"
+      },
+      {
         name: "Terras Veladas",
         src: "Sol-Assets/Sol-Music/Terras Veladas.mp3",
         cover: "Sol-Assets/Sol-Music/Terras Veladas.png"
+      },
+    ]
+  },
+      {
+    chapter: "Capítulo 5: Carnificina",
+    tracks: [
+      {
+        name: "Carnificina",
+        src: "Sol-Assets/Sol-Music/Carnificina.mp3",
+        cover: "Sol-Assets/Sol-Music/Carnificina.png"
+      },
+      {
+        name: "Bayle, Dragão Carmesim With Dialogue",
+        src: "Sol-Assets/Sol-Music/Bayle With Dialogue.mp3",
+        cover: "Sol-Assets/Sol-Music/Reino de Drenfall.png"
+      },
+      {
+        name: "Bayle, Dragão Carmesim",
+        src: "Sol-Assets/Sol-Music/Bayle.m4a",
+        cover: "Sol-Assets/Sol-Music/Reino de Drenfall.png"
+      },
+      {
+        name: "Elariel, Imaculada da Aurora",
+        src: "Sol-Assets/Sol-Music/Elariel Fase 1.m4a",
+        cover: "Sol-Assets/Sol-Music/Reino de Drenfall.png"
+      },
+      {
+        name: "Elariel Transição de Fase",
+        src: "Sol-Assets/Sol-Music/Elariel Transição.m4a",
+        cover: "Sol-Assets/Sol-Music/Reino de Drenfall.png"
+      },
+      {
+        name: "Elariel, Imaculada da Aurora Fase 2",
+        src: "Sol-Assets/Sol-Music/Elariel Fase 2.m4a",
+        cover: "Sol-Assets/Sol-Music/Reino de Drenfall.png"
+      },
+    ]
+  },
+      {
+    chapter: "Capítulo 6",
+    tracks: [
+      {
+        name: "Velha Guarda",
+        src: "Sol-Assets/Sol-Music/Velha Guarda.m4a",
+        cover: "Sol-Assets/Sol-Music/Velha Guarda.png"
+      },
+      {
+        name: "Antiga Elaris",
+        src: "Sol-Assets/Sol-Music/Antiga Elaris.m4a",
+        cover: "Sol-Assets/Sol-Music/Antiga Elaris.png"
+      },
+      {
+        name: "Kaelthar, O Vigia Dourado",
+        src: "Sol-Assets/Sol-Music/Kaelthar.m4a",
+        cover: "Sol-Assets/Sol-Music/Kaelthar.png"
+      },
+    ]
+  },
+      {
+    chapter: "Capítulo 7",
+    tracks: [
+      {
+        name: "Império de Ferro",
+        src: "Sol-Assets/Sol-Music/Império de Ferro.m4a",
+        cover: "Sol-Assets/Sol-Music/Império de Ferro.png"
+      },
+      {
+        name: "Lorde da Escória",
+        src: "Sol-Assets/Sol-Music/Lorde da Escória.mp3",
+        cover: "Sol-Assets/Sol-Music/Lorde da Escória.png"
+      },
+      {
+        name: "General Varok",
+        src: "Sol-Assets/Sol-Music/General Varok Fase 1.m4a",
+        cover: "Sol-Assets/Sol-Music/Reino de Drenfall.png"
+      },
+      {
+        name: "General Varok Fase 2",
+        src: "Sol-Assets/Sol-Music/General Varok Fase 2.m4a",
+        cover: "Sol-Assets/Sol-Music/Reino de Drenfall.png"
       },
     ]
   },
