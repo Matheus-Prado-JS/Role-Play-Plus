@@ -3,20 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <title>RolePlay+</title>
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
-
 </head>
-<body class="home">
-<canvas id="particles-bg"></canvas>
-  <div class="home-container">
-    <img src="assets/logo-RolePlayPlus.png" alt="RolePlay+" class="logo">
 
-    <button class="enter-room" onclick="window.location.href='Helix/room2.html'">
-      Sala Helix
-    </button>
-    <button class="enter-room" onclick="window.location.href='Solarys/room3.html'">
-      Sala Solarys Oficial
-    </button>
+<body class="home">
+
+  <canvas id="particles-bg"></canvas>
+
+  <!-- LOGO DESTACADA -->
+  <div class="top-logo">
+    <img src="assets/logo-RolePlayPlus.png" alt="RolePlay+" class="logo">
+  </div>
+
+  <!-- PAINÉIS -->
+  <div class="panels-container">
+
+    <!-- HISTÓRIAS -->
+    <div class="home-container side-panel">
+      <h2 class="panel-title">Histórias</h2>
+
+      <button class="enter-room">
+        Solarys
+      </button>
+
+      <button class="enter-room">
+        Gotham The Long Night
+      </button>
+
+      <button class="enter-room">
+        NECROSIS
+      </button>
+    </div>
+
+    <!-- SALAS -->
+    <div class="home-container center-panel">
+      <h2 class="panel-title">SALAS</h2>
+
+      <button class="enter-room"
+        onclick="window.location.href='Solarys/room3.html'">
+        Sala Solarys Oficial
+      </button>
+
+      <button class="enter-room"
+        onclick="window.location.href='The Long Night/long-night.html'">
+        Gotham The Long Night
+      </button>
+
+      <button class="enter-room"
+        onclick="window.location.href='Helix/room2.html'">
+        NECROSIS
+      </button>
+    </div>
+
+    <!-- PLAYLISTS -->
+    <div class="home-container side-panel">
+      <h2 class="panel-title">Playlists</h2>
+
+      <button class="enter-room">
+        Solarys
+      </button>
+
+      <button class="enter-room">
+        Gotham The Long Night
+      </button>
+
+      <button class="enter-room">
+        NECROSIS
+      </button>
+    </div>
+
   </div>
 
   <script src="script.js"></script>

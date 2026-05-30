@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Gotham: The Long Night</title>
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="night-styles/long-night.css">
+  <link rel="stylesheet" href="night-styles/night-ficha.css">
+</head>
+
+<body>
+
+  <!-- partículas -->
+  <canvas id="particles"></canvas>
+
+  <!-- vinheta -->
+  <div class="screen-vignette"></div>
+
+<!-- botão inicial -->
+<div class="intro-container">
+
+  <button class="start-button">
+    Começar
+  </button>
+
+</div>
+
+<!-- MENU LOGIN -->
+<div class="floating-menu hidden" id="loginMenu">
+
+  <h2>Faça o seu Login</h2>
+
+  <input type="text" placeholder="Username">
+
+  <!-- moderador -->
+  <label class="moderator-check">
+
+    <input type="checkbox" id="moderatorToggle">
+
+    Moderador
+
+  </label>
+
+  <!-- senha -->
+  <input
+    type="password"
+    placeholder="Senha de Moderador"
+    id="moderatorPassword"
+    class="hidden"
+  >
+
+  <button class="menu-button">
+    Entrar
+  </button>
+
+  <div class="divider"></div>
+
+  <button class="create-character-button" id="openTutorial">
+
+    Crie seu personagem
+
+  </button>
+
+</div>
+
+<!-- TUTORIAL -->
+<div class="tutorial-screen hidden" id="tutorialScreen">
+
+  <!-- SLIDE 1 -->
+  <div class="tutorial-card tutorial-slide active-slide">
+
+    <!-- imagem -->
+    <div class="tutorial-image">
+
+      <img src="night-assets/Tutorial-Art.jpg" alt="Gotham">
+
+      <div class="image-fade"></div>
+
+    </div>
+
+    <!-- texto -->
+    <div class="tutorial-content">
+
+      <h1>Gotham: The Long Night</h1>
+
+      <p>
+        Gotham City está afundando.
+        As ruas estão tomadas pela violência, corrupção e paranoia.
+
+        As grandes famílias mafiosas controlam bairros inteiros,
+        gangues dominam territórios abandonados, policiais vendem informações,
+        mercenários trabalham para quem pagar mais e cada esquina da cidade
+        parece esconder um segredo diferente.
+
+        Em meio a esse caos nasce Gotham: The Long Night,
+        um RPG focado em máfia, conspiração criminal,
+        suspense urbano e guerra entre facções dentro de Gotham City.
+
+        A campanha se passa durante uma única e interminável noite em Gotham.
+      </p>
+
+      <!-- seta -->
+      <button class="tutorial-next">
+        →
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="tutorial-card tutorial-slide">
+
+    <!-- imagem -->
+    <div class="tutorial-image">
+
+      <img src="night-assets/Tutorial-Art-2.jpg" alt="Sistema">
+
+      <div class="image-fade"></div>
+
+    </div>
+
+    <!-- texto -->
+    <div class="tutorial-content">
+
+      <h1>Sistemas</h1>
+
+      <p>
+        O sistema de Gotham: The Long Night foi criado para ser rápido, brutal e cinematográfico.
+        Os personagens utilizam:<br>
+        •	Atributos, que definem sua quantidade de dados<br>
+        •	Treinamentos, que representam sua experiência e habilidade<br>
+        O combate é letal. Tiros importam. Ferimentos importam.<br>
+        Informação vale tanto quanto uma arma carregada.<br>
+        O sistema também possui:<br>
+        •	Estabilidade e Ferimentos<br>
+        •	Recursos como Dinheiro, Influência e Estrelismo<br>
+        •	Sistemas de Facção<br>
+        •	Vantagens sociais<br>
+        •	Gerenciamento de contatos, reputação e sobrevivência<br>
+        O objetivo é fazer com que Gotham pareça viva, perigosa e imprevisível.
+
+      </p>
+
+      <!-- seta -->
+      <button class="tutorial-next">
+        →
+      </button>
+
+    </div>
+
+  </div>
+
+    <!-- SLIDE 3 -->
+  <div class="tutorial-card tutorial-slide">
+
+    <!-- imagem -->
+    <div class="tutorial-image">
+
+      <img src="night-assets/Tutorial-Art-3.png" alt="Gotham">
+
+      <div class="image-fade"></div>
+
+    </div>
+
+    <!-- texto -->
+    <div class="tutorial-content">
+
+      <h1>Arquétipos</h1>
+
+      <p>
+        Antes de criar seu personagem, você escolhe um Arquétipo. <br>
+        Arquétipos funcionam como bases prontas para acelerar sua criação e definir o tipo de personagem que você deseja interpretar dentro de Gotham.<br>
+        Eles oferecem:<br>
+        •	sugestões de atributos<br>
+        •	treinamentos recomendados<br>
+        •	estilo de jogo<br>
+        •	vantagens narrativas<br>
+        Mas eles NÃO limitam sua criatividade.<br>
+        Você pode modificar partes do Arquétipo escolhido, adaptar habilidades, alterar treinamentos e personalizar seu personagem para que ele tenha sua própria identidade dentro da cidade.<br>
+        Em Gotham, ninguém é completamente inocente.
+
+      </p>
+
+      <!-- seta -->
+      <button class="tutorial-next">
+        →
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="tutorial-card tutorial-slide">
+
+    <!-- imagem -->
+    <div class="tutorial-image">
+
+      <img src="night-assets/Tutorial-Art-4.jpg" alt="Sistema">
+
+      <div class="image-fade"></div>
+
+    </div>
+
+    <!-- texto -->
+    <div class="tutorial-content">
+
+      <h1>Facções</h1>
+
+      <p>
+        A cidade é dividida entre grandes organizações criminosas, grupos armados e instituições corruptas.<br>
+        Cada facção possui:<br>
+        •	benefícios exclusivos<br>
+        •	vantagens sociais<br>
+        •	recursos especiais<br>
+        Escolher uma facção é escolher um lado nessa guerra urbana, mas também é escolher um estilo de jogo e uma rede de contatos dentro da cidade. <br>
+        As facções de Gotham: The Long Night são inspiradas em organizações dos quadrinhos, filmes e séries de Gotham, mas também possuem elementos originais para criar uma experiência única dentro do universo da cidade. <br>
+
+
+      </p>
+
+      <!-- seta -->
+      <button class="tutorial-next">
+        →
+      </button>
+
+    </div>
+
+  </div>
+
+      <!-- SLIDE 5 -->
+  <div class="tutorial-card tutorial-slide">
+
+    <!-- imagem -->
+    <div class="tutorial-image">
+
+      <img src="night-assets/Tutorial-Art-5.jpeg" alt="Gotham">
+
+      <div class="image-fade"></div>
+
+    </div>
+
+    <!-- texto -->
+    <div class="tutorial-content">
+
+      <h1>Facções</h1>
+
+      <p>
+        As principais facções incluem: <br>
+        Gangue do Máscara Negra<br>
+        Especialistas em intimidação, mercado negro e domínio territorial. <br>
+        Família Falcone<br>
+        Influentes, políticos e extremamente organizados. <br>
+        Mercenários<br>
+        Altamente eficientes em combate, sobrevivência e operações táticas, mas raramente possuem aliados verdadeiros. <br>
+        DPGC<br>
+        A polícia de Gotham. Uma instituição quebrada entre investigadores honestos, corrupção interna e pressão constante das facções criminosas. <br>
+
+
+      </p>
+
+      <!-- seta -->
+      <button class="tutorial-finish">
+        Continuar
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =====================================
+     CRIAÇÃO DE PERSONAGEM
+===================================== -->
+
+<div class="character-creator hidden" id="characterCreator">
+
+  <!-- SLIDE 1 -->
+  <div class="creator-slide active-creator-slide">
+
+    <div class="creator-header">
+
+      <h1>Escolha seu Arquétipo</h1>
+
+      <p>
+        Seu arquétipo define suas vantagens,
+        especializações e forma de atuação em Gotham.
+      </p>
+
+    </div>
+
+<!-- opções -->
+<div class="archetype-grid">
+
+  <!-- CRIMINOSO -->
+  <div class="archetype-card" data-archetype="Criminoso">
+
+    <div class="archetype-left">
+
+      <img src="night-assets/logo-criminal.png">
+
+    </div>
+
+    <div class="archetype-right">
+
+      <h2>Criminoso</h2>
+
+      <p>
+        Especialistas em crime urbano,
+        invasões e sobrevivência nas ruas.
+      </p>
+
+      <span class="info-button">
+        Informações
+      </span>
+
+    </div>
+
+  </div>
+
+  <!-- DETETIVE -->
+  <div class="archetype-card" data-archetype="Detetive">
+
+    <div class="archetype-left">
+
+      <img src="night-assets/logo-detective.png">
+
+    </div>
+
+    <div class="archetype-right">
+
+      <h2>Detetive</h2>
+
+      <p>
+        Investigadores focados em análise,
+        percepção e conspirações.
+      </p>
+
+      <span class="info-button">
+        Informações
+      </span>
+
+    </div>
+
+  </div>
+
+  <!-- MERCENÁRIO -->
+  <div class="archetype-card" data-archetype="Mercenário">
+
+    <div class="archetype-left">
+
+      <img src="night-assets/logo-mercenary.png">
+
+    </div>
+
+    <div class="archetype-right">
+
+      <h2>Mercenário</h2>
+
+      <p>
+        Combatentes preparados para guerras,
+        escoltas e operações táticas.
+      </p>
+
+      <span class="info-button">
+        Informações
+      </span>
+
+    </div>
+
+  </div>
+
+  <!-- MANIPULADOR -->
+  <div class="archetype-card" data-archetype="Manipulador">
+
+    <div class="archetype-left">
+
+      <img src="night-assets/logo-manipulator.png">
+
+    </div>
+
+    <div class="archetype-right">
+
+      <h2>Manipulador</h2>
+
+      <p>
+        Mestres da política,
+        influência e chantagem social.
+      </p>
+
+      <span class="info-button">
+        Informações
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
+
+    <!-- continuar -->
+    <button
+      class="creator-next disabled-button"
+      id="creatorNext"
+    >
+      Continuar →
+    </button>
+
+  </div>
+
+</div>
+
+<!-- =====================================
+     MODAL INFO
+===================================== -->
+
+<div class="archetype-modal hidden" id="archetypeModal">
+
+  <div class="archetype-modal-content">
+
+    <button class="close-modal" id="closeModal">
+      ✕
+    </button>
+
+    <div id="modalContent"></div>
+
+  </div>
+
+</div>
+
+<!-- =====================================
+     FICHA SCREEN
+===================================== -->
+
+<div class="ficha-screen hidden" id="fichaScreen">
+
+  <div class="ficha-container">
+
+    <div class="ficha-header">
+      <h1 id="fichaTitle"></h1>
+      <h2 id="fichaSubtitle"></h2>
+    </div>
+
+    <div class="ficha-content" id="fichaContent"></div>
+
+  </div>
+
+</div>
+
+  <script src="night-scripts/long-night.js" defer></script>
+  <script src="night-scripts/character.js" defer></script>
+
+</body>
+</html>

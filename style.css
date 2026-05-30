@@ -145,3 +145,106 @@ body.home::before {
 
   z-index: -2;
 }
+/* =========================
+   🔥 LOGO TOPO
+========================= */
+
+.top-logo {
+  position: absolute;
+  top: 25px;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  z-index: 10;
+}
+
+.top-logo .logo {
+  width: 320px;
+}
+
+/* =========================
+   🧩 PAINÉIS
+========================= */
+
+.panels-container {
+  display: flex;
+
+  gap: 55px;
+
+  align-items: stretch;
+  justify-content: center;
+
+  margin-top: 70px;
+}
+
+/* TODOS OS PAINÉIS */
+.side-panel,
+.center-panel {
+  width: 290px;
+  min-height: 380px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   🏷️ TITULOS
+========================= */
+
+.panel-title {
+  margin-bottom: 25px;
+
+  font-family: "Cinzel", serif;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+
+  color: #e6c36a;
+
+  text-shadow:
+    0 0 10px rgba(230,195,106,0.4);
+
+  border-bottom: 1px solid rgba(230,195,106,0.2);
+
+  padding-bottom: 10px;
+}
+
+/* =========================
+   🎮 BOTÕES DENTRO DOS QUADROS
+========================= */
+
+.side-panel .enter-room,
+.center-panel .enter-room {
+  margin-top: 10px;
+}
+
+/* =========================
+   📱 RESPONSIVO
+========================= */
+
+@media (max-width: 950px) {
+
+  .panels-container {
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 140px;
+
+    gap: 25px;
+  }
+
+  .side-panel,
+  .center-panel {
+    width: 90%;
+    max-width: 350px;
+
+    min-height: auto;
+  }
+
+  body.home {
+    height: auto;
+    padding-bottom: 60px;
+  }
+}
