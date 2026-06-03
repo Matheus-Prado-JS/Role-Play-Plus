@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <!-- Configurações Básicas -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Necrosis - Criação</title>
+
+    <link rel="stylesheet"
+          href="../necrosis-styles/necrosis-creation.css">
+
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- Fundo Animado             -->
+    <!-- ========================= -->
+
+    <div class="backgroundGlow"></div>
+
+
+    <!-- ========================= -->
+    <!-- Cabeçalho / Login         -->
+    <!-- ========================= -->
+
+    <div class="creation-container">
+
+        <!-- Logo -->
+
+        <img
+            src="../necrosis-assets/logo.png"
+            alt="Necrosis"
+            class="logo"
+        >
+
+        <!-- Título -->
+
+        <h1>CRIAÇÃO DE SOBREVIVENTE</h1>
+
+        <!-- Login -->
+
+        <div class="login-section">
+
+            <h2>Já tem um personagem?</h2>
+
+            <input
+                type="text"
+                placeholder="Nome do Personagem"
+            >
+
+            <input
+                type="password"
+                placeholder="Senha Gerada"
+            >
+
+            <button class="confirmButton">
+
+                Confirmar
+
+            </button>
+
+            <p class="createCharacter">
+
+                Não tem um personagem?
+
+                <span id="createCharacterBtn">
+
+                    Crie o seu personagem!
+
+                </span>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- Painel de Criação         -->
+    <!-- ========================= -->
+
+    <div id="characterCreationPanel">
+
+        <div class="characterCreator">
+
+
+            <!-- ========================= -->
+            <!-- Prévia do Personagem      -->
+            <!-- ========================= -->
+
+            <div class="characterPreview">
+
+                <img
+                    id="characterImage"
+                    src="../necrosis-assets/Becky-Art.png"
+                    alt="Personagem"
+                >
+
+            </div>
+
+
+            <!-- Divisor Visual -->
+
+            <div class="creatorDivider"></div>
+
+
+            <!-- ========================= -->
+            <!-- Ficha do Personagem       -->
+            <!-- ========================= -->
+
+            <div class="characterSheet">
+
+
+                <!-- ========================= -->
+                <!-- Etapa 1 - Ficha Base      -->
+                <!-- ========================= -->
+
+                <div
+                    class="sheetStep active"
+                    id="baseStep"
+                >
+
+                    <h2>Ficha Base</h2>
+
+                    <label>Nome</label>
+
+                    <input
+                        type="text"
+                        placeholder="Digite o nome"
+                    >
+
+                    <label>Idade</label>
+
+                    <input
+                        type="number"
+                        placeholder="18"
+                    >
+
+                    <label>Arquétipo</label>
+
+                    <select id="archetypeSelect">
+
+                        <option>Médico de Campo</option>
+                        <option>Oficial</option>
+                        <option>Detetive</option>
+                        <option>Investigador</option>
+                        <option>Nenhum</option>
+
+                    </select>
+
+                    <label>Personagem</label>
+
+                    <select id="characterSelect">
+
+                        <option value="Becky">
+                            Becky
+                        </option>
+
+                        <option value="Evelyn">
+                            Evelyn
+                        </option>
+
+                        <option value="Victor">
+                            Victor
+                        </option>
+
+                        <option value="Christopher">
+                            Christopher
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ========================= -->
+                <!-- Etapa 2 - Atributos       -->
+                <!-- ========================= -->
+
+                <div
+                    class="sheetStep"
+                    id="attributeStep"
+                >
+
+                    <h2>Atributos</h2>
+
+                    <p class="attributeInfo">
+
+                        Distribua 6 pontos.
+                        Limite inicial: 3.
+
+                    </p>
+
+
+                    <!-- FOR -->
+
+                    <div class="attributeRow">
+
+                        <span>FOR</span>
+
+                        <button class="minus">
+                            −
+                        </button>
+
+                        <span
+                            id="FOR"
+                            class="attributeValue"
+                        >
+                            0
+                        </span>
+
+                        <button class="plus">
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <!-- AGI -->
+
+                    <div class="attributeRow">
+
+                        <span>AGI</span>
+
+                        <button class="minus">
+                            −
+                        </button>
+
+                        <span
+                            id="AGI"
+                            class="attributeValue"
+                        >
+                            0
+                        </span>
+
+                        <button class="plus">
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <!-- VIG -->
+
+                    <div class="attributeRow">
+
+                        <span>VIG</span>
+
+                        <button class="minus">
+                            −
+                        </button>
+
+                        <span
+                            id="VIG"
+                            class="attributeValue"
+                        >
+                            0
+                        </span>
+
+                        <button class="plus">
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <!-- PER -->
+
+                    <div class="attributeRow">
+
+                        <span>PER</span>
+
+                        <button class="minus">
+                            −
+                        </button>
+
+                        <span
+                            id="PER"
+                            class="attributeValue"
+                        >
+                            0
+                        </span>
+
+                        <button class="plus">
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <!-- INT -->
+
+                    <div class="attributeRow">
+
+                        <span>INT</span>
+
+                        <button class="minus">
+                            −
+                        </button>
+
+                        <span
+                            id="INT"
+                            class="attributeValue"
+                        >
+                            0
+                        </span>
+
+                        <button class="plus">
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <!-- PRE -->
+
+                    <div class="attributeRow">
+
+                        <span>PRE</span>
+
+                        <button class="minus">
+                            −
+                        </button>
+
+                        <span
+                            id="PRE"
+                            class="attributeValue"
+                        >
+                            0
+                        </span>
+
+                        <button class="plus">
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <!-- Pontos Restantes -->
+
+                    <div class="remainingPoints">
+
+                        Pontos Restantes:
+
+                        <span id="remainingPoints">
+
+                            6
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================= -->
+<!-- Etapa 3 - Treinamentos    -->
+<!-- ========================= -->
+
+<div
+    class="sheetStep"
+    id="trainingStep"
+>
+
+    <h2>Treinamentos</h2>
+
+    <p class="attributeInfo">
+
+        Escolha seus treinamentos iniciais.
+
+    </p>
+
+    <!-- Armas Curtas -->
+
+    <div class="trainingRow">
+
+        <span>Armas Curtas</span>
+
+        <button
+            class="trainingButton"
+            data-training="Armas Curtas"
+        >
+
+            Selecionar
+
+        </button>
+
+    </div>
+
+    <!-- Armas Longas -->
+
+    <div class="trainingRow">
+
+        <span>Armas Longas</span>
+
+        <button
+            class="trainingButton"
+            data-training="Armas Longas"
+        >
+
+            Selecionar
+
+        </button>
+
+    </div>
+
+    <!-- Medicina -->
+
+    <div class="trainingRow">
+
+        <span>Medicina</span>
+
+        <button
+            class="trainingButton"
+            data-training="Medicina"
+        >
+
+            Selecionar
+
+        </button>
+
+    </div>
+
+    <!-- Investigação -->
+
+    <div class="trainingRow">
+
+        <span>Investigação</span>
+
+        <button
+            class="trainingButton"
+            data-training="Investigação"
+        >
+
+            Selecionar
+
+        </button>
+
+    </div>
+
+    <!-- Tecnologia -->
+
+    <div class="trainingRow">
+
+        <span>Tecnologia</span>
+
+        <button
+            class="trainingButton"
+            data-training="Tecnologia"
+        >
+
+            Selecionar
+
+        </button>
+
+    </div>
+
+    <!-- Sobrevivência -->
+
+    <div class="trainingRow">
+
+        <span>Sobrevivência</span>
+
+        <button
+            class="trainingButton"
+            data-training="Sobrevivência"
+        >
+
+            Selecionar
+
+        </button>
+
+    </div>
+
+    <div class="remainingPoints">
+
+        Treinamentos Selecionados:
+
+        <span id="trainingCount">
+
+            0
+
+        </span>
+
+        / 3
+
+    </div>
+
+</div>
+
+
+                <!-- ========================= -->
+                <!-- Navegação das Etapas      -->
+                <!-- ========================= -->
+
+                <div class="navigationButtons">
+
+                    <button
+                        id="previousStep"
+                        class="navButton disabled"
+                        disabled
+                    >
+
+                        Anterior
+
+                    </button>
+
+                    <button
+                        id="nextStep"
+                        class="navButton"
+                    >
+
+                        Próximo
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- Scripts                   -->
+    <!-- ========================= -->
+
+    <script src="../necrosis-scripts/necrosis-creation.js"></script>
+
+</body>
+
+</html>

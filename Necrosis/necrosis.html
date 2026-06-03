@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Necrosis</title>
+
+    <link rel="stylesheet" href="necrosis-styles/necrosis.css">
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <canvas id="particles"></canvas>
+
+    <div class="content">
+        <button id="startButton">
+            Começar
+        </button>
+    </div>
+<div id="loadingScreen">
+
+    <div class="loadingContent">
+
+        <img
+            src="necrosis-assets/logo.png"
+            alt="Necrosis"
+            class="loadingLogo"
+        >
+
+        <div class="loadingBar">
+
+            <div class="loadingProgress"></div>
+
+        </div>
+
+        <p>Inicializando experiência...</p>
+
+    </div>
+
+</div>
+
+<audio id="themeMusic" loop>
+    <source src="necrosis-music/theme.m4a" type="audio/mp4">
+</audio>
+
+<audio id="startSound">
+    <source src="necrosis-music/Start.m4a" type="audio/mp4">
+</audio>
+
+<script src="necrosis-scripts/necrosis.js"></script>
+
+</body>
+</html>
