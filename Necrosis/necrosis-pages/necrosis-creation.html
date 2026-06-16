@@ -131,14 +131,16 @@
 
                     <label>Nome</label>
 
-                    <input
-                        type="text"
-                        placeholder="Digite o nome"
-                    >
+                <input
+                    id="characterName"
+                    type="text"
+                    placeholder="Digite o nome"
+                >
 
                     <label>Idade</label>
 
                     <input
+                        id="characterAge"
                         type="number"
                         placeholder="18"
                     >
@@ -359,7 +361,7 @@
 
                 </div>
 
-                <!-- ========================= -->
+<!-- ========================= -->
 <!-- Etapa 3 - Treinamentos    -->
 <!-- ========================= -->
 
@@ -494,6 +496,145 @@
 
 </div>
 
+<!-- ========================= -->
+<!-- Etapa 4 - Inventário      -->
+<!-- ========================= -->
+
+<div
+    class="sheetStep"
+    id="inventoryStep"
+>
+
+    <h2>Inventário</h2>
+
+    <p class="attributeInfo">
+
+        Escolha seus equipamentos.
+
+    </p>
+
+    <div class="inventoryContainer">
+
+    <div
+        id="inventoryGrid"
+        class="inventoryGrid">
+    </div>
+
+    <select
+        id="itemSelector"
+        size="10">
+
+        <option value="">
+            Selecione um Item
+        </option>
+
+    </select>
+
+</div>
+
+
+    <button id="inventoryInfoBtn">
+
+    Informações
+
+    </button>
+    <div
+    id="inventoryInfoPanel"
+    class="inventoryInfoPanel"
+>
+
+    <div class="inventoryInfoWindow">
+
+        <button id="closeInventoryInfo">
+
+            ✕
+
+        </button>
+
+        <div class="itemDisplay">
+
+            <img
+                id="infoItemImage"
+            >
+
+            <div
+                id="infoItemData"
+            ></div>
+
+        </div>
+
+        <div
+            id="inventoryItemList"
+        ></div>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- RESUMO FINAL              -->
+<!-- ========================= -->
+
+<div
+    class="sheetStep"
+    id="summaryStep"
+>
+
+    <h2>
+
+        Ficha Final
+
+    </h2>
+
+    <div class="summaryContainer">
+
+        <div class="summaryCharacter">
+
+            <img
+                id="summaryCharacterImage"
+            >
+
+        </div>
+
+        <div
+            id="summaryData"
+            class="summaryData"
+        ></div>
+
+    </div>
+
+    <div class="summaryButtons">
+
+        <button
+            id="printCharacterBtn"
+        >
+
+            Print
+
+        </button>
+
+        <button
+            id="returnCharacterBtn"
+        >
+
+            Retornar
+
+        </button>
+
+        <button
+            id="saveCharacterBtn"
+        >
+
+            Salvar Alterações
+
+        </button>
+
+    </div>
+
+</div>
+
 
                 <!-- ========================= -->
                 <!-- Navegação das Etapas      -->
@@ -520,6 +661,16 @@
 
                     </button>
 
+                    <button
+                        id="confirmCharacterBtn"
+                        class="navButton"
+                        style="display:none;"
+                    >
+
+                        Confirmar
+
+                    </button>
+
                 </div>
 
             </div>
@@ -533,6 +684,7 @@
     <!-- Scripts                   -->
     <!-- ========================= -->
 
+    <script src="../necrosis-scripts/necrosis-archetype.js"></script>
     <script src="../necrosis-scripts/necrosis-creation.js"></script>
 
 </body>
