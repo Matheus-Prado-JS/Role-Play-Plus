@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Necrosis - Tutorial</title>
+
+    <link rel="stylesheet"
+          href="../necrosis-styles/necrosis-tutorial.css">
+
+</head>
+<body>
+
+    <div class="backgroundNoise"></div>
+    <div class="screenVignette"></div>
+
+    <section
+        id="warningScreen"
+        class="screen active"
+    >
+
+        <h1>AVISO</h1>
+
+        <p>
+            NECROSIS é uma experiência de RPG survival horror
+            inspirada na tensão, no gerenciamento de recursos
+            e no terror biológico de clássicos como Resident Evil.
+        </p>
+
+        <p>
+            Aqui, sobreviver não significa vencer todas as lutas.
+            Significa escolher quando lutar, quando fugir,
+            quando cooperar e quando aceitar que cada bala,
+            cada cura e cada decisão pode ser a última.
+        </p>
+
+        <button id="startTutorialBtn">
+            Continuar
+        </button>
+
+    </section>
+
+    <section
+        id="tutorialScreen"
+        class="screen"
+    >
+
+        <h1>TUTORIAL</h1>
+
+        <div class="ornament"></div>
+
+        <h2>
+            Para sobreviver, você precisa entender as regras.
+        </h2>
+
+        <p class="subtitle">
+            Clique em revelar para saber mais sobre cada tópico.
+        </p>
+
+        <div class="tutorialCards">
+
+            <div class="tutorialCard">
+
+                <div class="cardImage exploration"></div>
+
+            <div class="cardIcon">
+                <img src="../necrosis-assets/exploration-icon.png">
+            </div>
+
+                <h3>Exploração</h3>
+
+                <p class="cardText">
+                    A sobrevivência depende daquilo que você encontra.
+                    Munição, medicamentos e ferramentas são escassos.
+                </p>
+
+                <button class="revealBtn">
+                    Revelar
+                </button>
+
+            </div>
+
+            <div class="tutorialCard">
+
+                <div class="cardImage combat"></div>
+
+            <div class="cardIcon">
+                <img src="../necrosis-assets/combat-icon.png">
+            </div>
+
+                <h3>Combate</h3>
+
+                <p class="cardText">
+                    Nem toda luta deve ser vencida. Fugir é uma opção
+                    tão importante quanto atacar.
+                </p>
+
+                <button class="revealBtn">
+                    Revelar
+                </button>
+
+            </div>
+
+            <div class="tutorialCard">
+
+                <div class="cardImage infection"></div>
+
+                <div class="cardIcon">
+                    <img src="../necrosis-assets/infection-icon.png">
+                </div>
+
+                <h3>Infecção</h3>
+
+                <p class="cardText">
+                    Algumas criaturas podem transmitir agentes biológicos.
+                    Quanto maior a infecção, menores suas chances.
+                </p>
+
+                <button class="revealBtn">
+                    Revelar
+                </button>
+
+            </div>
+
+            <div class="tutorialCard">
+
+                <div class="cardImage cooperation"></div>
+
+            <div class="cardIcon">
+                <img src="../necrosis-assets/cooperation-icon.png">
+            </div>
+
+                <h3>Cooperação</h3>
+
+                <p class="cardText">
+                    Nenhum sobrevivente escapa sozinho. Cooperar pode ser
+                    a diferença entre a vida e a morte.
+                </p>
+
+                <button class="revealBtn">
+                    Revelar
+                </button>
+
+            </div>
+
+        </div>
+
+        <button id="continueBtn">
+            Continuar
+        </button>
+
+    </section>
+
+    <section
+        id="storyScreen"
+        class="screen"
+    >
+
+        <div class="storyFade"></div>
+
+        <div class="storyCrawl">
+
+            <h1>Outubro de 2003</h1>
+
+            <h2>
+                Lilly Cover
+            </h2>
+
+            <p>
+                A cidade costeira de Lilly Cover sempre sobreviveu
+                de rumores, tempestades e silêncio.
+            </p>
+
+            <p>
+                Durante décadas, a família Grayford manteve influência
+                sobre hospitais, laboratórios, contratos militares e
+                instalações privadas espalhadas pela região.
+            </p>
+
+            <p>
+                Oficialmente, eram benfeitores. Financiadores de pesquisa,
+                segurança pública e desenvolvimento urbano.
+            </p>
+
+            <p>
+                Extraoficialmente, seus nomes começaram a aparecer em
+                relatórios apagados, arquivos corrompidos e investigações
+                que nunca chegaram ao público.
+            </p>
+
+            <p>
+                Em outubro de 2003, algo mudou.
+            </p>
+
+            <p>
+                Equipes desapareceram. Comunicações foram cortadas.
+                Hospitais receberam pacientes com sintomas impossíveis.
+                E os primeiros sobreviventes começaram a falar sobre
+                criaturas nas ruas.
+            </p>
+
+            <p>
+                Agora, aqueles que entram em Lilly Cover não procuram
+                respostas por curiosidade.
+            </p>
+
+            <p>
+                Procuram porque talvez já seja tarde demais para fugir.
+            </p>
+
+        </div>
+
+        <button id="proceedBtn">
+            Prosseguir
+        </button>
+
+    </section>
+
+    <audio id="tutorialMusic" loop>
+        <source src="../necrosis-music/tutorial theme.m4a"
+                type="audio/mp4">
+    </audio>
+
+    <script src="../necrosis-scripts/necrosis-tutorial.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,594 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    width:100vw;
+    min-height:100vh;
+
+    overflow-x:hidden;
+overflow-y:auto;
+
+    font-family:Georgia, 'Times New Roman', serif;
+
+    background:
+        radial-gradient(circle at center, #07171d, #010407 70%);
+
+    color:white;
+}
+
+.backgroundNoise{
+    position:fixed;
+    inset:0;
+
+    background:
+        linear-gradient(
+            rgba(0,180,255,.03),
+            rgba(0,0,0,.35)
+        );
+
+    animation:noisePulse 6s infinite ease-in-out;
+
+    pointer-events:none;
+}
+
+.screenVignette{
+    position:fixed;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 45%,
+            rgba(0,0,0,.75)
+        );
+
+    pointer-events:none;
+}
+
+.screen{
+
+    display:none;
+
+    width:100%;
+
+    min-height:100vh;
+
+    justify-content:flex-start;
+    align-items:center;
+    flex-direction:column;
+
+    padding:22px 28px 40px;
+
+    text-align:center;
+
+    position:relative;
+}
+
+.screen.active{
+
+    display:flex;
+
+    animation:screenFade 1.2s ease forwards;
+}
+#tutorialScreen.active{
+
+    transform:scale(.82);
+    transform-origin:top center;
+
+    width:122%;
+
+    margin-left:-11%;
+
+}
+
+#warningScreen h1,
+#tutorialScreen h1{
+
+    font-size:3.2rem;
+
+    letter-spacing:12px;
+
+    color:#d7e8ee;
+
+    text-shadow:
+        0 0 12px rgba(0,180,255,.4),
+        0 0 35px rgba(0,180,255,.15);
+
+    margin-bottom:18px;
+
+    animation:textReveal 1.6s ease forwards;
+}
+
+#warningScreen p{
+    max-width:850px;
+
+    margin-bottom:20px;
+
+    color:#b9c6c9;
+
+    font-size:1.15rem;
+
+    line-height:1.8;
+
+    letter-spacing:2px;
+
+    animation:textReveal 2s ease forwards;
+}
+
+#warningScreen{
+
+    --warning-y: 90px;
+
+    transform:
+        translateY(var(--warning-y));
+
+}
+
+button{
+    margin-top:35px;
+
+    padding:14px 70px;
+
+    border:
+        1px solid rgba(0,200,255,.55);
+
+    background:
+        rgba(0,140,200,.08);
+
+    color:#7eeaff;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-family:inherit;
+
+    box-shadow:
+        inset 0 0 16px rgba(0,180,255,.08),
+        0 0 18px rgba(0,180,255,.15);
+}
+
+button:hover{
+    background:
+        rgba(0,180,255,.18);
+
+    color:white;
+
+    box-shadow:
+        0 0 25px rgba(0,200,255,.55),
+        inset 0 0 20px rgba(0,200,255,.18);
+}
+
+.ornament{
+
+    width:70%;
+
+    height:1px;
+
+    margin-bottom:22px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,200,255,.7),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(0,200,255,.6);
+}
+
+#tutorialScreen h2{
+    color:#42cce8;
+
+    font-size:1rem;
+
+    letter-spacing:8px;
+
+    text-transform:uppercase;
+
+    margin-bottom:12px;
+}
+
+.subtitle{
+
+    color:#aaa;
+
+    letter-spacing:4px;
+
+    margin-bottom:20px;
+}
+
+.tutorialCards{
+    width:96vw;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:18px;
+}
+.tutorialCard{
+
+    min-height:720px;
+
+    padding:8px;
+
+    border:
+        1px solid rgba(0,200,255,.28);
+
+    background:
+        rgba(255,255,255,.025);
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+    align-items:center;
+
+    opacity:.35;
+
+    filter:grayscale(1) brightness(.55);
+
+    transition:.6s;
+
+    overflow:hidden;
+}
+.tutorialCard.revealed{
+    opacity:1;
+
+    filter:grayscale(0) brightness(1);
+
+    box-shadow:
+        0 0 25px rgba(0,200,255,.16),
+        inset 0 0 25px rgba(0,200,255,.08);
+}
+
+.cardImage{
+
+    width:100%;
+    height:430px;
+
+    background-size:cover;
+    background-position:center;
+
+    opacity:.85;
+
+    margin-bottom:18px;
+}
+
+.exploration{
+    background-image:url("../necrosis-assets/tutorial-exploration.png");
+}
+
+.combat{
+    background-image:url("../necrosis-assets/tutorial-combat.png");
+}
+
+.infection{
+    background-image:url("../necrosis-assets/tutorial-infection.png");
+}
+
+.cooperation{
+    background-image:url("../necrosis-assets/tutorial-cooperation.png");
+}
+
+.cardIcon{
+
+    width:58px;
+    height:58px;
+
+    border:
+        1px solid rgba(0,220,255,.7);
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#7eeaff;
+
+    font-size:1.35rem;
+
+    margin-bottom:10px;
+
+    box-shadow:
+        0 0 16px rgba(0,200,255,.25);
+}
+
+.cardIcon img{
+
+    width:195%;
+    height:195%;
+
+    object-fit:contain;
+
+    filter:
+        drop-shadow(0 0 8px rgba(0,220,255,.7));
+
+    pointer-events:none;
+}
+
+.tutorialCard h3{
+
+    color:#4ad7f0;
+
+    font-size:1.25rem;
+
+    letter-spacing:6px;
+
+    text-transform:uppercase;
+
+    margin-bottom:12px;
+}
+
+.cardText{
+
+    color:#b7c1c5;
+
+    line-height:1.55;
+
+    font-size:.95rem;
+
+    max-width:88%;
+
+    opacity:0;
+
+    transform:translateY(15px);
+
+    transition:.5s;
+}
+.tutorialCard.revealed .cardText{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+.revealBtn{
+
+    margin-top:auto;
+
+    margin-bottom:15px;
+
+    padding:10px 42px;
+}
+
+#continueBtn{
+
+    margin-top:15px;
+
+    font-size:1.25rem;
+}
+@keyframes screenFade{
+    from{
+        opacity:0;
+        filter:brightness(0);
+    }
+
+    to{
+        opacity:1;
+        filter:brightness(1);
+    }
+}
+
+@keyframes textReveal{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+        letter-spacing:25px;
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes noisePulse{
+    0%{
+        opacity:.65;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:.65;
+    }
+}
+
+@media(max-width:1200px){
+
+    .tutorialCards{
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        width:92vw;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .tutorialCards{
+
+        grid-template-columns:
+            1fr;
+    }
+
+    #warningScreen h1,
+    #tutorialScreen h1{
+
+        font-size:2.4rem;
+
+        letter-spacing:7px;
+    }
+
+    #tutorialScreen h2{
+
+        font-size:.85rem;
+
+        letter-spacing:4px;
+    }
+
+}
+
+/* ================================================= */
+/* STORY / TEXTO INICIAL                             */
+/* ================================================= */
+
+#storyScreen{
+
+    overflow:hidden;
+
+    perspective:500px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,120,160,.08),
+            rgba(0,0,0,.9)
+        );
+}
+
+.storyFade{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,.2) 20%,
+            rgba(0,0,0,.2) 75%,
+            rgba(0,0,0,1) 100%
+        );
+
+    z-index:5;
+
+    pointer-events:none;
+}
+
+.storyCrawl{
+
+    width:850px;
+    max-width:90vw;
+
+    position:absolute;
+
+    bottom:-100%;
+
+    color:#d7e8ee;
+
+    text-align:center;
+
+    transform:
+        rotateX(18deg);
+
+    animation:
+        storyCrawl 52s linear forwards;
+
+    text-shadow:
+        0 0 8px rgba(0,180,255,.25);
+}
+
+.storyCrawl h1{
+
+    color:#8ddcff;
+
+    font-size:3rem;
+
+    letter-spacing:10px;
+
+    margin-bottom:20px;
+
+    text-transform:uppercase;
+}
+
+.storyCrawl h2{
+
+    color:white;
+
+    font-size:1.8rem;
+
+    letter-spacing:8px;
+
+    margin-bottom:45px;
+
+    text-transform:uppercase;
+}
+
+.storyCrawl p{
+
+    margin-bottom:28px;
+
+    font-size:1.4rem;
+
+    line-height:1.8;
+
+    letter-spacing:2px;
+}
+
+#proceedBtn{
+
+    position:absolute;
+
+    bottom:7%;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:20;
+
+    animation:
+        showProceed 1.5s ease forwards;
+
+    animation-delay:32s;
+}
+
+@keyframes storyCrawl{
+
+    from{
+
+        bottom:-120%;
+    }
+
+    to{
+
+        bottom:115%;
+    }
+
+}
+
+@keyframes showProceed{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+        pointer-events:auto;
+    }
+
+}
