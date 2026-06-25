@@ -1,0 +1,296 @@
+/* ================================================= */
+/* PAINÉIS DE JOGADOR                                */
+/* ================================================= */
+
+.playerPanel{
+    position:fixed;
+
+    right:15px;
+    top:20px;
+
+    z-index:30;
+
+    width:430px;
+    max-width:90vw;
+
+    padding:28px 30px;
+
+    background:
+        rgba(0,8,14,.55);
+
+    border-left:
+        1px solid rgba(0,170,255,.35);
+
+    backdrop-filter:blur(14px);
+
+    transform:
+        translateX(120%);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+        transform .45s ease,
+        opacity .35s ease;
+}
+
+.playerPanel.open{
+    transform:
+        translateX(0);
+
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+.playerPanel h2{
+    margin-bottom:28px;
+
+    color:#8ddcff;
+
+    letter-spacing:5px;
+
+    font-weight:300;
+
+    text-transform:uppercase;
+
+    text-shadow:
+        0 0 10px rgba(0,170,255,.35);
+}
+
+.playerPanel h2::after{
+    content:"";
+
+    display:block;
+
+    width:100%;
+    height:1px;
+
+    margin-top:14px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,170,255,.55),
+            transparent
+        );
+}
+
+.closePlayerPanel{
+    position:absolute;
+
+    top:18px;
+    right:18px;
+
+    width:32px;
+    height:32px;
+
+    border:none;
+
+    background:none;
+
+    color:#8ddcff;
+
+    cursor:pointer;
+
+    font-size:1.1rem;
+
+    transition:.25s;
+}
+
+.closePlayerPanel:hover{
+    color:white;
+
+    text-shadow:
+        0 0 10px rgba(0,170,255,.8);
+}
+
+
+/* ================================================= */
+/* PERFIL                                            */
+/* ================================================= */
+
+.profileCard{
+    display:flex;
+
+    gap:24px;
+
+    align-items:center;
+
+    padding-bottom:22px;
+
+    border-bottom:
+        1px solid rgba(0,170,255,.18);
+}
+
+.profileIcon{
+    width:120px;
+    height:120px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    flex-shrink:0;
+}
+
+.profileIcon img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    filter:
+        drop-shadow(0 0 12px rgba(0,170,255,.45));
+}
+
+.profileInfo{
+    flex:1;
+}
+
+.profileInfo h3{
+    margin-bottom:8px;
+
+    color:white;
+
+    font-size:1.55rem;
+
+    font-weight:300;
+
+    letter-spacing:2px;
+}
+
+.profileInfo p{
+    margin-bottom:8px;
+
+    color:#9fcadd;
+
+    letter-spacing:1px;
+}
+
+
+/* ================================================= */
+/* STATUS                                            */
+/* ================================================= */
+
+.playerStatus{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:8px;
+
+    font-size:.82rem;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+.playerStatus::before{
+    content:"";
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+}
+
+.playerStatus.active{
+    color:#62ff9a;
+}
+
+.playerStatus.active::before{
+    background:#62ff9a;
+
+    box-shadow:
+        0 0 10px rgba(98,255,154,.8);
+}
+
+.playerStatus.inactive{
+    color:#ff4d5e;
+}
+
+.playerStatus.inactive::before{
+    background:#ff4d5e;
+
+    box-shadow:
+        0 0 10px rgba(255,77,94,.8);
+}
+
+
+/* ================================================= */
+/* COOPERADORES                                      */
+/* ================================================= */
+
+.cooperatorsContent{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:0;
+}
+
+.cooperatorCard{
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:16px 0;
+
+    border-bottom:
+        1px solid rgba(0,170,255,.14);
+
+    transition:.25s;
+}
+
+.cooperatorCard:hover{
+    padding-left:8px;
+
+    border-bottom-color:
+        rgba(0,170,255,.38);
+}
+
+.cooperatorIcon{
+    width:72px;
+    height:72px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    flex-shrink:0;
+}
+
+.cooperatorIcon img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    filter:
+        drop-shadow(0 0 10px rgba(0,170,255,.35));
+}
+
+.cooperatorInfo h3{
+    color:white;
+
+    margin-bottom:5px;
+
+    font-weight:300;
+
+    letter-spacing:1px;
+}
+
+.cooperatorInfo p{
+    color:#9fcadd;
+
+    margin-bottom:4px;
+}

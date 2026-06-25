@@ -10,6 +10,10 @@
 
     <link rel="stylesheet"
           href="../necrosis-styles/Necrosis-Game.css">
+    <link rel="stylesheet"
+      href="../necrosis-styles/necrosis-player.css">
+          <link rel="stylesheet"
+      href="../necrosis-styles/necrosis-map.css">
 
 </head>
 <body>
@@ -47,12 +51,54 @@
 
     <h2>Controle</h2>
 
+    <button
+        id="profileButton"
+        class="menuButton"
+    >
+        Perfil
+    </button>
+
+    <button
+        id="cooperatorsButton"
+        class="menuButton"
+    >
+        Cooperadores
+    </button>
+
+<button
+    id="mapButton"
+    class="menuButton"
+>
+    Mapa
+</button>
+
+<div
+    id="mapSubmenu"
+    class="mapSubmenu"
+>
+
+    <button
+        class="mapLocation"
+        data-map="Grayford"
+    >
+        Mansão Grayford
+    </button>
+
+    <button
+        class="mapLocation"
+        data-map="Sewer"
+    >
+        Canal de Esgoto
+    </button>
+
+</div>
+
     <button class="menuButton">
-        Sessão 01
+        Anotações
     </button>
 
     <button class="menuButton">
-        Sessão 02
+        Dados
     </button>
 
 </aside>
@@ -65,14 +111,134 @@
     <h2>Moderador</h2>
 
     <button class="moderatorButton">
-        Sessão 01
+        Background
     </button>
 
     <button class="moderatorButton">
-        Sessão 02
+        Playlist
+    </button>
+
+    <button class="moderatorButton">
+        Itens
+    </button>
+
+    <button class="moderatorButton">
+        Armas
+    </button>
+
+    <button class="moderatorButton">
+        Documentos
     </button>
 
 </aside>
+
+<!-- ========================= -->
+<!-- PAINEL PERFIL             -->
+<!-- ========================= -->
+
+<section
+    id="profilePanel"
+    class="playerPanel"
+>
+
+    <button
+        id="closeProfilePanel"
+        class="closePlayerPanel"
+    >
+        ✕
+    </button>
+
+    <h2>Perfil</h2>
+
+    <div
+        id="profileContent"
+        class="profileContent"
+    ></div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- PAINEL COOPERADORES       -->
+<!-- ========================= -->
+
+<section
+    id="cooperatorsPanel"
+    class="playerPanel"
+>
+
+    <button
+        id="closeCooperatorsPanel"
+        class="closePlayerPanel"
+    >
+        ✕
+    </button>
+
+    <h2>Cooperadores</h2>
+
+    <div
+        id="cooperatorsContent"
+        class="cooperatorsContent"
+    ></div>
+
+</section>
+
+<!-- ========================= -->
+<!-- PAINEL MAPA               -->
+<!-- ========================= -->
+
+<section
+    id="mapPanel"
+    class="mapPanel"
+>
+
+    <button
+        id="closeMapPanel"
+        class="closeMapPanel"
+    >
+        ✕
+    </button>
+
+    <div class="floorSelector">
+
+        <button
+            class="floorButton active"
+            data-floor="1F"
+        >
+            1F
+        </button>
+
+        <button
+            class="floorButton"
+            data-floor="2F"
+        >
+            2F
+        </button>
+
+        <button
+            class="floorButton"
+            data-floor="3F"
+        >
+            3F
+        </button>
+
+    </div>
+
+        <div class="mapViewport">
+
+            <div id="mapCanvas">
+
+                <img
+                    id="mapImage"
+                    src="../necrosis-assets/maps/Grayford-1F.png"
+                >
+
+            </div>
+
+        </div>
+
+</section>
+
 <main class="gameContent">
 
     <section class="gameSection">
@@ -112,7 +278,10 @@
     </section>
 
 </main>
-    <script src="../necrosis-scripts/Necrosis-Game.js"></script>
+
+<script src="../necrosis-scripts/Necrosis-Game.js"></script>
+<script src="../necrosis-scripts/necrosis-player.js"></script>
+<script src="../necrosis-scripts/necrosis-map.js"></script>
 
 </body>
 </html>
